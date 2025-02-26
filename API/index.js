@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 // importing route modules
+import userRoutes from './routes/userRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 // importing config
 import config from './config.js';
@@ -36,6 +38,10 @@ dbConnect();
 app.listen(config.PORT, () => {
     console.log(`listening on port: http://localhost:${config.PORT}`);
 });
+
+// define routes
+app.use('/api/users', userRoutes);  // user-related routes
+app.use('/api/auth', authRoutes);  // user-related routes
 
 // define a route for the root url that sends a welcome message
 app.get('/', (req, res) => res.send('hello from homepage'));
