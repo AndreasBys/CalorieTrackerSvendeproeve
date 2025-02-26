@@ -2,29 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.HjemmeSkaermSide"
+             Shell.NavBarIsVisible="False"
              Title="HjemmeSkaermSide">
     <VerticalStackLayout BackgroundColor="#3C3C44">
         <HorizontalStackLayout HorizontalOptions="Center" Margin="100,200,100,100" >
-            <Image Source="mealmatelogo.png" HeightRequest="100" WidthRequest="100" Margin="10,0,20,0"/>
+            <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" Margin="10,0,20,0"/>
             <Label VerticalOptions="Center" TextColor="White" FontSize="42">MealMate</Label>
         </HorizontalStackLayout>
         <StackLayout>
             <StackLayout Margin="80,0,80,0">
                 <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Email:</Label>
-            <Border HeightRequest="50" StrokeThickness="2" Stroke="#2B2B32">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                </Border.StrokeShape>
-                <Entry HeightRequest="50" Background="#2B2B32" TextColor="White" FontSize="20" ></Entry>
+                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                    </Border.StrokeShape>
+                    <Entry HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28" ></Entry>
             </Border>
             </StackLayout>
             <StackLayout Margin="80,20,80,0">
                 <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Password:</Label>
-                <Border HeightRequest="50" StrokeThickness="2" Stroke="#2B2B32">
+                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                     </Border.StrokeShape>
-                    <Entry HeightRequest="50" Background="#2B2B32" TextColor="White" FontSize="20" ></Entry>
+                    <Entry HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" ></Entry>
                 </Border>
             </StackLayout>
             <HorizontalStackLayout Margin="80,20,80,0">
@@ -36,7 +37,7 @@
             </HorizontalStackLayout>
         </StackLayout>
         <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-            <Label TextColor="White" FontSize="22" >har du ikke en konto endnu? </Label>
+            <Label TextColor="#808080" FontSize="22" >har du ikke en konto endnu? </Label>
             <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}">

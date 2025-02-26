@@ -8,7 +8,7 @@ namespace MealMate
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(FoedevareSide), typeof(FoedevareSide));
+            //Routing.RegisterRoute(nameof(FoedevareSide), typeof(FoedevareSide));
         }
     }
 }
