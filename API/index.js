@@ -5,10 +5,12 @@ import mongoose from 'mongoose';
 
 // importing route modules
 import authRoutes from './routes/authRoutes.js';
-import userRoutes from './routes/userRoutes.js';
+import dishRoutes from './routes/dishRoutes.js';
+import foodInDishRoutes from './routes/foodInDishRoutes.js';
 import foodRoutes from './routes/foodRoutes.js';
-import dailyIntakeRoutes from './routes/dailyIntakeRoutes.js';
-import goalRoutes from './routes/goalRoutes.js';
+import macroGoalRoutes from './routes/macroGoalRoutes.js';
+import macroTrackRoutes from './routes/macroTrackRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // setting environment variables for secret key, mongodb url, and port
 process.env.SECRET_KEY = 'test';
@@ -45,11 +47,13 @@ app.listen(process.env.PORT, () => {
 });
 
 // define routes for different functionalities
-app.use('/api/auth', authRoutes);  // authentication routes
+app.use('api/auth', authRoutes); //authenticator-related routes
+app.use('/api/dish', dishRoutes);  // dish-related routes
+app.use('/api/food', foodRoutes);  // food-related routes
+app.use('/api/foodInDish', foodInDishRoutes);  // foodInDish-related routes
+app.use('/api/macroGoal', macroGoalRoutes);  // macroGoal-related routes
+app.use('/api/macroTrack', macroTrackRoutes);  // macroTrack-related routes
 app.use('/api/users', userRoutes);  // user-related routes
-app.use('/api/foods', foodRoutes);  // food-related routes
-app.use('/api/dailyIntakes', dailyIntakeRoutes);  // daily intake routes
-app.use('/api/goals', goalRoutes);  // goal-related routes
 
 // define a route for the root url that sends a welcome message
 app.get('/', (req, res) => res.send('hello from homepage'));
