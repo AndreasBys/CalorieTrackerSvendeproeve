@@ -6,13 +6,13 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 
 // exporting authenticate middleware function
-export const authenticate = async (rq, rs, next) => {
+export const authenticate = async (req, res, next) => {
   // extracting the token from the Authorization header (assuming "Bearer <token>")
-  const token = rq.headers.authorization?.split(' ')[1];
+  const token = req.headers.authorization?.split(' ')[1];
 
   // if no token is found, respond with a 401 status (Unauthorized)
   if (!token) {
-    return rs.status(401).json({ message: 'Authentication required' });
+    return res.status(401).json({ message: 'Authentication required' });
   }
 
   try {
@@ -24,17 +24,17 @@ export const authenticate = async (rq, rs, next) => {
 
     // if no user is found, respond with a 404 status (Not Found)
     if (!user) {
-      return rs.status(404).json({ message: 'Invalid token' });
+      return res.status(404).json({ message: 'Invalid token' });
     }
 
     // attaching the user object to the request object for further use
-    rq.user = user;
+    req.user = user;
 
     // proceeding to the next middleware or route handler
     next();
   } catch (err) {
     // if an error occurs (e.g., token is invalid), respond with a 401 status (Unauthorized)
-    rs.status(401).json({ message: 'Invalid token' });
+    res.status(401).json({ message: 'Invalid token' });
   }
 };
 

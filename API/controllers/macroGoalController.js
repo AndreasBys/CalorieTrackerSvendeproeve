@@ -14,8 +14,10 @@ export const createMacroGoal = async (req, res) => {
     req.body.startDate = new Date();
     req.body.startDate.setHours(0, 0, 0, 0);
 
+    // finds the latest goal for the user
     const latestMacroGoal = await MacroGoal.findOne({ user: req.user.id }).sort({ startDate: -1 })
     try {
+        // if there's a goal for the current day it updates it
         if (latestMacroGoal.startDate.getTime() == req.body.startDate.getTime()) {
             Object.keys(req.body).forEach(key => {
                 latestMacroGoal[key] = req.body[key];
