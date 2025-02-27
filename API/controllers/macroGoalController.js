@@ -15,17 +15,15 @@ export const createMacroGoal = async (req, res) => {
     req.body.startDate.setHours(0, 0, 0, 0);
 
     // finds the latest goal for the user
-    const latestMacroGoal = await MacroGoal.findOne({ user: req.user.id }).sort({ startDate: -1 })
+    const latestMacroGoal = await MacroGoal.findOne({ startDate: req.body.startDate })
     try {
         // if there's a goal for the current day it updates it
-        if (latestMacroGoal.startDate.getTime() == req.body.startDate.getTime()) {
-            Object.keys(req.body).forEach(key => {
-                latestMacroGoal[key] = req.body[key];
-            });
+        Object.keys(req.body).forEach(key => {
+            latestMacroGoal[key] = req.body[key];
+        });
 
-            const updatedMacroGoal = await latestMacroGoal.save();
-            res.status(200).json({ msg: "goal updated", user: updatedMacroGoal })
-        }
+        const updatedMacroGoal = await latestMacroGoal.save();
+        res.status(200).json({ msg: "goal updated", user: updatedMacroGoal })
     } catch (error) {
         // saves the new goal to database
         await new MacroGoal(req.body).save()
@@ -40,3 +38,24 @@ export const createMacroGoal = async (req, res) => {
             })
     }
 }
+
+export const getCurrentGoal = async (req, res) => {
+    // gets user id from request params
+    const userId = req.user.id
+
+    // if the user isn't admin or no userId is found -> error returns
+    if (!(req.user.admin || req.user.id == userId))
+        return res.status(401).json({ message: 'No access' });
+
+    // finds goal through userId and sort it to the latest goal
+    MacroGoal.findOne({ user: userId }).sort({ startDate: -1 })
+        .then((goal) => {
+            // returns status 200 and the users last goal
+            res.status(200).json({ goal: goal })
+        })
+        .catch((error) => {
+            // logs and returns status 500 error if failed or no goals found
+            console.log(error)
+            res.status(500).json({ msg: "unable to get goal" })
+        })
+};
