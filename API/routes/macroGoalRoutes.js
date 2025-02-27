@@ -5,7 +5,7 @@ import express from 'express'
 import { authenticate } from '../middleware/authenticator.js';
 
 // importing controllers
-import { createMacroGoal, getCurrentGoal } from '../controllers/macroGoalController.js'
+import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../controllers/macroGoalController.js'
 
 // creates new router from express module
 const router = express.Router();
@@ -13,6 +13,7 @@ const router = express.Router();
 // defining post routes
 router.post('/', authenticate, createMacroGoal);
 router.get('/', authenticate, getCurrentGoal);
+router.get('/search', authenticate, getGoalsBetweenDates);
 
 // exporting router as default
 export default router;
