@@ -15,7 +15,39 @@ export const createMacroGoal = async (req, res) => {
     req.body.startDate.setUTCHours(0, 0, 0, 0);
 
     // finds the latest goal for the user
-    const latestMacroGoal = await MacroGoal.findOne({ startDate: req.body.startDate })
+    await MacroGoal.findOne({ startDate: req.body.startDate })
+        .then(async (latestMacroGoal) => {
+            // if there's a goal for the current day it updates it
+            Object.keys(req.body).forEach(key => {
+                latestMacroGoal[key] = req.body[key];
+            });
+
+            const updatedMacroGoal = await latestMacroGoal.save();
+            res.status(200).json({ msg: "goal updated", user: updatedMacroGoal })
+        })
+        .catch(async () => {
+            // adds end date to previous goal
+            await MacroGoal.findOneAndUpdate({ user: req.user.id },
+                // sets end date to the day before the new goal
+                { endDate: new Date(req.body.startDate)
+                    .setUTCDate(req.body.startDate.getUTCDate() - 1) },
+            ).sort({ startDate: -1 })
+            
+            // saves the new goal
+            await new MacroGoal(req.body).save()
+                .then((goal) => {
+                    // returns the created goal
+                    res.status(201).json({ msg: 'goal saved', goal })
+                })
+                .catch((error) => {
+                    // logs and returns status 500 if error -> goal not created
+                    console.log(error)
+                    res.status(500).json({ msg: 'unable to create new goal' })
+                })
+        });
+
+    // finds the latest goal for the user
+    /*const latestMacroGoal = await MacroGoal.findOne({ startDate: req.body.startDate })
     try {
         // if there's a goal for the current day it updates it
         Object.keys(req.body).forEach(key => {
@@ -36,7 +68,7 @@ export const createMacroGoal = async (req, res) => {
                 console.log(error)
                 res.status(500).json({ msg: 'unable to create new goal' })
             })
-    }
+    }*/
 }
 
 export const getCurrentGoal = async (req, res) => {
