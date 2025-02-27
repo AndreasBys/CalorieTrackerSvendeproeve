@@ -12,7 +12,7 @@ export const createMacroGoal = async (req, res) => {
 
     // sets startDate to current date & time
     req.body.startDate = new Date();
-    req.body.startDate.setHours(0, 0, 0, 0);
+    req.body.startDate.setUTCHours(0, 0, 0, 0);
 
     // finds the latest goal for the user
     const latestMacroGoal = await MacroGoal.findOne({ startDate: req.body.startDate })
