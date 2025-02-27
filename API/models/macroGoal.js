@@ -10,25 +10,26 @@ const goalSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
-    calorieGoal: {
+    calories: {
         type: Number,
         required: false
     },
-    carbonhydratesGoal: {
+    carbonhydrates: {
         type: Number,
         required: false
     },
-    proteinGoal: {
+    proteins: {
         type: Number,
         required: false
     },
-    fatGoal: {
+    fats: {
         type: Number,
         required: false
     },
     margin: {
         type:Number,
-        required: false
+        required: false,
+        default: 10
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -37,8 +38,8 @@ const goalSchema = new mongoose.Schema({
 })
 
 // exports scheme as model to controllers
-const Goal = mongoose.model('Goal', goalSchema);
-export default Goal;
+const MacroGoal = mongoose.model('MacroGoal', goalSchema);
+export default MacroGoal;
 
 
 

@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 // importing route modules
 import userRoutes from './routes/userRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import macroGoalRoutes from './routes/macroGoalRoutes.js';
 
 // importing config
 import config from './config.js';
@@ -42,6 +43,7 @@ app.listen(config.PORT, () => {
 // define routes
 app.use('/api/users', userRoutes);  // user-related routes
 app.use('/api/auth', authRoutes);  // user-related routes
+app.use('/api/macroGoals', macroGoalRoutes); // macro goal related routes
 
 // define a route for the root url that sends a welcome message
 app.get('/', (req, res) => res.send('hello from homepage'));
