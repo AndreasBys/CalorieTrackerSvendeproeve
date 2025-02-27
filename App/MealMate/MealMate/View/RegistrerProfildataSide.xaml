@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.RegistrerProfildataSide"
+             Title="RegistrerProfildataSide">
+    <VerticalStackLayout BackgroundColor="#3C3C44">
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="100,200,100,100" >
+            <Label VerticalOptions="Center" TextColor="White" FontSize="42">Profil data</Label>
+        </HorizontalStackLayout>
+
+        <!--Formular box-->
+        <StackLayout>
+
+            <!--Box-->
+            <StackLayout Margin="80,0,80,0" >
+                <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Fødselsdato:</Label>
+                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <DatePicker HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28" HorizontalOptions="Fill"/>
+                        <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" HorizontalOptions="End"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+
+            <!--Box-->
+            <Grid RowDefinitions="*,*" ColumnDefinitions="*, *" HorizontalOptions="FillAndExpand" >
+
+                <Grid RowDefinitions="*,*" Margin="0,20,0,0" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" Grid.Row="0" >Højde:</Label>
+
+                    <Grid ColumnDefinitions="*, *" HorizontalOptions="FillAndExpand" Grid.Row="1" >
+                        <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry HeightRequest="60"  Background="#2B2B32" TextColor="White" FontSize="28" Grid.Column="0"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="#808080" FontSize="14" Margin="10,0,0,10" Grid.Column="1" VerticalOptions="End">cm</Label>
+                    </Grid>
+                </Grid>
+
+                <Grid RowDefinitions="*,*" Margin="0,20,0,0" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" Grid.Row="0" >Vægt:</Label>
+
+                    <Grid ColumnDefinitions="*, *" HorizontalOptions="FillAndExpand" Grid.Row="1" >
+                        <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry HeightRequest="60"  Background="#2B2B32" TextColor="White" FontSize="28" Grid.Column="0"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="#808080" FontSize="14" Margin="10,0,0,10" Grid.Column="1" VerticalOptions="End">kg</Label>
+                    </Grid>
+                </Grid>
+                
+                
+            </Grid>
+            <!--Text Box-->
+            <HorizontalStackLayout Margin="80,20,80,0">
+                <CheckBox VerticalOptions="Center" Color="White" ScaleX="1.5" ScaleY="1.5"></CheckBox>
+                <Label VerticalOptions="Center" TextColor="White" FontSize="28">Remember me</Label>
+            </HorizontalStackLayout>
+
+            <!--Button box-->
+            <Grid Margin="80,20,80,0" HorizontalOptions="Fill" >
+                <Button Text="Log ind" HorizontalOptions="Fill" BackgroundColor="#007ED8" FontSize="28"></Button>
+            </Grid>
+        </StackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+            <Label TextColor="#808080" FontSize="22" >Har du allerede en konto?</Label>
+            <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}">
+
+                    </TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
