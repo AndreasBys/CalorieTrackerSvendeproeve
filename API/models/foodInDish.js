@@ -6,4 +6,5 @@ const foodInDishSchema = new mongoose.Schema({
 })
 
 // exports scheme as model to mongoose database and controllers
-export const FoodInDish = mongoose.model('FoodInDish', foodInDishSchema)
+const FoodInDish = mongoose.model('FoodInDish', foodInDishSchema);
+export default FoodInDish;

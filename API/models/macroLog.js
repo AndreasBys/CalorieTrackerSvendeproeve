@@ -2,7 +2,7 @@
 import mongoose from 'mongoose'
 
 // imports food model to use in schema
-import {Food} from './food.js'
+import Food from './food.js'
 
 const macroLogSchema = new mongoose.Schema({
     date: {
