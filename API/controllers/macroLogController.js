@@ -52,8 +52,25 @@ export const getMacroLogDayOrDays = async (req, res) => {
             res.status(200).json({ macroLogItems });
         })
         .catch((error) => {
-            // logs and returns status 500 error if failed or no goals found
+            // logs and returns status 500 error if failed or no logs found
             console.log(error)
-            res.status(500).json({ msg: "unable to find any goals" })
+            res.status(500).json({ msg: "unable to find any macro logs" })
         })
-};
+}
+
+// delete method - deletes a item from food log
+export const deleteMacroLog = async (req, res) => {
+    // finds and deletes food log item
+    MacroLog.findOneAndDelete(
+        { _id: req.params.id, 
+            user: req.user.id 
+        }).populate('food')
+        .then((macroLog)=>{
+            res.status(200).json({ macroLog });
+        })
+        .catch((error) => {
+            // logs and returns status 500 error if failed or no logs found
+            console.log(error)
+            res.status(500).json({ msg: "unable to find any macro logs" })
+        })
+}
