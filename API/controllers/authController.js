@@ -1,6 +1,9 @@
+// importing jsonwebtoken library
+import jwt from 'jsonwebtoken';
 // importing config file
 import config from '../config.js';
-
+// importing User model
+import User from '../models/user.js';
 
 // exporting register method
 export const register = async (req, res) => {
