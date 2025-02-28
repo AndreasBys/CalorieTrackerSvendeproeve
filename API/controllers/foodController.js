@@ -1,5 +1,5 @@
 // importing food model
-import { Food } from "../models/food.js"
+import Food from "../models/food.js"
 
 // exporting get all method - gets all foods
 export const getFoods = async (req, res) => {
