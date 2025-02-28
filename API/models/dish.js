@@ -2,8 +2,16 @@
 import mongoose from 'mongoose'
 
 const dishSchema = new mongoose.Schema({
-    
+    name: {
+        type: String,
+        required: false
+    },
+    user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
 })
 
 // exports scheme as model to mongoose database and controllers
-export const Dish = mongoose.model('Dish', dishSchema)
+const Dish = mongoose.model('Dish', foodSchema)
+export default Food;
