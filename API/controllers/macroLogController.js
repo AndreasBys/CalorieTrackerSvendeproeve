@@ -10,9 +10,10 @@ export const createMacroLog = async (req, res) => {
     req.body.date = new Date();
 
     // logs the food
-    await new MacroLog(req.body).save().populate('food')
-        .then((macroLog) => {
+    await new MacroLog(req.body).save()
+        .then(async (macroLog) => {
             // returns the logged food
+            await macroLog.populate('food');
             res.status(201).json({ msg: 'food logged', macroLog })
         })
         .catch((error) => {
