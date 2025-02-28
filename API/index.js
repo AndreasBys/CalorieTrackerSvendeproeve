@@ -46,7 +46,7 @@ app.listen(config.PORT, () => {
 
 
 // define routes
-app.use('api/auth', authRoutes);                // authenticator-related routes
+app.use('/api/auth', authRoutes);                // authenticator-related routes
 app.use('/api/dish', dishRoutes);               // dish-related routes
 app.use('/api/food', foodRoutes);               // food-related routes
 app.use('/api/foodInDish', foodInDishRoutes);   // foodInDish-related routes
