@@ -21,3 +21,28 @@ export const createMacroTrack = async (req, res) => {
         res.status(500).json({ msg: 'unable to log food' })
     })
 }
+
+// get method - gets all food logs for day
+export const getMacroTrackDay = async (req, res) => {
+    // sets search Date variables from current date and next day at 00:00
+    const searchDate = new Date(req.query.date);
+    const searchDateEnd = new Date(searchDate)
+    searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
+
+    // finds goals between two dates and the has user
+    MacroTrack.find({
+        user: req.user.id,
+        date: {
+            $gte: searchDate,
+            $lt: searchDateEnd
+        }
+    })
+    .then((goals) => {
+        res.status(200).json({ goals: goals});
+    })
+    .catch((error) => {
+        // logs and returns status 500 error if failed or no goals found
+        console.log(error)
+        res.status(500).json({ msg: "unable to find any goals" })
+    })
+};
