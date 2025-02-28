@@ -8,7 +8,7 @@ const macroTrackSchema = new mongoose.Schema({
     },
     weight: {
         type: Number,
-        required: false
+        required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -16,7 +16,8 @@ const macroTrackSchema = new mongoose.Schema({
     },
     food: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Food"
+        ref: "Food",
+        required: true
     }
 })
 

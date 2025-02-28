@@ -10,7 +10,7 @@ import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../contro
 // creates new router from express module
 const router = express.Router();
 
-// defining post routes
+// defining routes
 router.post('/', authenticate, createMacroGoal);
 router.get('/', authenticate, getCurrentGoal);
 router.get('/search', authenticate, getGoalsBetweenDates);
