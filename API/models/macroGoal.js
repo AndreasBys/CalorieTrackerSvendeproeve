@@ -29,7 +29,7 @@ const goalSchema = new mongoose.Schema({
     margin: {
         type:Number,
         required: false,
-        default: 10
+        default: 5
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

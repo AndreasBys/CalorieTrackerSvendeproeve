@@ -2,7 +2,7 @@
 import express from 'express'
 
 // importing authentcate 
-import { authenticate } from '../middleware/authenticator.js';
+import authenticate from '../middleware/authenticator.js';
 
 // importing controllers
 import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../controllers/macroGoalController.js'
@@ -10,10 +10,16 @@ import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../contro
 // creates new router from express module
 const router = express.Router();
 
-// defining post routes
+// defining routes
 router.post('/', authenticate, createMacroGoal);
-router.get('/', authenticate, getCurrentGoal);
-router.get('/search', authenticate, getGoalsBetweenDates);
+// get route depending on if theres query params present
+router.get('/', authenticate, (req, res, next) => {
+    if (Object.keys(req.query).length > 0) {
+        getGoalsBetweenDates(req, res, next);
+    } else {
+        getCurrentGoal(req, res, next);
+    }
+});
 
 // exporting router as default
 export default router;

@@ -9,7 +9,7 @@ import dishRoutes       from './routes/dishRoutes.js';
 import foodInDishRoutes from './routes/foodInDishRoutes.js';
 import foodRoutes       from './routes/foodRoutes.js';
 import macroGoalRoutes  from './routes/macroGoalRoutes.js';
-import macroTrackRoutes from './routes/macroTrackRoutes.js';
+import macroLogRoutes from './routes/macroLogRoutes.js';
 import userRoutes       from './routes/userRoutes.js';
 
 // importing config
@@ -46,12 +46,12 @@ app.listen(config.PORT, () => {
 
 
 // define routes
-app.use('api/auth', authRoutes);                // authenticator-related routes
+app.use('/api/auth', authRoutes);                // authenticator-related routes
 app.use('/api/dish', dishRoutes);               // dish-related routes
 app.use('/api/food', foodRoutes);               // food-related routes
 app.use('/api/foodInDish', foodInDishRoutes);   // foodInDish-related routes
 app.use('/api/macroGoal', macroGoalRoutes);     // macroGoal-related routes
-app.use('/api/macroTrack', macroTrackRoutes);   // macroTrack-related routes
+app.use('/api/macroLog', macroLogRoutes);   // macroLog-related routes
 app.use('/api/users', userRoutes);              // user-related routes
 
 
