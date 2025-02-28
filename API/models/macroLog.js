@@ -1,7 +1,7 @@
 // imports mongoose to use to create schema
 import mongoose from 'mongoose'
 
-const macroTrackSchema = new mongoose.Schema({
+const macroLogSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true
@@ -22,5 +22,5 @@ const macroTrackSchema = new mongoose.Schema({
 })
 
 // exports scheme as model to mongoose database and controllers
-const MacroTrack = mongoose.model('MacroTrack', macroTrackSchema)
-export default MacroTrack;
+const MacroLog = mongoose.model('MacroLog', macroLogSchema)
+export default MacroLog;
