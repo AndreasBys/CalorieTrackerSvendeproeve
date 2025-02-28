@@ -2,7 +2,7 @@
 import express from 'express'
 
 // importing authentcate 
-import { authenticate } from '../middleware/authenticator.js';
+import authenticate from '../middleware/authenticator.js';
 
 // importing controllers
 import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../controllers/macroGoalController.js'

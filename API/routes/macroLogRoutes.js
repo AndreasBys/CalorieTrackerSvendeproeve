@@ -1,6 +1,6 @@
 // importing express module
 import express from 'express'
-import { authenticate } from '../middleware/authenticator.js';
+import authenticate from '../middleware/authenticator.js';
 import { createMacroLog, deleteMacroLog, getMacroLogDayOrDays, updateMacroLog } from '../controllers/macroLogController.js';
 
 // creates new router from express module
