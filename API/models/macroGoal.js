@@ -40,6 +40,3 @@ const goalSchema = new mongoose.Schema({
 // exports scheme as model to controllers
 const MacroGoal = mongoose.model('MacroGoal', goalSchema);
 export default MacroGoal;
-
-
-

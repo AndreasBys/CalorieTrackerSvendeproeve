@@ -17,5 +17,3 @@ router.delete('/:id', authenticate, deleteUser);
 
 // exporting router as default
 export default router;
-
-

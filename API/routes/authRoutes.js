@@ -13,5 +13,3 @@ router.post('/register', register);
 
 // exporting router as default
 export default router;
-
-
