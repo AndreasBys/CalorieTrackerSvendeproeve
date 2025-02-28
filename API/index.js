@@ -12,10 +12,8 @@ import macroGoalRoutes  from './routes/macroGoalRoutes.js';
 import macroTrackRoutes from './routes/macroTrackRoutes.js';
 import userRoutes       from './routes/userRoutes.js';
 
-// setting environment variables for secret key, mongodb url, and port
-process.env.SECRET_KEY = 'test';
-process.env.MONGODB_URL = 'mongodb://0.0.0.0:27017/appDB';
-process.env.PORT = 5000;
+// importing config
+import config from './config.js';
 
 // creating an instance of the express application
 const app = express();
@@ -28,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // function to connect to mongodb using mongoose
 const dbConnect = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URL, {
+        await mongoose.connect(config.MONGODB_URL, {
             autoIndex: true,  // automatically build indexes
         });
         console.log('connected to db');  // log successful connection
@@ -42,11 +40,12 @@ const dbConnect = async () => {
 dbConnect();
 
 // start the server and listen on the specified port
-app.listen(process.env.PORT, () => {
-    console.log(`listening on port: http://localhost:${process.env.PORT}`);
+app.listen(config.PORT, () => {
+    console.log(`listening on port: http://localhost:${config.PORT}`);
 });
 
-// define routes for different functionalities
+
+// define routes
 app.use('api/auth', authRoutes);                // authenticator-related routes
 app.use('/api/dish', dishRoutes);               // dish-related routes
 app.use('/api/food', foodRoutes);               // food-related routes
@@ -54,6 +53,7 @@ app.use('/api/foodInDish', foodInDishRoutes);   // foodInDish-related routes
 app.use('/api/macroGoal', macroGoalRoutes);     // macroGoal-related routes
 app.use('/api/macroTrack', macroTrackRoutes);   // macroTrack-related routes
 app.use('/api/users', userRoutes);              // user-related routes
+
 
 
 // defines a route for the root url that sends a welcome message

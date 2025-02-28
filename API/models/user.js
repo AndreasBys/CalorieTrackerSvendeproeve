@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
         unique: true, // makes sure username is unique
         validate: {
             // validate to make sure username is containing correct characters
-            validator: function(value){
+            validator: function (value) {
                 const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
                 return regex.test(value);
             },
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
         unique: true, // makes sure email is unique
         validate: {
             // validate to make sure email is containing correct characters
-            validator: function(value){
+            validator: function (value) {
                 const regex = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return regex.test(value);
             },
@@ -37,20 +37,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Password is required']
     },
-    birthday: {
+    birthdate: {
         type: Date,
-        required: false,
-        default: null
+        required: false
     },
     weight: {
         type: Number,
-        required: false,
-        default: null
+        required: false
     },
     height: {
         type: Number,
-        required: false,
-        default: null
+        required: false
+    },
+    gender: {
+        type: String,
+        required: false
     },
     admin: {
         type: Boolean,
@@ -67,13 +68,13 @@ userSchema.pre('save', async function (next) {
         const salt = await bcrypt.genSalt();
         user.password = await bcrypt.hash(user.password, salt);
         next();
-    } catch (err){
+    } catch (err) {
         return next(err);
     }
 });
 
 userSchema.methods.comparePassword = async function (password) {
-    return bcrypt.compare(password,this.password)
+    return bcrypt.compare(password, this.password)
 }
 
 // exports scheme as model to mongoose database and controllers
