@@ -46,7 +46,7 @@ export const getMacroLogDayOrDays = async (req, res) => {
             $gte: searchDate,
             $lt: searchDateEnd
         }
-    })
+    }).populate('food')
         .then((MacroLogItems) => {
             res.status(200).json({ MacroLogItems });
         })
