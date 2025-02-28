@@ -1,4 +1,3 @@
-// importing jsonwebtoken library
 import jwt from 'jsonwebtoken'; 
 
 // importing config file
