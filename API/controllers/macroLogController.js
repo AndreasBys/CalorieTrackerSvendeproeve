@@ -10,10 +10,10 @@ export const createMacroLog = async (req, res) => {
     req.body.date = new Date();
 
     // logs the food
-    await new MacroLog(req.body).save()
-        .then((logLog) => {
+    await new MacroLog(req.body).save().populate('food')
+        .then((macroLog) => {
             // returns the logged food
-            res.status(201).json({ msg: 'food logged', logLog })
+            res.status(201).json({ msg: 'food logged', macroLog })
         })
         .catch((error) => {
             // logs and returns status 500 if error -> food log not created
@@ -47,8 +47,8 @@ export const getMacroLogDayOrDays = async (req, res) => {
             $lt: searchDateEnd
         }
     }).populate('food')
-        .then((MacroLogItems) => {
-            res.status(200).json({ MacroLogItems });
+        .then((macroLogItems) => {
+            res.status(200).json({ macroLogItems });
         })
         .catch((error) => {
             // logs and returns status 500 error if failed or no goals found
