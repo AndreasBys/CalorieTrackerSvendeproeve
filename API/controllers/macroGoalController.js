@@ -66,8 +66,8 @@ export const getCurrentGoal = async (req, res) => {
 export const getGoalsBetweenDates = async (req, res) => {
     // finds goals between two dates and the has user
     MacroGoal.find({
+        user: req.user.id,
         $and: [
-            { user: req.user.id },
             { startDate: { $lte: new Date(req.query.endDate) } },
             { $or: [{ endDate: { $gte: new Date(req.query.startDate) } }, { endDate: { $exists: false } }] }
         ]
