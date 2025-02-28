@@ -2,8 +2,24 @@
 import mongoose from 'mongoose'
 
 const macroTrackSchema = new mongoose.Schema({
-    
+    date: {
+        type: Date,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: false
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    food: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Food"
+    }
 })
 
 // exports scheme as model to mongoose database and controllers
-export const MacroTrack = mongoose.model('MacroTrack', macroTrackSchema)
+const MacroTrack = mongoose.model('MacroTrack', macroTrackSchema)
+export default MacroTrack;
