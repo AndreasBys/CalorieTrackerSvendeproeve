@@ -11,7 +11,7 @@ export const getUser = async (req, res) => {
         return res.status(401).json({ message: 'No access' });
 
     // finds user through id
-    User.findById(id)
+    await User.findById(id)
         .then((user) => {
             // returns 404 if user isn't found | 200 if user is found
             if (!user) {
