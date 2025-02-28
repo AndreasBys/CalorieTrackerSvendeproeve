@@ -6,9 +6,6 @@ export const createMacroLog = async (req, res) => {
     // sets the user variable to the id of the user making the request
     req.body.user = req.user.id;
 
-    // sets startDate to current date & time
-    req.body.date = new Date();
-
     // logs the food
     await new MacroLog(req.body).save()
         .then(async (macroLog) => {
