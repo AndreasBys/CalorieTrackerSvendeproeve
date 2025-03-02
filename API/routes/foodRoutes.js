@@ -10,7 +10,7 @@ import {
     deleteFood, 
     updateFood 
 } from '../controllers/foodController.js'
-import { authenticate } from '../middleware/authenticator.js';
+import authenticate from '../middleware/authenticator.js';
 
 // creates new router from express module
 const router = express.Router();

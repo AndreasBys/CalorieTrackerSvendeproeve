@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 
 // exporting authenticate middleware function
-export const authenticate = async (req, res, next) => {
+const authenticate = async (req, res, next) => {
   // extracting the token from the Authorization header (assuming "Bearer <token>")
   const token = req.headers.authorization?.split(' ')[1];
 
@@ -38,3 +38,5 @@ export const authenticate = async (req, res, next) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
+
+export default authenticate;
