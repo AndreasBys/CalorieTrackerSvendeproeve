@@ -73,10 +73,10 @@ export const createDish = async (req, res) => {
     req.body.user = req.user.id
     // saves the new dish to database
     try {
-        await new Dish(req.body).save()
+        new Dish(req.body).save()
             .then(async (savedDish) => {
                 Object.keys(req.body.foods).forEach(async key => {
-                    await new FoodInDish({
+                    new FoodInDish({
                         dish: savedDish._id,
                         food: req.body.foods[key].id,
                         weight: req.body.foods[key].weight
