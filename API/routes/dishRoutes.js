@@ -11,14 +11,14 @@ import {
     deleteDish, 
     updateDish 
 } from '../controllers/dishController.js'
-import { authenticate } from '../middleware/authenticator.js';
+import authenticate from '../middleware/authenticator.js';
 
 // creates new router from express module
 const router = express.Router();
 
 // defining post routes
 router.get('/', authenticate, getAllUserDishes);
-router.get('/search/:id', authenticate, getDish)
+router.get('/:id', authenticate, getDish)
 router.get('/search', authenticate, search)
 router.post('/', authenticate, createDish)
 router.delete('/:id', authenticate, deleteDish)

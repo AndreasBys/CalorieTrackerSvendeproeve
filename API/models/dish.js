@@ -7,11 +7,11 @@ const dishSchema = new mongoose.Schema({
         required: false
     },
     user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
 })
 
 // exports scheme as model to mongoose database and controllers
-const Dish = mongoose.model('Dish', foodSchema)
+const Dish = mongoose.model('Dish', dishSchema)
 export default Dish;
