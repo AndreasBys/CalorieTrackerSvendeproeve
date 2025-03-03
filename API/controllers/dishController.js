@@ -1,6 +1,5 @@
 // importing dish model
 import Dish from "../models/dish.js"
-import Food from "../models/food.js"
 import FoodInDish from "../models/foodInDish.js"
 
 // exporting get all method - gets all dishes
@@ -25,11 +24,11 @@ export const getAllUserDishes = async (req, res) => {
 export const getDish = async (req, res) => {
     try {
         const id = req.params.id
-        Dish.findById(id)
-            .then((dishes) => {
-                // returns status 200 and dish that matches id
-                res.status(200).json({ dish: dishes })
-            })
+        const dish = await Dish.findById(id)
+        const foods = await FoodInDish.find({ dish: dish.id})
+            .populate('food')
+            .select('food weight')
+        res.status(200).json({ dish, foods})
     } catch (error) {
         // logs and returns status 500 error if failed or no dishes found
         console.log(error)
@@ -70,6 +69,8 @@ export const search = async (req, res) => {
 
 // exporting create method - creates new dish
 export const createDish = async (req, res) => {
+
+    req.body.user = req.user.id
     // saves the new dish to database
     try {
         await new Dish(req.body).save()
