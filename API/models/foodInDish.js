@@ -2,7 +2,14 @@
 import mongoose from 'mongoose'
 
 const foodInDishSchema = new mongoose.Schema({
-    
+    food: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Food"
+    },
+    dish: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Dish"
+    }
 })
 
 // exports scheme as model to mongoose database and controllers
