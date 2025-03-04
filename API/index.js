@@ -2,6 +2,7 @@
 import express          from 'express';
 import bodyParser       from 'body-parser';
 import mongoose         from 'mongoose';
+import cron             from 'node-cron';
 
 // importing route modules
 import authRoutes       from './routes/authRoutes.js';
@@ -13,6 +14,9 @@ import userRoutes       from './routes/userRoutes.js';
 
 // importing config
 import config           from './config.js';
+
+// importing saveAllMacroLogs for cron job
+import { saveAllMacroLogs } from './controllers/macroLogLegacyController.js';
 
 
 // creating an instance of the express application
@@ -59,4 +63,8 @@ app.use('/api/users', userRoutes);              // user-related routes
 // defines a route for the root url that sends a welcome message
 app.get('/', (req, res) => res.send('hello from homepage'));
 
-
+// Kører hver dag kl. 23:59 UTC+1
+cron.schedule("59 22 * * *", async () => {
+    console.log("Running daily macro log processing...");
+    await saveAllMacroLogs();
+});
