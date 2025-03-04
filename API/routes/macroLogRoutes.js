@@ -1,14 +1,14 @@
 // importing express module
 import express from 'express'
 import authenticate from '../middleware/authenticator.js';
-import { createMacroLog, deleteMacroLog, getMacroLogDayOrDays, updateMacroLog } from '../controllers/macroLogController.js';
+import { createMacroLog, deleteMacroLog, getTodaysMacroLog, updateMacroLog } from '../controllers/macroLogController.js';
 
 // creates new router from express module
 const router = express.Router();
 
 // defining routes
 router.post('/', authenticate, createMacroLog);
-router.get('/', authenticate, getMacroLogDayOrDays);
+router.get('/', authenticate, getTodaysMacroLog);
 router.delete('/:id', authenticate, deleteMacroLog);
 router.patch('/:id', authenticate, updateMacroLog);
 
