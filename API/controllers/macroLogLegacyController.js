@@ -74,6 +74,12 @@ export const saveMacroLog = async (req, res) => {
             fat: totalFat
         }).save();
 
+        // Slet de gamle MacroLogs efter de er gemt i MacroLogLegacy
+        await MacroLog.deleteMany({
+            user: req.user.id,
+            date: { $gte: searchDate, $lt: searchDateEnd }
+        });
+
         // Returnér succesrespons med de gemte data
         res.status(201).json({ msg: 'MacroLogLegacy saved', legacyLog });
 
