@@ -6,7 +6,12 @@
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              Title="HjemmeskaermSide">
     <Grid>
-        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="100,50,100,0" >
+
+        
+
+        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,50,80,0" >
+
+            
 
 
 
@@ -14,140 +19,179 @@
             <!--Formular box-->
             <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
 
-
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
+                    <Grid Grid.Row="0">
+                        <progressBar:SfLinearProgressBar></progressBar:SfLinearProgressBar>
+                    </Grid>
+                </Grid>
 
                 <!--Dropdown box-->
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Mål:</Label>
 
-                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
-                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto">
+                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Grid>
-                                <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg mål" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker">
-                                    <Picker.Items>
-                                        <x:String>Vægttab</x:String>
-                                        <x:String>Tag vægt på</x:String>
-                                    </Picker.Items>
-                                </Picker>
-                                <Grid Padding="10">
-                                    <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                <Button x:Name="UdviderKnap">
+
+
+
+                                </Button>
+
+
+                                <Grid ColumnDefinitions="*">
+                                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">12 x Æble</Label>
+
+                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                        <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0">Hey</Label>
+
+                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                            <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                                        </Grid>
+                                    </Grid>
+
                                 </Grid>
+
+                                
+
                             </Grid>
                         </Border>
+
+                        <Grid Grid.Row="1" x:Name="UdvidetContent" IsVisible="False">
+                            <Grid>
+                                <!--Progress bar box-->
+
+                                <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*,*" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="4" Padding="0,10,0,0" BackgroundColor="{StaticResource CustomGraa}">
+
+                                    <!--Row 1-->
+                                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="0">
+
+                                        <Grid Grid.Column="0">
+                                            <Image Source="boef_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+                                            <progressBar:SfLinearProgressBar  
+                                                    TrackCornerRadius="20" 
+                                                    ProgressHeight="50" 
+                                                    ProgressCornerRadius="20" 
+                                                    Progress="20" 
+                                                    TrackHeight="50" 
+                                                    Grid.Column="1" 
+                                                    TrackFill="{StaticResource CustomMoerkeGraa}"
+                                                    ProgressFill="{StaticResource CustomPink}"
+                                                    BackgroundColor="{StaticResource CustomGraa}" >
+                                            </progressBar:SfLinearProgressBar>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid Padding="10">
+                                                <Label TextColor="{StaticResource CustomHvid}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                                            </Grid>
+
+                                        </Grid>
+                                    </Grid>
+
+                                    <!--Row 1-->
+
+                                    <!--Row 2-->
+                                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="1">
+
+                                        <Grid Grid.Column="0">
+                                            <Image Source="sukker_icon.png" HeightRequest="45" WidthRequest="45"></Image>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+
+                                            <progressBar:SfLinearProgressBar  
+                                                    TrackCornerRadius="20" 
+                                                    ProgressHeight="50" 
+                                                    ProgressCornerRadius="20" 
+                                                    Progress="20" 
+                                                    TrackHeight="50" 
+                                                    Grid.Column="1" 
+                                                    TrackFill="{StaticResource CustomMoerkeGraa}"
+                                                    ProgressFill="{StaticResource CustomGrøn}"
+                                                    BackgroundColor="{StaticResource CustomGraa}" >
+                                            </progressBar:SfLinearProgressBar>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid Padding="10">
+                                                <Label TextColor="{StaticResource CustomHvid}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                                            </Grid>
+
+                                        </Grid>
+                                    </Grid>
+
+                                    <!--Row 2-->
+
+                                    <!--Row 3-->
+                                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="2">
+
+                                        <Grid Grid.Column="0">
+                                            <Image Source="bacon_icon.png" HeightRequest="45" WidthRequest="45"></Image>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+                                            <progressBar:SfLinearProgressBar  
+TrackCornerRadius="20" 
+ProgressHeight="50" 
+ProgressCornerRadius="20" 
+Progress="20" 
+TrackHeight="50" 
+Grid.Column="1" 
+TrackFill="{StaticResource CustomMoerkeGraa}"
+ProgressFill="{StaticResource CustomGul}"
+BackgroundColor="{StaticResource CustomGraa}" >
+                                            </progressBar:SfLinearProgressBar>
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid Padding="10">
+                                                <Label TextColor="{StaticResource CustomHvid}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                                            </Grid>
+
+                                        </Grid>
+                                    </Grid>
+
+
+                                    <Grid Grid.Row="2" Grid.Column="1" Padding="10">
+                                        <ImageButton Source="rediger_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" VerticalOptions="End"/>
+                                    </Grid>
+
+
+
+                                    <!--Row 3-->
+
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+
+
+
+
                     </Grid>
+
+
+
                 </Grid>
-                <!--Dropdown box-->
-
-
-                <!--Progress bar box-->
-
-                <Grid RowDefinitions="*,*,*" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="4" Padding="0,40,0,30">
-
-                    <!--Row 1-->
-                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="0">
-
-                        <Grid Grid.Column="0">
-                            <Image Source="boef_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
-
-
-                            <progressBar:SfLinearProgressBar  
-                        TrackCornerRadius="20" 
-                        ProgressHeight="50" 
-                        ProgressCornerRadius="20" 
-                        Progress="20" 
-                        TrackHeight="50" 
-                        Grid.Column="1" 
-                        TrackFill="{StaticResource CustomMoerkeGraa}"
-                        ProgressFill="{StaticResource CustomPink}"
-                        BackgroundColor="{StaticResource CustomGraa}" >
-                            </progressBar:SfLinearProgressBar>
-                        </Grid>
-
-                        <Grid Grid.Column="2">
-                            <Grid Padding="10">
-                                <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-
-                    <!--Row 1-->
-
-                    <!--Row 2-->
-                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="1">
-
-                        <Grid Grid.Column="0">
-                            <Image Source="sukker_icon.png" HeightRequest="45" WidthRequest="45"></Image>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
 
 
 
-                            <progressBar:SfLinearProgressBar  
-        TrackCornerRadius="20" 
-        ProgressHeight="50" 
-        ProgressCornerRadius="20" 
-        Progress="20" 
-        TrackHeight="50" 
-        Grid.Column="1" 
-        TrackFill="{StaticResource CustomMoerkeGraa}"
-        ProgressFill="{StaticResource CustomGrøn}"
-        BackgroundColor="{StaticResource CustomGraa}" >
-                            </progressBar:SfLinearProgressBar>
-                        </Grid>
 
-                        <Grid Grid.Column="2">
-                            <Grid Padding="10">
-                                <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-
-                    <!--Row 2-->
-
-                    <!--Row 3-->
-                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="2">
-
-                        <Grid Grid.Column="0">
-                            <Image Source="bacon_icon.png" HeightRequest="45" WidthRequest="45"></Image>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
-
-
-                            <progressBar:SfLinearProgressBar  
-        TrackCornerRadius="20" 
-        ProgressHeight="50" 
-        ProgressCornerRadius="20" 
-        Progress="20" 
-        TrackHeight="50" 
-        Grid.Column="1" 
-        TrackFill="{StaticResource CustomMoerkeGraa}"
-        ProgressFill="{StaticResource CustomGul}"
-        BackgroundColor="{StaticResource CustomGraa}" >
-                            </progressBar:SfLinearProgressBar>
-                        </Grid>
-
-                        <Grid Grid.Column="2">
-                            <Grid Padding="10">
-                                <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-
-                    <!--Row 3-->
-
-                </Grid>
 
 
 
@@ -156,7 +200,7 @@
             </Grid>
 
 
-            
+
         </Grid>
         <Navigationsbar:Navigationsbar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
