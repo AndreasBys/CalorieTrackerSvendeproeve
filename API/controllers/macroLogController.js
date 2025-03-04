@@ -1,5 +1,6 @@
-// importing goal model
+// importing models
 import MacroLog from "../models/macroLog.js"
+import FoodInDish from "../models/foodInDish.js";
 
 // create method - creates a new macro goal or updates if there's one for the current day
 export const createMacroLog = async (req, res) => {
@@ -22,30 +23,45 @@ export const createMacroLog = async (req, res) => {
 
 // get method - gets all food logs for day or multiple days
 export const getTodaysMacroLog = async (req, res) => {
+    try {
+        // Sætter start- og slutdato til dagens UTC tid
+        let searchDate = new Date();
+        searchDate.setUTCHours(0, 0, 0, 0);
+        let searchDateEnd = new Date(searchDate);
+        searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
 
-    // sets search start and end date depending on if theres query params present
-    let searchDate = new Date();
-    searchDate.setUTCHours(0, 0, 0, 0);
-    let searchDateEnd = new Date(searchDate);
-    searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
+        // Finder macroLogs for brugeren i dag
+        let macroLogs = await MacroLog.find({
+            user: req.user.id,
+            date: { $gte: searchDate, $lt: searchDateEnd }
+        })
+        .populate('food') // Henter food detaljer
+        .populate('dish'); // Henter dish detaljer
 
-    // finds macro log between two dates and the has user
-    await MacroLog.find({
-        user: req.user.id,
-        date: {
-            $gte: searchDate,
-            $lt: searchDateEnd
-        }
-    }).populate('food')
-        .then((macroLog) => {
-            res.status(200).json({ msg: 'Found', macroLog });
-        })
-        .catch((error) => {
-            // logs and returns status 500 error if failed or no logs found
-            console.log(error)
-            res.status(500).json({ msg: "Unable to find any macro logs" })
-        })
-}
+        // Hvis en log har en dish, henter vi dens ingredienser
+        await Promise.all(
+            macroLogs.map(async (log, index) => {
+                if (log.dish) {
+                    const foodsInDish = await FoodInDish.find({ dish: log.dish._id })
+                        .populate('food')
+                        .select('food weight');
+        
+                    macroLogs[index] = log.toObject(); // Konverter til almindeligt objekt
+                    macroLogs[index].dish.foods = foodsInDish; // Tilføj foods til dish
+                }
+            })
+        );
+        
+
+        // Returnerer opdaterede macroLogs
+        res.status(200).json({ msg: 'Found', macroLogs });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "Unable to find any macro logs" });
+    }
+};
+
 
 /*export const getMacroLogDayOrDays = async (req, res) => {
 
