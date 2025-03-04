@@ -72,3 +72,26 @@ export const saveAllMacroLogs = async () => {
         console.error("Error processing macro logs:", error);
     }
 };
+
+export const getMacroLogDays = async (req, res) => {
+    try {
+        // sets search start and end date depending on if theres query params present
+        const searchDate = new Date(req.query.startDate);
+        const searchDateEnd = new Date(req.query.endDate);
+        searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
+
+        // finds macro log between two dates and the has user
+        const legacyLogs = await MacroLogLegacy.find({
+            user: req.user.id,
+            date: {
+                $gte: searchDate,
+                $lt: searchDateEnd
+            }
+        });
+
+        res.status(200).json({ msg: 'Found following macro logs', legacyLogs });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Unable to find any macro logs" });
+    }
+}

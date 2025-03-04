@@ -62,41 +62,6 @@ export const getTodaysMacroLog = async (req, res) => {
     }
 };
 
-
-/*export const getMacroLogDayOrDays = async (req, res) => {
-
-    // sets search start and end date depending on if theres query params present
-    let searchDate = null;
-    let searchDateEnd = null;
-    if (Object.keys(req.query).length > 0) {
-        searchDate = new Date(req.query.startDate);
-        searchDateEnd = new Date(req.query.endDate);
-        searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
-    } else {
-        searchDate = new Date();
-        searchDate.setUTCHours(0, 0, 0, 0);
-        searchDateEnd = new Date(searchDate);
-        searchDateEnd.setUTCDate(searchDateEnd.getUTCDate() + 1);
-    }
-
-    // finds macro log between two dates and the has user
-    await MacroLog.find({
-        user: req.user.id,
-        date: {
-            $gte: searchDate,
-            $lt: searchDateEnd
-        }
-    }).populate('food')
-        .then((macroLog) => {
-            res.status(200).json({ msg: 'Found', macroLog });
-        })
-        .catch((error) => {
-            // logs and returns status 500 error if failed or no logs found
-            console.log(error)
-            res.status(500).json({ msg: "Unable to find any macro logs" })
-        })
-}*/
-
 // delete method - deletes a item from food log
 export const deleteMacroLog = async (req, res) => {
     // finds and deletes food log item
