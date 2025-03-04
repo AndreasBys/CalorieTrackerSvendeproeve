@@ -1,34 +1,45 @@
-// importing dish model
+// importing models
 import Dish from "../models/dish.js"
 import FoodInDish from "../models/foodInDish.js"
 
 // exporting get all method - gets all dishes
 export const getAllUserDishes = async (req, res) => {
     try {
-        const userId = req.user.id
-        req.body.user = userId;
+        const userId = req.user.id;
 
-        Dish.findById({ user: userId })
-            .then((dishes) => {
-                // returns status 200 and all dishes
-                res.status(200).json({ dishes: dishes })
+        // Find alle retter tilhørende brugeren
+        const dishes = await Dish.find({ user: userId });
+
+        // Hent foods til hver ret
+        // Promise.all fungerer lidt som en forEach, men kan håndtere async. 
+        // Map laver et nyt array fra dishes, hvor hver ret bliver modificeret til at inkludere foods
+        const dishesWithFoods = await Promise.all(
+            dishes.map(async (dish) => {
+                const foods = await FoodInDish.find({ dish: dish._id })
+                    .populate('food')
+                    .select('food weight');
+
+                return { ...dish.toObject(), foods };
             })
+        );
+
+        // Returnér retter inklusiv deres foods
+        res.status(200).json({ dishes: dishesWithFoods });
     } catch (error) {
-        // return status 500 error if failed
-        console.log(error)
-        res.status(500).json({ msg: "unable to get dishes" })
+        console.log(error);
+        res.status(500).json({ msg: "unable to get dishes" });
     }
-}
+};
 
 // exporting get method - gets specific dish through id
 export const getDish = async (req, res) => {
     try {
         const id = req.params.id
         const dish = await Dish.findById(id)
-        const foods = await FoodInDish.find({ dish: dish.id})
+        const foods = await FoodInDish.find({ dish: dish.id })
             .populate('food')
             .select('food weight')
-        res.status(200).json({ dish, foods})
+        res.status(200).json({ dish, foods })
     } catch (error) {
         // logs and returns status 500 error if failed or no dishes found
         console.log(error)
@@ -97,24 +108,29 @@ export const createDish = async (req, res) => {
 export const deleteDish = async (req, res) => {
     try {
         // gets id from params
-        const id = req.params.id
+        const id = req.params.id;
 
-        // deletes the dish from database
-        await Dish.findByIdAndDelete(id)
-            .then((dishes) => {
-                // returns the deleted dish
-                res.status(200).json({
-                    msg: "Following dish has been deleted",
-                    dish: dishes
-                })
-            })
+        // First, delete all FoodInDish entries related to this dish
+        await FoodInDish.deleteMany({ dish: id });
+        
+        // Then, delete the dish itself
+        const deletedDish = await Dish.findByIdAndDelete(id);
+
+        if (!deletedDish) {
+            return res.status(404).json({ msg: "Dish not found" });
+        }
+
+        // returns the deleted dish
+        res.status(200).json({
+            msg: "The following dish has been deleted",
+            dish: deletedDish
+        });
     } catch (error) {
-        // logs and returns status 500 if error 
-        // dish not deleted or couldn't be found
-        console.log(error)
-        res.status(500).json({ msg: "unable to delete dish" })
+        // logs and returns status 500 if error
+        console.log(error);
+        res.status(500).json({ msg: "Unable to delete dish" });
     }
-}
+};
 
 // exporting update method - updates a dish through id
 export const updateDish = async (req, res) => {
