@@ -50,7 +50,7 @@ export const getCurrentGoal = async (req, res) => {
     const userId = req.user.id
 
     // finds goal through userId and sort it to the latest goal
-    MacroGoal.findOne({ user: userId }).sort({ startDate: -1 })
+    await MacroGoal.findOne({ user: userId }).sort({ startDate: -1 })
         .then((goal) => {
             // returns status 200 and the users last goal
             res.status(200).json({ goal: goal })
@@ -65,7 +65,7 @@ export const getCurrentGoal = async (req, res) => {
 // get method - gets all goals between two dates
 export const getGoalsBetweenDates = async (req, res) => {
     // finds goals between two dates and the has user
-    MacroGoal.find({
+    await MacroGoal.find({
         user: req.user.id,
         $and: [
             { startDate: { $lte: new Date(req.query.endDate) } },
