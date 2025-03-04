@@ -1,7 +1,6 @@
 // importing necessary libraries
 import express          from 'express';
 import bodyParser       from 'body-parser';
-import mongoose         from 'mongoose';
 import cron             from 'node-cron';
 
 // importing route modules
@@ -12,8 +11,9 @@ import macroGoalRoutes  from './routes/macroGoalRoutes.js';
 import macroLogRoutes   from './routes/macroLogRoutes.js';
 import userRoutes       from './routes/userRoutes.js';
 
-// importing config
+// importing files
 import config           from './config.js';
+import dbConnect        from './db.js';
 
 // importing saveAllMacroLogs for cron job
 import { saveAllMacroLogs } from './controllers/macroLogLegacyController.js';
@@ -28,20 +28,7 @@ app.use(bodyParser.json());
 // middleware to parse url-encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// function to connect to mongodb using mongoose
-const dbConnect = async () => {
-    try {
-        await mongoose.connect(config.MONGODB_URL, {
-            autoIndex: true,  // automatically build indexes
-        });
-        console.log('connected to db');  // log successful connection
-    } catch (error) {
-        console.log(error);  // log any connection errors
-        process.exit(1);  // exit process with failure
-    }
-};
-
-// establish connection to the database
+// connects to database
 dbConnect();
 
 // start the server and listen on the specified port
