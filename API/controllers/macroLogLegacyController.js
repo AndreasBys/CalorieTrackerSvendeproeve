@@ -12,7 +12,7 @@ export const saveAllMacroLogs = async () => {
         tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
 
         // Find alle brugere i systemet
-        const users = await User.find();
+        const users = await User.find().select("_id");
 
         for (const user of users) {
             const macroLogs = await MacroLog.find({
