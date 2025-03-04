@@ -80,6 +80,39 @@ export const search = async (req, res) => {
 
 // exporting create method - creates new dish
 export const createDish = async (req, res) => {
+    try {
+        req.body.user = req.user.id;
+
+        // Opretter og gemmer retten
+        const savedDish = await new Dish(req.body).save();
+
+        // Opretter FoodInDish entries
+        const foodInDishPromises = Object.keys(req.body.foods).map(key => {
+            return new FoodInDish({
+                dish: savedDish._id,
+                food: req.body.foods[key].id,
+                weight: req.body.foods[key].weight
+            }).save();
+        });
+        
+        // Venter på at alle FoodInDish-entries bliver gemt
+        await Promise.all(foodInDishPromises);
+
+        // Finder og populater variablen til retur
+        const foodInDishEntries = await FoodInDish.find({ dish: savedDish._id })
+            .populate('food')
+            .select('food weight');
+
+        // Sender respons med både retten og de tilhørende FoodInDish-entries
+        res.status(201).json({ msg: 'dish saved', savedDish, Foods: foodInDishEntries });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'unable to save new dish' });
+    }
+};
+
+/*export const createDish = async (req, res) => {
 
     req.body.user = req.user.id
     // saves the new dish to database
@@ -102,7 +135,7 @@ export const createDish = async (req, res) => {
         res.status(500).json({ msg: 'unable to save new dish' })
     }
 
-}
+}*/
 
 // exporting delete method - deletes a dish through id
 export const deleteDish = async (req, res) => {
@@ -112,7 +145,7 @@ export const deleteDish = async (req, res) => {
 
         // First, delete all FoodInDish entries related to this dish
         await FoodInDish.deleteMany({ dish: id });
-        
+
         // Then, delete the dish itself
         const deletedDish = await Dish.findByIdAndDelete(id);
 
