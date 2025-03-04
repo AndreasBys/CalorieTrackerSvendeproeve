@@ -22,7 +22,7 @@ router.get('/:id', authenticate, getDish)
 router.get('/search', authenticate, search)
 router.post('/', authenticate, createDish)
 router.delete('/:id', authenticate, deleteDish)
-router.put('/:id', authenticate, updateDish)
+router.patch('/:id', authenticate, updateDish)
 
 // exports router as default
 export default router;

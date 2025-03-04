@@ -26,7 +26,7 @@ export const getAllUserDishes = async (req, res) => {
         // Returnér retter inklusiv deres foods
         res.status(200).json({ dishes: dishesWithFoods });
     } catch (error) {
-        console.log(error);
+
         res.status(500).json({ msg: "unable to get dishes" });
     }
 };
@@ -34,16 +34,19 @@ export const getAllUserDishes = async (req, res) => {
 // exporting get method - gets specific dish through id
 export const getDish = async (req, res) => {
     try {
-        const id = req.params.id
-        const dish = await Dish.findById(id)
+        // finder retten
+        const dish = await Dish.findById(req.params.id);
+
+        // finder ingredienserne til retten
         const foods = await FoodInDish.find({ dish: dish.id })
             .populate('food')
-            .select('food weight')
-        res.status(200).json({ dish, foods })
+            .select('food weight');
+
+        // returnerer retten og tilhørende foods
+        res.status(200).json({ dish, foods });
     } catch (error) {
-        // logs and returns status 500 error if failed or no dishes found
-        console.log(error)
-        res.status(500).json({ msg: "unable to get dish" })
+        // håndterer fejl
+        res.status(500).json({ msg: "unable to get dish" });
     }
 };
 
@@ -62,8 +65,7 @@ export const search = async (req, res) => {
         })
             .then((dishes) => {
                 if (dishes.lenght) {
-                    // logs and returns the dishes that match
-                    console.log(dishes)
+                    // returns the dishes that match
                     res.status(200).json({ dishes: dishes })
                 }
                 else {
@@ -72,8 +74,7 @@ export const search = async (req, res) => {
                 }
             })
     } catch (error) {
-        // logs and returns status 500 if error
-        console.log(error)
+        // returns status 500 if error
         res.status(500).json({ msg: "unable to get dish" })
     }
 };
@@ -94,7 +95,7 @@ export const createDish = async (req, res) => {
                 weight: req.body.foods[key].weight
             }).save();
         });
-        
+
         // Venter på at alle FoodInDish-entries bliver gemt
         await Promise.all(foodInDishPromises);
 
@@ -104,10 +105,13 @@ export const createDish = async (req, res) => {
             .select('food weight');
 
         // Sender respons med både retten og de tilhørende FoodInDish-entries
-        res.status(201).json({ msg: 'dish saved', savedDish, Foods: foodInDishEntries });
+        res.status(201).json({ 
+            msg: 'dish saved', 
+            savedDish, 
+            Foods: foodInDishEntries 
+        });
 
     } catch (error) {
-        console.log(error);
         res.status(500).json({ msg: 'unable to save new dish' });
     }
 };
@@ -133,33 +137,33 @@ export const deleteDish = async (req, res) => {
             msg: "The following dish has been deleted",
             dish: deletedDish
         });
+
     } catch (error) {
         // logs and returns status 500 if error
-        console.log(error);
         res.status(500).json({ msg: "Unable to delete dish" });
     }
 };
 
-// exporting update method - updates a dish through id
+// opdatere ret gennem
 export const updateDish = async (req, res) => {
     try {
         // gets id from params
-        const id = req.params.id
+        const id = req.params.id;
 
         // sets new dish with body  
-        const dishUpdate = req.body
+        const dishUpdate = req.body;
 
         // updates the dish in database
-        await Dish.findOneAndUpdate({ _id: id }, dishUpdate, { new: true })
-            .then((updatedDish) => {
-                // logs and return the updated dish
-                console.log(updatedDish)
-                res.status(200).json({ msg: "dish updated", dish: updatedDish })
-            })
+        const updatedDish = await Dish.findOneAndUpdate({ _id: id }, dishUpdate, { new: true });
+
+        // return the updated dish
+        res.status(200).json({ 
+            msg: "dish updated", 
+            dish: updatedDish 
+        });
+
     } catch (error) {
-        // logs and returns status 500 if error 
-        // dish couldn't be found or couldn't be updated
-        console.log(error)
-        res.status(500).json({ msg: "unable to update dish" })
+        // håndterer fejl
+        res.status(500).json({ msg: "unable to update dish" });
     }
-}
+};
