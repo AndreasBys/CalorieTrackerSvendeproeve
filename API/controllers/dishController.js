@@ -112,31 +112,6 @@ export const createDish = async (req, res) => {
     }
 };
 
-/*export const createDish = async (req, res) => {
-
-    req.body.user = req.user.id
-    // saves the new dish to database
-    try {
-        new Dish(req.body).save()
-            .then(async (savedDish) => {
-                Object.keys(req.body.foods).forEach(async key => {
-                    new FoodInDish({
-                        dish: savedDish._id,
-                        food: req.body.foods[key].id,
-                        weight: req.body.foods[key].weight
-                    }).save()
-                });
-                // logs and returns the created dish
-                console.log(savedDish)
-                res.status(201).json({ msg: 'dish saved', savedDish })
-            })
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ msg: 'unable to save new dish' })
-    }
-
-}*/
-
 // exporting delete method - deletes a dish through id
 export const deleteDish = async (req, res) => {
     try {
@@ -172,10 +147,10 @@ export const updateDish = async (req, res) => {
         const id = req.params.id
 
         // sets new dish with body  
-        const updatedDish = req.body
+        const dishUpdate = req.body
 
         // updates the dish in database
-        await Dish.findOneAndUpdate({ _id: id }, updatedDish, { new: true })
+        await Dish.findOneAndUpdate({ _id: id }, dishUpdate, { new: true })
             .then((updatedDish) => {
                 // logs and return the updated dish
                 console.log(updatedDish)
