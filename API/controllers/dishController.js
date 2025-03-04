@@ -5,10 +5,8 @@ import FoodInDish from "../models/foodInDish.js"
 // exporting get all method - gets all dishes
 export const getAllUserDishes = async (req, res) => {
     try {
-        const userId = req.user.id;
-
         // Find alle retter tilhørende brugeren
-        const dishes = await Dish.find({ user: userId });
+        const dishes = await Dish.find({ user: req.user.id });
 
         // Hent foods til hver ret
         // Promise.all fungerer lidt som en forEach, men kan håndtere async. 
@@ -47,35 +45,6 @@ export const getDish = async (req, res) => {
     } catch (error) {
         // håndterer fejl
         res.status(500).json({ msg: "unable to get dish" });
-    }
-};
-
-// exporting search method - gets dish that match certain criterias
-export const search = async (req, res) => {
-    try {
-        // creates search term from the request query
-        const searchTerm = req.query.searchTerm
-
-        // creates regex for search
-        const searchRegex = new RegExp(searchTerm, "i")
-
-        // specifies criterias to search for
-        await Dish.find({
-            name: searchRegex
-        })
-            .then((dishes) => {
-                if (dishes.lenght) {
-                    // returns the dishes that match
-                    res.status(200).json({ dishes: dishes })
-                }
-                else {
-                    // returns nothing if no dishes match
-                    res.status(200).json({ dishes: [], msg: "no dishes found" })
-                }
-            })
-    } catch (error) {
-        // returns status 500 if error
-        res.status(500).json({ msg: "unable to get dish" })
     }
 };
 

@@ -2,14 +2,7 @@
 import express from 'express'
 
 // importing controllers
-import { 
-    getFoods, 
-    getFood, 
-    search, 
-    createFood, 
-    deleteFood, 
-    updateFood 
-} from '../controllers/foodController.js'
+import { getFoods, getFood, search, createFood, deleteFood, updateFood } from '../controllers/foodController.js'
 import authenticate from '../middleware/authenticator.js';
 
 // creates new router from express module
