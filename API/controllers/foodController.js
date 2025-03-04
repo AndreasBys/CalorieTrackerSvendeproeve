@@ -4,11 +4,20 @@ import Food from "../models/food.js"
 // exporting get all method - gets all foods
 export const getFoods = async (req, res) => {
     try {
-        Food.find()
-        .then((foods) => {
-            // returns status 200 and all foods
-            res.status(200).json({foods: foods})
-        })
+        let filter = {}
+
+        // sets filter to only get approved foods or ones made by user if user is not admin
+        if(req.user.admin == false){
+            filter = {$or: [
+                { godkendt: true }, 
+                { user: req.user.id }
+            ]}
+        }
+
+        // gets all foods with filter
+        const foods = await Food.find(filter);
+
+        res.status(200).json({foods: foods})
     } catch (error) {
         // return status 500 error if failed
         console.log(error)
@@ -73,6 +82,14 @@ export const search = async (req, res) => {
 // exporting create method - creates new food
 export const createFood = async (req, res) => {
     try {
+        // makes sure food gets user id from the user making the request
+        req.body.user = req.user.id
+
+        // makes godkendt false if user is not admin
+        if(req.user.admin == false){
+            req.body.godkendt = false
+        }
+        
         // creates a food from food body
         const food = new Food(req.body)
 
