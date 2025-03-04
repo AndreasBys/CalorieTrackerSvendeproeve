@@ -48,10 +48,14 @@
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">cm</Label>
                     </Grid>
                 </Grid>
+                <!--Box-->
 
+                <!--Box-->
                 <Grid Grid.Column="1" Padding="40">
                 </Grid>
+                <!--Box-->
 
+                <!--Box-->
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill">
 
@@ -68,8 +72,9 @@
                     </Grid>
                 </Grid>
             </Grid>
-
-
+            <!--Box-->
+            
+            <!--Dropdown box-->
             <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill">
 
                 <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Aktivitetsniveau:</Label>
@@ -94,7 +99,9 @@
                     </Border>
                 </Grid>
             </Grid>
-
+            <!--Dropdown box-->
+            
+            <!--Dropdown box-->
             <Grid RowDefinitions="Auto,Auto" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill">
 
                 <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Mål:</Label>
@@ -118,7 +125,9 @@
                     </Border>
                 </Grid>
             </Grid>
-
+            <!--Dropdown box-->
+            
+            <!--Dropdown box-->
             <Grid RowDefinitions="Auto,Auto" Grid.Row="5" Grid.Column="0" HorizontalOptions="Fill" Padding="0,0,0,50">
 
                 <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Køn:</Label>
@@ -142,7 +151,7 @@
                     </Border>
                 </Grid>
             </Grid>
-
+            <!--Dropdown box-->
 
             <!--Button box-->
             <Grid Grid.Row="6">

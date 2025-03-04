@@ -1,13 +1,9 @@
-using Microsoft.Maui.Controls.PlatformConfiguration;
-
 namespace MealMate.View;
 
-public partial class HjemmeSkaermSide : ContentPage
+public partial class HjemmeskaermSide : ContentPage
 {
-	public HjemmeSkaermSide()
+	public HjemmeskaermSide()
 	{
 		InitializeComponent();
-        NavigationPage.SetHasNavigationBar(this, false);
-
-        }
+	}
 }

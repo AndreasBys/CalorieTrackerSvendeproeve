@@ -82,10 +82,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\StartSkaermSide.xaml.cs">
+	    <DependentUpon>StartSkaermSide.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="View\FoedevareSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\HjemmeSkaermSide.xaml">
+	  <MauiXaml Update="View\HjemmeskaermSide.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Navigationsbar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\StartSkaermSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\RegistrerMaalSide.xaml">
