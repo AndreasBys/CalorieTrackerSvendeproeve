@@ -62,7 +62,7 @@ export const search = async (req, res) => {
             ]
         })
         .then((foods) => {
-            if(foods.lenght){
+            if(foods.length){
                 // logs and returns the foods that match
                 console.log(foods)
                 res.status(200).json({foods: foods})
