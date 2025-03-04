@@ -103,7 +103,7 @@ export const deleteMacroLog = async (req, res) => {
     await MacroLog.findOneAndDelete(
         { _id: req.params.id, 
             user: req.user.id 
-        }).populate('food')
+        })
         .then((macroLog)=>{
             res.status(200).json({ macroLog });
         })
@@ -116,30 +116,22 @@ export const deleteMacroLog = async (req, res) => {
 
 // Update method - udates a food log item
 export const updateMacroLog = async (req, res) => {
-    // finds macrolog from id and user id
-    await MacroLog.findOne(
-        { _id: req.params.id, 
-            user: req.user.id 
-        })
-        .then(async (macroLog) => {
-            // returns 404 if log isn't found | 200 if log is found
-            if (!macroLog) {
-                return res.status(404).json({ msg: "Macro log not found" });
-            }
+    try {
+        // Finder og opdaterer kun weight
+        const updatedMacroLog = await MacroLog.findOneAndUpdate(
+            { _id: req.params.id, user: req.user.id }, 
+            { weight: req.body.weight }, 
+            { new: true } // Returnerer den opdaterede version
+        ).populate('food');
 
-            // updates user with request body
-            Object.keys(req.body).forEach(key => {
-                macroLog[key] = req.body[key];
-            });
+        // Hvis loggen ikke findes
+        if (!updatedMacroLog) {
+            return res.status(404).json({ msg: "Macro log not found" });
+        }
 
-            // runs save function to make sure password gets hashed
-            const updatedMacroLog = await macroLog.save();
-            await updatedMacroLog.populate('food');
-            res.status(200).json({ msg: "Macro log updated", macroLog: updatedMacroLog })
-        })
-        .catch((error) => {
-            // logs and returns status 500 if error 
-            console.log(error)
-            res.status(500).json({ msg: "Unable to update macro log" })
-        });
+        res.status(200).json({ msg: "Macro log updated", macroLog: updatedMacroLog });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "Unable to update macro log" });
+    }
 };
