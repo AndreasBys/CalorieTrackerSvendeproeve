@@ -1,72 +1,52 @@
-import jwt from 'jsonwebtoken'; 
-
-// importing config file
+// imports
+import jwt from 'jsonwebtoken';
 import config from '../config.js';
-// importing user model
-import User from '../models/user.js'; 
+import User from '../models/user.js';
 
-// exporting register method
+// register method - laver ny bruger
 export const register = async (req, res) => {
-    // Setting admin field to false in the request body
-    req.body.admin = false;
+    try {
+        // laver ny bruger og gemmer i databasen
+        const user = await new User(req.body).save();
 
-    // creating a new user and saving it to the database
-    await new User(req.body).save()
-        .then((user) => {
-            console.log(user);
-
-            // creating a JWT token for the user with their userId and a secret key
-            const token = jwt.sign({ userId: user._id }, config.SECRET_KEY, {
-                expiresIn: '1 hour'
-            });
-      
-            // sending the token back to the client with a 201 status code
-            res.status(201).json({ token });
-        })
-        .catch((error) => {
-            console.log(error);
-
-            // handling duplicate key error (e.g., username or email already in use)
-
-            if (error.code == 11000)
-                return res.status(500).json({ code: 500, msg: 'Username or email is already used' });
-
-            // sending a generic error response if user creation fails
-            res.status(500).json({ code: 500, msg: 'Unable to create user' });
-
+        // laver en jwt token
+        const token = jwt.sign({ userId: user._id }, config.SECRET_KEY, {
+            expiresIn: '1 hour'
         });
+
+        // returnerer token
+        res.status(201).json({ token });
+    } catch (error) {
+        // håndterer fejl
+        if (error.code == 11000) {
+            return res.status(500).json({ code: 500, msg: 'Username or email is already used' });
+        }
+        res.status(500).json({ code: 500, msg: 'Unable to create user' });
+    }
 };
 
-// exporting login method
 export const login = async (req, res) => {
-    // creating a search object to find the user by email or username
-    let searcher = { email: req.body.email };
-    if (!req.body.email) searcher = { username: req.body.username };
+    // hvis request indeholder email bruges denne til at søge efter bruger, ellers bruges username
+    const searcher = req.body.email ? { email: req.body.email } : { username: req.body.username };
 
-    // finding a user that matches the search criteria
-    await User.findOne(searcher)
-        .then(async (user) => {
-            // if user is not found, throw an error
-            if (!user) throw new Error('err');
+    try {
+        // finder bruger i databasen
+        const user = await User.findOne(searcher);
+        if (!user) throw new Error('User not found');
 
-            // comparing the provided password with the stored hashed password
-            const passwordMatch = await user.comparePassword(req.body.password);
-            // if passwords do not match, send a 401 response
-            if (!passwordMatch) return res.status(401).json({ code: 401, msg: 'Wrong password' });
+        // tjekker om password matcher
+        const passwordMatch = await user.comparePassword(req.body.password);
+        if (!passwordMatch) return res.status(401).json({ code: 401, msg: 'Wrong password' });
 
-            // creating a JWT token for the user with their userId and a secret key
-            const token = jwt.sign({ userId: user._id }, config.SECRET_KEY, {
-                expiresIn: '1 hour'
-            });
-
-            // sending the token back to the client with a 201 status code
-            res.status(201).json({ token });
-        })
-        .catch((error) => {
-            console.log(error);  // Logging the error to the console
-
-            // sending a generic error response if user is not found or any other error occurs
-            res.status(500).json({ code: 500, msg: 'Something went wrong' });
+        // laver en jwt token
+        const token = jwt.sign({ userId: user._id }, config.SECRET_KEY, {
+            expiresIn: '1 hour'
         });
-};
 
+        // returnerer token
+        res.status(201).json({ token });
+    } catch (error) {
+        // håndterer fejl
+        res.status(500).json({ code: 500, msg: 'Something went wrong' });
+    }
+};
