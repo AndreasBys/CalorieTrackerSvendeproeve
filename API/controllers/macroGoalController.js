@@ -1,83 +1,87 @@
 // importing goal model
 import MacroGoal from "../models/macroGoal.js"
 
-// create method - creates a new macro goal or updates if there's one for the current day
+// creates a new macro goal or updates if there's one for the current day
 export const createMacroGoal = async (req, res) => {
     // sets the user variable to the id of the user making the request
     const userId = req.user.id
     req.body.user = userId;
+    try {
+        // sets startDate to current date & time
+        req.body.startDate = new Date();
+        req.body.startDate.setUTCHours(0, 0, 0, 0);
 
-    // sets startDate to current date & time
-    req.body.startDate = new Date();
-    req.body.startDate.setUTCHours(0, 0, 0, 0);
+        // tries to find macro goal for the current day
+        const updatedMacroGoal = await MacroGoal.findOneAndUpdate({ startDate: req.body.startDate, user: userId }, req.body, { new: true })
 
-    // finds the latest goal for the user
-    await MacroGoal.findOne({ startDate: req.body.startDate })
-        .then(async (latestMacroGoal) => {
-            // if there's a goal for the current day it updates it
-            Object.keys(req.body).forEach(key => {
-                latestMacroGoal[key] = req.body[key];
-            });
+        // sends to catch if nothing is found
+        if (!updatedMacroGoal) throw new Error('No goal found')
 
-            const updatedMacroGoal = await latestMacroGoal.save();
-            res.status(200).json({ msg: "goal updated", user: updatedMacroGoal })
-        })
-        .catch(async () => {
-            // adds end date to previous goal
+        // returns updated goal
+        res.status(200).json({ msg: "goal updated", macroGoal: updatedMacroGoal })
+    } catch (error) {
+        try {
+            // if no goal is found for current day tries to find the latest goal and update end date
             await MacroGoal.findOneAndUpdate({ user: userId },
                 // sets end date to the day before the new goal
-                { endDate: new Date(req.body.startDate)
-                    .setUTCDate(req.body.startDate.getUTCDate() - 1) },
+                {
+                    endDate: new Date(req.body.startDate)
+                        .setUTCDate(req.body.startDate.getUTCDate() - 1)
+                },
             ).sort({ startDate: -1 })
+        } finally {
+            try {
+                // saves the new goal
+                const macroGoal = await new MacroGoal(req.body).save()
 
-            // saves the new goal
-            await new MacroGoal(req.body).save()
-                .then((goal) => {
-                    // returns the created goal
-                    res.status(201).json({ msg: 'goal saved', goal })
-                })
-                .catch((error) => {
-                    // logs and returns status 500 if error -> goal not created
-                    console.log(error)
-                    res.status(500).json({ msg: 'unable to create new goal' })
-                })
-        });
+                // returns the created goal
+                res.status(201).json({ msg: 'goal saved', macroGoal })
+            } catch (error) {
+                // returns status 500 if error
+                res.status(500).json({ msg: 'unable to create new goal' })
+            }
+        }
+    }
 }
 
-// get method - gets the current goal for the user
+// gets the current goal for the user
 export const getCurrentGoal = async (req, res) => {
-    // gets user id from request params
-    const userId = req.user.id
+    try{
+        // finds goal through user id and sort it to the latest goal
+        const macroGoal = await MacroGoal.findOne({ user: req.user.id }).sort({ startDate: -1 })
 
-    // finds goal through userId and sort it to the latest goal
-    await MacroGoal.findOne({ user: userId }).sort({ startDate: -1 })
-        .then((goal) => {
-            // returns status 200 and the users last goal
-            res.status(200).json({ goal: goal })
-        })
-        .catch((error) => {
-            // logs and returns status 500 error if failed or no goals found
-            console.log(error)
-            res.status(500).json({ msg: "unable to get goal" })
-        })
+        // throws error if no goal is found
+        if(!macroGoal) throw new Error('No goal found')
+
+        // returns status 200 and the users last goal
+        res.status(200).json({ macroGoal })
+    } catch (error) {
+        // returns status 500 error if failed or no goals found
+        res.status(500).json({ msg: "unable to get goal" })
+    }
 };
 
-// get method - gets all goals between two dates
+// gets all goals between two dates
 export const getGoalsBetweenDates = async (req, res) => {
-    // finds goals between two dates and the has user
-    await MacroGoal.find({
-        user: req.user.id,
-        $and: [
-            { startDate: { $lte: new Date(req.query.endDate) } },
-            { $or: [{ endDate: { $gte: new Date(req.query.startDate) } }, { endDate: { $exists: false } }] }
-        ]
-    })
-    .then((goals) => {
-        res.status(200).json({ goals: goals});
-    })
-    .catch((error) => {
-        // logs and returns status 500 error if failed or no goals found
-        console.log(error)
+    try {
+        // finds all goals between two dates
+        const macroGoals = await MacroGoal.find({
+            user: req.user.id,
+            $and: [
+                { startDate: { $lte: new Date(req.query.endDate) } },
+                { $or: [
+                    { endDate: { $gte: new Date(req.query.startDate) } }, 
+                    { endDate: { $exists: false } }] 
+                }]
+        })
+
+        // if no goals are found throws error
+        if (!macroGoals) throw new Error('No goals found')
+
+        // returns status 200 and the users goals
+        res.status(200).json({ macroGoals });
+    }catch (error) {
+        // returns status 500 error if failed or no goals found
         res.status(500).json({ msg: "unable to find any goals" })
-    })
+    }
 };

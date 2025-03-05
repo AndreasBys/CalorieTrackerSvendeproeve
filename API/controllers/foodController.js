@@ -125,7 +125,7 @@ export const deleteFood = async (req, res) => {
         const food = Food.findById(id)
 
         // throws error if food is not found
-        if (!food) throw Error("Food not found");
+        if (!food) throw new Error("Food not found");
 
         // 401 response if user is not admin or user who created the food
         if (!(req.user.admin || req.user.id == food.user)) {
