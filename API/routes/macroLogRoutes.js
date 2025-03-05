@@ -8,7 +8,10 @@ import { getMacroLogDays } from '../controllers/macroLogLegacyController.js';
 const router = express.Router();
 
 // defining routes
+// legacy routes
 router.get('/search', authenticate, getMacroLogDays);
+
+// normal routes
 router.get('/', authenticate, getTodaysMacroLog);
 router.post('/', authenticate, createMacroLog);
 router.delete('/:id', authenticate, deleteMacroLog);
