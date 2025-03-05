@@ -10,11 +10,11 @@ const router = express.Router();
 
 // defining post routes
 router.get('/', authenticate, getFoods);
-router.get('/search/:id', authenticate, getFood)
-router.get('/search', authenticate, search)
-router.post('/', authenticate, createFood)
-router.delete('/:id', authenticate, deleteFood)
-router.put('/:id', authenticate, updateFood)
+router.get('/search', authenticate, search);
+router.get('/:id', authenticate, getFood);
+router.post('/', authenticate, createFood);
+router.delete('/:id', authenticate, deleteFood);
+router.put('/:id', authenticate, updateFood);
 
 // exports router as default
 export default router;
