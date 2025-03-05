@@ -1,8 +1,10 @@
-// importing controllers
-import {login, register} from '../controllers/authController.js'
-
 // importing express module
 import express from 'express';
+
+// importing controllers
+import {
+    login, 
+    register} from '../controllers/authController.js'
 
 // creates new router from express module
 const router = express.Router();

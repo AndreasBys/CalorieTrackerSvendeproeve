@@ -5,7 +5,10 @@ import express from 'express'
 import authenticate from '../middleware/authenticator.js';
 
 // importing controllers
-import { deleteUser, updateUser, getUser } from '../controllers/userController.js'
+import { 
+    deleteUser, 
+    updateUser, 
+    getUser } from '../controllers/userController.js'
 
 // creates new router from express module
 const router = express.Router();

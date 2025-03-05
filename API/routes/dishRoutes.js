@@ -1,10 +1,16 @@
 // importing express module
 import express from 'express'
 
+// importing authenticate
+import authenticate from '../middleware/authenticator.js';
 
 // importing controllers
-import { getAllUserDishes, getDish, createDish, deleteDish, updateDish } from '../controllers/dishController.js'
-import authenticate from '../middleware/authenticator.js';
+import { 
+    getAllUserDishes, 
+    getDish, 
+    createDish, 
+    deleteDish, 
+    updateDish } from '../controllers/dishController.js'
 
 // creates new router from express module
 const router = express.Router();

@@ -5,7 +5,10 @@ import express from 'express'
 import authenticate from '../middleware/authenticator.js';
 
 // importing controllers
-import { createMacroGoal, getCurrentGoal, getGoalsBetweenDates } from '../controllers/macroGoalController.js'
+import { 
+    createMacroGoal, 
+    getCurrentGoal, 
+    getGoalsBetweenDates } from '../controllers/macroGoalController.js'
 
 // creates new router from express module
 const router = express.Router();

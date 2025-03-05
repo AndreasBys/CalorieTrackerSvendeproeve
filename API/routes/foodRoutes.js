@@ -1,9 +1,17 @@
 // importing express module
 import express from 'express'
 
-// importing controllers
-import { getFoods, getFood, search, createFood, deleteFood, updateFood } from '../controllers/foodController.js'
+// importing authenticate
 import authenticate from '../middleware/authenticator.js';
+
+// importing controllers
+import { 
+    getFoods, 
+    getFood, 
+    search, 
+    createFood, 
+    deleteFood, 
+    updateFood } from '../controllers/foodController.js'
 
 // creates new router from express module
 const router = express.Router();
