@@ -1,7 +1,7 @@
 // importing food model
 import Food from "../models/food.js"
 
-// exporting get all method - gets all foods
+// gets all foods
 export const getFoods = async (req, res) => {
     try {
         let filter = {}
@@ -19,14 +19,16 @@ export const getFoods = async (req, res) => {
         // gets all foods with filter
         const foods = await Food.find(filter);
 
+        // returns the foods
         res.status(200).json({ foods: foods })
+
     } catch (error) {
         // return status 500 error if failed
         res.status(500).json({ msg: "unable to get foods" })
     }
 }
 
-// exporting get method - gets specific food through id
+// gets specific food through id
 export const getFood = async (req, res) => {
     try {
         // finds food by id
@@ -39,6 +41,7 @@ export const getFood = async (req, res) => {
 
         // returns the food
         res.status(200).json({ food })
+
     } catch (error) {
         // returns status 500 error if failed or no foods found
         res.status(500).json({ msg: "unable to get food" })
@@ -81,6 +84,7 @@ export const search = async (req, res) => {
 
         // returns the foods
         res.status(200).json({ foods })
+
     } catch (error) {
         // returns status 500 if error
         res.status(500).json({ msg: "unable to get food" })
@@ -99,11 +103,11 @@ export const createFood = async (req, res) => {
         }
 
         // saves the new food to database
-        await new Food(req.body).save()
-            .then((food) => {
-                // logs and returns the created food
-                res.status(201).json({ msg: 'food saved', food })
-            })
+        const food = await new Food(req.body).save()
+
+        // logs and returns the created food
+        res.status(201).json({ msg: 'food saved', food })
+
     } catch (error) {
         // returns status 500 if error -> food not created
         res.status(500).json({ msg: 'unable to save new food' })
@@ -128,14 +132,13 @@ export const deleteFood = async (req, res) => {
             return res.status(401).json({ message: 'No access' });
         }
 
-        await Food.findByIdAndDelete(id)
-            .then((foods) => {
-                // returns the deleted food
-                res.status(200).json({
-                    msg: "Following food has been deleted",
-                    food: foods
-                })
-            })
+        const deletedFood = await Food.findByIdAndDelete(id);
+
+        // returns the deleted food
+        res.status(200).json({
+            msg: "Following food has been deleted",
+            food: deletedFood
+        })
     } catch (error) {
         // returns status 500 if error 
         res.status(500).json({ msg: "unable to delete food" })
@@ -149,11 +152,10 @@ export const updateFood = async (req, res) => {
         const id = req.params.id
 
         // updates the food in database
-        await Food.findOneAndUpdate({ _id: id }, req.body, { new: true })
-            .then((updatedFood) => {
-                // return the updated food
-                res.status(200).json({ msg: "food updated", food: updatedFood })
-            })
+        const updatedFood = await Food.findOneAndUpdate({ _id: id }, req.body, { new: true })
+
+        // return the updated food
+        res.status(200).json({ msg: "food updated", food: updatedFood })
     } catch (error) {
         // returns status 500 if error 
         res.status(500).json({ msg: "unable to update food" })
