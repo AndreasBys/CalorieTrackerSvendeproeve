@@ -22,7 +22,6 @@ export const getFoods = async (req, res) => {
         res.status(200).json({ foods: foods })
     } catch (error) {
         // return status 500 error if failed
-        console.log(error)
         res.status(500).json({ msg: "unable to get foods" })
     }
 }
@@ -51,7 +50,6 @@ export const search = async (req, res) => {
     try {
         // creates search term from the request query
         const searchTerm = req.query.searchTerm
-        console.log(searchTerm)
 
         // creates regex for search
         const searchRegex = new RegExp(searchTerm, "i")
@@ -77,8 +75,6 @@ export const search = async (req, res) => {
                 ]
             };
         }
-
-        console.log(filter)
 
         // searches for foods with the filter
         const foods = await Food.find(filter)
@@ -109,8 +105,7 @@ export const createFood = async (req, res) => {
                 res.status(201).json({ msg: 'food saved', food })
             })
     } catch (error) {
-        // logs and returns status 500 if error -> food not created
-        console.log(error)
+        // returns status 500 if error -> food not created
         res.status(500).json({ msg: 'unable to save new food' })
     }
 
@@ -142,9 +137,7 @@ export const deleteFood = async (req, res) => {
                 })
             })
     } catch (error) {
-        // logs and returns status 500 if error 
-        // food not deleted or couldn't be found
-        console.log(error)
+        // returns status 500 if error 
         res.status(500).json({ msg: "unable to delete food" })
     }
 }
@@ -158,14 +151,11 @@ export const updateFood = async (req, res) => {
         // updates the food in database
         await Food.findOneAndUpdate({ _id: id }, req.body, { new: true })
             .then((updatedFood) => {
-                // logs and return the updated food
-                console.log(updatedFood)
+                // return the updated food
                 res.status(200).json({ msg: "food updated", food: updatedFood })
             })
     } catch (error) {
-        // logs and returns status 500 if error 
-        // food couldn't be found or couldn't be updated
-        console.log(error)
+        // returns status 500 if error 
         res.status(500).json({ msg: "unable to update food" })
     }
 }
