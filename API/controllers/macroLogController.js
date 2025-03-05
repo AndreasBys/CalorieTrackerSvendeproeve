@@ -7,18 +7,18 @@ export const createMacroLog = async (req, res) => {
     // sets the user variable to the id of the user making the request
     req.body.user = req.user.id;
 
-    // logs the food
-    await new MacroLog(req.body).save()
-        .then(async (macroLog) => {
-            // returns the logged food
-            await macroLog.populate('food');
-            res.status(201).json({ msg: 'Food logged', macroLog })
-        })
-        .catch((error) => {
-            // logs and returns status 500 if error -> food log not created
-            console.log(error)
-            res.status(500).json({ msg: 'Unable to log food' })
-        })
+    try{
+        // saves the food log
+        const macroLog = await new MacroLog(req.body).save()
+
+        // populate food details
+        await macroLog.populate('food')
+        res.status(201).json({ msg: 'Food logged', macroLog })
+
+    } catch (error) {
+        // returns status 500 if error
+        res.status(500).json({ msg: 'Unable to log food' })
+    }
 }
 
 // get method - gets all food logs for day or multiple days
