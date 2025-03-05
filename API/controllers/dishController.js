@@ -77,7 +77,7 @@ export const createDish = async (req, res) => {
         res.status(201).json({ 
             msg: 'dish saved', 
             savedDish, 
-            Foods: foodInDishEntries 
+            foods: foodInDishEntries 
         });
 
     } catch (error) {
