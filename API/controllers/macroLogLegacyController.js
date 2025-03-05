@@ -5,6 +5,7 @@ import User from "../models/user.js";
 
 export const saveAllMacroLogs = async () => {
     try {
+        // Sætter dato for søgning af logs og til gem
         let today = new Date();
         today.setUTCHours(0, 0, 0, 0);
 
@@ -14,6 +15,7 @@ export const saveAllMacroLogs = async () => {
         // Find alle brugere i systemet
         const users = await User.find().select("_id");
 
+        // Gennem gå brugere og find deres logs og populater food
         for (const user of users) {
             const macroLogs = await MacroLog.find({
                 user: user._id,
@@ -24,18 +26,25 @@ export const saveAllMacroLogs = async () => {
 
             let totalCalories = 0, totalProtein = 0, totalCarbs = 0, totalFat = 0;
 
+            // Looper igennem hver log fra hver bruger og regner makroer ud
             for (const log of macroLogs) {
                 if (log.food) {
+                    // Hvis loggen indeholder en fødevarer
                     totalCalories += (log.food.calories * log.weight) / 100;
                     totalProtein += (log.food.protein * log.weight) / 100;
                     totalCarbs += (log.food.carbonhydrates * log.weight) / 100;
                     totalFat += (log.food.fat * log.weight) / 100;
                 } else if (log.dish) {
+                    // Hvis loggen indeholder en ret
+                    // Find alle fødevarer i retten og populater dem
                     const foodInDish = await FoodInDish.find({ dish: log.dish._id }).populate('food');
+
+                    // Find total vægt af retten
                     const totalDishWeight = foodInDish.reduce((sum, item) => sum + item.weight, 0);
 
                     let dishCalories = 0, dishProtein = 0, dishCarbs = 0, dishFat = 0;
 
+                    // For hver fødevare i retten, regn makroer ud
                     for (const item of foodInDish) {
                         dishCalories += item.food.calories * item.weight / 100;
                         dishProtein += item.food.protein * item.weight / 100;
@@ -43,6 +52,7 @@ export const saveAllMacroLogs = async () => {
                         dishFat += item.food.fat * item.weight / 100;
                     }
 
+                    // Regn makroer ud for retten og tilføj til total
                     const weightFactor = log.weight / totalDishWeight;
                     totalCalories += dishCalories * weightFactor;
                     totalProtein += dishProtein * weightFactor;
@@ -51,6 +61,7 @@ export const saveAllMacroLogs = async () => {
                 }
             }
 
+            // opretter ny macroLogLegacy for brugeren
             await new MacroLogLegacy({
                 date: yesterday,
                 user: user._id,
@@ -60,6 +71,7 @@ export const saveAllMacroLogs = async () => {
                 fat: totalFat
             }).save();
 
+            // sletter de gamle macro logs for brugeren
             await MacroLog.deleteMany({
                 user: user._id,
                 date: { $gte: today, $lt: tomorrow }
@@ -89,9 +101,10 @@ export const getMacroLogDays = async (req, res) => {
             }
         });
 
+        // returns the logs
         res.status(200).json({ msg: 'Found following macro logs', legacyLogs });
     } catch (error) {
-        console.error(error);
+        // returns error if something went wrong
         res.status(500).json({ msg: "Unable to find any macro logs" });
     }
 }
