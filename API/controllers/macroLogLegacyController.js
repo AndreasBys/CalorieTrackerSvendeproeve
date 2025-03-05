@@ -8,8 +8,8 @@ export const saveAllMacroLogs = async () => {
         let today = new Date();
         today.setUTCHours(0, 0, 0, 0);
 
-        let tomorrow = new Date(today);
-        tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+        let yesterday = new Date(today);
+        tomorrow.setUTCDate(tomorrow.getUTCDate() -1 );
 
         // Find alle brugere i systemet
         const users = await User.find().select("_id");
@@ -17,7 +17,7 @@ export const saveAllMacroLogs = async () => {
         for (const user of users) {
             const macroLogs = await MacroLog.find({
                 user: user._id,
-                date: { $gte: today, $lt: tomorrow }
+                date: { $gte: yesterday, $lt: today }
             }).populate('food');
 
             if (!macroLogs.length) continue; // Spring brugeren over, hvis der ikke er logs
@@ -52,7 +52,7 @@ export const saveAllMacroLogs = async () => {
             }
 
             await new MacroLogLegacy({
-                date: today,
+                date: yesterday,
                 user: user._id,
                 calories: totalCalories,
                 carbonhydrates: totalCarbs,
