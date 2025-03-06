@@ -19,7 +19,7 @@ namespace MealMate
                     handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 
                     // Change placeholder text color
-                    handler.PlatformView.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.Red));
+                    handler.PlatformView.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.ParseColor("#808080")));
                 }
             });
 

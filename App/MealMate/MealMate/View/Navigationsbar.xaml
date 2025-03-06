@@ -9,7 +9,7 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <ImageButton Source="test_icon.png" Padding="25"></ImageButton>
+            <ImageButton Source="tilfoej_ikon.png" Padding="25"></ImageButton>
         </Grid>
 
         <Grid Grid.Column="2">

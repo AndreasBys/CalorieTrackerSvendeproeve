@@ -5,13 +5,73 @@
              xmlns:Navigationsbar="clr-namespace:MealMate.View"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              Title="HjemmeskaermSide">
-    <Grid>
+    <Grid RowDefinitions="Auto,*">
 
-        
 
-        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,50,80,0" >
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0" Padding="15">
+            <Grid Grid.Row="0" Padding="5">
+                <progressBar:SfLinearProgressBar
+                    TrackCornerRadius="20" 
+                    ProgressHeight="10" 
+                    ProgressCornerRadius="20" 
+                    Progress="20" 
+                    TrackHeight="10" 
+                    Grid.Column="1" 
+                    TrackFill="{StaticResource CustomMoerkeGraa}"
+                    ProgressFill="{StaticResource CustomBlaa}"
+                    BackgroundColor="{StaticResource CustomGraa}">
 
-            
+                </progressBar:SfLinearProgressBar>
+            </Grid>
+            <Grid Grid.Row="1" Padding="5">
+                <progressBar:SfLinearProgressBar
+        TrackCornerRadius="20" 
+        ProgressHeight="10" 
+        ProgressCornerRadius="20" 
+        Progress="20" 
+        TrackHeight="10" 
+        Grid.Column="1" 
+        TrackFill="{StaticResource CustomMoerkeGraa}"
+        ProgressFill="{StaticResource CustomPink}"
+        BackgroundColor="{StaticResource CustomGraa}">
+
+                </progressBar:SfLinearProgressBar>
+            </Grid>
+            <Grid Grid.Row="2" Padding="5">
+                <progressBar:SfLinearProgressBar
+        TrackCornerRadius="20" 
+        ProgressHeight="10" 
+        ProgressCornerRadius="20" 
+        Progress="20" 
+        TrackHeight="10" 
+        Grid.Column="1" 
+        TrackFill="{StaticResource CustomMoerkeGraa}"
+        ProgressFill="{StaticResource CustomGrøn}"
+        BackgroundColor="{StaticResource CustomGraa}">
+
+                </progressBar:SfLinearProgressBar>
+            </Grid>
+            <Grid Grid.Row="3" Padding="5">
+                <progressBar:SfLinearProgressBar
+        TrackCornerRadius="20" 
+        ProgressHeight="10" 
+        ProgressCornerRadius="20" 
+        Progress="20" 
+        TrackHeight="10" 
+        Grid.Column="1" 
+        TrackFill="{StaticResource CustomMoerkeGraa}"
+        ProgressFill="{StaticResource CustomGul}"
+        BackgroundColor="{StaticResource CustomGraa}">
+
+                </progressBar:SfLinearProgressBar>
+            </Grid>
+
+        </Grid>
+
+
+        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,50,80,0" Grid.Row="1" >
+
+
 
 
 
@@ -19,11 +79,7 @@
             <!--Formular box-->
             <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
 
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
-                    <Grid Grid.Row="0">
-                        <progressBar:SfLinearProgressBar></progressBar:SfLinearProgressBar>
-                    </Grid>
-                </Grid>
+
 
                 <!--Dropdown box-->
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
@@ -57,7 +113,7 @@
 
                                 </Grid>
 
-                                
+
 
                             </Grid>
                         </Border>
