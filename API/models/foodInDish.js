@@ -9,6 +9,10 @@ const foodInDishSchema = new mongoose.Schema({
     dish: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Dish"
+    },
+    weight: {
+        type: Number,
+        required: true
     }
 })
 
