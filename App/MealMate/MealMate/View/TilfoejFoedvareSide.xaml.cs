@@ -6,4 +6,14 @@ public partial class TilfoejFoedvareSide : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void opretFoedevare_knap(object sender, EventArgs e)
+    {
+		await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+    }
+
+    private async void aendrerFoedevare_knap(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+    }
 }

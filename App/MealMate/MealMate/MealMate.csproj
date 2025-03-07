@@ -104,6 +104,9 @@
 	  <MauiXaml Update="View\ProfilSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\RetterSide.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\StartSkaermSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

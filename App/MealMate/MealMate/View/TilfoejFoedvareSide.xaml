@@ -101,7 +101,7 @@
                                                     <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                                 </Border.StrokeShape>
                                                 <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                                    <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40"/>
+                                                    <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
                                                 </Grid>
                                             </Border>
 
@@ -254,7 +254,7 @@ BackgroundColor="{StaticResource CustomGraa}" >
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid  >
-                            <Button Text="Opret ny" TextColor="White" FontSize="24">
+                            <Button Text="Opret ny" TextColor="White" FontSize="24" Pressed="opretFoedevare_knap">
 
                             </Button>
                         </Grid>
