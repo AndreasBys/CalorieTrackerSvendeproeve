@@ -52,14 +52,14 @@
             
             <!--Button box-->
             <HorizontalStackLayout Margin="80,20,80,0" HorizontalOptions="Center" >
-                <Button Text="Log ind" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28"></Button>
+                <Button Text="Registrer" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28" Pressed="Registrer_knap"></Button>
             </HorizontalStackLayout>
         </StackLayout>
         <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-            <Label TextColor="#808080" FontSize="22" >Har du allerede en konto?</Label>
-            <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
+            <Label TextColor="#808080" FontSize="22" >Har du allerede en konto? </Label>
+            <Label Text=" Log ind!" TextColor="#007ED8" FontSize="22">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapCommand}">
+                    <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="logindForside_knap">
 
                     </TapGestureRecognizer>
                 </Label.GestureRecognizers>

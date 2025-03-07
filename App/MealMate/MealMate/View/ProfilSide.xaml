@@ -132,7 +132,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button x:Name="ProfildataKnap">
+                                <Button Pressed="saetProfildata_knap">
 
 
 
@@ -161,7 +161,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button x:Name="KaloriedataKnap">
+                                <Button Pressed="saetMaal_knap">
 
 
 
@@ -191,7 +191,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button x:Name="Log_ud">
+                                <Button Pressed="logud_knap">
 
 
 

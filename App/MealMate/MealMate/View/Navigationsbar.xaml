@@ -5,15 +5,15 @@
              >
     <Grid ColumnDefinitions="*,*,*" BackgroundColor="{StaticResource CustomMoerkeGraa}">
         <Grid Grid.Column="0">
-            <ImageButton Source="hjem_ikon.png" Padding="25"></ImageButton>            
+            <ImageButton Source="hjem_ikon.png" Padding="25" Pressed="hjemmesideSkearm_knap"></ImageButton>            
         </Grid>
 
         <Grid Grid.Column="1">
-            <ImageButton Source="tilfoej_ikon.png" Padding="25"></ImageButton>
+            <ImageButton Source="tilfoej_ikon.png" Padding="25" Pressed="tilfoejMad_knap"></ImageButton>
         </Grid>
 
         <Grid Grid.Column="2">
-            <ImageButton Source="profil_ikon.png" Padding="25"></ImageButton>
+            <ImageButton Source="profil_ikon.png" Padding="25" Pressed="profilside_knap"></ImageButton>
         </Grid>
     </Grid>
 </ContentView>
