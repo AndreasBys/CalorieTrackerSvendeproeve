@@ -128,7 +128,7 @@
                                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                     </Border.StrokeShape>
                                     <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                        <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
+                                        <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="tilfoejFoedevare_knap"/>
                                     </Grid>
                                 </Border>
 
@@ -160,7 +160,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerFoedevareOprettelse_knap"></Button>
+                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerRetOprettelse_knap"></Button>
                     </Border>
 
 
@@ -170,7 +170,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Gem" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetFoedevare_knap"></Button>
+                        <Button Text="Gem" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetRet_knap"></Button>
                     </Border>
 
 

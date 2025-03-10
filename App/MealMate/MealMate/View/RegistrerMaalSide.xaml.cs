@@ -1,21 +1,16 @@
-using System.Globalization;
-using System.Threading.Tasks;
-
 namespace MealMate.View;
 
 public partial class RegistrerMaalSide : ContentPage
 {
-	public RegistrerMaalSide()
+	public RegistrerMaalSide(RegistrerMaalSideViewModel ViewModel)
 	{
 		InitializeComponent();
-
+        BindingContext = ViewModel;
         
     }
 
-    private async void gemMaal_kmaå(object sender, EventArgs e)
+    private void gemMaal_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+
     }
-
-
 }
