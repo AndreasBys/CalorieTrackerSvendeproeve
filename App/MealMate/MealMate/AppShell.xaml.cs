@@ -10,7 +10,6 @@ namespace MealMate
 
 
 
-            Routing.RegisterRoute(nameof(FoedevareSide), typeof(FoedevareSide));
             Routing.RegisterRoute(nameof(HjemmeskaermSide), typeof(HjemmeskaermSide));
             Routing.RegisterRoute(nameof(OpretFoedevareSide), typeof(OpretFoedevareSide));
             Routing.RegisterRoute(nameof(ProfilSide), typeof(ProfilSide));
@@ -19,6 +18,7 @@ namespace MealMate
             Routing.RegisterRoute(nameof(RegistrerSide), typeof(RegistrerSide));
             Routing.RegisterRoute(nameof(StartSkaermSide), typeof(StartSkaermSide));
             Routing.RegisterRoute(nameof(TilfoejFoedvareSide), typeof(TilfoejFoedvareSide));
+            Routing.RegisterRoute(nameof(OpretRetSide), typeof(OpretRetSide));
         }
     }
 }

@@ -259,16 +259,16 @@ BackgroundColor="{StaticResource CustomGraa}" >
                             </Button>
                         </Grid>
                     </Border>
-                    
-                </Grid>
-
-
-
-
-
-
 
                 </Grid>
+
+
+
+
+
+
+
+            </Grid>
 
 
 

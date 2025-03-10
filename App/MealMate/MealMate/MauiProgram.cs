@@ -1,4 +1,5 @@
 using MealMate.View;
+using MealMate.ViewModel;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 
@@ -22,7 +23,6 @@ namespace MealMate
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransient<FoedevareSide>();
             builder.Services.AddTransient<HjemmeskaermSide>();
             builder.Services.AddTransient<OpretFoedevareSide>();
             builder.Services.AddTransient<ProfilSide>();
@@ -31,6 +31,13 @@ namespace MealMate
             builder.Services.AddTransient<RegistrerSide>();
             builder.Services.AddSingleton<StartSkaermSide>();
             builder.Services.AddTransient<TilfoejFoedvareSide>();
+            builder.Services.AddTransient<OpretRetSide>();
+
+            // DI for ViewModels:
+
+            builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+
+
 
             return builder.Build();
         }

@@ -48,106 +48,18 @@
 
                         <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="15" HorizontalOptions="Fill" >Indgredienser</Label>
 
-                        
+
 
                     </Grid>
 
-                    <Grid Grid.Row="3" ColumnDefinitions="*, *" Padding="0,20,0,0">
-                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
-
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Kalorier:</Label>
-
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                    <Grid Grid.Row="3" ColumnDefinitions="*,*,*,Auto,Auto" Padding="0,20,0,0" RowDefinitions="*">
 
 
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*">
+                        <Label Grid.Column="0" FontSize="28" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center">Æble</Label>
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
-                                </Grid>
+                        <Grid Grid.Column="1"></Grid>
 
-                            </Border>
-
-
-
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
-
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Protein:</Label>
-
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*">
-
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
-                                </Grid>
-
-                            </Border>
-
-
-
-                        </Grid>
-
-                    </Grid>
-
-                    <Grid Grid.Row="4" ColumnDefinitions="*, *" Padding="0,20,0,0">
-                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
-
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Kulhydrater:</Label>
-
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*">
-
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
-                                </Grid>
-
-                            </Border>
-
-
-
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
-
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Fedt:</Label>
-
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*">
-
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
-                                </Grid>
-
-                            </Border>
-
-
-
-                        </Grid>
-
-                    </Grid>
-
-
-                    <Grid Grid.Row="5" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,60,0,0">
-
-                        <Label Grid.Row="0" FontSize="28" TextColor="White">Gram spist:</Label>
-
-                        <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                        <Border Grid.Column="2" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
 
 
                             <Border.StrokeShape>
@@ -160,7 +72,69 @@
 
                         </Border>
 
+                        <Grid Grid.Column="3">
+                            <Label VerticalOptions="End" Padding="10,10,30,10" FontSize="18" TextColor="{StaticResource CustomTekstHvidereGraa}">g</Label>
+                        </Grid>
 
+                        <Grid Grid.Column="4">
+
+                            <Image Source="fjern_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
+
+                        </Grid>
+
+                    </Grid>
+
+
+
+                    <Grid ColumnDefinitions="*,Auto" Grid.Row="5" Padding="30">
+
+
+
+                        <Border Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="Auto,Auto">
+                                <Grid Padding="10">
+                                    <Image Source="soege_ikon.png" HeightRequest="35" WidthRequest="35" Grid.Column="0"></Image>
+                                </Grid>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" Placeholder="Søg" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                            </Grid>
+
+                        </Border>
+
+                        <Grid Grid.Column="1" Padding="20,0,0,0">
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" Padding="5" HeightRequest="60" WidthRequest="60">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="45" WidthRequest="45" Padding="5"></ImageButton>
+                            </Border>
+                        </Grid>
+
+
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*" Grid.Row="6" Padding="30">
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Æble</Label>
+
+                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                            <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0">60 kcal</Label>
+
+                            <Grid  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Fill">
+
+                                <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" VerticalOptions="Fill">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+                                        <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="tilfoejFoedevare_knap"/>
+                                    </Grid>
+                                </Border>
+
+
+                            </Grid>
+                        </Grid>
 
                     </Grid>
 
@@ -186,7 +160,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerFoedevareOprettelse_knap"></Button>
+                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerRetOprettelse_knap"></Button>
                     </Border>
 
 
@@ -196,7 +170,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Opret" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetFoedevare_knap"></Button>
+                        <Button Text="Gem" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetRet_knap"></Button>
                     </Border>
 
 
