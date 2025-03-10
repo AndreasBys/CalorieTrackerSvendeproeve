@@ -4,6 +4,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.RegistrerMaalSide"
              xmlns:control="clr-namespace:Syncfusion;assembly=Syncfusion.Licensing"
+             
              Title="RegistrerMaalSide">
 
 
@@ -33,7 +34,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                            <Entry Text="{Binding KalorieInput, Mode=TwoWay}" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Keyboard="Numeric" ></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10"></Label>
                     </Grid>
@@ -243,7 +244,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
             <!--Button box-->
             <Grid Grid.Row="6">
-                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemMaal_kmaå"></Button>
+                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemMaal_knap"></Button>
             </Grid>
         </Grid>
 
