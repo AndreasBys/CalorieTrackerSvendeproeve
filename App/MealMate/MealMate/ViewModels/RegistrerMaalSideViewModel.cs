@@ -35,10 +35,9 @@ namespace MealMate.ViewModels
         [ObservableProperty]
         private string fedtProgressBar;
 
-
-
         partial void OnKalorieInputChanged(string kalorieValue)
         {
+            Console.WriteLine($"InputTextÆndret  { kalorieValue}");
             try
             {
 
@@ -60,11 +59,6 @@ namespace MealMate.ViewModels
                 Application.Current.MainPage.DisplayAlert("Text changed", "Enter numbers", "OK");
                 throw;
             }
-
-
-            
-
-
 
             //await Application.Current.MainPage.DisplayAlert("Text changed", "", "OK");
         }

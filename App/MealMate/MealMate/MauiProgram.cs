@@ -1,5 +1,4 @@
-using MealMate.View;
-using MealMate.ViewModel;
+using MealMate.Services;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 
@@ -36,6 +35,13 @@ namespace MealMate
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+
+            // Services
+            string baseUrl = "http://10.0.2.2:5000/";
+            builder.Services.AddHttpClient<FoodService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/food/");
+            });
 
 
 
