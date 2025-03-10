@@ -16,6 +16,10 @@ public class Food
     public int __v { get; set; }
     public string user { get; set; }
 }
+public class FoodResponse
+{
+    public Food Food { get; set; }
+}
 public class FoodListResponse
 {
     public List<Food> Foods { get; set; }

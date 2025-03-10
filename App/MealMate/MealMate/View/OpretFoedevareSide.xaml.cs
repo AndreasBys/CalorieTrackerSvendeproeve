@@ -14,6 +14,6 @@ public partial class OpretFoedevareSide : ContentPage
 
     private async void annullerFoedevareOprettelse_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(TilfoejFoedvareSide), true);
+        await Shell.Current.GoToAsync("..");
     }
 }

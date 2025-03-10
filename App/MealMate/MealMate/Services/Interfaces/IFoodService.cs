@@ -5,5 +5,6 @@ namespace MealMate.Services.Interfaces;
 public interface IFoodService
 {
     Task<List<Food>> GetAllFoods();
-    Task<Food> GetFoodByBarcode(string id);
+    Task<List<Food>> SearchFoods(string searchTerm);
+    Task<Food> GetFoodByBarcode(string barcode);
 }

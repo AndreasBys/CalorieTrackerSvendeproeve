@@ -28,4 +28,25 @@ public partial class TilfoejFoedvareSide : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
     }
+
+    private void OnSearch(object sender, EventArgs e)
+    {
+        _viewModel.SearchFood.Execute(null);
+    }
+
+    private async void OnScan(object sender, EventArgs e)
+    {
+        // Makes code work async
+        if (_viewModel.GetFood is AsyncRelayCommand<string> getFoodCommand)
+        {
+            await getFoodCommand.ExecuteAsync("test");
+        }
+
+        if (_viewModel.Food == null) return;
+
+        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true, new Dictionary<string, object>
+        {
+            { "SelectedFood", _viewModel.Food }
+        });
+    }
 }

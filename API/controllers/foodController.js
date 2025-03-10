@@ -28,11 +28,11 @@ export const getFoods = async (req, res) => {
     }
 }
 
-// gets specific food through id
+// gets specific food through barcode
 export const getFood = async (req, res) => {
     try {
-        // finds food by id
-        const food = await Food.findOne(req.params.barcode)
+        // finds food by barcode
+        const food = await Food.findOne({barcode: req.params.barcode})
 
         // checks if user is admin or user who created the food
         if (!(food.user == req.user.id || req.user.admin)) {
