@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+using MealMate.View;
+using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace MealMate
 {
@@ -9,6 +11,7 @@ namespace MealMate
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -18,6 +21,16 @@ namespace MealMate
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddTransient<FoedevareSide>();
+            builder.Services.AddTransient<HjemmeskaermSide>();
+            builder.Services.AddTransient<OpretFoedevareSide>();
+            builder.Services.AddTransient<ProfilSide>();
+            builder.Services.AddTransient<RegistrerMaalSide>();
+            builder.Services.AddTransient<RegistrerProfildataSide>();
+            builder.Services.AddTransient<RegistrerSide>();
+            builder.Services.AddSingleton<StartSkaermSide>();
+            builder.Services.AddTransient<TilfoejFoedvareSide>();
 
             return builder.Build();
         }

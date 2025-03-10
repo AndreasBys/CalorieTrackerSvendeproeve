@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.RegistrerMaalSide"
+             xmlns:control="clr-namespace:Syncfusion;assembly=Syncfusion.Licensing"
+             Title="RegistrerMaalSide">
+
+
+    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="100,50,100,50" >
+
+
+
+
+        <!--Formular box-->
+        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
+
+            <!--Side navn-->
+            <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" >
+                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="0,50,0,50">Kalorie mål</Label>
+            </HorizontalStackLayout>
+
+
+            <!--To entry boxe-->
+            <Grid RowDefinitions="*" ColumnDefinitions="*, Auto, *" HorizontalOptions="Fill" Grid.Row="1" >
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Kalorier:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10"></Label>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1" Padding="40">
+                </Grid>
+
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Protein:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
+                        <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--^^To entry boxe^^-->
+
+            <!--To entry boxe-->
+            <Grid RowDefinitions="*" ColumnDefinitions="*, Auto, *" HorizontalOptions="Fill" Grid.Row="2" >
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Kulhydrater:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1" Padding="40">
+                </Grid>
+
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Fedt:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
+                        <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--^^To entry boxe^^-->
+
+            <!--En entry box-->
+            <Grid RowDefinitions="*" ColumnDefinitions="*, Auto, *" HorizontalOptions="Fill" Grid.Row="3" >
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Margin</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1" Padding="40">
+                </Grid>
+
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10"></Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--^^En entry box^^-->
+
+
+            <!--Progress bar box-->
+
+            <Grid RowDefinitions="*,*,*" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="4" Padding="0,40,0,30">
+
+                <!--Row 1-->
+                <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="0">
+
+                    <Grid Grid.Column="0">
+                        <Image Source="boef_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+                        <progressBar:SfLinearProgressBar  
+                            TrackCornerRadius="20" 
+                            ProgressHeight="50" 
+                            ProgressCornerRadius="20" 
+                            Progress="20" 
+                            TrackHeight="50" 
+                            Grid.Column="1" 
+                            TrackFill="{StaticResource CustomMoerkeGraa}"
+                            ProgressFill="{StaticResource CustomPink}"
+                            BackgroundColor="{StaticResource CustomGraa}" >
+                        </progressBar:SfLinearProgressBar>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid Padding="10">
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <!--Row 1-->
+
+                <!--Row 2-->
+                <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="1">
+
+                    <Grid Grid.Column="0">
+                        <Image Source="sukker_icon.png" HeightRequest="45" WidthRequest="45"></Image>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+
+                        <progressBar:SfLinearProgressBar  
+            TrackCornerRadius="20" 
+            ProgressHeight="50" 
+            ProgressCornerRadius="20" 
+            Progress="20" 
+            TrackHeight="50" 
+            Grid.Column="1" 
+            TrackFill="{StaticResource CustomMoerkeGraa}"
+            ProgressFill="{StaticResource CustomGrøn}"
+            BackgroundColor="{StaticResource CustomGraa}" >
+                        </progressBar:SfLinearProgressBar>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid Padding="10">
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <!--Row 2-->
+
+                <!--Row 3-->
+                <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="2">
+
+                    <Grid Grid.Column="0">
+                        <Image Source="bacon_icon.png" HeightRequest="45" WidthRequest="45"></Image>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+                        <progressBar:SfLinearProgressBar  
+            TrackCornerRadius="20" 
+            ProgressHeight="50" 
+            ProgressCornerRadius="20" 
+            Progress="20" 
+            TrackHeight="50" 
+            Grid.Column="1" 
+            TrackFill="{StaticResource CustomMoerkeGraa}"
+            ProgressFill="{StaticResource CustomGul}"
+            BackgroundColor="{StaticResource CustomGraa}" >
+                        </progressBar:SfLinearProgressBar>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid Padding="10">
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <!--Row 3-->
+
+            </Grid>
+
+            <!--^^Progress bar box^^-->
+
+            <!--Button box-->
+            <Grid Grid.Row="6">
+                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemMaal_kmaå"></Button>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</ContentPage>

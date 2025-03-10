@@ -3,10 +3,22 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!--Vores farver-->
+
+    <Color x:Key="CustomMoerkeGraa">#2B2B32</Color>
+    <Color x:Key="CustomGraa">#3C3C44</Color>
+    <Color x:Key="CustomTekstHvidereGraa">#808080</Color>
+    <Color x:Key="CustomBlaa">#007ED8</Color>
+    <Color x:Key="CustomPink">#CE3B71</Color>
+    <Color x:Key="CustomGrøn">#22C951</Color>
+    <Color x:Key="CustomGul">#C7BB3D</Color>
+    <Color x:Key="CustomRød">#CC3B3B</Color>
+    <Color x:Key="CustomHvid">White</Color>
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
+    <Color x:Key="Primary">#00FFFFFF</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
@@ -27,6 +39,8 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+    
+    
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

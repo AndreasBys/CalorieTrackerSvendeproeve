@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.RegistrerProfildataSide"
+             Title="RegistrerProfildataSide">
+    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="100,50,100,50" >
+
+        <!--Formular box-->
+        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
+
+            <!--Side navn-->
+            <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" >
+                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="0,50,0,50">Profil data</Label>
+            </HorizontalStackLayout>
+
+
+            <!--Box-->
+            <StackLayout Grid.Row="1" >
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="28" Margin="10,0,0,10">Fødselsdato:</Label>
+                <Border HeightRequest="60" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <DatePicker HeightRequest="60" BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Grid Padding="10">
+                            <Image Source="kalender_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End"/>
+                        </Grid>
+                        
+                    </Grid>
+                </Border>
+            </StackLayout>
+
+            <!--Box-->
+            <Grid RowDefinitions="*" ColumnDefinitions="*, Auto, *" HorizontalOptions="Fill" Grid.Row="2" >
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Højde:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">cm</Label>
+                    </Grid>
+                </Grid>
+                <!--Box-->
+
+                <!--Box-->
+                <Grid Grid.Column="1" Padding="40">
+                </Grid>
+                <!--Box-->
+
+                <!--Box-->
+
+                <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill">
+
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Vægt:</Label>
+
+                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
+                        <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                        </Border>
+                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">kg</Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--Box-->
+            
+            <!--Dropdown box-->
+            <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill">
+
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Aktivitetsniveau:</Label>
+
+                <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg niveau" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                                <Picker.Items>
+                                    <x:String>1-2/ugen</x:String>
+                                    <x:String>3-4/ugen</x:String>
+                                    <x:String>5-7/ugen</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <!--Dropdown box-->
+            
+            <!--Dropdown box-->
+            <Grid RowDefinitions="Auto,Auto" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill">
+
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Mål:</Label>
+
+                <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg mål" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker">
+                                <Picker.Items>
+                                    <x:String>Vægttab</x:String>
+                                    <x:String>Tag vægt på</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <!--Dropdown box-->
+            
+            <!--Dropdown box-->
+            <Grid RowDefinitions="Auto,Auto" Grid.Row="5" Grid.Column="0" HorizontalOptions="Fill" Padding="0,0,0,50">
+
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Køn:</Label>
+
+                <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
+                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill">
+                                <Picker.Items>
+                                    <x:String>Mand</x:String>
+                                    <x:String>Kvinde</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <!--Dropdown box-->
+
+            <!--Button box-->
+            <Grid Grid.Row="6">
+                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemProfilData_knap" ></Button>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</ContentPage>
