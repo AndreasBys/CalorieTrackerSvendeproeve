@@ -1,4 +1,4 @@
-﻿global using MealMate.ViewModels;
+global using MealMate.ViewModels;
 global using CommunityToolkit.Mvvm.Input;
 global using MealMate.View;
 global using MealMate.Models;
