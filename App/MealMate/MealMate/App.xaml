@@ -8,6 +8,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source='{OnIdiom Desktop="Resources/Styles/Sizes.xaml"}'/>
+                <ResourceDictionary Source='{OnIdiom Phone="Resources/Styles/SizesPhone.xaml"}'/>
+                <ResourceDictionary Source='{OnIdiom Tablet="Resources/Styles/SizesTablet.xaml"}'/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

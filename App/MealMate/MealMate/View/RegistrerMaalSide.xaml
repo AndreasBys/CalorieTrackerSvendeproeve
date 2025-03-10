@@ -8,7 +8,11 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
              Title="RegistrerMaalSide">
 
 
-    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="100,50,100,50" >
+
+
+    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="{StaticResource OverallPadding}" >
+
+
 
 
 
@@ -18,7 +22,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
             <!--Side navn-->
             <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" >
-                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="0,50,0,50">Kalorie mål</Label>
+                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource TitelFont}" Padding="0,50,0,50">Kalorie mål</Label>
             </HorizontalStackLayout>
 
 
@@ -27,7 +31,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Kalorier:</Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10">Kalorier:</Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
                         <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -46,7 +50,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Protein:</Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10">Protein:</Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
                         <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -66,7 +70,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Kulhydrater:</Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10">Kulhydrater:</Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
                         <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -85,7 +89,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Fedt:</Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10">Fedt:</Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
                         <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -105,7 +109,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Margin</Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10">Margin</Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
                         <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -124,7 +128,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 <Grid RowDefinitions="Auto,Auto" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill">
 
-                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10"></Label>
+                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10"></Label>
 
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
 
@@ -163,7 +167,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                     <Grid Grid.Column="2">
                         <Grid Padding="10">
-                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End" Text="{Binding ProteinText, Mode=TwoWay}" ></Label>
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="{StaticResource LilleFontSize}" VerticalTextAlignment="End" Text="{Binding ProteinText, Mode=TwoWay}" ></Label>
                         </Grid>
 
                     </Grid>
@@ -197,7 +201,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                     <Grid Grid.Column="2">
                         <Grid Padding="10">
-                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="{StaticResource LilleFontSize}" VerticalTextAlignment="End">g</Label>
                         </Grid>
 
                     </Grid>
@@ -230,7 +234,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                     <Grid Grid.Column="2">
                         <Grid Padding="10">
-                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="{StaticResource LilleFontSize}" VerticalTextAlignment="End">g</Label>
                         </Grid>
 
                     </Grid>
