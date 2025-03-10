@@ -35,6 +35,7 @@ namespace MealMate
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+            builder.Services.AddSingleton<FoodViewModel>();
 
             // Services
             string baseUrl = "http://10.0.2.2:5000/";

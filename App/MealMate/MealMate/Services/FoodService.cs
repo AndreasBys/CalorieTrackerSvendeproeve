@@ -5,7 +5,9 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
+    string token = "";
     List<Food> foodList = new();
+    Food food = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
     // Constructor to initialize ApiService with base URL
@@ -16,7 +18,6 @@ public class FoodService : IFoodService
 
     public async Task<List<Food>> GetAllFoods()
     {
-        string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE2MjM5MTQsImV4cCI6MTc0MTYyNzUxNH0.hTaRR8v8xB_X_QIKRC3wQVpiF4JoiFoYIK9JF2rMYRg";
         var request = new HttpRequestMessage(HttpMethod.Get, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -31,8 +32,18 @@ public class FoodService : IFoodService
         return foodList;
     }
 
-    public Task<Food> GetFoodById(string id)
+    public async Task<Food> GetFoodByBarcode(string barcode)
     {
-        throw new NotImplementedException();
+        var request = new HttpRequestMessage(HttpMethod.Get, barcode);
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            food = await response.Content.ReadFromJsonAsync<Food>();
+        }
+
+        return food;
     }
 }

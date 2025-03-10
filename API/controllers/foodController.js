@@ -32,7 +32,7 @@ export const getFoods = async (req, res) => {
 export const getFood = async (req, res) => {
     try {
         // finds food by id
-        const food = await Food.findById(req.params.id)
+        const food = await Food.findOne(req.params.barcode)
 
         // checks if user is admin or user who created the food
         if (!(food.user == req.user.id || req.user.admin)) {
