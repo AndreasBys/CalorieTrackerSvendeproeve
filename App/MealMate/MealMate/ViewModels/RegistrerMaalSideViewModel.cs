@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealMate.ViewModel
+namespace MealMate.ViewModels
 {
     public partial class RegistrerMaalSideViewModel : BaseViewModel
     {
