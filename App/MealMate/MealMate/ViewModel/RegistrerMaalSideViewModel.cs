@@ -21,7 +21,6 @@ namespace MealMate.ViewModel
         private string kalorieInput;
 
 
-        //public partial Task OnTextChanged(string value);
 
         partial void OnKalorieInputChanged(string kalorieValue)
         {
