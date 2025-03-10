@@ -4,6 +4,9 @@
              x:Class="MealMate.View.TilfoejFoedvareSide"
              xmlns:Navigationsbar="clr-namespace:MealMate.View"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             xmlns:model="clr-namespace:MealMate.Models"
+             xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
+             x:DataType="viewmodel:FoodViewModel"
              Title="TilfoejFoedvareSide">
     <Grid>
 
@@ -87,7 +90,24 @@
 
                                 </Button>
 
-
+                                <CollectionView ItemsSource="{Binding Foods}"
+                                    SelectionMode="None">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="model:Food">
+                                            <Grid Padding="5" ColumnDefinitions="*">
+                                                <Border HeightRequest="80" Stroke="White" BackgroundColor="White">
+                                                    <Border.Shadow>
+                                                        <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5" />
+                                                    </Border.Shadow>
+                                                    <StackLayout Padding="10,0,0,0">
+                                                        <Label Style="{StaticResource Headline}" Text="{Binding name}" HorizontalOptions="Start" />
+                                                        <Label Style="{StaticResource SubHeadline}" Text="{Binding calories, StringFormat='{0} kcal'}" HorizontalOptions="Start"/>
+                                                    </StackLayout>
+                                                </Border>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                                 <Grid ColumnDefinitions="*">
                                     <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Æble</Label>
 

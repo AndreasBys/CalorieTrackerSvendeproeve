@@ -1,20 +1,27 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace MealMate.ViewModels;
 
 public partial class FoodViewModel : BaseViewModel
 {
+    [ObservableProperty]
+    string scanText;
+    [ObservableProperty]
+    Food food;
     public ObservableCollection<Food> Foods { get; } = new();
-    public Command GetFoodCmd { get; }
+    public Command GetAllFood { get; }
+    public Command GetFood { get; }
     FoodService FoodService;
 
     public FoodViewModel(FoodService FoodService)
     {
         this.FoodService = FoodService;
-        GetFoodCmd = new Command(async () => await GetFoodsAsync());
+        GetAllFood = new Command(async () => await GetFoods());
+        GetFood = new Command(async () => await GetFoodByBarcode());
     }
 
-    async Task GetFoodsAsync()
+    async Task GetFoods()
     {
         if (IsBusy)
             return;
@@ -33,7 +40,31 @@ public partial class FoodViewModel : BaseViewModel
         catch (Exception ex)
         {
             Debug.WriteLine($"Unable to get Foods: {ex.Message}");
-            Debug.WriteLine($"StackTrace: {ex.StackTrace}");
+            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+    async Task GetFoodByBarcode()
+    {
+        if (IsBusy)
+            return;
+        try
+        {
+            IsBusy = true;
+
+            var food = await FoodService.GetFoodByBarcode(ScanText);
+
+            if (food == null) 
+                throw new Exception($"Barcode: {ScanText} is invalid");
+
+            this.Food = food;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get Foods: {ex.Message}");
             await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally

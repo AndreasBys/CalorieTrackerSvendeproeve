@@ -5,7 +5,7 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "";
+    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE2MzcxNjcsImV4cCI6MTc0MTY0MDc2N30.ePfw0I5FQwpu4Cfe4OAhydS3CgFtWddWbMHmYUtCKvo";
     List<Food> foodList = new();
     Food food = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
