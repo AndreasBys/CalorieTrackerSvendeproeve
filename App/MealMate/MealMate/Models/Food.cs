@@ -13,7 +13,6 @@ public class Food
     public int carbonhydrates { get; set; }
     public int protein { get; set; }
     public int fat { get; set; }
-    public int __v { get; set; }
     public string user { get; set; }
     public string? barcode { get; set; }
 }
