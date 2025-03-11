@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:TilfoejFoedvareSide}"
-        Route="TilfoejFoedvareSide" />
+        ContentTemplate="{DataTemplate local:HjemmeskaermSide}"
+        Route="HjemmeskaermSide" />
 
 </Shell>
