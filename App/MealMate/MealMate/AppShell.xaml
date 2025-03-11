@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:AdminHomePage}"
+        ContentTemplate="{DataTemplate local:AdminSelectedFood}"
         Route="ProfilSide" />
 
 </Shell>

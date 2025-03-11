@@ -12,4 +12,9 @@ public partial class AdminSelectedFood : ContentPage
     {
         // Perform required operation after examining e.Value
     }
+
+    void Anuller(object sender, EventArgs e)
+    {
+;       App.Current.MainPage = new NavigationPage(new AdminHomePage());
+    }
 }

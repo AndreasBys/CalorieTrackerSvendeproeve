@@ -5,72 +5,76 @@
              Title="AdminHomePage">
     <Grid>
         <Grid RowDefinitions="Auto,*">
+            <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20,20,20,20">
 
-            <SearchBar
+                <SearchBar
+                Grid.Row="0"
                 Placeholder="Søg ..." 
                 TextChanged="OnTextChanged"/>
 
-            <HorizontalStackLayout>
-                <Button Text="Godkendt"/>
-                <Button Text="Ikke godkendt"/>
-            </HorizontalStackLayout>
+                <HorizontalStackLayout
+                Grid.Row="1">
+                    <Button Text="Godkendt"/>
+                    <Button Text="Ikke godkendt"/>
+                </HorizontalStackLayout>
 
-            <ListView 
+                <ListView 
                 x:Name="searchResults">
 
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <HorizontalStackLayout>
-                                <Label
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <HorizontalStackLayout>
+                                    <Label
                                    Text="G/R"
                                    FontAttributes="Bold"/>
 
-                                <Label
+                                    <Label
                                    Text="Food"
                                    FontAttributes="Bold"/>
 
-                                <Label
+                                    <Label
                                    Text="ShowSelected"
                                    FontAttributes="Bold"/>
 
-                            </HorizontalStackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                                </HorizontalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
-            </ListView>
-        </Grid>
+                </ListView>
+            </Grid>
+
+
+
+
+
             
-        
 
-        
-
+        </Grid>
         <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
             <Grid ColumnDefinitions="*,*,*,*" Padding="20">
                 <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
+                    <Border  Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Log ud" Grid.Column="0" FontSize="24" Padding="30,5,30,5"></Button>
+                        <Button Text="Log ud" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
                     </Border>
 
 
                 </Grid>
-                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="2">
+                <Grid ColumnDefinitions="Auto" HorizontalOptions="End" Grid.Column="2">
                     <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" >
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Opret ny" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160"></Button>
+                        <Button Text="Opret ny" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
                     </Border>
-
-
                 </Grid>
             </Grid>
         </Grid>
-
     </Grid>
 </ContentPage>
+    
