@@ -61,7 +61,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Button Text="Mine retter" FontSize="18"></Button>
+                            <Button Text="Mine retter" FontSize="18" Command="{Command MineRetterCommand}"></Button>
                         </Border>
                     </Grid>
                 </Grid>

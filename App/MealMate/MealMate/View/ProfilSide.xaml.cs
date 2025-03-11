@@ -9,7 +9,7 @@ public partial class ProfilSide : ContentPage
 
     private async void logud_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(StartSkaermSide), true);
+        await Shell.Current.GoToAsync("//StartSkaermSide", true);
     }
 
     private async void saetMaal_knap(object sender, EventArgs e)
