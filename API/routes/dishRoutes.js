@@ -3,7 +3,7 @@ import express from 'express'
 
 
 // importing controllers
-import { 
+import {
     getAllUserDishes, 
     getDish, 
     search, 
@@ -11,7 +11,8 @@ import {
     deleteDish, 
     updateDish 
 } from '../controllers/dishController.js'
-import { authenticate } from '../middleware/authenticator.js';
+
+import authenticate from '../middleware/authenticator.js';
 
 // creates new router from express module
 const router = express.Router();

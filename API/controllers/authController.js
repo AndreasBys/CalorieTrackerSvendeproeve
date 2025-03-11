@@ -60,7 +60,7 @@ export const login = async (req, res) => {
             });
 
             // sending the token back to the client with a 201 status code
-            res.status(201).json({ token });
+            res.status(201).json({ token, user: user.admin });
         })
         .catch((error) => {
             console.log(error);  // Logging the error to the console

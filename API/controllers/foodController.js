@@ -47,6 +47,7 @@ export const search = async (req, res) => {
                 {barcode: searchRegex},
                 {name: searchRegex},
                 {calories: searchRegex},
+                {approved: searchRegex},
                 {carbonhydrates: searchRegex},
                 {protein: searchRegex},
                 {fat: searchRegex}
