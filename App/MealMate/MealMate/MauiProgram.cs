@@ -35,12 +35,23 @@ namespace MealMate
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+            builder.Services.AddSingleton<FoodViewModel>();
+            builder.Services.AddSingleton<AddFoodViewModel>();
 
             // Services
+#if ANDROID
             string baseUrl = "http://10.0.2.2:5000/";
+#else
+            string baseUrl = "http://localhost:5000/"; // or use the machine's IP address
+#endif
             builder.Services.AddHttpClient<FoodService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
+            });
+
+            builder.Services.AddHttpClient<MacroLogService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/macroLog/");
             });
 
 

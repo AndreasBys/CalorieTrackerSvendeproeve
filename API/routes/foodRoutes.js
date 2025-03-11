@@ -19,7 +19,7 @@ const router = express.Router();
 // defining post routes
 router.get('/', authenticate, getFoods);
 router.get('/search', authenticate, search);
-router.get('/:id', authenticate, getFood);
+router.get('/:barcode', authenticate, getFood);
 router.post('/', authenticate, createFood);
 router.delete('/:id', authenticate, deleteFood);
 router.put('/:id', authenticate, updateFood);
