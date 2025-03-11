@@ -195,7 +195,7 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*">
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding MacroWeight}"></Entry>
                             </Grid>
 
                         </Border>

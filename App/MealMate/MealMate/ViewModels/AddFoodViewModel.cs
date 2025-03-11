@@ -8,6 +8,8 @@ public partial class AddFoodViewModel : BaseViewModel
 {
     [ObservableProperty]
     Food foodDetails;
+    [ObservableProperty]
+    string macroWeight;
     MacroLog macroLog;
     public ICommand CreateFood { get; }
     public ICommand CreateMacroLog { get; }
@@ -56,7 +58,7 @@ public partial class AddFoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            NewMacroLog newMacroLog = new(FoodDetails._id, 10);
+            NewMacroLog newMacroLog = new(FoodDetails._id, Convert.ToInt32(MacroWeight));
             var macroLog = await MacroLogService.CreateMacroLog(newMacroLog);
 
             if (macroLog == null)

@@ -6,7 +6,7 @@ namespace MealMate.Services;
 
 public class MacroLogService : IMacroLogService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MTgxNjYsImV4cCI6MTc0MTcyMTc2Nn0.-h6slqUnfgn0WTiDA1j1ociZrbtwtms-QPS9dKiw1lY";
+    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MjU3NDUsImV4cCI6MTc0MTcyOTM0NX0.fBfj6ujeBxTmBECOjgYPLGFogL06A3xTN7EOnSjbUYk";
     MacroLog macroLog = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
@@ -31,5 +31,10 @@ public class MacroLogService : IMacroLogService
         }
 
         return macroLog;
+    }
+
+    public async Task<List<MacroLog>> GetTodaysMacroLogs()
+    {
+        throw new NotImplementedException();
     }
 }
