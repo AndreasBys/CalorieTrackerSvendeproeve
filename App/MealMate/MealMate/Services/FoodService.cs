@@ -57,7 +57,24 @@ public class FoodService : IFoodService
         if (response.IsSuccessStatusCode)
         {
             FoodResponse responseObj = await response.Content.ReadFromJsonAsync<FoodResponse>();
-            this.food = responseObj.Food;
+            food = responseObj.Food;
+        }
+
+        return food;
+    }
+
+    public async Task<Food> CreateFood(Food newFood)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Post, "");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        request.Content = JsonContent.Create(newFood);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            FoodResponse responseObj = await response.Content.ReadFromJsonAsync<FoodResponse>();
+            food = responseObj.Food;
         }
 
         return food;
