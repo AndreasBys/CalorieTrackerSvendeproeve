@@ -12,3 +12,8 @@ public class MacroLog
     public int weight { get; set; }
     public DateTime date { get; set; }
 }
+
+public class MacroLogResponse
+{
+    public MacroLog macroLog { get; set; }
+}

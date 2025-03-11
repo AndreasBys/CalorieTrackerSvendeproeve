@@ -18,9 +18,9 @@ public class Food
 }
 public class FoodResponse
 {
-    public Food Food { get; set; }
+    public Food food { get; set; }
 }
 public class FoodListResponse
 {
-    public List<Food> Foods { get; set; }
+    public List<Food> foods { get; set; }
 }

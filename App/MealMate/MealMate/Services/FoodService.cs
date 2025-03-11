@@ -5,7 +5,7 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MDg0MTcsImV4cCI6MTc0MTcxMjAxN30.q6OdJ6IQyqxpAcNx280wTu8Aks5yyqSrQ5FWiHEHurY";
+    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MTIwODgsImV4cCI6MTc0MTcxNTY4OH0.KvdnCuEdjmXyFCarY1IV7pLFkf4k0jsAQTFjn8vyt-w";
     List<Food> foodList = new();
     Food food = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
@@ -26,7 +26,7 @@ public class FoodService : IFoodService
         if (response.IsSuccessStatusCode)
         {
             FoodListResponse responseObj = await response.Content.ReadFromJsonAsync<FoodListResponse>();
-            foodList = responseObj.Foods;
+            foodList = responseObj.foods;
         }
 
         return foodList;
@@ -41,7 +41,7 @@ public class FoodService : IFoodService
         if (response.IsSuccessStatusCode)
         {
             FoodListResponse responseObj = await response.Content.ReadFromJsonAsync<FoodListResponse>();
-            foodList = responseObj.Foods;
+            foodList = responseObj.foods;
         }
 
         return foodList;
@@ -57,7 +57,7 @@ public class FoodService : IFoodService
         if (response.IsSuccessStatusCode)
         {
             FoodResponse responseObj = await response.Content.ReadFromJsonAsync<FoodResponse>();
-            food = responseObj.Food;
+            food = responseObj.food;
         }
 
         return food;
@@ -74,7 +74,7 @@ public class FoodService : IFoodService
         if (response.IsSuccessStatusCode)
         {
             FoodResponse responseObj = await response.Content.ReadFromJsonAsync<FoodResponse>();
-            food = responseObj.Food;
+            food = responseObj.food;
         }
 
         return food;

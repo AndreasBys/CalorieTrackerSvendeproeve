@@ -2,5 +2,5 @@
 
 public interface IMacroLogService
 {
-    Task<MacroLog> CreateMacroLog();
+    Task<MacroLog> CreateMacroLog(MacroLog newMacroLog);
 }
