@@ -5,7 +5,7 @@ namespace MealMate.Models;
 public class Food
 {
     [Key]
-    public string _id { get; set; }
+    public string? _id { get; set; }
     public bool godkendt { get; set; }
     [Required]
     public string name { get; set; }

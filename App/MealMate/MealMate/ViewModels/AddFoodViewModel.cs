@@ -8,12 +8,18 @@ public partial class AddFoodViewModel : BaseViewModel
 {
     [ObservableProperty]
     Food foodDetails;
+    MacroLog macroLog;
     public ICommand CreateFood { get; }
+    public ICommand CreateMacroLog { get; }
     FoodService FoodService;
-    public AddFoodViewModel(FoodService FoodService)
+    MacroLogService MacroLogService;
+    public AddFoodViewModel(FoodService FoodService, MacroLogService macroLogService)
     {
         this.FoodService = FoodService;
+        this.MacroLogService = macroLogService;
         CreateFood = new AsyncRelayCommand(CreateFoodAsync);
+        CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
+        MacroLogService = macroLogService;
     }
 
     async Task CreateFoodAsync()
@@ -34,6 +40,33 @@ public partial class AddFoodViewModel : BaseViewModel
         catch (Exception ex)
         {
             Debug.WriteLine($"Unable to get Foods: {ex.Message}");
+            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    async Task CreateMacroLogAsync()
+    {
+        if (IsBusy)
+            return;
+        try
+        {
+            IsBusy = true;
+
+            NewMacroLog newMacroLog = new(FoodDetails._id, 10);
+            var macroLog = await MacroLogService.CreateMacroLog(newMacroLog);
+
+            if (macroLog == null)
+                throw new Exception($"MacroLog couldn't be added");
+
+            this.macroLog = macroLog;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unable to get MacroLog: {ex.Message}");
             await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally

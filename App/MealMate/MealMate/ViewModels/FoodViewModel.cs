@@ -51,7 +51,7 @@ public partial class FoodViewModel : BaseViewModel
         }
     }
 
-    private async Task SearchFoods()
+    async Task SearchFoods()
     {
         if (IsBusy)
             return;

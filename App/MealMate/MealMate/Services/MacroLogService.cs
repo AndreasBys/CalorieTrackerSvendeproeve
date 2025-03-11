@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace MealMate.Services;
 
-class MacroLogService : IMacroLogService
+public class MacroLogService : IMacroLogService
 {
     string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MTIwODgsImV4cCI6MTc0MTcxNTY4OH0.KvdnCuEdjmXyFCarY1IV7pLFkf4k0jsAQTFjn8vyt-w";
     MacroLog macroLog = new();
@@ -16,7 +16,7 @@ class MacroLogService : IMacroLogService
         _httpClient = httpClient;
     }
 
-    public async Task<MacroLog> CreateMacroLog(MacroLog newMacroLog)
+    public async Task<MacroLog> CreateMacroLog(NewMacroLog newMacroLog)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
