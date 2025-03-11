@@ -8,9 +8,4 @@ public partial class RegistrerMaalSide : ContentPage
         BindingContext = ViewModel;
         
     }
-
-    private void gemMaal_knap(object sender, EventArgs e)
-    {
-
-    }
 }
