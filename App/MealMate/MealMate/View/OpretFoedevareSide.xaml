@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.OpretFoedevareSide"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
-             Title="OpretFoedevareSide">
+             xmlns:model="clr-namespace:MealMate.Models"
+             xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
+             x:DataType="viewmodel:AddFoodViewModel"
+             Title="TilfoejFoedvareSide">
 
     <Grid>
 
@@ -34,7 +37,7 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" >
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" ></Entry>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.name}"></Entry>
                             </Grid>
 
                         </Border>
@@ -56,7 +59,7 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*">
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomHvid}" Grid.Column="1"></Entry>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomHvid}" Grid.Column="1" Text="{Binding FoodDetails.barcode}"></Entry>
                             </Grid>
 
                         </Border>
@@ -102,7 +105,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.calories}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -123,7 +126,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.protein}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -147,7 +150,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.carbonhydrates}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -168,7 +171,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.fat}"></Entry>
                                 </Grid>
 
                             </Border>

@@ -15,6 +15,7 @@ public class Food
     public int fat { get; set; }
     public int __v { get; set; }
     public string user { get; set; }
+    public string? barcode { get; set; }
 }
 public class FoodResponse
 {
