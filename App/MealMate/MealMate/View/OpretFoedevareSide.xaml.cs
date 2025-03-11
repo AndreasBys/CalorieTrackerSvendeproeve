@@ -17,6 +17,10 @@ public partial class OpretFoedevareSide : ContentPage
         {
             await createFoodCommand.ExecuteAsync(null);
         }
+        if (_viewModel.CreateMacroLog is AsyncRelayCommand createMacroLogCommand)
+        {
+            await createMacroLogCommand.ExecuteAsync(null);
+        }
         // Skal sende den oprettede macroLog til home page
         await Shell.Current.GoToAsync("../..", true);
     }
