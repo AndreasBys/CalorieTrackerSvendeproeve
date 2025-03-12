@@ -6,15 +6,15 @@ public class Food
 {
     [Key]
     public string? _id { get; set; }
-    public bool godkendt { get; set; }
+    public string? barcode { get; set; }
     [Required]
     public string name { get; set; }
+    public bool approved { get; set; }
     public int calories { get; set; }
     public int carbonhydrates { get; set; }
     public int protein { get; set; }
     public int fat { get; set; }
     public string user { get; set; }
-    public string? barcode { get; set; }
 }
 public class FoodResponse
 {

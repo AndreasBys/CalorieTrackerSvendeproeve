@@ -35,7 +35,7 @@ public partial class StartSkaermSide : ContentPage
     {
         base.OnAppearing();
 
-        // Clear email and password fields if "Remember Me" is not checked
+        // Clear email and password entries if "Remember Me" is not checked
         if (!Preferences.Get("RememberMe", false))
         {
             _emailEntry.Text = string.Empty;

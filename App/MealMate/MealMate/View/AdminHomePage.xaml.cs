@@ -4,10 +4,20 @@ namespace MealMate.View;
 
 public partial class AdminHomePage : ContentPage
 {
-	public AdminHomePage(FoodViewModel foodViewModel)
+
+    private readonly FoodViewModel _foodViewModel;
+
+    public AdminHomePage(FoodViewModel foodViewModel)
 	{
 		InitializeComponent();
 		BindingContext = foodViewModel;
+        _foodViewModel = foodViewModel;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _foodViewModel.GetFoods();
     }
 
     private async void Logout_knap(object sender, EventArgs e)
@@ -20,6 +30,9 @@ public partial class AdminHomePage : ContentPage
             Preferences.Remove("Password");
             Preferences.Set("RememberMe", false);
         }
+
+        // Clear the auth_token from SecureStorage
+        SecureStorage.Remove("auth_token");
 
         // Navigate back to the login page
         await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");

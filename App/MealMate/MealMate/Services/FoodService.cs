@@ -5,7 +5,7 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MjU3NDUsImV4cCI6MTc0MTcyOTM0NX0.fBfj6ujeBxTmBECOjgYPLGFogL06A3xTN7EOnSjbUYk";
+    string token;
     List<Food> foodList = new();
     Food food = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
@@ -14,6 +14,7 @@ public class FoodService : IFoodService
     public FoodService(HttpClient httpClient)
     {
         _httpClient = httpClient;
+        token = SecureStorage.GetAsync("auth_token").Result;
     }
 
     public async Task<List<Food>> GetAllFoods()

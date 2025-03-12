@@ -25,7 +25,7 @@ public partial class FoodViewModel : BaseViewModel
         GetFood = new AsyncRelayCommand<string>(GetFoodByBarcode);
     }
 
-    async Task GetFoods()
+    public async Task GetFoods()
     {
         if (IsBusy)
             return;

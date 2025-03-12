@@ -7,7 +7,7 @@ public partial class ProfilSide : ContentPage
 		InitializeComponent();
 	}
 
-    private async void logud_knap(object sender, EventArgs e)
+    private async void Logout_knap(object sender, EventArgs e)
     {
         // Check if "Remember Me" is not checked
         if (!Preferences.Get("RememberMe", false))
@@ -17,6 +17,9 @@ public partial class ProfilSide : ContentPage
             Preferences.Remove("Password");
             Preferences.Set("RememberMe", false);
         }
+
+        // Clear the auth_token from SecureStorage
+        SecureStorage.Remove("auth_token");
 
         // Navigate back to the login page
         await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");

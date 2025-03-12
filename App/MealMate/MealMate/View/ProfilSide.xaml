@@ -195,7 +195,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
 
                                 <Grid ColumnDefinitions="*">
-                                    <Button Clicked="logud_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
+                                    <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
                                     <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
 
                                     <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
