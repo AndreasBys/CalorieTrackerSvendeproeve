@@ -33,9 +33,9 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
-       
-        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+
+
+        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
             <Grid ColumnDefinitions="*,*,*,*" Padding="20">
                 <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
                     <Border  Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >

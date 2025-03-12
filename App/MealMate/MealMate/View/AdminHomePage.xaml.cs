@@ -4,10 +4,10 @@ namespace MealMate.View;
 
 public partial class AdminHomePage : ContentPage
 {
-	public AdminHomePage(/*FoodViewModel foodViewModel*/)
+	public AdminHomePage(FoodViewModel foodViewModel)
 	{
 		InitializeComponent();
-		//BindingContext = foodViewModel;
+		BindingContext = foodViewModel;
+    }
 
-	}
 }

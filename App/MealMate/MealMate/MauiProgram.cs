@@ -31,12 +31,15 @@ namespace MealMate
             builder.Services.AddSingleton<StartSkaermSide>();
             builder.Services.AddTransient<TilfoejFoedvareSide>();
             builder.Services.AddTransient<OpretRetSide>();
+            builder.Services.AddSingleton<AdminHomePage>();
+            builder.Services.AddTransient<AdminSelectedFood>();
 
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
+            
 
             // Services
 #if ANDROID
@@ -44,6 +47,12 @@ namespace MealMate
 #else
             string baseUrl = "http://localhost:5000/"; // or use the machine's IP address
 #endif
+
+            builder.Services.AddHttpClient<LoginService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/auth/");
+            });
+
             builder.Services.AddHttpClient<FoodService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
