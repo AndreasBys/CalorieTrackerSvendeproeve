@@ -12,6 +12,10 @@ public class MacroLog
     [Required]
     public int weight { get; set; }
     public DateTime date { get; set; }
+    public int calories {get; set;}
+    public double carbonhydrates {get; set;}
+    public double protein {get; set;}
+    public double fat { get; set;}
 }
 
 public class MacroLogRequest

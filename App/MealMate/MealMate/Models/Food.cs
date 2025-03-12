@@ -11,9 +11,9 @@ public class Food
     public string name { get; set; }
     public string? barcode { get; set; }
     public int calories { get; set; }
-    public int carbonhydrates { get; set; }
-    public int protein { get; set; }
-    public int fat { get; set; }
+    public double carbonhydrates { get; set; }
+    public double protein { get; set; }
+    public double fat { get; set; }
     public string user { get; set; }
 }
 public class FoodRequest
@@ -23,11 +23,11 @@ public class FoodRequest
     public string name { get; set; }
     public string? barcode { get; set; }
     public int calories { get; set; }
-    public int carbonhydrates { get; set; }
-    public int protein { get; set; }
-    public int fat { get; set; }
+    public double carbonhydrates { get; set; }
+    public double protein { get; set; }
+    public double fat { get; set; }
     public string user { get; set; }
-    public FoodRequest(string name,string barcode, int calories, int carbonhydrates, int protein, int fat, string user) 
+    public FoodRequest(string name,string barcode, int calories, double carbonhydrates, double protein, double fat, string user) 
     {
         this.name = name;
         this.barcode = barcode;

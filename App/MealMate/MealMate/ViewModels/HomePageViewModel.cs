@@ -28,7 +28,13 @@ public partial class HomePageViewModel : BaseViewModel
                 MacroLogs.Clear();
 
             foreach (var macroLog in macroLogs)
+            {
+                macroLog.calories       = macroLog.food.calories       * macroLog.weight / 100;
+                macroLog.carbonhydrates = macroLog.food.carbonhydrates * macroLog.weight / 100;
+                macroLog.protein        = macroLog.food.protein        * macroLog.weight / 100;
+                macroLog.fat            = macroLog.food.fat            * macroLog.weight / 100;
                 MacroLogs.Add(macroLog);
+            }
         }
         catch (Exception ex)
         {
