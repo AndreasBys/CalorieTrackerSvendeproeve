@@ -22,7 +22,7 @@ public partial class OpretFoedevareSide : ContentPage
             await createMacroLogCommand.ExecuteAsync(null);
         }
         // Skal sende den oprettede macroLog til home page
-        await Shell.Current.GoToAsync("../..", true);
+        await Shell.Current.GoToAsync("///" + nameof(HjemmeskaermSide), true);
     }
 
     private async void annullerFoedevareOprettelse_knap(object sender, EventArgs e)

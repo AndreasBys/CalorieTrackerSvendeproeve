@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:checkBox="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             x:Class="MealMate.View.AdminSelectedFood"
+             Title="AdminSelectedFood">
+    <Grid>
+        <Grid RowDefinitions="Auto,*">
+            <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20,20,20,20" Grid.Row="1" >
+
+                <!--Formular box-->
+                <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
+                    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *">
+                        <Label Grid.Row="0" 
+                               FontSize="18" 
+                               TextColor="White" 
+                               Text="Fødevare navn:" 
+                               />
+
+                        <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15"/>
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*" >
+
+                                <Entry Grid.Column="1"
+                                       BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                       TextColor="White" 
+                                       FontSize="18" 
+                                       Margin="10,4,0,0"
+                                       HeightRequest="36"/>
+                                
+                            </Grid>
+
+                        </Border>
+                        
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,20,0,0">
+
+                        <Label Grid.Row="0" 
+                               FontSize="18" 
+                               TextColor="{StaticResource CustomHvid}" 
+                               Text="Stregkode:" />
+
+                        <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*">
+
+                                <Entry 
+                                    Grid.Column="1" 
+                                    BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                    FontSize="18"
+                                    Margin="10,4,0,0"
+                                    TextColor="{StaticResource CustomHvid}" 
+                                    HeightRequest="36"/>
+                            </Grid>
+
+                        </Border>
+
+                        <Grid Grid.Column="1" Padding="20,0,0,0" Grid.Row="1" >
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" Padding="5" HeightRequest="36" WidthRequest="40">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10"/>
+                                </Border.StrokeShape>
+                                <ImageButton Source="barkode_ikon.png" 
+                                             HorizontalOptions="Fill" 
+                                             VerticalOptions="Fill" 
+                                             HeightRequest="25"  
+                                             Padding="5" />
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+
+
+
+                    <Grid Grid.Row="2" ColumnDefinitions="*,auto">
+
+                        <Label TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="0,40,0,0" HorizontalOptions="Fill" >Næringsindhold per 100g</Label>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3" ColumnDefinitions="*, *" Padding="0,20,0,0">
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
+
+                            <Label Grid.Row="0" 
+                                   FontSize="18" 
+                                   TextColor="White" 
+                                   Text="Kalorier:"
+                                   />
+
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"/>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*">
+
+                                    <Entry 
+                                    Grid.Column="1" 
+                                    BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                    FontSize="18"
+                                    Margin="10,4,0,0"
+                                    TextColor="{StaticResource CustomHvid}" 
+                                    HeightRequest="36"/>
+                                </Grid>
+
+                            </Border>
+
+
+
+                        </Grid>
+
+                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
+
+                            <Label Grid.Row="0" FontSize="18" TextColor="White">Protein:</Label>
+
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*">
+
+                                    <Entry 
+                                        Grid.Column="1" 
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                        FontSize="18"
+                                        Margin="10,4,0,0"
+                                        TextColor="{StaticResource CustomHvid}" 
+                                        HeightRequest="36"/>
+                                </Grid>
+
+                            </Border>
+
+
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4" ColumnDefinitions="*, *" Padding="0,20,0,0">
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
+
+                            <Label Grid.Row="0" FontSize="18" TextColor="White">Kulhydrater:</Label>
+
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*">
+
+                                    <Entry 
+                                        Grid.Column="1" 
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                        FontSize="18"
+                                        Margin="10,4,0,0"
+                                        TextColor="{StaticResource CustomHvid}" 
+                                        HeightRequest="36"/>
+                                </Grid>
+
+                            </Border>
+
+
+
+                        </Grid>
+
+                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
+
+                            <Label Grid.Row="0" FontSize="18" TextColor="White">Fedt:</Label>
+
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*">
+
+                                    <Entry 
+                                        Grid.Column="1" 
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                        FontSize="18"
+                                        Margin="10,4,0,0"
+                                        TextColor="{StaticResource CustomHvid}" 
+                                        HeightRequest="36"/>
+                                </Grid>
+
+                            </Border>
+
+
+
+                        </Grid>
+
+                    </Grid>
+
+
+                    <Grid Grid.Row="5" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,20,0,0">
+                        <CheckBox Grid.Column="0" IsVisible="True" Color="White" ScaleX="1.5" ScaleY="1.5"></CheckBox>
+                        <Label Grid.Column="1"
+                            Grid.Row="0" 
+                               FontSize="20" 
+                               TextColor="White"
+                               Text="Godkendt?"
+                               />
+                    </Grid>
+
+
+
+
+
+
+                </Grid>
+
+
+
+            </Grid>
+
+
+
+        </Grid>
+
+        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+            <Grid ColumnDefinitions="*,*,*,*" Padding="20">
+                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
+                    <Border  Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Button Grid.Column="0" 
+                                Text="Annuller" 
+                                FontSize="14" 
+                                Padding="10,5,10,5" 
+                                WidthRequest="80"
+                                Clicked="Anuller"
+                                />
+                    </Border>
+
+
+                </Grid>
+                <Grid ColumnDefinitions="Auto" HorizontalOptions="End" Grid.Column="2">
+                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Button Text="Gem" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

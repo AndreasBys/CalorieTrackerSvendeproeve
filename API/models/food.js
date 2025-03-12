@@ -10,7 +10,7 @@ const foodSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    godkendt: {
+    approved: {
         type: Boolean,
         required: false,
         default: false

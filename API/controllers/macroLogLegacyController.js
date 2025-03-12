@@ -74,7 +74,7 @@ export const saveAllMacroLogs = async () => {
             // sletter de gamle macro logs for brugeren
             await MacroLog.deleteMany({
                 user: user._id,
-                date: { $gte: today, $lt: tomorrow }
+                date: { $gte: yesterday, $lt: today }
             });
         }
 

@@ -46,7 +46,7 @@ app.use('/api/macroLog', macroLogRoutes);       // macroLog-related routes
 app.use('/api/users', userRoutes);              // user-related routes
 
 // Kører hver dag kl. 23:59 UTC+1
-cron.schedule("59 22 * * *", async () => {
+cron.schedule("59 23 * * *", async () => {
     console.log("Running daily macro log processing...");
     await saveAllMacroLogs();
 });

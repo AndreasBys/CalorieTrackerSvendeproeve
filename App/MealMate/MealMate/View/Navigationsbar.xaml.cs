@@ -9,7 +9,7 @@ public partial class Navigationsbar : ContentView
 
     private async void hjemmesideSkearm_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+        await Shell.Current.GoToAsync("///" + nameof(HjemmeskaermSide), true);
     }
 
     private async void tilfoejMad_knap(object sender, EventArgs e)
