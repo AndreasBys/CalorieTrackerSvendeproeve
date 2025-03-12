@@ -6,7 +6,7 @@ namespace MealMate.Services;
 public class LoginService : ILoginService
 {
     private readonly HttpClient _httpClient;
-    private string _authToken;
+    private const string _authToken = "auth_token";
 
     public LoginService(HttpClient httpClient)
     {
@@ -15,13 +15,13 @@ public class LoginService : ILoginService
 
     public async Task<User> Login(string email, string password)
     {
-        var loginRequest = new { email = email, password = password };
+        var loginRequest = new { Email = email, Password = password };
         var response = await _httpClient.PostAsJsonAsync("/api/auth/login", loginRequest);
 
         if (response.IsSuccessStatusCode)
         {
             var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-            _authToken = loginResponse.Token;
+            await SecureStorage.SetAsync(_authToken, loginResponse.Token);
             return loginResponse.User;
         }
         else
