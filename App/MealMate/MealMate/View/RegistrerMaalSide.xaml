@@ -4,6 +4,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.RegistrerMaalSide"
              xmlns:control="clr-namespace:Syncfusion;assembly=Syncfusion.Licensing"
+             
              Title="RegistrerMaalSide">
 
 
@@ -33,7 +34,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                            <Entry Text="{Binding KalorieInput, Mode=TwoWay}" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Keyboard="Numeric" ></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10"></Label>
                     </Grid>
@@ -52,7 +53,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" Keyboard="Numeric" Placeholder="15" Text="{Binding ProteinProcent, Mode=OneWay}"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
                     </Grid>
@@ -72,7 +73,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Keyboard="Numeric" Placeholder="50" Text="{Binding KulhydraterProcent, Mode=OneWay}"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
                     </Grid>
@@ -91,7 +92,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" Keyboard="Numeric" Placeholder="35" Text="{Binding FedtProcent, Mode=OneWay}"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
                     </Grid>
@@ -111,7 +112,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Placeholder="10"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
                     </Grid>
@@ -151,7 +152,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             TrackCornerRadius="20" 
                             ProgressHeight="50" 
                             ProgressCornerRadius="20" 
-                            Progress="20" 
+                            Progress="{Binding FedtProgressBar, Mode=TwoWay}" 
                             TrackHeight="50" 
                             Grid.Column="1" 
                             TrackFill="{StaticResource CustomMoerkeGraa}"
@@ -162,7 +163,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                     <Grid Grid.Column="2">
                         <Grid Padding="10">
-                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End">g</Label>
+                            <Label TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalTextAlignment="End" Text="{Binding ProteinText, Mode=TwoWay}" ></Label>
                         </Grid>
 
                     </Grid>
@@ -243,7 +244,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
             <!--Button box-->
             <Grid Grid.Row="6">
-                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" ></Button>
+                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemMaal_knap"></Button>
             </Grid>
         </Grid>
 

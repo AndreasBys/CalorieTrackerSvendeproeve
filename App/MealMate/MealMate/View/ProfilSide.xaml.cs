@@ -6,4 +6,19 @@ public partial class ProfilSide : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void logud_knap(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(StartSkaermSide), true);
+    }
+
+    private async void saetMaal_knap(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(RegistrerMaalSide), true);
+    }
+
+    private async void saetProfildata_knap(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), true);
+    }
 }

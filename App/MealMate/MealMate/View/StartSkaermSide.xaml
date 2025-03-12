@@ -33,14 +33,14 @@
                 <Label VerticalOptions="Center" TextColor="White" FontSize="28">Remember me</Label>
             </HorizontalStackLayout>
             <HorizontalStackLayout Margin="80,20,80,0" HorizontalOptions="Center" >
-                <Button Text="Log ind" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28"></Button>
+                <Button Text="Log ind" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28" Pressed="Logind_knap"></Button>
             </HorizontalStackLayout>
         </StackLayout>
         <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
             <Label TextColor="#808080" FontSize="22" >Har du ikke en konto endnu? </Label>
             <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
             <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}">
+                <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="registrerBruger_knap">
                     
                 </TapGestureRecognizer>
             </Label.GestureRecognizers>

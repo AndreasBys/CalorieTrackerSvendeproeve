@@ -1,19 +1,14 @@
 // imports mongoose to use to create schema
 import mongoose from 'mongoose'
 
-const foodSchema = new mongoose.Schema({
-    barcode: {
-        type: String,
-        required: false
+const macroLogLegacyScheme = new mongoose.Schema({
+    date: {
+        type: Date,
+        required: true,
     },
-    name: {
-        type: String,
-        required: true
-    },
-    approved: {
-        type: Boolean,
-        required: false,
-        default: false
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
     calories: {
         type: Number,
@@ -30,14 +25,9 @@ const foodSchema = new mongoose.Schema({
     fat: {
         type: Number,
         required: false
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: false
     }
 })
 
 // exports scheme as model to mongoose database and controllers
-const Food = mongoose.model('Food', foodSchema)
-export default Food;
+const MacroLogLegacy = mongoose.model('MacroLogLegacy', macroLogLegacyScheme)
+export default MacroLogLegacy;

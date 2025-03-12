@@ -1,5 +1,4 @@
-﻿using MealMate.Models;
-using MealMate.Services.Interfaces;
+﻿using MealMate.Services.Interfaces;
 using System.Net.Http.Json;
 
 namespace MealMate.Services;
