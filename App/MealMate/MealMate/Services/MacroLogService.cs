@@ -17,7 +17,7 @@ public class MacroLogService : IMacroLogService
         _httpClient = httpClient;
     }
 
-    public async Task<MacroLog> CreateMacroLog(NewMacroLog newMacroLog)
+    public async Task<MacroLog> CreateMacroLog(MacroLogRequest newMacroLog)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);

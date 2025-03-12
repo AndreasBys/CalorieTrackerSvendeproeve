@@ -15,13 +15,12 @@ public partial class AddFoodViewModel : BaseViewModel
     public ICommand CreateMacroLog { get; }
     FoodService FoodService;
     MacroLogService MacroLogService;
-    public AddFoodViewModel(FoodService FoodService, MacroLogService macroLogService)
+    public AddFoodViewModel(FoodService FoodService, MacroLogService MacroLogService)
     {
         this.FoodService = FoodService;
-        this.MacroLogService = macroLogService;
+        this.MacroLogService = MacroLogService;
         CreateFood = new AsyncRelayCommand(CreateFoodAsync);
         CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
-        MacroLogService = macroLogService;
     }
 
     async Task CreateFoodAsync()
@@ -33,13 +32,13 @@ public partial class AddFoodViewModel : BaseViewModel
             IsBusy = true;
 
             FoodRequest newFood = new(
-                foodDetails.name, 
-                foodDetails.barcode, 
-                foodDetails.calories, 
-                foodDetails.carbonhydrates, 
-                foodDetails.protein, 
-                foodDetails.fat, 
-                foodDetails.user);
+                FoodDetails.name,
+                FoodDetails.barcode,
+                FoodDetails.calories,
+                FoodDetails.carbonhydrates,
+                FoodDetails.protein,
+                FoodDetails.fat,
+                FoodDetails.user);
 
             var food = await FoodService.CreateFood(newFood);
 
@@ -67,7 +66,7 @@ public partial class AddFoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            NewMacroLog newMacroLog = new(FoodDetails._id, Convert.ToInt32(MacroWeight));
+            MacroLogRequest newMacroLog = new(FoodDetails._id, Convert.ToInt32(MacroWeight));
             var macroLog = await MacroLogService.CreateMacroLog(newMacroLog);
 
             if (macroLog == null)

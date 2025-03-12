@@ -14,13 +14,13 @@ public class MacroLog
     public DateTime date { get; set; }
 }
 
-public class NewMacroLog
+public class MacroLogRequest
 {
     [Required]
     public string food { get; set; }
     [Required]
     public int weight { get; set; }
-    public NewMacroLog(string food, int weight)
+    public MacroLogRequest(string food, int weight)
     {
         this.food = food;
         this.weight = weight;

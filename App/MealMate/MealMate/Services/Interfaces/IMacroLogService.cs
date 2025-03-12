@@ -2,6 +2,6 @@
 
 public interface IMacroLogService
 {
-    Task<MacroLog> CreateMacroLog(NewMacroLog newMacroLog);
+    Task<MacroLog> CreateMacroLog(MacroLogRequest newMacroLog);
     Task<List<MacroLog>> GetTodaysMacroLogs();
 }
