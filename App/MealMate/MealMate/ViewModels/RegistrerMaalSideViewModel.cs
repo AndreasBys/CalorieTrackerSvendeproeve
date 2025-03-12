@@ -10,11 +10,7 @@ namespace MealMate.ViewModels
 {
     public partial class RegistrerMaalSideViewModel : BaseViewModel
     {
-        [RelayCommand]
-        private async Task gemMaal_knap()
-        {
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
-        }
+        
 
 
         [ObservableProperty]
@@ -33,23 +29,63 @@ namespace MealMate.ViewModels
         private string proteinText = "g";
 
         [ObservableProperty]
+        private string kulhydraterText = "g";
+
+        [ObservableProperty]
+        private string fedtText = "g";
+
+        [ObservableProperty]
+        private string proteinProgressBar;
+
+        [ObservableProperty]
         private string fedtProgressBar;
+
+        [ObservableProperty]
+        private string kulhydraterProgressBar;
+
+        [RelayCommand]
+        async Task GemMaalKnap()
+        {
+            
+
+            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
+        }
+
 
         partial void OnKalorieInputChanged(string kalorieValue)
         {
             Console.WriteLine($"InputTextÆndret  { kalorieValue}");
             try
             {
+                if (string.IsNullOrWhiteSpace(kalorieValue))
+                {
+                    return;
+                }
 
-                int fedtprocentBar = Convert.ToInt32(KalorieInput) / Convert.ToInt32(proteinProcent);
+                double kalorieValueDouble = Convert.ToDouble(kalorieValue);
 
-                Console.WriteLine(fedtprocentBar);
+                double fedtIGram = Convert.ToDouble(fedtProcent) / 100;
+                double proteinIGram = Convert.ToDouble(proteinProcent) / 100;
+                double kulhydraterIGram = Convert.ToDouble(kulhydraterProcent) / 100;
 
-                fedtprocentBar = fedtprocentBar / 100;
+                proteinIGram = kalorieValueDouble * proteinIGram;
+                kulhydraterIGram = kalorieValueDouble * kulhydraterIGram;
+                fedtIGram = kalorieValueDouble * fedtIGram;
 
-                fedtProgressBar = fedtprocentBar.ToString();
+                fedtIGram = Convert.ToInt32(fedtIGram);
+                proteinIGram = Convert.ToInt32(proteinIGram);
+                kulhydraterIGram = Convert.ToInt32(kulhydraterIGram);
 
-                
+                FedtText = fedtIGram + "g";
+                ProteinText = proteinIGram + "g";
+                KulhydraterText = kulhydraterIGram + "g";
+
+                KulhydraterProgressBar = KulhydraterProcent;
+                ProteinProgressBar = proteinProcent;
+
+                FedtProgressBar = fedtProcent;
+
+
 
 
 
@@ -60,8 +96,56 @@ namespace MealMate.ViewModels
                 throw;
             }
 
-            //await Application.Current.MainPage.DisplayAlert("Text changed", "", "OK");
+
         }
+
+        partial void OnProteinProcentChanged(string ProteinValue)
+        {
+            if (string.IsNullOrWhiteSpace(ProteinValue))
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(ProteinValue) > 100 || Convert.ToInt32(ProteinValue) < 0)
+            {
+                proteinProcent = "100";
+            }
+
+            OnKalorieInputChanged(kalorieInput);
+
+
+        }
+
+        partial void OnFedtProcentChanged(string FedtValue)
+        {
+            if (string.IsNullOrWhiteSpace(FedtValue))
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(FedtValue) > 100 || Convert.ToInt32(FedtValue) < 0)
+            {
+                fedtProcent = "100";
+            }
+
+            OnKalorieInputChanged(kalorieInput);
+        }
+
+        partial void OnKulhydraterProcentChanged(string KulhydraterValue)
+        {
+            if (string.IsNullOrWhiteSpace(KulhydraterValue))
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(KulhydraterValue) > 100 || Convert.ToInt32(KulhydraterValue) < 0)
+            {
+                kulhydraterProcent = "100";
+            }
+
+            OnKalorieInputChanged(kalorieInput);
+        }
+
 
 
     }

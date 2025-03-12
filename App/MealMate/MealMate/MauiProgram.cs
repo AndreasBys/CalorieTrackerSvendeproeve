@@ -50,6 +50,11 @@ namespace MealMate
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
             });
 
+            builder.Services.AddHttpClient<RetterService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/dish/");
+            });
+
             builder.Services.AddHttpClient<MacroLogService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/macroLog/");
