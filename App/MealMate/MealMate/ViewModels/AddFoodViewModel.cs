@@ -61,7 +61,9 @@ public partial class AddFoodViewModel : BaseViewModel
     async Task CreateMacroLogAsync()
     {
         if (IsBusy)
+        {
             return;
+        }
         try
         {
             IsBusy = true;
