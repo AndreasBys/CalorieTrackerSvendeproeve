@@ -10,11 +10,11 @@ public partial class TilfoejFoedvareSide : ContentPage
 
     }
 
-    protected override void OnAppearing()
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        base.OnAppearing();
+        base.OnNavigatedTo(args);
 
-        if (_viewModel.IsBusy) return;
+        if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
 
         _viewModel.GetAllFood.Execute(null);
     }
