@@ -9,6 +9,7 @@ public partial class StartSkaermSide : ContentPage
 
     private Entry _emailEntry;
     private Entry _passwordEntry;
+    private CheckBox _rememberMeCheckBox;
 
     public StartSkaermSide(LoginService loginService)
     {
@@ -21,6 +22,15 @@ public partial class StartSkaermSide : ContentPage
         {
             _emailEntry = this.FindByName<Entry>("emailEntry");
             _passwordEntry = this.FindByName<Entry>("passwordEntry");
+            _rememberMeCheckBox = this.FindByName<CheckBox>("rememberMeCheckBox");
+
+            // Load saved login information if "Remember Me" was checked
+            if (Preferences.Get("RememberMe", false))
+            {
+                _emailEntry.Text = Preferences.Get("Email", string.Empty);
+                _passwordEntry.Text = Preferences.Get("Password", string.Empty);
+                _rememberMeCheckBox.IsChecked = true;
+            }
         };
     }
 
@@ -34,7 +44,24 @@ public partial class StartSkaermSide : ContentPage
             var user = await _loginService.Login(email, password);
             if (user != null)
             {
-                await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+                // Save login information if "Remember Me" is checked
+                if (_rememberMeCheckBox.IsChecked)
+                {
+                    Preferences.Set("Email", email);
+                    Preferences.Set("Password", password);
+                    Preferences.Set("RememberMe", true);
+                }
+                else
+                {
+                    Preferences.Remove("Email");
+                    Preferences.Remove("Password");
+                    Preferences.Set("RememberMe", false);
+                }
+
+                if (user.admin == true)
+                    await Shell.Current.GoToAsync(nameof(AdminHomePage), true);
+                else
+                    await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
             }
             else
             {

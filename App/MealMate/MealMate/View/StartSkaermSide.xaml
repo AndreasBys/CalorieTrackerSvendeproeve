@@ -29,7 +29,7 @@
                 </Border>
             </StackLayout>
             <HorizontalStackLayout Margin="80,20,80,0">
-                <CheckBox VerticalOptions="Center" Color="White" ScaleX="1.5" ScaleY="1.5"></CheckBox>
+                <CheckBox x:Name="rememberMeCheckBox" VerticalOptions="Center" Color="White" ScaleX="1.5" ScaleY="1.5" />
                 <Label VerticalOptions="Center" TextColor="White" FontSize="28">Remember me</Label>
             </HorizontalStackLayout>
             <HorizontalStackLayout Margin="80,20,80,0" HorizontalOptions="Center" >
