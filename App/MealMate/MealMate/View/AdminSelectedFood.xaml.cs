@@ -15,6 +15,6 @@ public partial class AdminSelectedFood : ContentPage
 
     void Anuller(object sender, EventArgs e)
     {
-;       App.Current.MainPage = new NavigationPage(new AdminHomePage());
+//;       App.Current.MainPage = new NavigationPage(new AdminHomePage());
     }
 }
