@@ -17,21 +17,31 @@ public partial class StartSkaermSide : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
         _loginService = loginService ?? throw new ArgumentNullException(nameof(loginService));
 
-        // Delay the initialization of the entries to ensure they are properly loaded
-        this.Loaded += (s, e) =>
-        {
-            _emailEntry = this.FindByName<Entry>("emailEntry");
-            _passwordEntry = this.FindByName<Entry>("passwordEntry");
-            _rememberMeCheckBox = this.FindByName<CheckBox>("rememberMeCheckBox");
+        _emailEntry = this.FindByName<Entry>("emailEntry");
+        _passwordEntry = this.FindByName<Entry>("passwordEntry");
+        _rememberMeCheckBox = this.FindByName<CheckBox>("rememberMeCheckBox");
 
-            // Load saved login information if "Remember Me" was checked
-            if (Preferences.Get("RememberMe", false))
-            {
-                _emailEntry.Text = Preferences.Get("Email", string.Empty);
-                _passwordEntry.Text = Preferences.Get("Password", string.Empty);
-                _rememberMeCheckBox.IsChecked = true;
-            }
-        };
+        // Load saved login information if "Remember Me" was checked
+        if (Preferences.Get("RememberMe", false))
+        {
+            _emailEntry.Text = Preferences.Get("Email", string.Empty);
+            _passwordEntry.Text = Preferences.Get("Password", string.Empty);
+            _rememberMeCheckBox.IsChecked = true;
+        }
+
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        // Clear email and password fields if "Remember Me" is not checked
+        if (!Preferences.Get("RememberMe", false))
+        {
+            _emailEntry.Text = string.Empty;
+            _passwordEntry.Text = string.Empty;
+            _rememberMeCheckBox.IsChecked = false;
+        }
     }
 
     private async void Logind_knap(object sender, EventArgs e)

@@ -42,7 +42,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Log ud" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
+                        <Button Text="Log ud" Clicked="Logout_knap" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
                     </Border>
 
 
