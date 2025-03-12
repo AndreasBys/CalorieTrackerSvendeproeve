@@ -34,7 +34,7 @@ public partial class OpretFoedevareSide : ContentPage
         _viewModel.FoodDetails = new();
         _viewModel.MacroWeight = null;
         // Skal sende den oprettede macroLog til home page
-        await Shell.Current.GoToAsync("..", true);
+        await Shell.Current.GoToAsync("../..", true);
     }
 
     private async void annullerFoedevareOprettelse_knap(object sender, EventArgs e)

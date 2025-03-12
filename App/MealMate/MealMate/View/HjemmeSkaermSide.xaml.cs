@@ -14,7 +14,7 @@ public partial class HjemmeskaermSide : ContentPage
     {
         base.OnAppearing();
 
-        if (_viewModel.IsBusy) return;
+        if (_viewModel.IsBusy || _viewModel.MacroLogs.Any()) return;
 
         _viewModel.GetMacroLogs.Execute(null);
     }
