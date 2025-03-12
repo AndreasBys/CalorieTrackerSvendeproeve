@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace MealMate.ViewModels
 {
-    class MineRetterViewModel
+    partial class MineRetterViewModel : BaseViewModel
     {
-        [RelayCommand]
-        async Task MineRetter()
-        {
-
-        }
+        
     }
 }

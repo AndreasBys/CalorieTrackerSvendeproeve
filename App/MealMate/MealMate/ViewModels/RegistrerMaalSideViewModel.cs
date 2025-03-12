@@ -10,11 +10,7 @@ namespace MealMate.ViewModels
 {
     public partial class RegistrerMaalSideViewModel : BaseViewModel
     {
-        [RelayCommand]
-        private async Task gemMaal_knap()
-        {
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
-        }
+        
 
 
         [ObservableProperty]
