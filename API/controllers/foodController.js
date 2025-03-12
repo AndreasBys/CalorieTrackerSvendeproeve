@@ -130,7 +130,7 @@ export const createFood = async (req, res) => {
         const food = await new Food(req.body).save()
 
         // logs and returns the created food
-        res.status(201).json({ msg: 'food saved', food })
+        res.status(201).json({ food })
 
     } catch (error) {
         // returns status 500 if error -> food not created

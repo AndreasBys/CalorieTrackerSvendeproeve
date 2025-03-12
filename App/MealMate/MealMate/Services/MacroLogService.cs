@@ -6,8 +6,9 @@ namespace MealMate.Services;
 
 public class MacroLogService : IMacroLogService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MjU3NDUsImV4cCI6MTc0MTcyOTM0NX0.fBfj6ujeBxTmBECOjgYPLGFogL06A3xTN7EOnSjbUYk";
+    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3ODkwMTEsImV4cCI6MTc0MTc5MjYxMX0.G2iJfe2byi82pBwse-fuHM9Gcq9hmBa3GyjvInFmHxc";
     MacroLog macroLog = new();
+    List<MacroLog> macroLogs = new();
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
     // Constructor to initialize ApiService with base URL
@@ -35,7 +36,17 @@ public class MacroLogService : IMacroLogService
 
     public async Task<List<MacroLog>> GetTodaysMacroLogs()
     {
-        throw new NotImplementedException();
-        //test
+        var request = new HttpRequestMessage(HttpMethod.Get, "");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            MacroLogListResponse responseObj = await response.Content.ReadFromJsonAsync<MacroLogListResponse>();
+            macroLogs = responseObj.macroLogs;
+        }
+
+        return macroLogs;
     }
 }

@@ -5,16 +5,38 @@ namespace MealMate.Models;
 public class Food
 {
     [Key]
-    public string? _id { get; set; }
-    public bool godkendt { get; set; }
+    public string _id { get; set; }
+    public bool approved { get; set; }
     [Required]
     public string name { get; set; }
+    public string? barcode { get; set; }
     public int calories { get; set; }
     public int carbonhydrates { get; set; }
     public int protein { get; set; }
     public int fat { get; set; }
     public string user { get; set; }
+}
+public class FoodRequest
+{
+    public bool approved { get; set; }
+    [Required]
+    public string name { get; set; }
     public string? barcode { get; set; }
+    public int calories { get; set; }
+    public int carbonhydrates { get; set; }
+    public int protein { get; set; }
+    public int fat { get; set; }
+    public string user { get; set; }
+    public FoodRequest(string name,string barcode, int calories, int carbonhydrates, int protein, int fat, string user) 
+    {
+        this.name = name;
+        this.barcode = barcode;
+        this.calories = calories;
+        this.carbonhydrates = carbonhydrates;
+        this.protein = protein;
+        this.fat = fat;
+        this.user = user;
+    }
 }
 public class FoodResponse
 {

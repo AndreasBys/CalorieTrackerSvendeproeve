@@ -37,6 +37,7 @@ namespace MealMate
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
+            builder.Services.AddSingleton<HomePageViewModel>();
 
             // Services
 #if ANDROID

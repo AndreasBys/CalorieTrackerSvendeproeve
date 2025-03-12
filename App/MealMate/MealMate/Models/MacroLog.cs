@@ -31,3 +31,7 @@ public class MacroLogResponse
 {
     public MacroLog macroLog { get; set; }
 }
+public class MacroLogListResponse
+{
+    public List<MacroLog> macroLogs { get; set; }
+}

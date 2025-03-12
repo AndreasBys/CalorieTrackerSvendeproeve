@@ -32,7 +32,16 @@ public partial class AddFoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            var food = await FoodService.CreateFood(foodDetails);
+            FoodRequest newFood = new(
+                foodDetails.name, 
+                foodDetails.barcode, 
+                foodDetails.calories, 
+                foodDetails.carbonhydrates, 
+                foodDetails.protein, 
+                foodDetails.fat, 
+                foodDetails.user);
+
+            var food = await FoodService.CreateFood(newFood);
 
             if (food == null)
                 throw new Exception($"Food couldn't be added");

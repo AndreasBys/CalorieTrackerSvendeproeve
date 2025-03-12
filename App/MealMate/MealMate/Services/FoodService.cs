@@ -5,9 +5,9 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3MjU3NDUsImV4cCI6MTc0MTcyOTM0NX0.fBfj6ujeBxTmBECOjgYPLGFogL06A3xTN7EOnSjbUYk";
+    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3ODkwMTEsImV4cCI6MTc0MTc5MjYxMX0.G2iJfe2byi82pBwse-fuHM9Gcq9hmBa3GyjvInFmHxc";
     List<Food> foodList = new();
-    Food food = new();
+    Food food;
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
     // Constructor to initialize ApiService with base URL
@@ -63,7 +63,7 @@ public class FoodService : IFoodService
         return food;
     }
 
-    public async Task<Food> CreateFood(Food newFood)
+    public async Task<Food> CreateFood(FoodRequest newFood)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
