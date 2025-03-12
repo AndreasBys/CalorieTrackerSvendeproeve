@@ -38,6 +38,7 @@ public partial class FoodViewModel : BaseViewModel
     public ICommand GetAllFood { get; }
     public ICommand SearchFood { get; }
     public ICommand GetFood { get; }
+
     FoodService FoodService;
 
     public FoodViewModel(FoodService FoodService, RetterService retService)

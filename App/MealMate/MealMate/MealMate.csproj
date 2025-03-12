@@ -97,6 +97,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Model\" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="View\StartSkaermSide.xaml.cs">
 	    <DependentUpon>StartSkaermSide.xaml</DependentUpon>
 	  </Compile>

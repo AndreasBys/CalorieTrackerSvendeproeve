@@ -16,7 +16,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                     </Border.StrokeShape>
-                    <Entry HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28" ></Entry>
+                    <Entry x:Name="emailEntry" HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28" ></Entry>
                 </Border>
             </StackLayout>
             <StackLayout Margin="80,20,80,0">
@@ -25,7 +25,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                     </Border.StrokeShape>
-                    <Entry HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" ></Entry>
+                    <Entry x:Name="passwordEntry" HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" ></Entry>
                 </Border>
             </StackLayout>
             <HorizontalStackLayout Margin="80,20,80,0">
