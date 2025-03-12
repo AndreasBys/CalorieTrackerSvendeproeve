@@ -12,6 +12,7 @@ public partial class AdminHomePage : ContentPage
 		InitializeComponent();
 		BindingContext = foodViewModel;
         _foodViewModel = foodViewModel;
+        OnPropertyChanged(nameof(_foodViewModel.Foods));
     }
 
     protected override async void OnAppearing()

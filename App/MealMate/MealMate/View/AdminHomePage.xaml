@@ -12,7 +12,7 @@
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
-        <CollectionView ItemsSource="{Binding Food}"
+        <CollectionView ItemsSource="{Binding Foods}"
                         SelectionMode="None"
                         Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
