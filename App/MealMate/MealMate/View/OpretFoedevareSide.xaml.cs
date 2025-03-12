@@ -31,10 +31,14 @@ public partial class OpretFoedevareSide : ContentPage
         {
             await createMacroLogCommand.ExecuteAsync(null);
         }
+        
         _viewModel.FoodDetails = new();
         _viewModel.MacroWeight = null;
         // Skal sende den oprettede macroLog til home page
-        await Shell.Current.GoToAsync("../..", true);
+        await Shell.Current.GoToAsync("../..", true, new Dictionary<string, object>
+        {
+            { "NewMacroLog", _viewModel.NewMacroLog }
+        });
     }
 
     private async void annullerFoedevareOprettelse_knap(object sender, EventArgs e)

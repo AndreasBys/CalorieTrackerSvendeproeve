@@ -10,7 +10,7 @@ public partial class AddFoodViewModel : BaseViewModel
     Food foodDetails;
     [ObservableProperty]
     string macroWeight;
-    MacroLog macroLog;
+    public MacroLog NewMacroLog;
     public ICommand CreateFood { get; }
     public ICommand CreateMacroLog { get; }
     FoodService FoodService;
@@ -74,7 +74,7 @@ public partial class AddFoodViewModel : BaseViewModel
             if (macroLog == null)
                 throw new Exception($"MacroLog couldn't be added");
 
-            this.macroLog = macroLog;
+            NewMacroLog = macroLog;
         }
         catch (Exception ex)
         {
