@@ -36,5 +36,6 @@ public class MacroLogService : IMacroLogService
     public async Task<List<MacroLog>> GetTodaysMacroLogs()
     {
         throw new NotImplementedException();
+        //test
     }
 }
