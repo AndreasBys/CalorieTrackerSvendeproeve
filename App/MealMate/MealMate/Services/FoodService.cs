@@ -5,7 +5,6 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M3MWI0ZjQxYjk4M2M0ZGZjN2NkMjYiLCJpYXQiOjE3NDE3OTM4NzcsImV4cCI6MTc0MTc5NzQ3N30.Xxqbo0z1iuWSvkISztxAyuUbbhyHz35Iq_BWtm9bWGc";
     List<Food> foodList = new();
     Food food;
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
@@ -18,6 +17,7 @@ public class FoodService : IFoodService
 
     public async Task<List<Food>> GetAllFoods()
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -33,6 +33,7 @@ public class FoodService : IFoodService
     }
     public async Task<List<Food>> SearchFoods(string searchTerm)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -49,6 +50,7 @@ public class FoodService : IFoodService
 
     public async Task<Food> GetFoodByBarcode(string barcode)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, barcode);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -65,6 +67,7 @@ public class FoodService : IFoodService
 
     public async Task<Food> CreateFood(FoodRequest newFood)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         request.Content = JsonContent.Create(newFood);

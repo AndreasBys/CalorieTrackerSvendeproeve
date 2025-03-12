@@ -115,7 +115,7 @@
                                                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding food.name}"></Label>
 
                                                         <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                            <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding food.calories, StringFormat='{0} kcal'}"></Label>
+                                                            <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"></Label>
 
                                                             <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
                                                                 <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
