@@ -14,6 +14,6 @@ public partial class RegistrerSide : ContentPage
 
     private async void logindForside_knap(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync("//StartSkaermSide", true);
+        await Shell.Current.GoToAsync("///" + nameof(StartSkaermSide), true);
     }
 }

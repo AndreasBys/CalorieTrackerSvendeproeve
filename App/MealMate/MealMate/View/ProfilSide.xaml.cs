@@ -7,9 +7,22 @@ public partial class ProfilSide : ContentPage
 		InitializeComponent();
 	}
 
-    private async void logud_knap(object sender, EventArgs e)
+    private async void Logout_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//StartSkaermSide", true);
+        // Check if "Remember Me" is not checked
+        if (!Preferences.Get("RememberMe", false))
+        {
+            // Clear stored user information
+            Preferences.Remove("Email");
+            Preferences.Remove("Password");
+            Preferences.Set("RememberMe", false);
+        }
+
+        // Clear the auth_token from SecureStorage
+        SecureStorage.Remove("auth_token");
+
+        // Navigate back to the login page
+        await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");
     }
 
     private async void saetMaal_knap(object sender, EventArgs e)

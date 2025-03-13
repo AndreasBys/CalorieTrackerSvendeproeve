@@ -215,15 +215,15 @@
 
 
                                             <progressBar:SfLinearProgressBar  
-TrackCornerRadius="20" 
-ProgressHeight="50" 
-ProgressCornerRadius="20" 
-Progress="20" 
-TrackHeight="50" 
-Grid.Column="1" 
-TrackFill="{StaticResource CustomMoerkeGraa}"
-ProgressFill="{StaticResource CustomGul}"
-BackgroundColor="{StaticResource CustomGraa}" >
+                                                TrackCornerRadius="20" 
+                                                ProgressHeight="50" 
+                                                ProgressCornerRadius="20" 
+                                                Progress="20" 
+                                                TrackHeight="50" 
+                                                Grid.Column="1" 
+                                                TrackFill="{StaticResource CustomMoerkeGraa}"
+                                                ProgressFill="{StaticResource CustomGul}"
+                                                BackgroundColor="{StaticResource CustomGraa}" >
                                             </progressBar:SfLinearProgressBar>
                                         </Grid>
 
