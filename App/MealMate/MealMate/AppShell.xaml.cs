@@ -16,7 +16,7 @@ namespace MealMate
             Routing.RegisterRoute(nameof(RegistrerMaalSide), typeof(RegistrerMaalSide));
             Routing.RegisterRoute(nameof(RegistrerProfildataSide), typeof(RegistrerProfildataSide));
             Routing.RegisterRoute(nameof(RegistrerSide), typeof(RegistrerSide));
-            Routing.RegisterRoute(nameof(StartSkaermSide), typeof(StartSkaermSide));
+            //Routing.RegisterRoute(nameof(StartSkaermSide), typeof(StartSkaermSide));
             Routing.RegisterRoute(nameof(TilfoejFoedvareSide), typeof(TilfoejFoedvareSide));
             Routing.RegisterRoute(nameof(OpretRetSide), typeof(OpretRetSide));
             Routing.RegisterRoute(nameof(AdminHomePage), typeof(AdminHomePage));

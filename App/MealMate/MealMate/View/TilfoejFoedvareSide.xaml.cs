@@ -21,7 +21,11 @@ public partial class TilfoejFoedvareSide : ContentPage
 
     private async void opretFoedevare_knap(object sender, EventArgs e)
     {
-		await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+        Food Food = new();
+        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true, new Dictionary<string, object>
+        {
+            { "SelectedFood", Food }
+        });
     }
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)

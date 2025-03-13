@@ -53,18 +53,18 @@
                 </Grid>
 
                 <Grid Grid.Row="1" ColumnDefinitions="Auto, Auto" Padding="20">
-                    <Border Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                    <Border Grid.Column="0" StrokeThickness="2" Stroke="{Binding EnkeltVarerValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Enkeltvarer" FontSize="18" TextColor="{StaticResource CustomHvid}" BackgroundColor="{StaticResource CustomMoerkeGraa}"></Button>
+                        <Button Text="Enkeltvarer" FontSize="18" TextColor="{Binding TekstEnkeltvarerValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding EnkeltVarerCommand}"></Button>
                     </Border>
                     <Grid Padding="30,0,0,0" Grid.Column="1">
-                        <Border Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                        <Border Grid.Column="1" StrokeThickness="2" Stroke="{ Binding MineRetterValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Button Text="Mine retter" FontSize="18" TextColor="{StaticResource CustomTekstHvidereGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}"></Button>
+                            <Button Text="Mine retter" FontSize="18" TextColor="{Binding TekstMineRetterValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding MineRetterCommand}" HorizontalOptions="Fill" VerticalOptions="Fill"  />
                         </Border>
                     </Grid>
                 </Grid>
@@ -84,12 +84,8 @@
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button x:Name="UdviderKnap">
 
-
-
-                                </Button>
-                                <ScrollView>
+                                <ScrollView IsVisible="{Binding EnkeltVarerSynlighed}">
                                     <CollectionView ItemsSource="{Binding Foods}"
                                         SelectionMode="None">
                                         <CollectionView.ItemTemplate>
@@ -103,6 +99,42 @@
                                                             <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"></Label>
                                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
                                                                 <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"></Label>
+
+                                                                <Grid  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Fill">
+
+                                                                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" VerticalOptions="Fill">
+                                                                        <Border.StrokeShape>
+                                                                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                                                        </Border.StrokeShape>
+                                                                        <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
+                                                                        </Grid>
+                                                                    </Border>
+
+
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </ScrollView>
+
+                                <ScrollView IsVisible="{Binding MineRetterSynlighed}">
+                                    <CollectionView ItemsSource="{Binding Retter}" SelectionMode="None">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate x:DataType="model:Retter">
+                                                <Grid Padding="5" ColumnDefinitions="*">
+                                                    <Border Stroke="#00000000" HeightRequest="80">
+                                                        <Border.Shadow>
+                                                            <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5" />
+                                                        </Border.Shadow>
+                                                        <Grid ColumnDefinitions="*" Padding="10,0,0,0">
+                                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"></Label>
+                                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomGrøn}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="Binding calories, StringFormat='{0} kcal'"></Label>
 
                                                                 <Grid  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Fill">
 
@@ -286,7 +318,7 @@ BackgroundColor="{StaticResource CustomGraa}" >
             </Grid>
 
 
-            
+
         </Grid>
         <Navigationsbar:Navigationsbar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>

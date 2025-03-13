@@ -39,7 +39,7 @@ namespace MealMate
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
-            
+            builder.Services.AddSingleton<HomePageViewModel>();
 
             // Services
 #if ANDROID
@@ -56,6 +56,11 @@ namespace MealMate
             builder.Services.AddHttpClient<FoodService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
+            });
+
+            builder.Services.AddHttpClient<RetterService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/dish/");
             });
 
             builder.Services.AddHttpClient<MacroLogService>(client =>

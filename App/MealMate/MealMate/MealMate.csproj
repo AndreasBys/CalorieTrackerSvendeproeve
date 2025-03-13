@@ -63,6 +63,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Model\**" />
+	  <AndroidResource Remove="ViewModel\**" />
+	  <Compile Remove="Model\**" />
+	  <Compile Remove="ViewModel\**" />
+	  <EmbeddedResource Remove="Model\**" />
+	  <EmbeddedResource Remove="ViewModel\**" />
+	  <MauiCss Remove="Model\**" />
+	  <MauiCss Remove="ViewModel\**" />
+	  <MauiXaml Remove="Model\**" />
+	  <MauiXaml Remove="ViewModel\**" />
+	  <None Remove="Model\**" />
+	  <None Remove="ViewModel\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
@@ -93,6 +108,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\Sizes.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\SizesPhone.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\SizesTablet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AdminHomePage.xaml">

@@ -7,7 +7,7 @@ public class FoodService : IFoodService
 {
     string token;
     List<Food> foodList = new();
-    Food food = new();
+    Food food;
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
     // Constructor to initialize ApiService with base URL
@@ -64,7 +64,7 @@ public class FoodService : IFoodService
         return food;
     }
 
-    public async Task<Food> CreateFood(Food newFood)
+    public async Task<Food> CreateFood(FoodRequest newFood)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
