@@ -6,10 +6,12 @@ namespace MealMate.View;
 public partial class StartSkaermSide : ContentPage
 {
     private readonly LoginService _loginService;
+    private bool _isPasswordHidden = true;
 
     private Entry _emailEntry;
     private Entry _passwordEntry;
     private CheckBox _rememberMeCheckBox;
+    private ImageButton _togglePasswordButton;
 
     public StartSkaermSide(LoginService loginService)
     {
@@ -28,7 +30,6 @@ public partial class StartSkaermSide : ContentPage
             _passwordEntry.Text = Preferences.Get("Password", string.Empty);
             _rememberMeCheckBox.IsChecked = true;
         }
-
     }
 
     protected override void OnAppearing()
@@ -93,5 +94,13 @@ public partial class StartSkaermSide : ContentPage
     private async void registrerBruger_knap(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(RegistrerSide), true);
+    }
+
+    private void TogglePasswordVisibility(object sender, EventArgs e)
+    {
+        _isPasswordHidden = !_isPasswordHidden;
+        _passwordEntry.IsPassword = _isPasswordHidden;
+        if (togglePasswordButton != null)
+            togglePasswordButton.Source = _isPasswordHidden ? "eye_show.png" : "eye_off.png";
     }
 }
