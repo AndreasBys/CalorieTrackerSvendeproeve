@@ -42,6 +42,7 @@ namespace MealMate
             builder.Services.AddSingleton<AddFoodViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
 
+            // DI for Models:
             builder.Services.AddTransient<User>();
 
             // Services
