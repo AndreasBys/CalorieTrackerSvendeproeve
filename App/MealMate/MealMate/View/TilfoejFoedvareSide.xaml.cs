@@ -12,18 +12,22 @@ public partial class TilfoejFoedvareSide : ContentPage
 
     }
 
-    protected override void OnAppearing()
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        base.OnAppearing();
+        base.OnNavigatedTo(args);
 
-        if (_viewModel.IsBusy) return;
+        if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
 
         _viewModel.GetAllFood.Execute(null);
     }
 
     private async void opretFoedevare_knap(object sender, EventArgs e)
     {
-		await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+        Food Food = new();
+        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true, new Dictionary<string, object>
+        {
+            { "SelectedFood", Food }
+        });
     }
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)

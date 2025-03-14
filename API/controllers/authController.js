@@ -44,7 +44,7 @@ export const login = async (req, res) => {
         });
 
         // returnerer token
-        res.status(201).json({ token });
+        res.status(201).json({ token, user });
     } catch (error) {
         // håndterer fejl
         res.status(500).json({ code: 500, msg: 'Something went wrong' });

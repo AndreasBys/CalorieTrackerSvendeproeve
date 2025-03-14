@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.AdminHomePage"
+             xmlns:Navigationsbar="clr-namespace:MealMate.View"
+             xmlns:model="clr-namespace:MealMate.Models"
+             xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
+             x:DataType="viewmodel:FoodViewModel"
+             Title="AdminHomePage">
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView ItemsSource="{Binding Food}"
+                        SelectionMode="None"
+                        Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Food">
+                    <Grid Padding="10">
+                        <Border HeightRequest="125" Style="{DynamicResource CardView}">
+                            <Grid Padding="0" ColumnDefinitions="125, *">
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Padding="10"
+                                    VerticalOptions="Center">
+                                    <Label Style="{DynamicResource Headline}" Text="{Binding name}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
+            <Grid ColumnDefinitions="*,*,*,*" Padding="20">
+                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
+                    <Border  Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Button Text="Log ud" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
+                    </Border>
+
+
+                </Grid>
+                <Grid ColumnDefinitions="Auto" HorizontalOptions="End" Grid.Column="2">
+                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Button Text="Opret ny" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
+    

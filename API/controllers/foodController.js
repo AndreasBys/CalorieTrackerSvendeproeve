@@ -56,6 +56,30 @@ export const search = async (req, res) => {
 
         // creates regex for search
         const searchRegex = new RegExp(searchTerm, "i")
+        
+        // specifies criterias to search for
+        await Food.find({
+            $or : [
+                {barcode: searchRegex},
+                {name: searchRegex},
+                {calories: searchRegex},
+                {approved: searchRegex},
+                {carbonhydrates: searchRegex},
+                {protein: searchRegex},
+                {fat: searchRegex}
+            ]
+        })
+        .then((foods) => {
+            if(foods.lenght){
+                // logs and returns the foods that match
+                console.log(foods)
+                res.status(200).json({foods: foods})
+            }
+            else{
+                // returns nothing if no foods match
+                res.status(200).json({foods: [], msg: "no foods found"})
+            }
+        })
 
         let filter = {
             $or: [
@@ -106,7 +130,7 @@ export const createFood = async (req, res) => {
         const food = await new Food(req.body).save()
 
         // logs and returns the created food
-        res.status(201).json({ msg: 'food saved', food })
+        res.status(201).json({ food })
 
     } catch (error) {
         // returns status 500 if error -> food not created

@@ -5,9 +5,8 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2NiMjFiNzg4ZjU1ZmZlMTliMjM5YTYiLCJpYXQiOjE3NDE5OTM0MTEsImV4cCI6MTc0MTk5NzAxMX0.9O1_l7BFH0u93TfVQAdCHqLrVqVpVXp61O5tZE1_7tg";
     List<Food> foodList = new();
-    Food food = new();
+    Food food;
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
 
     // Constructor to initialize ApiService with base URL
@@ -18,6 +17,7 @@ public class FoodService : IFoodService
 
     public async Task<List<Food>> GetAllFoods()
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -33,6 +33,7 @@ public class FoodService : IFoodService
     }
     public async Task<List<Food>> SearchFoods(string searchTerm)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -49,6 +50,7 @@ public class FoodService : IFoodService
 
     public async Task<Food> GetFoodByBarcode(string barcode)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, barcode);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -63,8 +65,9 @@ public class FoodService : IFoodService
         return food;
     }
 
-    public async Task<Food> CreateFood(Food newFood)
+    public async Task<Food> CreateFood(FoodRequest newFood)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         request.Content = JsonContent.Create(newFood);
