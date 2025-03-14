@@ -14,14 +14,14 @@ export const register = async (req, res) => {
             expiresIn: '1 hour'
         });
 
-        // returnerer token
-        res.status(201).json({ token });
+        // returnerer token og user
+        res.status(201).json({ token, user });
     } catch (error) {
         // håndterer fejl
         if (error.code == 11000) {
-            return res.status(500).json({ code: 500, msg: 'Username or email is already used' });
+            return res.status(11000).json({ code: 11000, msg: 'Username or email is already used' });
         }
-        res.status(500).json({ code: 500, msg: 'Unable to create user' });
+        res.status(500).json({ code: 500, msg: 'Unable to create user', error });
     }
 };
 
@@ -43,10 +43,10 @@ export const login = async (req, res) => {
             expiresIn: '1 hour'
         });
 
-        // returnerer token
+        // returnerer token og user
         res.status(201).json({ token, user });
     } catch (error) {
         // håndterer fejl
-        res.status(500).json({ code: 500, msg: 'Something went wrong' });
+        res.status(500).json({ code: 500, msg: 'Something went wrong', error});
     }
 };
