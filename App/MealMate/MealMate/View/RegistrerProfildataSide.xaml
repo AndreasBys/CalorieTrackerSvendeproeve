@@ -33,7 +33,7 @@
                         <RoundRectangle CornerRadius="10,10,10,10"/>
                     </Border.StrokeShape>
                     <Grid>
-                        <DatePicker HeightRequest="60" BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <DatePicker x:Name="birthdateRegistrerEntry" HeightRequest="60" BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
                         <Image Source="kalender_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
                     </Grid>
                 </Border>
@@ -47,7 +47,7 @@
                         <RoundRectangle CornerRadius="10,10,10,10"/>
                     </Border.StrokeShape>
                     <Grid>
-                        <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Entry x:Name="heightRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
                         <Label HorizontalOptions="End" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalOptions="Center" Padding="10" Text="cm"/>
                     </Grid>
                 </Border>
@@ -61,7 +61,7 @@
                         <RoundRectangle CornerRadius="10,10,10,10"/>
                     </Border.StrokeShape>
                     <Grid>
-                        <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Entry x:Name="weightRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
                         <Label HorizontalOptions="End" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalOptions="Center" Padding="10" Text="kg"/>
                     </Grid>
                 </Border>
@@ -107,7 +107,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10"/>
                     </Border.StrokeShape>
-                    <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill">
+                    <Picker x:Name="genderRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill">
                         <Picker.Items>
                             <x:String>Mand</x:String>
                             <x:String>Kvinde</x:String>
