@@ -71,7 +71,11 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Syncfusion.Maui.Charts" Version="28.2.9" />
 		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="28.2.7" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+
+		
 	</ItemGroup>
+
 
 	<ItemGroup>
 	  <None Update="Resources\AppIcon\app_icon.png">
@@ -94,6 +98,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\SizesTablet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BarcodeLaeserSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\HjemmeskaermSide.xaml">

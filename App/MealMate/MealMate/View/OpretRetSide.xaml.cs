@@ -2,9 +2,10 @@ namespace MealMate.View;
 
 public partial class OpretRetSide : ContentPage
 {
-	public OpretRetSide()
+	public OpretRetSide(OpretRetViewModel viewModel)
 	{
 		InitializeComponent();
+        BindingContext = viewModel;
 	}
 
     private async void annullerRetOprettelse_knap(object sender, EventArgs e)

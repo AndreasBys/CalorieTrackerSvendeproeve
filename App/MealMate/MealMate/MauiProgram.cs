@@ -1,6 +1,7 @@
 using MealMate.Services;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
+using ZXing.Net.Maui.Controls;
 
 namespace MealMate
 {
@@ -11,12 +12,14 @@ namespace MealMate
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                //.UseMauiCameraView()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseBarcodeReader();
 
 #if DEBUG
     		builder.Logging.AddDebug();
@@ -31,12 +34,14 @@ namespace MealMate
             builder.Services.AddSingleton<StartSkaermSide>();
             builder.Services.AddTransient<TilfoejFoedvareSide>();
             builder.Services.AddTransient<OpretRetSide>();
+            builder.Services.AddTransient<BarcodeLaeserSide>();
 
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
+            builder.Services.AddSingleton<OpretRetViewModel>();
 
             // Services
 #if ANDROID

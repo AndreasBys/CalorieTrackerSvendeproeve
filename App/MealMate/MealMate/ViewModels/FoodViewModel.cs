@@ -6,7 +6,7 @@ namespace MealMate.ViewModels;
 
 public partial class FoodViewModel : BaseViewModel
 {
-    
+
 
     [ObservableProperty]
     bool enkeltVarerSynlighed = true;
@@ -40,6 +40,7 @@ public partial class FoodViewModel : BaseViewModel
     public ICommand GetFood { get; }
     FoodService FoodService;
 
+
     public FoodViewModel(FoodService FoodService, RetterService retService)
     {
         this.FoodService = FoodService;
@@ -49,6 +50,21 @@ public partial class FoodViewModel : BaseViewModel
 
         this.retService = retService;
         getAllRetter();
+
+
+    }
+
+    [RelayCommand]
+    async Task TilfoejRetKnap(Retter selectedRet)
+    {
+        Retter retter = new Retter();
+
+        await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
+        {
+            {"Objekt", selectedRet}
+
+
+        });
     }
 
     async Task GetFoods()
@@ -132,7 +148,7 @@ public partial class FoodViewModel : BaseViewModel
             }
         }
 
-        
+
     }
 
     async Task GetFoodByBarcode(string? scanText)
@@ -147,7 +163,7 @@ public partial class FoodViewModel : BaseViewModel
 
             var food = await FoodService.GetFoodByBarcode(scanText);
 
-            if (food == null) 
+            if (food == null)
                 throw new Exception($"Barcode: {scanText} is invalid");
 
             this.Food = food;
@@ -162,7 +178,7 @@ public partial class FoodViewModel : BaseViewModel
             IsBusy = false;
         }
 
-        
+
 
 
     }
@@ -191,7 +207,7 @@ public partial class FoodViewModel : BaseViewModel
         EnkeltVarerValgt = (Color)Application.Current.Resources["CustomBlaa"];
 
         TekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomHvid"];
-        
+
         TekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
     }
 
@@ -222,10 +238,9 @@ public partial class FoodViewModel : BaseViewModel
         {
             IsBusy = false;
         }
-        
-
-
-
     }
+
+
+
 
 }

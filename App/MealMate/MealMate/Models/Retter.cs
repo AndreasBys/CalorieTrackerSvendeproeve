@@ -17,6 +17,8 @@ namespace MealMate.Models
         public string name { get; set; }
 
         public string user { get; set; }
+
+        public List<FoodResponse> foods { get; set; }
     }
 
 

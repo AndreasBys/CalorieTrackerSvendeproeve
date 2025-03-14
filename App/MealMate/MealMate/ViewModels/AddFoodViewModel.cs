@@ -4,12 +4,15 @@ using System.Windows.Input;
 namespace MealMate.ViewModels;
 
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
+
 public partial class AddFoodViewModel : BaseViewModel
 {
+
     [ObservableProperty]
     Food foodDetails;
     [ObservableProperty]
     string macroWeight;
+
     MacroLog macroLog;
     public ICommand CreateFood { get; }
     public ICommand CreateMacroLog { get; }
@@ -23,6 +26,7 @@ public partial class AddFoodViewModel : BaseViewModel
         CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
         MacroLogService = macroLogService;
     }
+
 
     async Task CreateFoodAsync()
     {
