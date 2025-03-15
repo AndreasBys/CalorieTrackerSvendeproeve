@@ -13,12 +13,13 @@ public partial class AdminSelectedFood : ContentPage
     private Entry _fatEntry;
     private CheckBox _isApprovedEntry;
 
-
+    // Constructor to initialize the page and find UI elements by their names
     public AdminSelectedFood(FoodService foodService)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _foodService = foodService;
 
+        // Find UI elements by their names
         _nameEntry = this.FindByName<Entry>("nameEntry");
         _barcodeEntry = this.FindByName<Entry>("barcodeEntry");
         _caloriesEntry = this.FindByName<Entry>("caloriesEntry");
@@ -28,6 +29,7 @@ public partial class AdminSelectedFood : ContentPage
         _isApprovedEntry = this.FindByName<CheckBox>("isApprovedEntry");
     }
 
+    // Property to get and set the selected Food object passed from the previous page
     public Food SelectedFood
     {
         get => _food;
@@ -38,8 +40,10 @@ public partial class AdminSelectedFood : ContentPage
         }
     }
 
+    // Event handler for the save button click
     private async void Gem(object sender, EventArgs e)
     {
+        // Create a new Food object with the updated values from the entries
         var food = new Food
         {
             _id = _food._id,
@@ -55,19 +59,24 @@ public partial class AdminSelectedFood : ContentPage
 
         try
         {
+            // Update the food item using the FoodService
             var foodResponse = await _foodService.UpdateFood(food, food._id);
             await DisplayAlert("Success", "Food updated!", "OK");
+
+            // Navigate back to the AdminHomePage
             await Shell.Current.GoToAsync($"{nameof(AdminHomePage)}");
         }
         catch (Exception ex)
         {
+            // Display an alert if an error occurs during the update
             await DisplayAlert("Error", $"error: {ex.Message}", "OK");
         }
-
     }
 
+    // Event handler for the cancel button click
     private async void Anuller(object sender, EventArgs e)
     {
+        // Navigate back to the AdminHomePage
         await Shell.Current.GoToAsync($"{nameof(AdminHomePage)}");
     }
 }
