@@ -44,13 +44,10 @@ public partial class RegistrerProfildataSide : ContentPage
         try
         {
             var registeredUser = await _loginService.Register(_user);
-
-            // Navigate to the homepage
             await DisplayAlert("Success", "Profile created - logging in", "OK");
 
-            // Log in the user
+            // Logging in the user
             var loggedInUser = await _loginService.Login(_user.email, _user.password);
-
             await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
         }
         catch (Exception ex)

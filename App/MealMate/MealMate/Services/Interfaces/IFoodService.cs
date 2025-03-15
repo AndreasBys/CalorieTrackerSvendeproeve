@@ -8,4 +8,5 @@ public interface IFoodService
     Task<List<Food>> SearchFoods(string searchTerm);
     Task<Food> GetFoodByBarcode(string barcode);
     Task<Food> CreateFood(FoodRequest newFood);
+    Task<Food> UpdateFood(Food food, string id);
 }

@@ -48,17 +48,17 @@
 
                 <!--Button box-->
                 <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
-                    <Button Text="Registrer" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Pressed="Registrer_knap"/>
+                    <Button Text="Registrer" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Registrer_knap"/>
                 </HorizontalStackLayout>
             </StackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                <Label TextColor="#808080" FontSize="22" Text="Har du allerede en konto?"/>
-                <Label Text=" Log ind!" TextColor="#007ED8" FontSize="22">
+            <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label TextColor="#808080" FontSize="22" HorizontalOptions="Center" Text="Har du allerede en konto?"/>
+                <Label TextColor="#007ED8" FontSize="22" HorizontalOptions="Center" Text="Log ind" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="logindForside_knap"/>
                     </Label.GestureRecognizers>
                 </Label>
-            </HorizontalStackLayout>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

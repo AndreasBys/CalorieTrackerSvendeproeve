@@ -10,7 +10,7 @@ public partial class AdminHomePage : ContentPage
     public AdminHomePage(FoodViewModel foodViewModel)
 	{
 		InitializeComponent();
-		BindingContext = foodViewModel;
+        BindingContext = foodViewModel;
         _foodViewModel = foodViewModel;
         OnPropertyChanged(nameof(_foodViewModel.Foods));
     }
@@ -37,6 +37,19 @@ public partial class AdminHomePage : ContentPage
 
         // Navigate back to the login page
         await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");
+    }
+
+    private async void SelectFood_knap(object sender, EventArgs e)
+    {
+        if (sender is ImageButton button && button.BindingContext is Food selectedFood)
+        {
+            await Shell.Current.GoToAsync($"{nameof(AdminSelectedFood)}", true, new Dictionary<string, object> { { "SelectedFood", selectedFood } });
+        }
+    }
+
+    private async void OpretNy_knap(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(OpretFoedevareSide)}");
     }
 
 }

@@ -18,6 +18,7 @@ public class Food
 }
 public class FoodRequest
 {
+    public string? _id { get; set; }
     public bool approved { get; set; }
     [Required]
     public string name { get; set; }

@@ -34,7 +34,7 @@
                         </Border.StrokeShape>
                         <Grid>
                             <Entry x:Name="passwordEntry" HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" IsPassword="True"/>
-                            <ImageButton x:Name="togglePasswordButton" Source="eye_show.png" Background="#2B2B32" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="TogglePasswordVisibility"/>
+                            <ImageButton x:Name="togglePasswordButton" Source="eye_show.png" Background="#2B2B32" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,0,15,0" VerticalOptions="Center" Clicked="TogglePasswordVisibility"/>
                         </Grid>
                     </Border>
                 </StackLayout>
@@ -47,17 +47,17 @@
 
                 <!--Button box-->
                 <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
-                    <Button Text="Log ind" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Pressed="Logind_knap"/>
+                    <Button Text="Log ind" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Logind_knap"/>
                 </HorizontalStackLayout>
             </StackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                <Label TextColor="#808080" FontSize="22">Har du ikke en konto endnu?</Label>
-                <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
+            <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label HorizontalOptions="Center" TextColor="#808080" FontSize="22">Har du ikke en konto endnu?</Label>
+                <Label HorizontalOptions="Center" Text="Opret konto" TextColor="#007ED8" FontSize="22">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="registrerBruger_knap"/>
                     </Label.GestureRecognizers>
                 </Label>
-            </HorizontalStackLayout>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
