@@ -4,9 +4,10 @@ namespace MealMate.View;
 
 public partial class RegistrerProfildataSide : ContentPage
 {
-	public RegistrerProfildataSide()
+	public RegistrerProfildataSide(RegistrerProfildataViewModel vm)
 	{
 		InitializeComponent();
+		BindingContext = vm;
 	}
 
     private async void gemProfilData_knap(object sender, EventArgs e)

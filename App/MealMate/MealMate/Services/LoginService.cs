@@ -30,6 +30,26 @@ public class LoginService : ILoginService
             throw new Exception($"Login failed: {response.StatusCode}, {errorContent}");
         }
     }
+
+    public async Task<User> Registrer(User user)
+    {
+
+        var registrerRequest = user;
+        var response = await _httpClient.PostAsJsonAsync("/api/auth/register", registrerRequest);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var registrerResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+            await SecureStorage.SetAsync(_authToken, registrerResponse.Token);
+            return registrerResponse.User;
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Register failed: {response.StatusCode}, {errorContent}");
+        }
+
+    }
 }
 
 public class LoginResponse

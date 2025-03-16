@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.RegistrerProfildataSide"
              Title="RegistrerProfildataSide">
-    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="100,50,100,50" >
+    <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="{StaticResource OverallPadding}" >
 
         <!--Formular box-->
         <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
 
             <!--Side navn-->
             <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" >
-                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="0,50,0,50">Profil data</Label>
+                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="{StaticResource TitlePadding}">Profil data</Label>
             </HorizontalStackLayout>
 
 
@@ -22,10 +22,11 @@
                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                     </Border.StrokeShape>
                     <Grid>
-                        <DatePicker HeightRequest="60" BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
                         <Grid Padding="10">
                             <Image Source="kalender_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End"/>
                         </Grid>
+                        <DatePicker  BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                        
                         
                     </Grid>
                 </Border>
@@ -85,16 +86,17 @@
                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid>
-                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg niveau" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
+                            <Picker VerticalOptions="End" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg niveau" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
                                 <Picker.Items>
                                     <x:String>1-2/ugen</x:String>
                                     <x:String>3-4/ugen</x:String>
                                     <x:String>5-7/ugen</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Grid Padding="10">
-                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
-                            </Grid>
+                            
                         </Grid>
                     </Border>
                 </Grid>
@@ -112,15 +114,15 @@
                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid>
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
                             <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg mål" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker">
                                 <Picker.Items>
                                     <x:String>Vægttab</x:String>
                                     <x:String>Tag vægt på</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Grid Padding="10">
-                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
-                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>
@@ -138,15 +140,16 @@
                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid>
+                            <Grid Padding="10">
+                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                            </Grid>
                             <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill">
                                 <Picker.Items>
                                     <x:String>Mand</x:String>
                                     <x:String>Kvinde</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Grid Padding="10">
-                                <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
-                            </Grid>
+                            
                         </Grid>
                     </Border>
                 </Grid>

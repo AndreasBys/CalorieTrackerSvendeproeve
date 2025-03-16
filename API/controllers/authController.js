@@ -21,7 +21,7 @@ export const register = async (req, res) => {
         if (error.code == 11000) {
             return res.status(500).json({ code: 500, msg: 'Username or email is already used' });
         }
-        res.status(500).json({ code: 500, msg: 'Unable to create user' });
+        res.status(500).json({ code: 500, msg: 'Unable to create user', error: error.message });
     }
 };
 
@@ -47,6 +47,6 @@ export const login = async (req, res) => {
         res.status(201).json({ token, user });
     } catch (error) {
         // håndterer fejl
-        res.status(500).json({ code: 500, msg: 'Something went wrong' });
+        res.status(500).json({ code: 500, msg: 'Something went wrong', error: error.message });
     }
 };

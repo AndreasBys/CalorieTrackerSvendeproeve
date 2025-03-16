@@ -11,7 +11,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
 
 
-        <Grid  Padding="80,50,80,0" Grid.Row="0" >
+        <Grid  Padding="{StaticResource OverallPadding}" Grid.Row="0" >
 
 
 

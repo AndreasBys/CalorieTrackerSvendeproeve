@@ -17,13 +17,13 @@ namespace MealMate.ViewModels
         [ObservableProperty]
         string rettensNavn;
         [ObservableProperty]
-        int rettensKalorier;
+        double rettensKalorier;
         [ObservableProperty]
-        int rettensProtein;
+        double rettensProtein;
         [ObservableProperty]
-        int rettensKulhydrater;
+        double rettensKulhydrater;
         [ObservableProperty]
-        int rettensFedt;
+        double rettensFedt;
 
 
         partial void OnRetterChanged(Retter value)

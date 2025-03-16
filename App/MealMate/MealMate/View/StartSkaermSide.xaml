@@ -4,12 +4,12 @@
              x:Class="MealMate.View.StartSkaermSide"
              Shell.NavBarIsVisible="False"
              Title="StartSkaermSide">
-    <VerticalStackLayout BackgroundColor="#3C3C44">
-        <HorizontalStackLayout HorizontalOptions="Center" Margin="{StaticResource OverallPadding}" >
+    <VerticalStackLayout BackgroundColor="#3C3C44" Padding="{StaticResource OverallPadding}" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <HorizontalStackLayout HorizontalOptions="Center" Padding="10">
             <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" Margin="10,0,20,0"/>
             <Label VerticalOptions="Center" TextColor="White" FontSize="42">MealMate</Label>
         </HorizontalStackLayout>
-        <StackLayout>
+        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
             <StackLayout Margin="80,0,80,0">
                 <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Email:</Label>
                 <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
@@ -33,18 +33,19 @@
                 <Label VerticalOptions="Center" TextColor="White" FontSize="28">Remember me</Label>
             </HorizontalStackLayout>
             <HorizontalStackLayout Margin="80,20,80,0" HorizontalOptions="Center" >
-                <Button Text="Log ind" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28" Pressed="Logind_knap"></Button>
+                <Button Text="Log ind" HorizontalOptions="Fill" BackgroundColor="#007ED8" FontSize="28" Pressed="Logind_knap"></Button>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label TextColor="#808080" FontSize="22" >Har du ikke en konto endnu?</Label>
+                <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="registrerBruger_knap">
+
+                        </TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
             </HorizontalStackLayout>
         </StackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-            <Label TextColor="#808080" FontSize="22" >Har du ikke en konto endnu? </Label>
-            <Label Text=" opret en!" TextColor="#007ED8" FontSize="22">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="registrerBruger_knap">
-                    
-                </TapGestureRecognizer>
-            </Label.GestureRecognizers>
-        </Label>
-        </HorizontalStackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>

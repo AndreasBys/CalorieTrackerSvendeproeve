@@ -12,7 +12,6 @@ namespace MealMate
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                //.UseMauiCameraView()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
@@ -45,6 +44,7 @@ namespace MealMate
             builder.Services.AddSingleton<AddFoodViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
             builder.Services.AddSingleton<OpretRetViewModel>();
+            builder.Services.AddSingleton<RegistrerViewModel>();
 
             // Services
 #if ANDROID

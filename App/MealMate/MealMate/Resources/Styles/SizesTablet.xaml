@@ -8,6 +8,7 @@
 	<x:Double x:Key="TitelFont">45</x:Double>
 
 	<x:String x:Key="OverallPadding">80,60,80,60</x:String>
+    <x:String x:Key="TitlePadding">0,40,0,40</x:String>
 
 
 </ResourceDictionary>
