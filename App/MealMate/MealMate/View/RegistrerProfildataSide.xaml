@@ -16,7 +16,7 @@
 
             <!--Box-->
             <StackLayout Grid.Row="1" >
-                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="28" Margin="10,0,0,10">Fødselsdato:</Label>
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="28" Margin="10,0,0,10" >Fødselsdato:</Label>
                 <Border HeightRequest="60" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
@@ -25,7 +25,7 @@
                         <Grid Padding="10">
                             <Image Source="kalender_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End"/>
                         </Grid>
-                        <DatePicker  BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                        <DatePicker  BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill" VerticalOptions="Fill" BindingContext="{Binding Foedselsdato}"/>
                         
                         
                     </Grid>
@@ -44,7 +44,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill"></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Text="{Binding Hoejde}" ></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">cm</Label>
                     </Grid>
@@ -67,7 +67,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" ></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" Text="{Binding Vaegt}"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">kg</Label>
                     </Grid>
@@ -78,7 +78,7 @@
             <!--Dropdown box-->
             <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill">
 
-                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Aktivitetsniveau:</Label>
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10" >Aktivitetsniveau:</Label>
 
                 <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
                     <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -89,7 +89,7 @@
                             <Grid Padding="10">
                                 <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
                             </Grid>
-                            <Picker VerticalOptions="End" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg niveau" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                            <Picker VerticalOptions="End" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg niveau" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker" SelectedItem="{Binding Aktivitetsniveau}">
                                 <Picker.Items>
                                     <x:String>1-2/ugen</x:String>
                                     <x:String>3-4/ugen</x:String>
@@ -117,7 +117,7 @@
                             <Grid Padding="10">
                                 <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
                             </Grid>
-                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg mål" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker">
+                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Vælg mål" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker" SelectedItem="{Binding Maal}">
                                 <Picker.Items>
                                     <x:String>Vægttab</x:String>
                                     <x:String>Tag vægt på</x:String>
@@ -143,7 +143,7 @@
                             <Grid Padding="10">
                                 <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
                             </Grid>
-                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill">
+                            <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" SelectedItem="{Binding Koen}" >
                                 <Picker.Items>
                                     <x:String>Mand</x:String>
                                     <x:String>Kvinde</x:String>
@@ -158,7 +158,7 @@
 
             <!--Button box-->
             <Grid Grid.Row="6">
-                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemProfilData_knap" ></Button>
+                <Button Text="Gem"  BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Command="{Binding gemProfildataKnapCommand}" ></Button>
             </Grid>
         </Grid>
 

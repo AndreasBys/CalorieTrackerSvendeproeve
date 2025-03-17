@@ -10,7 +10,6 @@ namespace MealMate.Services
     public class RetterService : IRetterService
     {
 
-        string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2NiMjFiNzg4ZjU1ZmZlMTliMjM5YTYiLCJpYXQiOjE3NDE5OTM0MTEsImV4cCI6MTc0MTk5NzAxMX0.9O1_l7BFH0u93TfVQAdCHqLrVqVpVXp61O5tZE1_7tg";
 
         private readonly HttpClient _httpClient;
 
@@ -27,6 +26,8 @@ namespace MealMate.Services
 
         public async Task<List<Retter>> GetAllRetter()
         {
+            string token = await SecureStorage.GetAsync("auth_token");
+
             var request = new HttpRequestMessage(HttpMethod.Get, "");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -36,14 +37,22 @@ namespace MealMate.Services
             {
                 RetterListResponse responseObj = await response.Content.ReadFromJsonAsync<RetterListResponse>();
                 retterList = responseObj.dishes;
+                return retterList;
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"At hente retterne fejlede {response.StatusCode}, {errorContent}");
             }
 
-            return retterList;
+            
         }
 
 
         public async Task<List<Retter>> SearchRetter(string searchTerm)
         {
+            string token = await SecureStorage.GetAsync("auth_token");
+
             Retter retterObj = new Retter();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
@@ -55,9 +64,15 @@ namespace MealMate.Services
             {
                 RetterListResponse responseObj = await response.Content.ReadFromJsonAsync<RetterListResponse>();
                 retterList = responseObj.dishes;
+                return retterList;
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"At hente retten fejlede {response.StatusCode}, {errorContent}");
             }
 
-            return retterList;
+            
         }
     }
 }

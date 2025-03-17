@@ -79,6 +79,6 @@ export const updateUser = async (req, res) => {
     } catch (error) {
         // håndterer fejl
         console.log(error);
-        res.status(500).json({ msg: "Unable to update user" });
+        res.status(500).json({ msg: "Unable to update user", error: error.message });
     }
 };

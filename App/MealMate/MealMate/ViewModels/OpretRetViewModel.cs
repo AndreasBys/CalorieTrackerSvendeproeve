@@ -40,7 +40,6 @@ namespace MealMate.ViewModels
 
         private void Template()
         {
-            System.Diagnostics.Debug.WriteLine($"Retter property set: {Retter?.name}");
 
             int kalorier = 0;
             

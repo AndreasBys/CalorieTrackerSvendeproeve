@@ -7,6 +7,7 @@ public class LoginService : ILoginService
 {
     private readonly HttpClient _httpClient;
     private const string _authToken = "auth_token";
+    private const string _userId = "user_id";
 
     public LoginService(HttpClient httpClient)
     {
@@ -22,6 +23,7 @@ public class LoginService : ILoginService
         {
             var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
             await SecureStorage.SetAsync(_authToken, loginResponse.Token);
+            await SecureStorage.SetAsync(_userId, loginResponse.User._id);
             return loginResponse.User;
         }
         else
@@ -40,7 +42,9 @@ public class LoginService : ILoginService
         if (response.IsSuccessStatusCode)
         {
             var registrerResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-            await SecureStorage.SetAsync(_authToken, registrerResponse.Token);
+
+            await Login(user.email, user.password); // Login user after registration 
+
             return registrerResponse.User;
         }
         else
