@@ -18,51 +18,42 @@
                                />
 
                         <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="15"/>
                             </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*" >
-
+                            <Grid ColumnDefinitions="*">
                                 <Entry Grid.Column="1"
+                                       x:Name="nameEntry"
                                        BackgroundColor="{StaticResource CustomMoerkeGraa}" 
-                                       TextColor="White" 
+                                       TextColor="White"
                                        FontSize="18" 
-                                       Margin="10,4,0,0"
-                                       HeightRequest="36"/>
-                                
+                                       Margin="10,5,0,0"
+                                       HeightRequest="40"
+                                       Text="{Binding name}"/>
                             </Grid>
-
                         </Border>
-                        
                     </Grid>
 
-
                     <Grid Grid.Row="1" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,20,0,0">
-
                         <Label Grid.Row="0" 
                                FontSize="18" 
                                TextColor="{StaticResource CustomHvid}" 
                                Text="Stregkode:" />
 
                         <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="15" />
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*">
-
-                                <Entry 
-                                    Grid.Column="1" 
-                                    BackgroundColor="{StaticResource CustomMoerkeGraa}" 
-                                    FontSize="18"
-                                    Margin="10,4,0,0"
-                                    TextColor="{StaticResource CustomHvid}" 
-                                    HeightRequest="36"/>
+                                <Entry Grid.Column="1"
+                                       x:Name="barcodeEntry"
+                                       BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                       FontSize="18"
+                                       Margin="10,4,0,0"
+                                       TextColor="{StaticResource CustomHvid}" 
+                                       HeightRequest="40"
+                                       Text="{Binding barcode}"/>
                             </Grid>
-
                         </Border>
 
                         <Grid Grid.Column="1" Padding="20,0,0,0" Grid.Row="1" >
@@ -77,185 +68,123 @@
                                              Padding="5" />
                             </Border>
                         </Grid>
-
                     </Grid>
-
-
 
                     <Grid Grid.Row="2" ColumnDefinitions="*,auto">
-
                         <Label TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="0,40,0,0" HorizontalOptions="Fill" >Næringsindhold per 100g</Label>
-
                     </Grid>
-
                     <Grid Grid.Row="3" ColumnDefinitions="*, *" Padding="0,20,0,0">
                         <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
-
                             <Label Grid.Row="0" 
                                    FontSize="18" 
                                    TextColor="White" 
                                    Text="Kalorier:"
                                    />
-
                             <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"/>
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-
                                     <Entry 
-                                    Grid.Column="1" 
-                                    BackgroundColor="{StaticResource CustomMoerkeGraa}" 
-                                    FontSize="18"
-                                    Margin="10,4,0,0"
-                                    TextColor="{StaticResource CustomHvid}" 
-                                    HeightRequest="36"/>
-                                </Grid>
-
-                            </Border>
-
-
-
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
-
-                            <Label Grid.Row="0" FontSize="18" TextColor="White">Protein:</Label>
-
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*">
-
-                                    <Entry 
+                                        x:Name="caloriesEntry"
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
                                         Margin="10,4,0,0"
                                         TextColor="{StaticResource CustomHvid}" 
-                                        HeightRequest="36"/>
+                                        HeightRequest="40"
+                                        Text="{Binding calories}"/>
                                 </Grid>
-
                             </Border>
-
-
-
                         </Grid>
 
+                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
+                            <Label Grid.Row="0" FontSize="18" TextColor="White">Protein:</Label>
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*">
+                                    <Entry 
+                                        x:Name="proteinEntry"
+                                        Grid.Column="1" 
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}" 
+                                        FontSize="18"
+                                        Margin="10,4,0,0"
+                                        TextColor="{StaticResource CustomHvid}" 
+                                        HeightRequest="40"
+                                        Text="{Binding protein}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
                     </Grid>
 
                     <Grid Grid.Row="4" ColumnDefinitions="*, *" Padding="0,20,0,0">
                         <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
-
                             <Label Grid.Row="0" FontSize="18" TextColor="White">Kulhydrater:</Label>
-
                             <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-
                                     <Entry 
+                                        x:Name="carbsEntry"
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
                                         Margin="10,4,0,0"
                                         TextColor="{StaticResource CustomHvid}" 
-                                        HeightRequest="36"/>
+                                        HeightRequest="40"
+                                        Text="{Binding carbonhydrates}"/>
                                 </Grid>
-
                             </Border>
-
-
-
                         </Grid>
 
                         <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
-
                             <Label Grid.Row="0" FontSize="18" TextColor="White">Fedt:</Label>
-
                             <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
-
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-
                                     <Entry 
+                                        x:Name="fatEntry"
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
                                         Margin="10,4,0,0"
                                         TextColor="{StaticResource CustomHvid}" 
-                                        HeightRequest="36"/>
+                                        HeightRequest="40"
+                                        Text="{Binding fat}"/>
                                 </Grid>
-
                             </Border>
-
-
-
                         </Grid>
-
                     </Grid>
 
-
-                    <Grid Grid.Row="5" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,20,0,0">
-                        <CheckBox Grid.Column="0" IsVisible="True" Color="White" ScaleX="1.5" ScaleY="1.5"></CheckBox>
-                        <Label Grid.Column="1"
-                            Grid.Row="0" 
-                               FontSize="20" 
-                               TextColor="White"
-                               Text="Godkendt?"
-                               />
+                    <Grid Grid.Row="5" ColumnDefinitions="auto,auto" RowDefinitions="auto, auto" Padding="0,20,0,0">
+                        <CheckBox Grid.Column="0" x:Name="isApprovedEntry" IsVisible="True" Color="White" ScaleX="1.5" ScaleY="1.5" IsChecked="{Binding approved}"/>
+                        <Label Grid.Column="1" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" Text="Godkendt?"/>
                     </Grid>
-
-
-
-
-
-
                 </Grid>
-
-
-
             </Grid>
-
-
-
         </Grid>
 
-        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
-            <Grid ColumnDefinitions="*,*,*,*" Padding="20">
-                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
-                    <Border  Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
+        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
+            <Grid ColumnDefinitions="0,*,*" Padding="8">
+                <Grid HorizontalOptions="Center" Grid.Column="1">
+                    <Border Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            <RoundRectangle CornerRadius="10"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Grid.Column="0" 
-                                Text="Annuller" 
-                                FontSize="14" 
-                                Padding="10,5,10,5" 
-                                WidthRequest="80"
-                                Clicked="Anuller"
-                                />
+                        <Button Text="Annuller" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="Anuller" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                     </Border>
-
-
                 </Grid>
-                <Grid ColumnDefinitions="Auto" HorizontalOptions="End" Grid.Column="2">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" >
+                <Grid HorizontalOptions="Center" Grid.Column="2">
+                    <Border StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            <RoundRectangle CornerRadius="10"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Gem" Grid.Column="0" FontSize="14" Padding="10,5,10,5" WidthRequest="80"></Button>
+                        <Button Text="Gem" TextColor="White" BackgroundColor="{StaticResource CustomBlaa}" Clicked="Gem" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                     </Border>
                 </Grid>
             </Grid>

@@ -3,67 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.RegistrerSide"
              Title="RegistrerSide">
-    <VerticalStackLayout BackgroundColor="#3C3C44">
-        <HorizontalStackLayout HorizontalOptions="Center" Margin="100,200,100,100" >
-            <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" Margin="10,0,20,0"/>
-            <Label VerticalOptions="Center" TextColor="White" FontSize="42">MealMate</Label>
-        </HorizontalStackLayout>
-        
-        <!--Formular box-->
-        <StackLayout>
-            
-            <!--Box-->
-            <StackLayout Margin="80,0,80,0">
-                <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Username:</Label>
-                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                    </Border.StrokeShape>
-                    <Entry HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28" ></Entry>
-                </Border>
-            </StackLayout>
-            
-            <!--Box-->
-            <StackLayout Margin="80,20,80,0">
-                <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" >Email:</Label>
-                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                    </Border.StrokeShape>
-                    <Entry HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" ></Entry>
-                </Border>
-            </StackLayout>
-
-            <StackLayout Margin="80,20,80,0">
-                <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" >Password:</Label>
-                <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                    </Border.StrokeShape>
-                    <Entry HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" ></Entry>
-                </Border>
-            </StackLayout>
-
-            <!--Text Box-->
-            <HorizontalStackLayout Margin="80,20,80,0">
-                <CheckBox VerticalOptions="Center" Color="White" ScaleX="1.5" ScaleY="1.5"></CheckBox>
-                <Label VerticalOptions="Center" TextColor="White" FontSize="28">Remember me</Label>
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#3C3C44" Padding="20" Spacing="20">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,50,0,20">
+                <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" Margin="10,0,20,0"/>
+                <Label VerticalOptions="Center" TextColor="White" FontSize="42" Text="MealMate"/>
             </HorizontalStackLayout>
-            
-            <!--Button box-->
-            <HorizontalStackLayout Margin="80,20,80,0" HorizontalOptions="Center" >
-                <Button Text="Registrer" WidthRequest="600" BackgroundColor="#007ED8" FontSize="28" Pressed="Registrer_knap"></Button>
-            </HorizontalStackLayout>
-        </StackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-            <Label TextColor="#808080" FontSize="22" >Har du allerede en konto? </Label>
-            <Label Text=" Log ind!" TextColor="#007ED8" FontSize="22">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="logindForside_knap">
 
-                    </TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            <!--Formular box-->
+            <StackLayout Spacing="20">
+
+                <!--Username Box-->
+                <StackLayout Margin="0,0,0,0">
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" Text="Username:"/>
+                    <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <Entry x:Name="usernameRegistrerEntry" HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28"/>
+                    </Border>
+                </StackLayout>
+
+                <!-- Email Box-->
+                <StackLayout Margin="0,0,0,0">
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" Text="Email:"/>
+                    <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <Entry x:Name="emailRegistrerEntry" HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28"/>
+                    </Border>
+                </StackLayout>
+
+                <!-- Password Box-->
+                <StackLayout Margin="0,0,0,0">
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10" Text="Password:"/>
+                    <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <Entry x:Name="passwordRegistrerEntry" HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" IsPassword="True"/>
+                    </Border>
+                </StackLayout>
+
+                <!--Button box-->
+                <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
+                    <Button Text="Registrer" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Registrer_knap"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label TextColor="#808080" FontSize="22" HorizontalOptions="Center" Text="Har du allerede en konto?"/>
+                <Label TextColor="#007ED8" FontSize="22" HorizontalOptions="Center" Text="Log ind" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="logindForside_knap"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
