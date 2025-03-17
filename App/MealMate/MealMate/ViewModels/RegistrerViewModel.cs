@@ -63,7 +63,7 @@ namespace MealMate.ViewModels
                 try
                 {
                     User nyBruger = new User { username = Username, email = Email, password = Password };
-                    await LoginService.Registrer(nyBruger);
+                    await LoginService.Register(nyBruger);
 
                     await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), false);
 

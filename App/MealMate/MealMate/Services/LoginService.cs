@@ -34,7 +34,7 @@ public class LoginService : ILoginService
         }
     }
 
-    public async Task<User> Registrer(User user)
+    public async Task<User> Register(User user)
     {
 
         var registrerRequest = user;

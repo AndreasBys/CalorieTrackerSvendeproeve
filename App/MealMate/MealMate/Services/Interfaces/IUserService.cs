@@ -6,9 +6,13 @@ namespace MealMate.Services.Interfaces
     {
         Task<User> UpdateUser(User user);
 
-public interface IUserService
-{
-    Task<User> GetUserByIdAsync(string id);
-    Task<User> UpdateUserAsync(User user, string id);
-    Task DeleteUserAsync(string id);
+        public interface IUserService
+        {
+            Task<User> GetUserByIdAsync(string id);
+            Task<User> UpdateUserAsync(User user, string id);
+            Task DeleteUserAsync(string id);
+
+        }
+
+    }
 }

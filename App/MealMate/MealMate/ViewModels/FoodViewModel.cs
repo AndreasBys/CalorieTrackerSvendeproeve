@@ -58,7 +58,6 @@ public partial class FoodViewModel : BaseViewModel
     [RelayCommand]
     async Task TilfoejRetKnap(Retter selectedRet)
     {
-        Retter retter = new Retter();
 
         await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
         {
@@ -233,7 +232,7 @@ public partial class FoodViewModel : BaseViewModel
         {
             Debug.WriteLine($"Unable to get Retter: {ex.Message}");
             await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
-            throw;
+            return;
         }
         finally
         {

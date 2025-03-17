@@ -15,7 +15,6 @@ public class User
     public string gender { get; set; }
     public bool admin { get; set; }
 
-    public string birthdate { get; set; }
 
 }
 public class UserResponse

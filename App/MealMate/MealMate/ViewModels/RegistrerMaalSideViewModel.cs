@@ -91,7 +91,7 @@ namespace MealMate.ViewModels
 
                     try
                     {
-                        macroGoalService.CreateMacroGoal(macroGoal);
+                        await macroGoalService.CreateMacroGoal(macroGoal);
 
                         await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
 

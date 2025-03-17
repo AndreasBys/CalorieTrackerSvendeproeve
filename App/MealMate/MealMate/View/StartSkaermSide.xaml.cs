@@ -44,7 +44,7 @@ public partial class StartSkaermSide : ContentPage
         {
             _emailEntry.Text = string.Empty;
             _passwordEntry.Text = string.Empty;
-            _rememberMeCheckBox.IsChecked = false;
+            //_rememberMeCheckBox.IsChecked = false;
         }
     }
 
@@ -110,8 +110,8 @@ public partial class StartSkaermSide : ContentPage
     private void TogglePasswordVisibility(object sender, EventArgs e)
     {
         _isPasswordHidden = !_isPasswordHidden;
-        _passwordEntry.IsPassword = _isPasswordHidden;
-        if (togglePasswordButton != null)
-            togglePasswordButton.Source = _isPasswordHidden ? "eye_show.png" : "eye_off.png";
+        //_passwordEntry.IsPassword = _isPasswordHidden;
+        //if (togglePasswordButton != null)
+        //    togglePasswordButton.Source = _isPasswordHidden ? "eye_show.png" : "eye_off.png";
     }
 }
