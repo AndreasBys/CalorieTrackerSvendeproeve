@@ -28,9 +28,9 @@ namespace MealMate
             builder.Services.AddTransient<OpretFoedevareSide>();
             builder.Services.AddTransient<ProfilSide>();
             builder.Services.AddTransient<RegistrerMaalSide>();
-            builder.Services.AddTransient<RegistrerProfildataSide>();
-            builder.Services.AddTransient<RegistrerSide>();
-            builder.Services.AddSingleton<StartSkaermSide>();
+            builder.Services.AddTransient<CreateUserDataPage>();
+            builder.Services.AddTransient<CreateUserPage>();
+            builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<TilfoejFoedvareSide>();
             builder.Services.AddTransient<OpretRetSide>();
             builder.Services.AddTransient<BarcodeLaeserSide>();

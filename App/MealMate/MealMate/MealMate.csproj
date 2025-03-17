@@ -105,8 +105,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\StartSkaermSide.xaml.cs">
-	    <DependentUpon>StartSkaermSide.xaml</DependentUpon>
+	  <Compile Update="View\CreateUserPage.xaml.cs">
+	    <DependentUpon>CreateUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateUserDataPage.xaml.cs">
+	    <DependentUpon>CreateUserDataPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -150,16 +156,16 @@
 	  <MauiXaml Update="View\RetterSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\StartSkaermSide.xaml">
+	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\RegistrerMaalSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrerProfildataSide.xaml">
+	  <MauiXaml Update="View\CreateUserDataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrerSide.xaml">
+	  <MauiXaml Update="View\CreateUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TilfoejFoedvareSide.xaml">

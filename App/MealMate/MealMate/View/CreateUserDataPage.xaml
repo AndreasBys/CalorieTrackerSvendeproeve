@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.CreateUserDataPage"
+             Title="CreateUserDataPage">
+    <ScrollView Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20" RowSpacing="20" ColumnSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Side navn-->
+            <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" Grid.ColumnSpan="2">
+                <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="0,50,0,50">Profil data</Label>
+            </HorizontalStackLayout>
+
+            <!-- Birthdate Box-->
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="10">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="28" Margin="10,0,0,10" Text="Fødselsdato:"/>
+                <Border HeightRequest="60" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <DatePicker x:Name="birthdateRegistrerEntry" HeightRequest="60" BackgroundColor="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Image Source="kalender_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+
+            <!--Height Box-->
+            <StackLayout Grid.Row="2" Grid.Column="0" Spacing="10">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="10" Text="Højde:"/>
+                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Entry x:Name="heightRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Label HorizontalOptions="End" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalOptions="Center" Padding="10" Text="cm"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+
+            <!--Weight Box-->
+            <StackLayout Grid.Row="2" Grid.Column="1" Spacing="10">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="10" Text="Vægt:"/>
+                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Entry x:Name="weightRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill"/>
+                        <Label HorizontalOptions="End" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" VerticalOptions="Center" Padding="10" Text="kg"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+
+            <!--Activity box-->
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Spacing="10">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="10" Text="Aktivitetsniveau:"/>
+                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                        <Picker.Items>
+                            <x:String>1-2/ugen</x:String>
+                            <x:String>3-4/ugen</x:String>
+                            <x:String>5-7/ugen</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </StackLayout>
+
+            <!--Goal box-->
+            <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Spacing="10">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="10" Text="Mål:"/>
+                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill" TitleColor="{StaticResource CustomHvid}" x:Name="maalPicker">
+                        <Picker.Items>
+                            <x:String>Vægttab</x:String>
+                            <x:String>Tag vægt på</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </StackLayout>
+
+            <!--Gender box-->
+            <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="10" Padding="0,0,0,50">
+                <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Padding="10" Text="Køn:"/>
+                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Picker x:Name="genderRegistrerEntry" Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" HorizontalOptions="Fill">
+                        <Picker.Items>
+                            <x:String>Mand</x:String>
+                            <x:String>Kvinde</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </Grid>
+        </Grid>
+        <!--Dropdown box-->
+
+            <!--Button box-->
+            <Grid Grid.Row="6" Grid.ColumnSpan="2">
+                <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="CreateUser_Button"/>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
+

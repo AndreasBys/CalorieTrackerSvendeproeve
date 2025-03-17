@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Title="LoginPage">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#3C3C44" Padding="20" Spacing="20">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,50,0,20">
+                <Image Source="mealmatelogo.png" HeightRequest="75" WidthRequest="75" Margin="10,0,20,0"/>
+                <Label VerticalOptions="Center" TextColor="White" FontSize="42">MealMate</Label>
+            </HorizontalStackLayout>
+
+            <!--Formular box-->
+            <StackLayout Spacing="20">
+
+                <!-- Email Box-->
+                <StackLayout Margin="10,0,0,0">
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Email:</Label>
+                    <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <Entry x:Name="emailEntry" HeightRequest="60" BackgroundColor="#2B2B32" TextColor="White" FontSize="28"/>
+                    </Border>
+                </StackLayout>
+
+                <!-- Password Box-->
+                <StackLayout Margin="10,0,0,0">
+                    <Label HorizontalOptions="Start" TextColor="White" FontSize="28" Margin="10,0,0,10">Password:</Label>
+                    <Border HeightRequest="60" StrokeThickness="2" Stroke="#2B2B32" BackgroundColor="#2B2B32">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Entry x:Name="passwordEntry" HeightRequest="60" Background="#2B2B32" TextColor="White" FontSize="28" IsPassword="True"/>
+                            <ImageButton x:Name="togglePasswordButton" Source="eye_show.png" Background="#2B2B32" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,0,15,0" VerticalOptions="Center" Clicked="TogglePasswordVisibility"/>
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!-- Remember Me Box -->
+                <HorizontalStackLayout Margin="15,0,0,0">
+                    <CheckBox x:Name="rememberMeCheckBox" VerticalOptions="Center" Color="White" ScaleX="1.5" ScaleY="1.5"/>
+                    <Label VerticalOptions="Center" TextColor="White" FontSize="28" Margin="10,0,0,0">Remember me</Label>
+                </HorizontalStackLayout>
+
+                <!--Button box-->
+                <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
+                    <Button Text="Log ind" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Login_button"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label HorizontalOptions="Center" TextColor="#808080" FontSize="22">Har du ikke en konto endnu?</Label>
+                <Label HorizontalOptions="Center" Text="Opret konto" TextColor="#007ED8" FontSize="22">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="CreateUser_Button"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
