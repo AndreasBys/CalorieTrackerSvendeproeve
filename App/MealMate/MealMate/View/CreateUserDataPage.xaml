@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.RegistrerProfildataSide"
-             Title="RegistrerProfildataSide">
+             x:Class="MealMate.View.CreateUserDataPage"
+             Title="CreateUserDataPage">
     <ScrollView Orientation="Vertical">
         <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20" RowSpacing="20" ColumnSpacing="20">
             <Grid.RowDefinitions>
@@ -118,7 +118,7 @@
 
             <!--Button box-->
             <Grid Grid.Row="6" Grid.ColumnSpan="2">
-                <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="gemProfilData_knap"/>
+                <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="CreateUser_Button"/>
             </Grid>
         </Grid>
     </ScrollView>
