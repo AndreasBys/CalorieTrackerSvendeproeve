@@ -5,9 +5,6 @@
              Title="RegistrerProfildataSide">
     <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="{StaticResource OverallPadding}" >
 
-        <!--Formular box-->
-        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
-
             <!--Side navn-->
             <HorizontalStackLayout HorizontalOptions="Start" Grid.Row="0" >
                 <Label VerticalOptions="Center" TextColor="{StaticResource CustomHvid}" FontSize="42" Padding="{StaticResource TitlePadding}">Profil data</Label>
@@ -19,7 +16,7 @@
                 <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="28" Margin="10,0,0,10" >Fødselsdato:</Label>
                 <Border HeightRequest="60" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
                     </Border.StrokeShape>
                     <Grid>
                         <Grid Padding="10">
@@ -48,8 +45,8 @@
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">cm</Label>
                     </Grid>
-                </Grid>
-                <!--Box-->
+                </Border>
+            </StackLayout>
 
                 <!--Box-->
                 <Grid Grid.Column="1" Padding="40">

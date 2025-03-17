@@ -37,6 +37,7 @@ namespace MealMate
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
+
             // DI for ViewModels:
 
             builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
@@ -46,6 +47,9 @@ namespace MealMate
             builder.Services.AddSingleton<OpretRetViewModel>();
             builder.Services.AddSingleton<RegistrerViewModel>();
             builder.Services.AddSingleton<RegistrerProfildataViewModel>();
+
+            // DI for Models:
+            builder.Services.AddTransient<User>();
 
             // Services
 #if ANDROID
@@ -57,6 +61,11 @@ namespace MealMate
             builder.Services.AddHttpClient<LoginService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/auth/");
+            });
+
+            builder.Services.AddHttpClient<UserService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/users/");
             });
 
             builder.Services.AddHttpClient<FoodService>(client =>

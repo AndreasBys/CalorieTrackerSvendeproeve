@@ -5,11 +5,11 @@ namespace MealMate.Models;
 public class Food
 {
     [Key]
-    public string _id { get; set; }
-    public bool approved { get; set; }
+    public string? _id { get; set; }
+    public string? barcode { get; set; }
     [Required]
     public string name { get; set; }
-    public string? barcode { get; set; }
+    public bool approved { get; set; }
     public int calories { get; set; }
     public double carbonhydrates { get; set; }
     public double protein { get; set; }
@@ -18,6 +18,7 @@ public class Food
 }
 public class FoodRequest
 {
+    public string? _id { get; set; }
     public bool approved { get; set; }
     [Required]
     public string name { get; set; }

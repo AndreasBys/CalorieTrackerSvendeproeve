@@ -68,7 +68,7 @@ public partial class FoodViewModel : BaseViewModel
         });
     }
 
-    async Task GetFoods()
+    public async Task GetFoods()
     {
         if (IsBusy)
             return;

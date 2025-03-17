@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MealMate.Models;
 
 namespace MealMate.Services.Interfaces
 {
@@ -10,5 +6,9 @@ namespace MealMate.Services.Interfaces
     {
         Task<User> UpdateUser(User user);
 
-    }
+public interface IUserService
+{
+    Task<User> GetUserByIdAsync(string id);
+    Task<User> UpdateUserAsync(User user, string id);
+    Task DeleteUserAsync(string id);
 }

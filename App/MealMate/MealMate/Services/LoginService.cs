@@ -1,4 +1,5 @@
 ﻿using MealMate.Services.Interfaces;
+using Microsoft.Maui.ApplicationModel.Communication;
 using System.Net.Http.Json;
 
 namespace MealMate.Services;

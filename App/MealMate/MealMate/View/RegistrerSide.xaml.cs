@@ -14,8 +14,10 @@ public partial class RegistrerSide : ContentPage
 		//await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), true);
   //  }
 
+    // Event handler for the login button tap
     private async void logindForside_knap(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync("//StartSkaermSide", true);
+        // Navigate back to the StartSkaermSide page
+        await Shell.Current.GoToAsync("///" + nameof(StartSkaermSide), true);
     }
 }
