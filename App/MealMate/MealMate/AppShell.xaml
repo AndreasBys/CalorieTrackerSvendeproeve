@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:RegistrerSide}"
-        Route="RegistrerSide" />
+        ContentTemplate="{DataTemplate local:RegistrerMaalSide}"
+        Route="RegistrerMaalSide" />
 
 </Shell>

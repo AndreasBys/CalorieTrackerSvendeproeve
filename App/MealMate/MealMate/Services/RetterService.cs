@@ -53,7 +53,6 @@ namespace MealMate.Services
         {
             string token = await SecureStorage.GetAsync("auth_token");
 
-            Retter retterObj = new Retter();
 
             var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);

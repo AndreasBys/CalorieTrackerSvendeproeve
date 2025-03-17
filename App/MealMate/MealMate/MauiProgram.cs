@@ -79,6 +79,11 @@ namespace MealMate
                 client.BaseAddress = new Uri(baseUrl + "api/users/");
             });
 
+            builder.Services.AddHttpClient<MacroGoalService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/macroGoal/");
+            });
+
 
 
             return builder.Build();
