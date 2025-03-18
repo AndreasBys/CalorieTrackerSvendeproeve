@@ -226,7 +226,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerFoedevareOprettelse_knap"></Button>
+                        <Button TextColor="White" BackgroundColor="{StaticResource CustomRød}" Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerFoedevareOprettelse_knap"></Button>
                     </Border>
 
                     
@@ -236,7 +236,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Opret" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetFoedevare_knap"></Button>
+                        <Button TextColor="White" BackgroundColor="{StaticResource CustomBlaa}" Text="Opret" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetFoedevare_knap"></Button>
                     </Border>
 
 
