@@ -110,8 +110,8 @@ public partial class LoginPage : ContentPage
     private void TogglePasswordVisibility(object sender, EventArgs e)
     {
         _isPasswordHidden = !_isPasswordHidden;
-        //_passwordEntry.IsPassword = _isPasswordHidden;
-        //if (togglePasswordButton != null)
-        //    togglePasswordButton.Source = _isPasswordHidden ? "eye_show.png" : "eye_off.png";
+        _passwordEntry.IsPassword = _isPasswordHidden;
+        if (togglePasswordButton != null)
+            togglePasswordButton.Source = _isPasswordHidden ? "eye_show.png" : "eye_off.png";
     }
 }

@@ -23,7 +23,6 @@ namespace MealMate
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
             builder.Services.AddSingleton<HjemmeskaermSide>();
             builder.Services.AddTransient<OpretFoedevareSide>();
             builder.Services.AddTransient<ProfilSide>();
@@ -81,11 +80,6 @@ namespace MealMate
             builder.Services.AddHttpClient<MacroLogService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/macroLog/");
-            });
-
-            builder.Services.AddHttpClient<UserService>(client =>
-            {
-                client.BaseAddress = new Uri(baseUrl + "api/users/");
             });
 
             builder.Services.AddHttpClient<MacroGoalService>(client =>

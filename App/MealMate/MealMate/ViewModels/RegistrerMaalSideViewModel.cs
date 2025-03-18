@@ -87,7 +87,7 @@ namespace MealMate.ViewModels
                     macroGoal.proteins = Convert.ToInt32(proteinProcent);
                     macroGoal.carbohydrates = Convert.ToInt32(kulhydraterProcent);
                     macroGoal.fats = Convert.ToInt32(fedtProcent);
-                    macroGoal.Margin = Convert.ToInt32(marginProcent);
+                    macroGoal.margin = Convert.ToInt32(marginProcent);
 
                     try
                     {

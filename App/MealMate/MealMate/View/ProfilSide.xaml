@@ -19,12 +19,12 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
 
             <!--Formular box-->
-            <Grid RowDefinitions="Auto,Auto,*" >
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto" >
 
                 <Grid Grid.Row="0" Padding="40">
                     <Label TextColor="{StaticResource CustomHvid}" FontSize="32">Profil log</Label>
                 </Grid>
-                
+
 
                 <Grid Grid.Row="1">
                     <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -32,7 +32,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                            
+
 
 
                             <Grid ColumnDefinitions="*,*,*">
@@ -62,15 +62,15 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                         </Grid>
                     </Border>
 
-                    
-                    
+
+
                 </Grid>
 
                 <Grid Grid.Row="2" Padding="0,30,0,30" RowDefinitions="Auto,Auto">
                     <chart:SfCartesianChart BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
 
                         <chart:ColumnSeries YBindingPath="Dage">
-                            
+
                         </chart:ColumnSeries>
 
                         <chart:SfCartesianChart.XAxes>
@@ -109,119 +109,118 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                         </Grid>
                     </Grid>
 
-                </Grid>
-                
-                
-                
-                
-                
-                
-                
-                <!--Indstillinger box-->
-                <Grid RowDefinitions="Auto,Auto" Grid.Row="2" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" >
+                    <!--Indstillinger box-->
+                    <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" >
 
 
-                    <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="0,40,0,40">Indstillinger</Label>
+                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="0,40,0,40">Indstillinger</Label>
 
-                    <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
-
-                        
-                        
-                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button Pressed="saetProfildata_knap">
+                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
 
 
 
-                                </Button>
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
+                                    <Grid ColumnDefinitions="*">
+                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Profil data</Label>
 
-                                <Grid ColumnDefinitions="*">
-                                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Profil data</Label>
+                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                            </Grid>
 
-                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                        
-
-                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                            <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
                                         </Grid>
+                                        <Button Pressed="saetProfildata_knap">
+
+                                        </Button>
+
                                     </Grid>
 
+
+
                                 </Grid>
+                            </Border>
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="1">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
-                            </Grid>
-                        </Border>
-                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="1">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button Pressed="saetMaal_knap">
+                                    <Grid ColumnDefinitions="*">
+                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Kalorie mål</Label>
+
+                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
+                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                            </Grid>
 
-                                </Button>
-
-
-                                <Grid ColumnDefinitions="*">
-                                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Kalorie mål</Label>
-
-                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-
-
-                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                            <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
                                         </Grid>
+                                        <Button Pressed="saetMaal_knap">
+
+
+
+                                        </Button>
                                     </Grid>
 
+
+
                                 </Grid>
+                            </Border>
+
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
-                            </Grid>
-                        </Border>
+                                    <Grid ColumnDefinitions="*">
+                                        <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
+                                        <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
 
-                        <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="2">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                
+                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
-                                <Grid ColumnDefinitions="*">
-                                    <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
-                                    <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
-
-                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-
-
-                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                            <Image Source="logud_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" />
+                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                <Image Source="logud_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" />
+                                            </Grid>
                                         </Grid>
+
                                     </Grid>
 
+
+
                                 </Grid>
+                            </Border>
 
 
 
-                            </Grid>
-                        </Border>
 
 
+                        </Grid>
 
 
 
                     </Grid>
 
-
-
                 </Grid>
+
+
+
+
+
+
+
+                
 
 
 

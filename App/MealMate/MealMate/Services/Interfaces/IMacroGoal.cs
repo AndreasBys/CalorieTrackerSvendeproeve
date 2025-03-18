@@ -9,7 +9,7 @@ namespace MealMate.Services.Interfaces
     interface IMacroGoal
     {
 
-        public Task<MacroGoal> CreateMacroGoal(MacroGoal newMacroGoal);
+        public Task CreateMacroGoal(MacroGoal newMacroGoal);
 
     }
 }

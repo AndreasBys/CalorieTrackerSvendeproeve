@@ -18,18 +18,19 @@ namespace MealMate.Services
             _httpClient = httpClient;
         }
 
-        public async Task<MacroGoal> CreateMacroGoal(MacroGoal newMacroGoal)
+        public async Task CreateMacroGoal(MacroGoal newMacroGoal)
         {
             string token = await SecureStorage.GetAsync("auth_token");
-            string id = await SecureStorage.GetAsync("user_id");
-
-            newMacroGoal.id = id;
 
             var request = new HttpRequestMessage(HttpMethod.Post, "");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
+            var jsonoptions = new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
 
-            request.Content = JsonContent.Create(newMacroGoal);
+            request.Content = JsonContent.Create(newMacroGoal, options:jsonoptions);
 
             var response = await _httpClient.SendAsync(request);
 
@@ -38,9 +39,8 @@ namespace MealMate.Services
 
             if (response.IsSuccessStatusCode)
             {
-                MacroGoalResponse responseObj = await response.Content.ReadFromJsonAsync<MacroGoalResponse>();
-
-                return responseObj.macroGoal;
+                //MacroGoalResponse responseObj = await response.Content.ReadFromJsonAsync<MacroGoalResponse>();
+                return;
             }
             else
             {

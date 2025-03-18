@@ -114,15 +114,12 @@
                         </Picker.Items>
                     </Picker>
                 </Border>
-            </Grid>
-        </Grid>
-        <!--Dropdown box-->
-
-            <!--Button box-->
+            </StackLayout>
             <Grid Grid.Row="6" Grid.ColumnSpan="2">
                 <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="CreateUser_Button"/>
             </Grid>
         </Grid>
+
     </ScrollView>
 </ContentPage>
 

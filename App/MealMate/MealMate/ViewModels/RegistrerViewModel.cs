@@ -28,53 +28,53 @@ namespace MealMate.ViewModels
         }
 
 
-        [RelayCommand]
-        async Task Registrer()
-        {
+        //[RelayCommand]
+        //async Task Registrer()
+        //{
 
-            // 8-20 karaterer, A-Z i bogstaver, må gerne indholde numre og "_","-". Må ikke indeholde mellemrum og specielle karatere
+        //    // 8-20 karaterer, A-Z i bogstaver, må gerne indholde numre og "_","-". Må ikke indeholde mellemrum og specielle karatere
 
-            bool emailCorrect = false;
-            bool usernameCorrect = false;
+        //    bool emailCorrect = false;
+        //    bool usernameCorrect = false;
 
-            if (Regex.IsMatch(Email, @"^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"))
-            {
-                emailCorrect = true;
-                EmailLabel = "Email:";
-            }
-            else
-            {
-                EmailLabel = "Email: skal være mindst 6 tegn, indeholde et @ og et punktum *";
+        //    if (Regex.IsMatch(Email, @"^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"))
+        //    {
+        //        emailCorrect = true;
+        //        EmailLabel = "Email:";
+        //    }
+        //    else
+        //    {
+        //        EmailLabel = "Email: skal være mindst 6 tegn, indeholde et @ og et punktum *";
 
-            }
-            if (Regex.IsMatch(Username, @"^[a-zA-Z][a-zA-Z0-9_-]{7,19}$"))
-            {
-                usernameCorrect = true;
-                UsernameLabel = "Username:";
+        //    }
+        //    if (Regex.IsMatch(Username, @"^[a-zA-Z][a-zA-Z0-9_-]{7,19}$"))
+        //    {
+        //        usernameCorrect = true;
+        //        UsernameLabel = "Username:";
 
-            }
-            else
-            {
-                UsernameLabel = "Username: 8-20 tegn & ingen speciale karatere*";
-            }
-            if (emailCorrect && usernameCorrect)
-            {
+        //    }
+        //    else
+        //    {
+        //        UsernameLabel = "Username: 8-20 tegn & ingen speciale karatere*";
+        //    }
+        //    if (emailCorrect && usernameCorrect)
+        //    {
 
-                try
-                {
-                    User nyBruger = new User { username = Username, email = Email, password = Password };
-                    await LoginService.Register(nyBruger);
+        //        try
+        //        {
+        //            User nyBruger = new User { username = Username, email = Email, password = Password };
+        //            await LoginService.Register(nyBruger);
 
-                    await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), false);
+        //            await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), false);
 
-                }
-                catch (Exception ex)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Could not register!", ex.Message, "OK");
-                }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            await Application.Current.MainPage.DisplayAlert("Could not register!", ex.Message, "OK");
+        //        }
                 
 
-            }
+        //    }
 
             
 
@@ -82,13 +82,13 @@ namespace MealMate.ViewModels
 
 
 
-        }
+        //}
 
-        [RelayCommand]
-        async Task Tap()
-        {
-            await Shell.Current.GoToAsync(nameof(StartSkaermSide),false);
-        }
+        //[RelayCommand]
+        //async Task Tap()
+        //{
+        //    await Shell.Current.GoToAsync(nameof(StartSkaermSide),false);
+        //}
 
 
 

@@ -11,7 +11,7 @@ namespace MealMate.Models
     public class MacroGoal
     {
         [Key]
-        public string id { get; set; }
+        public string _id { get; set; }
 
         [Required]
         public DateTime startDate { get; set; }
@@ -26,9 +26,8 @@ namespace MealMate.Models
 
         public double? fats { get; set; }
 
-        [Required]
-        [DefaultValue(5)]
-        public int Margin { get; set; } = 5;
+
+        public int margin { get; set; }
 
 
         public User user { get; set; } 
