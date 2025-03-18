@@ -13,7 +13,11 @@ public partial class CreateUserPage : ContentPage
         InitializeComponent();
         _userService = userService;
 
-	}
+        // Find UI elements by their names
+        _usernameEntry = this.FindByName<Entry>("usernameRegistrerEntry");
+        _emailEntry = this.FindByName<Entry>("emailRegistrerEntry");
+        _passwordEntry = this.FindByName<Entry>("passwordRegistrerEntry");
+    }
 
     // Event handler for the CreateUser_Button click
     private async void CreateUser_Button(object sender, EventArgs e)
