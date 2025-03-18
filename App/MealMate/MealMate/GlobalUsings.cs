@@ -6,4 +6,4 @@ global using MealMate.Services;
 global using System.Diagnostics;
 global using MealMate.Services.Interfaces;
 global using System.Net.Http.Json;
-
+global using CommunityToolkit.Mvvm.ComponentModel;

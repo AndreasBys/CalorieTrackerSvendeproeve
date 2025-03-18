@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 namespace MealMate.View;
 
 [QueryProperty(nameof(User), "user")]
-public partial class RegistrerProfildataSide : ContentPage
+public partial class CreateUserDataPage : ContentPage
 {
     private User _user;
     private readonly LoginService _loginService;
@@ -25,7 +25,7 @@ public partial class RegistrerProfildataSide : ContentPage
     }
 
     // Constructor to initialize the page and find UI elements by their names
-    public RegistrerProfildataSide(LoginService loginService)
+    public CreateUserDataPage(LoginService loginService)
     {
         InitializeComponent();
         _loginService = loginService;
@@ -37,8 +37,8 @@ public partial class RegistrerProfildataSide : ContentPage
         _genderEntry = this.FindByName<Picker>("genderRegistrerEntry");
     }
 
-    // Event handler for the save profile data button click
-    private async void gemProfilData_knap(object sender, EventArgs e)
+    // Event handler for the CreateUser_Button click
+    private async void CreateUser_Button(object sender, EventArgs e)
     {
         // Get the input values from the entries and update the User object
         _user.weight = Convert.ToInt32(_weightEntry.Text);

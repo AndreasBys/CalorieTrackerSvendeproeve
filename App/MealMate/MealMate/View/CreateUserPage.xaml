@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.RegistrerSide"
-             Title="RegistrerSide">
+             x:Class="MealMate.View.CreateUserPage"
+             Title="CreateUserPage">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#3C3C44" Padding="20" Spacing="20">
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,50,0,20">
@@ -48,14 +48,14 @@
 
                 <!--Button box-->
                 <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
-                    <Button Text="Registrer" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Registrer_knap"/>
+                    <Button Text="Registrer" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="CreateUser_Button"/>
                 </HorizontalStackLayout>
             </StackLayout>
             <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label TextColor="#808080" FontSize="22" HorizontalOptions="Center" Text="Har du allerede en konto?"/>
                 <Label TextColor="#007ED8" FontSize="22" HorizontalOptions="Center" Text="Log ind" >
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="logindForside_knap"/>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="GoToLoginpage_Button"/>
                     </Label.GestureRecognizers>
                 </Label>
             </VerticalStackLayout>

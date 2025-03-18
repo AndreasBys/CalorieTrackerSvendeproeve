@@ -4,8 +4,10 @@ using System.Windows.Input;
 namespace MealMate.ViewModels;
 
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
+
 public partial class AddFoodViewModel : BaseViewModel
 {
+
     [ObservableProperty]
     Food foodDetails;
     [ObservableProperty]
@@ -22,6 +24,7 @@ public partial class AddFoodViewModel : BaseViewModel
         CreateFood = new AsyncRelayCommand(CreateFoodAsync);
         CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
     }
+
 
     async Task CreateFoodAsync()
     {

@@ -9,6 +9,7 @@
 	<x:Double x:Key="TitelFont">40</x:Double>
 
 	<x:String x:Key="OverallPadding">40,20,40,20</x:String>
+    <x:String x:Key="TitlePadding">0,30,0,30</x:String>
 	
 	
 	

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MealMate.Services;
@@ -11,11 +13,12 @@ namespace MealMate.Services;
 public class UserService : IUserService
 {
     private readonly HttpClient _httpClient;
-    //private const string _authToken = "auth_token";
+    private string _authToken;
 
     public UserService(HttpClient httpClient)
     {
         _httpClient = httpClient;
+        _authToken = SecureStorage.GetAsync("auth_token").Result;
     }
 
 
@@ -26,24 +29,56 @@ public class UserService : IUserService
         return await response.Content.ReadFromJsonAsync<User>();
     }
 
-    public async Task<User> UpdateUserAsync(User user, string id)
+    public Task<User> UpdateUser(User user)
     {
-        var response = await _httpClient.PutAsJsonAsync($"/{id}", user);
-        if (response.IsSuccessStatusCode)
-        {
-            var updatedUser = await response.Content.ReadFromJsonAsync<User>();
-            return updatedUser;
-        }
-        else
-        {
-            var errorContent = await response.Content.ReadAsStringAsync();
-            throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
-        }
+        throw new NotImplementedException();
     }
 
-    public async Task DeleteUserAsync(string id)
-    {
-        var response = await _httpClient.DeleteAsync($"/{id}");
-        response.EnsureSuccessStatusCode();
-    }
+    //Task<User> IUserService.UpdateUser(User user)
+    //{
+    //    var request = new HttpRequestMessage(HttpMethod.Patch, id);
+    //    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+    //    var jsonoptions = new JsonSerializerOptions
+    //    {
+    //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+    //    };
+    //public async Task<User> UpdateUserAsync(User user, string id)
+    //{
+    //    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+    //        };
+
+    //request.Content = JsonContent.Create(user, options: jsonoptions);
+
+    //        var response = await _httpClient.SendAsync(request);
 }
+
+
+
+            
+
+
+//        var response = await _httpClient.PutAsJsonAsync($"/{id}", user);
+//if (response.IsSuccessStatusCode)
+//{
+//    UserResponse responseObj = await response.Content.ReadFromJsonAsync<UserResponse>();
+
+//    return responseObj.user;
+//    var updatedUser = await response.Content.ReadFromJsonAsync<User>();
+//    return updatedUser;
+//}
+//else
+//{
+//    var errorContent = await response.Content.ReadAsStringAsync();
+//    throw new Exception($"At opdatere useren fejlede {response.StatusCode}, {errorContent}");
+//    throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
+//}
+//    }
+
+//    public async Task DeleteUserAsync(string id)
+//{
+//    var response = await _httpClient.DeleteAsync($"/{id}");
+//    response.EnsureSuccessStatusCode();
+//}
+//}
+//}

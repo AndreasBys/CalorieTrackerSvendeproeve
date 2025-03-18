@@ -10,7 +10,7 @@ namespace MealMate.ViewModels
 {
     public partial class RegistrerMaalSideViewModel : BaseViewModel
     {
-        
+
 
 
         [ObservableProperty]
@@ -24,6 +24,9 @@ namespace MealMate.ViewModels
 
         [ObservableProperty]
         private string fedtProcent = "35";
+
+        [ObservableProperty]
+        private string marginProcent;
 
         [ObservableProperty]
         private string proteinText = "g";
@@ -43,18 +46,80 @@ namespace MealMate.ViewModels
         [ObservableProperty]
         private string kulhydraterProgressBar;
 
-        [RelayCommand]
-        async Task GemMaalKnap()
-        {
-            
+        MacroGoalService macroGoalService;
 
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
+        public RegistrerMaalSideViewModel(MacroGoalService macroGoalService)
+        {
+            this.macroGoalService = macroGoalService;
         }
 
 
+
+        [RelayCommand]
+        async Task GemMaalKnap()
+        {
+            if (NullorWhitespace())
+            {
+                try
+                {
+                    if (Convert.ToInt32(fedtProcent) > 100 || Convert.ToInt32(FedtProcent) < 0)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld fedt procent mellem 0-100!", "OK");
+                        return;
+                    }
+
+                    if (Convert.ToInt32(proteinProcent) > 100 || Convert.ToInt32(ProteinProcent) < 0)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld protein procent mellem 0-100!", "OK");
+                        return;
+                    }
+
+                    if (Convert.ToInt32(kulhydraterProcent) > 100 || Convert.ToInt32(KulhydraterProcent) < 0)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld kulhydrater procent mellem 0-100!", "OK");
+                        return;
+                    }
+
+
+                    MacroGoal macroGoal = new MacroGoal();
+
+                    macroGoal.calories = Convert.ToInt32(kalorieInput);
+                    macroGoal.proteins = Convert.ToInt32(proteinProcent);
+                    macroGoal.carbohydrates = Convert.ToInt32(kulhydraterProcent);
+                    macroGoal.fats = Convert.ToInt32(fedtProcent);
+                    macroGoal.margin = Convert.ToInt32(marginProcent);
+
+                    try
+                    {
+                        await macroGoalService.CreateMacroGoal(macroGoal);
+
+                        await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error!", $"Fejl i serveren! {ex.Message}", "OK");
+                        return;
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
+                    return;
+                }
+            }
+
+
+        }
+        public bool NullorWhitespace()
+        {
+            return !string.IsNullOrWhiteSpace(KalorieInput) && !string.IsNullOrWhiteSpace(ProteinProcent) && !string.IsNullOrWhiteSpace(KulhydraterProcent) && !string.IsNullOrWhiteSpace(FedtProcent);
+        }
+
         partial void OnKalorieInputChanged(string kalorieValue)
         {
-            Console.WriteLine($"InputTextÆndret  { kalorieValue}");
             try
             {
                 if (string.IsNullOrWhiteSpace(kalorieValue))
@@ -92,8 +157,8 @@ namespace MealMate.ViewModels
             }
             catch (Exception ex)
             {
-                Application.Current.MainPage.DisplayAlert("Text changed", "Enter numbers", "OK");
-                throw;
+                Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
+                return;
             }
 
 
@@ -101,49 +166,79 @@ namespace MealMate.ViewModels
 
         partial void OnProteinProcentChanged(string ProteinValue)
         {
-            if (string.IsNullOrWhiteSpace(ProteinValue))
+            try
             {
+                if (string.IsNullOrWhiteSpace(ProteinValue))
+                {
+                    return;
+                }
+
+                if (Convert.ToInt32(ProteinValue) > 100 || Convert.ToInt32(ProteinValue) < 0)
+                {
+                    proteinProcent = "100";
+                }
+
+                OnKalorieInputChanged(kalorieInput);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
                 return;
             }
 
-            if (Convert.ToInt32(ProteinValue) > 100 || Convert.ToInt32(ProteinValue) < 0)
-            {
-                proteinProcent = "100";
-            }
-
-            OnKalorieInputChanged(kalorieInput);
 
 
         }
 
         partial void OnFedtProcentChanged(string FedtValue)
         {
-            if (string.IsNullOrWhiteSpace(FedtValue))
+
+            try
             {
+                if (string.IsNullOrWhiteSpace(FedtValue))
+                {
+                    return;
+                }
+
+                if (Convert.ToInt32(FedtValue) > 100 || Convert.ToInt32(FedtValue) < 0)
+                {
+                    fedtProcent = "100";
+                }
+
+                OnKalorieInputChanged(kalorieInput);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
                 return;
             }
 
-            if (Convert.ToInt32(FedtValue) > 100 || Convert.ToInt32(FedtValue) < 0)
-            {
-                fedtProcent = "100";
-            }
-
-            OnKalorieInputChanged(kalorieInput);
         }
 
         partial void OnKulhydraterProcentChanged(string KulhydraterValue)
         {
-            if (string.IsNullOrWhiteSpace(KulhydraterValue))
+
+            try
             {
+                if (string.IsNullOrWhiteSpace(KulhydraterValue))
+                {
+                    return;
+                }
+
+                if (Convert.ToInt32(KulhydraterValue) > 100 || Convert.ToInt32(KulhydraterValue) < 0)
+                {
+                    kulhydraterProcent = "100";
+                }
+
+                OnKalorieInputChanged(kalorieInput);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
                 return;
             }
 
-            if (Convert.ToInt32(KulhydraterValue) > 100 || Convert.ToInt32(KulhydraterValue) < 0)
-            {
-                kulhydraterProcent = "100";
-            }
 
-            OnKalorieInputChanged(kalorieInput);
         }
 
 
