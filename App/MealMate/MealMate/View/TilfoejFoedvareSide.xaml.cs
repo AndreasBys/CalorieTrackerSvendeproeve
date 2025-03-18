@@ -1,3 +1,5 @@
+
+
 namespace MealMate.View;
 
 public partial class TilfoejFoedvareSide : ContentPage
@@ -32,6 +34,18 @@ public partial class TilfoejFoedvareSide : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
     }
+    // Command="{Binding Source={x:Reference FoedevareSide}, Path=BindingContext.TilfoejRetKnapCommand}" CommandParameter="{Binding}"
+    private async void Testknap(object sender, EventArgs e)
+    {
+        var ret = ((VisualElement)sender).BindingContext as Retter;
+
+        await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
+        {
+            {"Objekt", ret }
+
+
+        });
+    }
 
     private void OnSearch(object sender, EventArgs e)
     {
@@ -53,4 +67,6 @@ public partial class TilfoejFoedvareSide : ContentPage
             { "SelectedFood", _viewModel.Food }
         });
     }
+
+    
 }

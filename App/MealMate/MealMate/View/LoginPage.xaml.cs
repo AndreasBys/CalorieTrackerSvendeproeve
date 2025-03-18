@@ -3,7 +3,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace MealMate.View;
 
-public partial class StartSkaermSide : ContentPage
+public partial class LoginPage : ContentPage
 {
     private readonly LoginService _loginService;
     private bool _isPasswordHidden = true;
@@ -14,7 +14,7 @@ public partial class StartSkaermSide : ContentPage
     private ImageButton _togglePasswordButton;
 
     // Constructor to initialize the page and load saved login information if "Remember Me" was checked
-    public StartSkaermSide(LoginService loginService)
+    public LoginPage(LoginService loginService)
     {
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
@@ -44,12 +44,12 @@ public partial class StartSkaermSide : ContentPage
         {
             _emailEntry.Text = string.Empty;
             _passwordEntry.Text = string.Empty;
-            _rememberMeCheckBox.IsChecked = false;
+            //_rememberMeCheckBox.IsChecked = false;
         }
     }
 
-    // Event handler for the login button click
-    private async void Logind_knap(object sender, EventArgs e)
+    // Event handler for the Login_button click
+    private async void Login_button(object sender, EventArgs e)
     {
         try
         {
@@ -100,10 +100,10 @@ public partial class StartSkaermSide : ContentPage
         }
     }
 
-    // Event handler for the register button tap
-    private async void registrerBruger_knap(object sender, TappedEventArgs e)
+    // Event handler for the CreateUser_Button tap
+    private async void CreateUser_Button(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(RegistrerSide), true);
+        await Shell.Current.GoToAsync(nameof(CreateUserPage), true);
     }
 
     // Event handler to toggle password visibility

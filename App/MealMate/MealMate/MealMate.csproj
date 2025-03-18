@@ -84,10 +84,13 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Syncfusion.Maui.Buttons" Version="28.2.11" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Syncfusion.Maui.Charts" Version="28.2.9" />
 		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="28.2.7" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+
+		
 	</ItemGroup>
+
 
 	<ItemGroup>
 	  <None Update="Resources\AppIcon\app_icon.png">
@@ -101,8 +104,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\StartSkaermSide.xaml.cs">
-	    <DependentUpon>StartSkaermSide.xaml</DependentUpon>
+	  <Compile Update="View\CreateUserPage.xaml.cs">
+	    <DependentUpon>CreateUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateUserDataPage.xaml.cs">
+	    <DependentUpon>CreateUserDataPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -114,6 +123,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\SizesTablet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BarcodeLaeserSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AdminHomePage.xaml">
@@ -143,16 +155,16 @@
 	  <MauiXaml Update="View\RetterSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\StartSkaermSide.xaml">
+	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\RegistrerMaalSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrerProfildataSide.xaml">
+	  <MauiXaml Update="View\CreateUserDataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrerSide.xaml">
+	  <MauiXaml Update="View\CreateUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TilfoejFoedvareSide.xaml">

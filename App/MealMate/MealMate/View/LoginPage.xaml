@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.StartSkaermSide"
+             x:Class="MealMate.View.LoginPage"
              Shell.NavBarIsVisible="False"
-             Title="StartSkaermSide">
+             Title="LoginPage">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#3C3C44" Padding="20" Spacing="20">
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,50,0,20">
@@ -47,14 +47,14 @@
 
                 <!--Button box-->
                 <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
-                    <Button Text="Log ind" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Logind_knap"/>
+                    <Button Text="Log ind" WidthRequest="300" BackgroundColor="#007ED8" FontSize="28" Clicked="Login_button"/>
                 </HorizontalStackLayout>
             </StackLayout>
             <VerticalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label HorizontalOptions="Center" TextColor="#808080" FontSize="22">Har du ikke en konto endnu?</Label>
                 <Label HorizontalOptions="Center" Text="Opret konto" TextColor="#007ED8" FontSize="22">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="registrerBruger_knap"/>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="CreateUser_Button"/>
                     </Label.GestureRecognizers>
                 </Label>
             </VerticalStackLayout>

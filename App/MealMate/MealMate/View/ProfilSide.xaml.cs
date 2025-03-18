@@ -21,8 +21,8 @@ public partial class ProfilSide : ContentPage
         // Clear the auth_token from SecureStorage
         SecureStorage.Remove("auth_token");
 
-        // Navigate back to the login page
-        await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");
+        // Navigate back to the Loginpage
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
 
     private async void saetMaal_knap(object sender, EventArgs e)
@@ -32,6 +32,6 @@ public partial class ProfilSide : ContentPage
 
     private async void saetProfildata_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(RegistrerProfildataSide), true);
+        await Shell.Current.GoToAsync(nameof(CreateUserDataPage), true);
     }
 }

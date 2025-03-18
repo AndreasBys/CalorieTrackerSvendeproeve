@@ -39,7 +39,7 @@ public partial class AdminHomePage : ContentPage
         SecureStorage.Remove("auth_token");
 
         // Navigate back to the login page
-        await Shell.Current.GoToAsync($"//{nameof(StartSkaermSide)}");
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
 
     // Event handler for selecting a food item

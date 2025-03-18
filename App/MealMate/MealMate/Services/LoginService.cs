@@ -8,6 +8,7 @@ public class LoginService : ILoginService
 {
     private readonly HttpClient _httpClient;
     private const string _authToken = "auth_token";
+    private const string _userId = "user_id";
 
     public LoginService(HttpClient httpClient)
     {
@@ -22,8 +23,9 @@ public class LoginService : ILoginService
         if (response.IsSuccessStatusCode)
         {
             var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-            await SecureStorage.SetAsync(_authToken, loginResponse.Token); // Saves token to secure storage
-            return loginResponse.User; // Returns User
+            await SecureStorage.SetAsync(_authToken, loginResponse.Token);
+            await SecureStorage.SetAsync(_userId, loginResponse.User._id);
+            return loginResponse.User;
         }
         else
         {
@@ -34,18 +36,24 @@ public class LoginService : ILoginService
 
     public async Task<User> Register(User user)
     {
-        var response = await _httpClient.PostAsJsonAsync("/api/auth/register", user);
+
+        var registrerRequest = user;
+        var response = await _httpClient.PostAsJsonAsync("/api/auth/register", registrerRequest);
 
         if (response.IsSuccessStatusCode)
         {
-            var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-            return loginResponse.User; // Returns User
+            var registrerResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+
+            await Login(user.email, user.password); // Login user after registration 
+
+            return registrerResponse.User;
         }
         else
         {
             var errorContent = await response.Content.ReadAsStringAsync();
-            throw new Exception($"register failed: {response.StatusCode}, {errorContent}");
+            throw new Exception($"Register failed: {response.StatusCode}, {errorContent}");
         }
+
     }
 }
 

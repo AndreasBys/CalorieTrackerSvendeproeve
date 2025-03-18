@@ -2,7 +2,7 @@ namespace MealMate.View;
 
 public partial class Navigationsbar : ContentView	
 {
-    string baseUrl = "//" + nameof(StartSkaermSide) + "/";
+    string baseUrl = "//" + nameof(LoginPage) + "/";
 
     public Navigationsbar()
 	{

@@ -50,4 +50,5 @@ public class MacroLogService : IMacroLogService
 
         return macroLogs;
     }
+
 }
