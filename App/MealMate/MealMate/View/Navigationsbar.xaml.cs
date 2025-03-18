@@ -2,23 +2,44 @@ namespace MealMate.View;
 
 public partial class Navigationsbar : ContentView	
 {
-	public Navigationsbar()
+    string baseUrl = "//" + nameof(StartSkaermSide) + "/";
+
+    public Navigationsbar()
 	{
 		InitializeComponent();
-	}
+
+    }
 
     private async void hjemmesideSkearm_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+        string currentPage = Shell.Current.CurrentState.Location.ToString();
+        var targetPage = nameof(HjemmeskaermSide);
+
+        if (!currentPage.EndsWith(targetPage))
+        {
+            await Shell.Current.GoToAsync(baseUrl + targetPage, true);
+        }
     }
 
     private async void tilfoejMad_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(TilfoejFoedvareSide), true);
+        string currentPage = Shell.Current.CurrentState.Location.ToString();
+        var targetPage = nameof(TilfoejFoedvareSide);
+
+        if (!currentPage.EndsWith(targetPage))
+        {
+            await Shell.Current.GoToAsync(baseUrl + nameof(HjemmeskaermSide) + "/" + targetPage, true);
+        }
     }
 
     private async void profilside_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(ProfilSide), true);
+        string currentPage = Shell.Current.CurrentState.Location.ToString();
+        var targetPage = nameof(ProfilSide);
+
+        if (!currentPage.EndsWith(targetPage))
+        {
+            await Shell.Current.GoToAsync(baseUrl + nameof(HjemmeskaermSide) + "/" + targetPage, true);
+        }
     }
 }

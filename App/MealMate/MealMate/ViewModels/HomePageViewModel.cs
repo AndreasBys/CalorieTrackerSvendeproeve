@@ -3,9 +3,10 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MealMate.ViewModels;
-
+[QueryProperty(nameof(NewMacroLog), "NewMacroLog")]
 public partial class HomePageViewModel : BaseViewModel
 {
+    public MacroLog NewMacroLog { get; set; }
     public ObservableCollection<MacroLog> MacroLogs { get; } = new();
     MacroLogService MacroLogService;
     public ICommand GetMacroLogs { get; }

@@ -19,6 +19,7 @@ public class FoodService : IFoodService
 
     public async Task<List<Food>> GetAllFoods()
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -34,6 +35,7 @@ public class FoodService : IFoodService
     }
     public async Task<List<Food>> SearchFoods(string searchTerm)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -50,6 +52,7 @@ public class FoodService : IFoodService
 
     public async Task<Food> GetFoodByBarcode(string barcode)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Get, barcode);
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -66,6 +69,7 @@ public class FoodService : IFoodService
 
     public async Task<Food> CreateFood(FoodRequest newFood)
     {
+        string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Post, "");
         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         request.Content = JsonContent.Create(newFood);

@@ -22,7 +22,7 @@ namespace MealMate
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransient<HjemmeskaermSide>();
+            builder.Services.AddSingleton<HjemmeskaermSide>();
             builder.Services.AddTransient<OpretFoedevareSide>();
             builder.Services.AddTransient<ProfilSide>();
             builder.Services.AddTransient<RegistrerMaalSide>();
