@@ -49,7 +49,7 @@ public partial class CreateUserDataPage : ContentPage
         try
         {
             // Register the user with the provided profile data
-            var registeredUser = await _loginService.Register(_user);
+            var registeredUser = await _loginService.CreateUser(_user);
             await DisplayAlert("Success", "Profile created - logging in", "OK");
 
             // Log in the user after successful registration

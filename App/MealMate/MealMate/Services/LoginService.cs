@@ -32,7 +32,7 @@ public class LoginService : ILoginService
         }
     }
 
-    public async Task<User> Register(User user)
+    public async Task<User> CreateUser(User user)
     {
         var response = await _httpClient.PostAsJsonAsync("/api/auth/register", user);
 

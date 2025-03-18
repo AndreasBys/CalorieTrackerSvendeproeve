@@ -54,7 +54,7 @@
                 <Label HorizontalOptions="Center" TextColor="#808080" FontSize="22">Har du ikke en konto endnu?</Label>
                 <Label HorizontalOptions="Center" Text="Opret konto" TextColor="#007ED8" FontSize="22">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="CreateUser_Button"/>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" Tapped="GoToCreateUserPage_Button"/>
                     </Label.GestureRecognizers>
                 </Label>
             </VerticalStackLayout>
