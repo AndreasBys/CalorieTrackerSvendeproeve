@@ -22,7 +22,7 @@ router.get('/search', authenticate, search);
 router.get('/:barcode', authenticate, getFood);
 router.post('/', authenticate, createFood);
 router.delete('/:id', authenticate, deleteFood);
-router.put('/:id', authenticate, updateFood);
+router.patch('/:id', authenticate, updateFood);
 
 // exports router as default
 export default router;

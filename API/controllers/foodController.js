@@ -182,6 +182,6 @@ export const updateFood = async (req, res) => {
         res.status(200).json({ msg: "food updated", food: updatedFood })
     } catch (error) {
         // returns status 500 if error 
-        res.status(500).json({ msg: "unable to update food" })
+        res.status(500).json({ msg: "unable to update food ", error })
     }
 }

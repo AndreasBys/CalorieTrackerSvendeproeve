@@ -5,6 +5,7 @@ namespace MealMate.Services;
 
 public class FoodService : IFoodService
 {
+    string token;
     List<Food> foodList = new();
     Food food;
     private readonly HttpClient _httpClient; // HttpClient instance for making HTTP requests
@@ -13,6 +14,7 @@ public class FoodService : IFoodService
     public FoodService(HttpClient httpClient)
     {
         _httpClient = httpClient;
+        token = SecureStorage.GetAsync("auth_token").Result;
     }
 
     public async Task<List<Food>> GetAllFoods()
@@ -82,4 +84,25 @@ public class FoodService : IFoodService
 
         return food;
     }
+
+    public async Task<Food> UpdateFood(Food food, string id)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Patch, $"{id}");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        request.Content = JsonContent.Create(food);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var updatedFood = await response.Content.ReadFromJsonAsync<Food>();
+            return updatedFood;
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
+        }
+    }
+
 }

@@ -191,15 +191,12 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                <Button Pressed="logud_knap">
-
-
-
-                                </Button>
+                                
 
 
                                 <Grid ColumnDefinitions="*">
-                                    <Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>
+                                    <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
+                                    <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
 
                                     <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 

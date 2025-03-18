@@ -153,6 +153,34 @@
                                                     <Label TextColor="{StaticResource CustomHvid}" FontSize="18" VerticalTextAlignment="End">g</Label>
                                                 </Grid>
                                             </Grid>
+
+
+                                        </Grid>
+                                    </Grid>
+
+                                    <!--Row 2-->
+
+                                    <!--Row 3-->
+                                    <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="2">
+
+                                        <Grid Grid.Column="0">
+                                            <Image Source="bacon_icon.png" HeightRequest="45" WidthRequest="45"></Image>
+                                        </Grid>
+
+                                        <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
+
+
+                                            <progressBar:SfLinearProgressBar  
+                                                TrackCornerRadius="20" 
+                                                ProgressHeight="50" 
+                                                ProgressCornerRadius="20" 
+                                                Progress="20" 
+                                                TrackHeight="50" 
+                                                Grid.Column="1" 
+                                                TrackFill="{StaticResource CustomMoerkeGraa}"
+                                                ProgressFill="{StaticResource CustomGul}"
+                                                BackgroundColor="{StaticResource CustomGraa}" >
+                                            </progressBar:SfLinearProgressBar>
                                         </Grid>
                                         <!--Row 2-->
                                         <!--Row 3-->
