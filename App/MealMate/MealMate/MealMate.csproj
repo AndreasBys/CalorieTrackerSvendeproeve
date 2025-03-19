@@ -101,6 +101,11 @@
 
 	<ItemGroup>
 	  <Folder Include="Model\" />
+	  <Folder Include="Platforms\Windows\Assets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+    	<MauiWinUIIcon Include="Platforms/Windows/Assets/AppIcon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
