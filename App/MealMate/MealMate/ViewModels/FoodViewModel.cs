@@ -1,47 +1,61 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MealMate.ViewModels;
 
+// ViewModel for managing food-related data and operations
 public partial class FoodViewModel : BaseViewModel
 {
-
-
+    // Observable property to control visibility of single items
     [ObservableProperty]
     bool enkeltVarerSynlighed = true;
 
+    // Observable property to control visibility of my dishes
     [ObservableProperty]
     bool mineRetterSynlighed = false;
 
+    // Observable property for the selected color of single items
     [ObservableProperty]
     private Color enkeltVarerValgt = (Color)Application.Current.Resources["CustomBlaa"];
 
+    // Observable property for the selected color of my dishes
     [ObservableProperty]
     private Color mineRetterValgt = (Color)Application.Current.Resources["CustomGraa"];
 
+    // Observable property for the text color of single items
     [ObservableProperty]
     private Color tekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
 
+    // Observable property for the text color of my dishes
     [ObservableProperty]
     private Color tekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
 
+    // Collection to hold dishes
     public ObservableCollection<Retter> Retter { get; } = new();
 
+    // Service for managing dishes
     RetterService retService;
 
+    // Observable property for search text
     [ObservableProperty]
     string searchText;
+
+    // Observable property for food details
     [ObservableProperty]
     Food food;
+
+    // Collection to hold food items
     public ObservableCollection<Food> Foods { get; } = new();
+
+    // Commands for various operations
     public ICommand GetAllFood { get; }
     public ICommand SearchFood { get; }
     public ICommand GetFood { get; }
 
+    // Service for managing food items
     FoodService FoodService;
 
-
+    // Constructor to initialize services and commands
     public FoodViewModel(FoodService FoodService, RetterService retService)
     {
         this.FoodService = FoodService;
@@ -51,22 +65,19 @@ public partial class FoodViewModel : BaseViewModel
 
         this.retService = retService;
         getAllRetter();
-
-
     }
 
+    // Command to navigate to the Add Dish page with the selected dish
     [RelayCommand]
     async Task TilfoejRetKnap(Retter selectedRet)
     {
-
         await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
         {
             {"Objekt", selectedRet}
-
-
         });
     }
 
+    // Async method to get all food items
     public async Task GetFoods()
     {
         if (IsBusy)
@@ -94,6 +105,7 @@ public partial class FoodViewModel : BaseViewModel
         }
     }
 
+    // Async method to search for food items
     async Task SearchFoods()
     {
         if (IsBusy)
@@ -147,10 +159,9 @@ public partial class FoodViewModel : BaseViewModel
                 IsBusy = false;
             }
         }
-
-
     }
 
+    // Async method to get food details by barcode
     async Task GetFoodByBarcode(string? scanText)
     {
         if (scanText == null)
@@ -166,7 +177,7 @@ public partial class FoodViewModel : BaseViewModel
             if (food == null)
                 throw new Exception($"Barcode: {scanText} is invalid");
 
-            this.Food = food;
+            Food = food;
         }
         catch (Exception ex)
         {
@@ -177,13 +188,9 @@ public partial class FoodViewModel : BaseViewModel
         {
             IsBusy = false;
         }
-
-
-
-
     }
 
-
+    // Command to switch to the My Dishes view
     [RelayCommand]
     async Task MineRetter()
     {
@@ -197,6 +204,7 @@ public partial class FoodViewModel : BaseViewModel
         TekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
     }
 
+    // Command to switch to the Single Items view
     [RelayCommand]
     async Task EnkeltVarer()
     {
@@ -207,11 +215,10 @@ public partial class FoodViewModel : BaseViewModel
         EnkeltVarerValgt = (Color)Application.Current.Resources["CustomBlaa"];
 
         TekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomHvid"];
-
         TekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
     }
 
-
+    // Method to get all dishes
     public async void getAllRetter()
     {
         if (IsBusy)
@@ -226,7 +233,6 @@ public partial class FoodViewModel : BaseViewModel
             {
                 Retter.Add(item);
             }
-
         }
         catch (Exception ex)
         {
@@ -239,8 +245,5 @@ public partial class FoodViewModel : BaseViewModel
             IsBusy = false;
         }
     }
-
-
-
-
 }
+

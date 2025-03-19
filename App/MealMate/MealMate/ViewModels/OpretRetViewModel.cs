@@ -1,19 +1,14 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MealMate.ViewModels
+﻿namespace MealMate.ViewModels
 {
+    // This attribute allows the Retter property to be set via query parameters
     [QueryProperty(nameof(Retter), "Objekt")]
     public partial class OpretRetViewModel : BaseViewModel
     {
+        // Observable property for the selected dish
         [ObservableProperty]
         public Retter retter;
 
-
+        // Observable properties for the dish's nutritional information
         [ObservableProperty]
         string rettensNavn;
         [ObservableProperty]
@@ -25,24 +20,24 @@ namespace MealMate.ViewModels
         [ObservableProperty]
         double rettensFedt;
 
-
+        // Method called when the Retter property changes
         partial void OnRetterChanged(Retter value)
         {
-            Template();   
+            Template();
         }
 
-
+        // Constructor
         public OpretRetViewModel()
         {
-            
+
         }
 
-
+        // Method to calculate the total nutritional information for the dish
         private void Template()
         {
-
             int kalorier = 0;
-            
+
+            // Iterate through each food item in the dish and sum up the nutritional values
             Retter.foods.ForEach(food =>
             {
                 RettensKalorier += food.food.calories;
@@ -50,8 +45,7 @@ namespace MealMate.ViewModels
                 RettensProtein += food.food.protein;
                 RettensKulhydrater += food.food.carbonhydrates;
             });
-
-
         }
     }
 }
+

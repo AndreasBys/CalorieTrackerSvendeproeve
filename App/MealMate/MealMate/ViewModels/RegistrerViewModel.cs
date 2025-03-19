@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace MealMate.ViewModels
+﻿namespace MealMate.ViewModels
 {
     public partial class RegistrerViewModel : BaseViewModel
     {
