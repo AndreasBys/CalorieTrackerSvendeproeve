@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MealMate.Models
 {
-    public class Retter
+    public class Dish
     {
 
         [Key]
@@ -20,13 +20,13 @@ namespace MealMate.Models
     }
 
 
-    public class RetterResponse
+    public class DishResponse
     {
-        public Food retter { get; set; }
+        public Food dishes { get; set; }
     }
     public class RetterListResponse
     {
-        public List<Retter> dishes { get; set; }
+        public List<Dish> dishes { get; set; }
     }
 
 }

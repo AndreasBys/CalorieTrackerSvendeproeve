@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.TilfoejFoedvareSide"
-             xmlns:Navigationsbar="clr-namespace:MealMate.View"
+             x:Class="MealMate.View.AddFoodPage"
+             xmlns:NavBar="clr-namespace:MealMate.View"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
              x:DataType="viewmodel:FoodViewModel"
-             Title="TilfoejFoedvareSide">
+             Title="AddFoodPage">
     <Grid>
 
 
@@ -123,9 +123,9 @@
                                 </ScrollView>
 
                                 <ScrollView IsVisible="{Binding MineRetterSynlighed}">
-                                    <CollectionView ItemsSource="{Binding Retter}" SelectionMode="None">
+                                    <CollectionView ItemsSource="{Binding Dish}" SelectionMode="None">
                                         <CollectionView.ItemTemplate>
-                                            <DataTemplate x:DataType="model:Retter">
+                                            <DataTemplate x:DataType="model:Dish">
                                                 <Grid Padding="5" ColumnDefinitions="*">
                                                     <Border Stroke="#00000000" HeightRequest="80">
                                                         <Border.Shadow>
@@ -320,6 +320,6 @@ BackgroundColor="{StaticResource CustomGraa}" >
 
 
         </Grid>
-        <Navigationsbar:Navigationsbar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
 </ContentPage>

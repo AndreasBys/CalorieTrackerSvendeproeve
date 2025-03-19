@@ -22,22 +22,22 @@ namespace MealMate
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransient<HjemmeskaermSide>();
-            builder.Services.AddTransient<OpretFoedevareSide>();
-            builder.Services.AddTransient<ProfilSide>();
-            builder.Services.AddTransient<RegistrerMaalSide>();
+            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<CreateFoodPage>();
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<CreateGoalPage>();
             builder.Services.AddTransient<CreateUserDataPage>();
             builder.Services.AddTransient<CreateUserPage>();
             builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddTransient<TilfoejFoedvareSide>();
-            builder.Services.AddTransient<OpretRetSide>();
+            builder.Services.AddTransient<AddFoodPage>();
+            builder.Services.AddTransient<CreateDishPage>();
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
 
             // DI for ViewModels:
 
-            builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+            builder.Services.AddSingleton<CreateGoalPageViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
@@ -67,7 +67,7 @@ namespace MealMate
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
             });
 
-            builder.Services.AddHttpClient<RetterService>(client =>
+            builder.Services.AddHttpClient<DishService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/dish/");
             });

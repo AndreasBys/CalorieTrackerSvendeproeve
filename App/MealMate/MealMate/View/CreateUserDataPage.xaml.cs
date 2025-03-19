@@ -54,7 +54,7 @@ public partial class CreateUserDataPage : ContentPage
 
             // Log in the user after successful registration
             var loggedInUser = await _loginService.Login(_user.email, _user.password);
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+            await Shell.Current.GoToAsync(nameof(HomePage), true);
         }
         catch (Exception ex)
         {

@@ -56,6 +56,6 @@ public partial class AdminHomePage : ContentPage
     private async void OpretNy_knap(object sender, EventArgs e)
     {
         // Navigate to the OpretFoedevareSide page
-        await Shell.Current.GoToAsync($"{nameof(OpretFoedevareSide)}");
+        await Shell.Current.GoToAsync($"{nameof(CreateFoodPage)}");
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MealMate.ViewModels
 {
-    public partial class RegistrerMaalSideViewModel : BaseViewModel
+    public partial class CreateGoalPageViewModel : BaseViewModel
     {
         
 
@@ -48,7 +48,7 @@ namespace MealMate.ViewModels
         {
             
 
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
+            await Shell.Current.GoToAsync(nameof(HomePage));
         }
 
 
