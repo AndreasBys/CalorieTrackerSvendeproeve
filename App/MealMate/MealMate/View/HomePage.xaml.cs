@@ -1,9 +1,9 @@
 namespace MealMate.View;
 
-public partial class HjemmeskaermSide : ContentPage
+public partial class HomePage : ContentPage
 {
     private readonly HomePageViewModel _viewModel;
-    public HjemmeskaermSide(HomePageViewModel viewModel)
+    public HomePage(HomePageViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = viewModel;

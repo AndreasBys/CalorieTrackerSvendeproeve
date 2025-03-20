@@ -49,12 +49,12 @@ public partial class CreateUserDataPage : ContentPage
         try
         {
             // Register the user with the provided profile data
-            var registeredUser = await _loginService.Register(_user);
+            var registeredUser = await _loginService.CreateUser(_user);
             await DisplayAlert("Success", "Profile created - logging in", "OK");
 
             // Log in the user after successful registration
             var loggedInUser = await _loginService.Login(_user.email, _user.password);
-            await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+            await Shell.Current.GoToAsync(nameof(HomePage), true);
         }
         catch (Exception ex)
         {

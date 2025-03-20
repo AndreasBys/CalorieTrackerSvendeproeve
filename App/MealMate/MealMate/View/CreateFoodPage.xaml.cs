@@ -1,15 +1,12 @@
 namespace MealMate.View;
 
-// Page for creating or updating a food item
-public partial class OpretFoedevareSide : ContentPage
+public partial class CreateFoodPage : ContentPage
 {
     // ViewModel for managing the food item
     private readonly AddFoodViewModel _viewModel;
-
-    // Constructor to initialize the page with the ViewModel
-    public OpretFoedevareSide(AddFoodViewModel viewModel)
-    {
-        InitializeComponent();
+    public CreateFoodPage(AddFoodViewModel viewModel)
+	{
+		InitializeComponent();
         BindingContext = _viewModel = viewModel;
     }
 

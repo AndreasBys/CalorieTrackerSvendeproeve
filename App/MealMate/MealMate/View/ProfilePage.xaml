@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.ProfilSide"
-             xmlns:Navigationsbar="clr-namespace:MealMate.View"
+             x:Class="MealMate.View.ProfilePage"
+             xmlns:NavBar="clr-namespace:MealMate.View"
 xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
              
-             Title="ProfilSide">
+             Title="ProfilePage">
     <Grid BackgroundColor="{StaticResource CustomGraa}" RowDefinitions="*,Auto">
 
 
@@ -235,6 +235,6 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
         </Grid>
 
-        <Navigationsbar:Navigationsbar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
 </ContentPage>

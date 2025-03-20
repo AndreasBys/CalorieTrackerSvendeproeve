@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace MealMate.Services
 {
-    public class RetterService : IRetterService
+    public class DishService : IDishService
     {
 
 
         private readonly HttpClient _httpClient;
 
-        List<Retter> retterList = new();
+        List<Dish> retterList = new();
 
-        public RetterService(HttpClient httpClient)
+        public DishService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public Task<Retter> CreateRet(Retter newFood)
+        public Task<Dish> CreateRet(Dish newFood)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Retter>> GetAllRetter()
+        public async Task<List<Dish>> GetAllRetter()
         {
             string token = await SecureStorage.GetAsync("auth_token");
 
@@ -49,8 +49,9 @@ namespace MealMate.Services
         }
 
 
-        public async Task<List<Retter>> SearchRetter(string searchTerm)
+        public async Task<List<Dish>> SearchRetter(string searchTerm)
         {
+            Dish retterObj = new Dish();
             string token = await SecureStorage.GetAsync("auth_token");
 
 

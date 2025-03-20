@@ -4,7 +4,7 @@ import config from '../config.js';
 import User from '../models/user.js';
 
 // register method - laver ny bruger
-export const register = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         // laver ny bruger og gemmer i databasen
         const user = await new User(req.body).save();
@@ -19,7 +19,7 @@ export const register = async (req, res) => {
     } catch (error) {
         // håndterer fejl
         if (error.code == 11000) {
-            return res.status(11000).json({ code: 11000, msg: 'Username or email is already used' });
+            return res.status(500).json({ code: 11000, msg: 'Username or email is already used' });
         }
         res.status(500).json({ code: 500, msg: 'Unable to create user', error: error.message });
     }

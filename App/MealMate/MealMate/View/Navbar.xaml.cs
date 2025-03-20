@@ -1,8 +1,11 @@
 namespace MealMate.View;
 
-// Custom navigation bar for the application
-public partial class Navigationsbar : ContentView
+public partial class NavBar : ContentView	
 {
+	public NavBar()
+	{
+		InitializeComponent();
+	}
     // Base URL for navigation
     string baseUrl = "//" + nameof(LoginPage) + "/";
 

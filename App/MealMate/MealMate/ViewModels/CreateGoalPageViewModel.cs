@@ -1,7 +1,6 @@
 ﻿namespace MealMate.ViewModels
 {
-    // ViewModel for managing the registration of macro goals
-    public partial class RegistrerMaalSideViewModel : BaseViewModel
+    public partial class CreateGoalPageViewModel : BaseViewModel
     {
         // Observable properties for user input and calculated values
         [ObservableProperty]

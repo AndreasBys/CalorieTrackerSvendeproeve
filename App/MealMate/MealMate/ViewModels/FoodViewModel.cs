@@ -30,11 +30,9 @@ public partial class FoodViewModel : BaseViewModel
     [ObservableProperty]
     private Color tekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
 
-    // Collection to hold dishes
-    public ObservableCollection<Retter> Retter { get; } = new();
+    public ObservableCollection<Dish> Dish { get; } = new();
 
-    // Service for managing dishes
-    RetterService retService;
+    DishService dishService;
 
     // Observable property for search text
     [ObservableProperty]
@@ -55,15 +53,14 @@ public partial class FoodViewModel : BaseViewModel
     // Service for managing food items
     FoodService FoodService;
 
-    // Constructor to initialize services and commands
-    public FoodViewModel(FoodService FoodService, RetterService retService)
+    public FoodViewModel(FoodService FoodService, DishService dishService)
     {
         this.FoodService = FoodService;
         GetAllFood = new AsyncRelayCommand(GetFoods);
         SearchFood = new AsyncRelayCommand(SearchFoods);
         GetFood = new AsyncRelayCommand<string>(GetFoodByBarcode);
 
-        this.retService = retService;
+        this.dishService = dishService;
         getAllRetter();
     }
 
@@ -141,13 +138,13 @@ public partial class FoodViewModel : BaseViewModel
             {
                 IsBusy = true;
 
-                var retter = await retService.SearchRetter(SearchText);
+                var dishes = await dishService.SearchRetter(SearchText);
 
-                if (Retter.Count != 0)
-                    Retter.Clear();
+                if (Dish.Count != 0)
+                    Dish.Clear();
 
-                foreach (var item in retter)
-                    Retter.Add(item);
+                foreach (var item in dishes)
+                    Dish.Add(item);
             }
             catch (Exception ex)
             {
@@ -227,11 +224,11 @@ public partial class FoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            List<Retter> retList = await retService.GetAllRetter();
+            List<Dish> dishList = await dishService.GetAllRetter();
 
-            foreach (var item in retList)
+            foreach (var item in dishList)
             {
-                Retter.Add(item);
+                Dish.Add(item);
             }
         }
         catch (Exception ex)

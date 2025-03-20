@@ -1,8 +1,8 @@
 namespace MealMate.View;
 
-public partial class RetterSide : ContentPage
+public partial class DishPage : ContentPage
 {
-	public RetterSide()
+	public DishPage()
 	{
 		InitializeComponent();
 	}
@@ -16,11 +16,11 @@ public partial class RetterSide : ContentPage
 
     private async void annullerRetOprettelse_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(TilfoejFoedvareSide), true);
+        await Shell.Current.GoToAsync(nameof(AddFoodPage), true);
     }
 
     private async void oprettetRet_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
     }
 }
