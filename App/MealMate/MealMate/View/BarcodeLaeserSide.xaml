@@ -10,18 +10,15 @@
 
             <zxing:CameraBarcodeReaderView
                 x:Name="barcodeReader" 
-                WidthRequest="300" HeightRequest="300" 
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
                 BarcodesDetected="cameraView_barcodedetected"
                 
                 
                 ></zxing:CameraBarcodeReaderView>
             
-            <!--<cv:CameraView x:Name="cameraView" BarcodeDetected="cameraView_barcodedetected" WidthRequest="300" HeightRequest="300" BarCodeDetectionEnabled="True" CamerasLoaded="cameraView_CamerasLoaded"/>-->
             
 
-                <Label 
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" x:Name="BarkodeResultat" />
 
         </VerticalStackLayout>
     </ScrollView>

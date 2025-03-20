@@ -21,6 +21,7 @@ namespace MealMate
             Routing.RegisterRoute(nameof(OpretRetSide), typeof(OpretRetSide));
             Routing.RegisterRoute(nameof(AdminHomePage), typeof(AdminHomePage));
             Routing.RegisterRoute(nameof(AdminSelectedFood), typeof(AdminSelectedFood));
+            Routing.RegisterRoute(nameof(BarcodeLaeserSide), typeof(BarcodeLaeserSide));
         }
     }
 }
