@@ -6,9 +6,9 @@ using ZXing;
 
 namespace MealMate.View;
 
-public partial class BarcodeLaeserSide : ContentPage
+public partial class BarcodeReaderPage : ContentPage
 {
-	public BarcodeLaeserSide()
+	public BarcodeReaderPage()
 	{
 
         InitializeComponent();

@@ -33,7 +33,7 @@ namespace MealMate
             builder.Services.AddTransient<AddFoodPage>();
             builder.Services.AddTransient<DishPage>();
             builder.Services.AddTransient<CreateDishPage>();
-            builder.Services.AddTransient<BarcodeLaeserSide>();
+            builder.Services.AddTransient<BarcodeReaderPage>();
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
