@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MealMate.ViewModels
 {
-    public partial class RegistrerProfildataViewModel : BaseViewModel
+    public partial class CreateUserdataViewModel : BaseViewModel
     {
         [ObservableProperty]
         DateTime foedselsdato;
@@ -23,7 +23,7 @@ namespace MealMate.ViewModels
 
         UserService userService;
 
-        public RegistrerProfildataViewModel(UserService userService)
+        public CreateUserdataViewModel(UserService userService)
         {
             this.userService = userService;
         }
@@ -57,7 +57,7 @@ namespace MealMate.ViewModels
                 User user = new User();
 
 
-                user.birthdate = Foedselsdato.ToString();
+                user.birthdate = Foedselsdato.Date;
                 user.height = Convert.ToInt32(Hoejde);
                 user.weight = Convert.ToInt32(Vaegt);
                 user.gender = Koen;
@@ -68,7 +68,7 @@ namespace MealMate.ViewModels
 
                     await Application.Current.MainPage.DisplayAlert("Success", $"Bruger opdateret! {us.birthdate + us.gender + us.weight + us.gender}", "OK");
 
-                    await Shell.Current.GoToAsync(nameof(RegistrerMaalSide), false);
+                    await Shell.Current.GoToAsync(nameof(CreateGoalPage), false);
 
                 }
                 catch (Exception ex )

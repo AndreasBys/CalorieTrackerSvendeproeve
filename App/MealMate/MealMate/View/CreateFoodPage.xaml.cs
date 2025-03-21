@@ -1,9 +1,9 @@
 namespace MealMate.View;
 
-public partial class OpretFoedevareSide : ContentPage
+public partial class CreateFoodPage : ContentPage
 {
     private readonly AddFoodViewModel _viewModel;
-    public OpretFoedevareSide(AddFoodViewModel viewModel)
+    public CreateFoodPage(AddFoodViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = viewModel;
@@ -35,7 +35,7 @@ public partial class OpretFoedevareSide : ContentPage
         _viewModel.FoodDetails = new();
         _viewModel.MacroWeight = null;
         // Skal sende den oprettede macroLog til home page
-        await Shell.Current.GoToAsync("../..", true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(HomePage), true, new Dictionary<string, object>
         {
             { "NewMacroLog", _viewModel.NewMacroLog }
         });

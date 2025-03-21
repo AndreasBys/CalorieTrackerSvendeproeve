@@ -110,8 +110,32 @@
 	  <Compile Update="View\CreateUserDataPage.xaml.cs">
 	    <DependentUpon>CreateUserDataPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\HomePage.xaml.cs">
+	    <DependentUpon>HomePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\LoginPage.xaml.cs">
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\NavBar.xaml.cs">
+	    <DependentUpon>NavBar.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateFoodPage.xaml.cs">
+	    <DependentUpon>CreateFoodPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateDishPage.xaml.cs">
+	    <DependentUpon>CreateDishPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\ProfilePage.xaml.cs">
+	    <DependentUpon>ProfilePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\AddFoodPage.xaml.cs">
+	    <DependentUpon>AddFoodPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateGoalPage.xaml.cs">
+	    <DependentUpon>CreateGoalPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\DishPage.xaml.cs">
+	    <DependentUpon>DishPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -137,28 +161,28 @@
 	  <MauiXaml Update="View\FoedevareSide.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\HjemmeskaermSide.xaml">
+	  <MauiXaml Update="View\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Navigationsbar.xaml">
+	  <MauiXaml Update="View\NavBar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\OpretFoedevareSide.xaml">
+	  <MauiXaml Update="View\CreateFoodPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\OpretRetSide.xaml">
+	  <MauiXaml Update="View\CreateDishPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ProfilSide.xaml">
+	  <MauiXaml Update="View\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RetterSide.xaml">
+	  <MauiXaml Update="View\DishPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\RegistrerMaalSide.xaml">
+	  <MauiXaml Update="View\CreateGoalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\CreateUserDataPage.xaml">
@@ -167,7 +191,7 @@
 	  <MauiXaml Update="View\CreateUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TilfoejFoedvareSide.xaml">
+	  <MauiXaml Update="View\AddFoodPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

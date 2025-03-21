@@ -26,9 +26,9 @@ public partial class FoodViewModel : BaseViewModel
     [ObservableProperty]
     private Color tekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
 
-    public ObservableCollection<Retter> Retter { get; } = new();
+    public ObservableCollection<Dish> Dish { get; } = new();
 
-    RetterService retService;
+    DishService retService;
 
     [ObservableProperty]
     string searchText;
@@ -42,7 +42,7 @@ public partial class FoodViewModel : BaseViewModel
     FoodService FoodService;
 
 
-    public FoodViewModel(FoodService FoodService, RetterService retService)
+    public FoodViewModel(FoodService FoodService, DishService retService)
     {
         this.FoodService = FoodService;
         GetAllFood = new AsyncRelayCommand(GetFoods);
@@ -56,10 +56,10 @@ public partial class FoodViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    async Task TilfoejRetKnap(Retter selectedRet)
+    async Task TilfoejRetKnap(Dish selectedRet)
     {
 
-        await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(CreateDishPage), false, new Dictionary<string, object>
         {
             {"Objekt", selectedRet}
 
@@ -131,11 +131,11 @@ public partial class FoodViewModel : BaseViewModel
 
                 var retter = await retService.SearchRetter(SearchText);
 
-                if (Retter.Count != 0)
-                    Retter.Clear();
+                if (Dish.Count != 0)
+                    Dish.Clear();
 
                 foreach (var item in retter)
-                    Retter.Add(item);
+                    Dish.Add(item);
             }
             catch (Exception ex)
             {
@@ -220,11 +220,11 @@ public partial class FoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            List<Retter> retList = await retService.GetAllRetter();
+            List<Dish> retList = await retService.GetAllRetter();
 
             foreach (var item in retList)
             {
-                Retter.Add(item);
+                Dish.Add(item);
             }
 
         }

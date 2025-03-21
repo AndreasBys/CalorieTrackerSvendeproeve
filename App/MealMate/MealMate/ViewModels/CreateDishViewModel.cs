@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MealMate.ViewModels
 {
-    [QueryProperty(nameof(Retter), "Objekt")]
-    public partial class OpretRetViewModel : BaseViewModel
+    [QueryProperty(nameof(Dish), "Objekt")]
+    public partial class CreateDishViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public Retter retter;
+        public Dish dish;
 
 
         [ObservableProperty]
@@ -26,13 +26,13 @@ namespace MealMate.ViewModels
         double rettensFedt;
 
 
-        partial void OnRetterChanged(Retter value)
+        partial void OnDishChanged(Dish value)
         {
             Template();   
         }
 
 
-        public OpretRetViewModel()
+        public CreateDishViewModel()
         {
             
         }
@@ -42,8 +42,8 @@ namespace MealMate.ViewModels
         {
 
             int kalorier = 0;
-            
-            Retter.foods.ForEach(food =>
+
+            Dish.foods.ForEach(food =>
             {
                 RettensKalorier += food.food.calories;
                 RettensFedt += food.food.fat;

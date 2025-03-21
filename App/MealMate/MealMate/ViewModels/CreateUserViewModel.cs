@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MealMate.ViewModels
 {
-    public partial class RegistrerViewModel : BaseViewModel
+    public partial class CreateUserViewModel : BaseViewModel
     {
         [ObservableProperty]
         string username = "";
@@ -22,7 +22,7 @@ namespace MealMate.ViewModels
 
         LoginService LoginService;
 
-        public RegistrerViewModel(LoginService loginService)
+        public CreateUserViewModel(LoginService loginService)
         {
             LoginService = loginService;
         }

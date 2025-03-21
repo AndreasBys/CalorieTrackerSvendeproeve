@@ -2,10 +2,10 @@
 
 namespace MealMate.View;
 
-public partial class TilfoejFoedvareSide : ContentPage
+public partial class AddFoodPage : ContentPage
 {
     private readonly FoodViewModel _viewModel;
-    public TilfoejFoedvareSide(FoodViewModel viewModel)
+    public AddFoodPage(FoodViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = viewModel;
@@ -24,7 +24,7 @@ public partial class TilfoejFoedvareSide : ContentPage
     private async void opretFoedevare_knap(object sender, EventArgs e)
     {
         Food Food = new();
-        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
         {
             { "SelectedFood", Food }
         });
@@ -32,14 +32,14 @@ public partial class TilfoejFoedvareSide : ContentPage
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true);
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
     }
     // Command="{Binding Source={x:Reference FoedevareSide}, Path=BindingContext.TilfoejRetKnapCommand}" CommandParameter="{Binding}"
     private async void Testknap(object sender, EventArgs e)
     {
-        var ret = ((VisualElement)sender).BindingContext as Retter;
+        var ret = ((VisualElement)sender).BindingContext as Dish;
 
-        await Shell.Current.GoToAsync(nameof(OpretRetSide), false, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(CreateDishPage), false, new Dictionary<string, object>
         {
             {"Objekt", ret }
 
@@ -62,7 +62,7 @@ public partial class TilfoejFoedvareSide : ContentPage
 
         if (_viewModel.Food == null) return;
 
-        await Shell.Current.GoToAsync(nameof(OpretFoedevareSide), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
         {
             { "SelectedFood", _viewModel.Food }
         });

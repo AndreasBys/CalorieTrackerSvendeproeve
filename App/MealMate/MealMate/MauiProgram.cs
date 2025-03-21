@@ -23,15 +23,16 @@ namespace MealMate
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddSingleton<HjemmeskaermSide>();
-            builder.Services.AddTransient<OpretFoedevareSide>();
-            builder.Services.AddTransient<ProfilSide>();
-            builder.Services.AddTransient<RegistrerMaalSide>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddTransient<CreateFoodPage>();
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<CreateGoalPage>();
             builder.Services.AddTransient<CreateUserDataPage>();
             builder.Services.AddTransient<CreateUserPage>();
             builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddTransient<TilfoejFoedvareSide>();
-            builder.Services.AddTransient<OpretRetSide>();
+            builder.Services.AddTransient<AddFoodPage>();
+            builder.Services.AddTransient<DishPage>();
+            builder.Services.AddTransient<CreateDishPage>();
             builder.Services.AddTransient<BarcodeLaeserSide>();
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
@@ -39,13 +40,13 @@ namespace MealMate
 
             // DI for ViewModels:
 
-            builder.Services.AddSingleton<RegistrerMaalSideViewModel>();
+            builder.Services.AddSingleton<CreateGoalPageViewModel>();
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
-            builder.Services.AddSingleton<OpretRetViewModel>();
-            builder.Services.AddSingleton<RegistrerViewModel>();
-            builder.Services.AddSingleton<RegistrerProfildataViewModel>();
+            builder.Services.AddSingleton<CreateDishViewModel>();
+            builder.Services.AddSingleton<CreateUserViewModel>();
+            builder.Services.AddSingleton<CreateUserdataViewModel>();
 
             // DI for Models:
             builder.Services.AddTransient<User>();
@@ -72,7 +73,7 @@ namespace MealMate
                 client.BaseAddress = new Uri(baseUrl + "api/food/");
             });
 
-            builder.Services.AddHttpClient<RetterService>(client =>
+            builder.Services.AddHttpClient<DishService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/dish/");
             });

@@ -1,10 +1,10 @@
 namespace MealMate.View;
 
-public partial class Navigationsbar : ContentView	
+public partial class NavBar : ContentView	
 {
     string baseUrl = "//" + nameof(LoginPage) + "/";
 
-    public Navigationsbar()
+    public NavBar()
 	{
 		InitializeComponent();
 
@@ -13,7 +13,7 @@ public partial class Navigationsbar : ContentView
     private async void hjemmesideSkearm_knap(object sender, EventArgs e)
     {
         string currentPage = Shell.Current.CurrentState.Location.ToString();
-        var targetPage = nameof(HjemmeskaermSide);
+        var targetPage = nameof(HomePage);
 
         if (!currentPage.EndsWith(targetPage))
         {
@@ -24,22 +24,22 @@ public partial class Navigationsbar : ContentView
     private async void tilfoejMad_knap(object sender, EventArgs e)
     {
         string currentPage = Shell.Current.CurrentState.Location.ToString();
-        var targetPage = nameof(TilfoejFoedvareSide);
+        var targetPage = nameof(AddFoodPage);
 
         if (!currentPage.EndsWith(targetPage))
         {
-            await Shell.Current.GoToAsync(baseUrl + nameof(HjemmeskaermSide) + "/" + targetPage, true);
+            await Shell.Current.GoToAsync(baseUrl + nameof(HomePage) + "/" + targetPage, true);
         }
     }
 
     private async void profilside_knap(object sender, EventArgs e)
     {
         string currentPage = Shell.Current.CurrentState.Location.ToString();
-        var targetPage = nameof(ProfilSide);
+        var targetPage = nameof(ProfilePage);
 
         if (!currentPage.EndsWith(targetPage))
         {
-            await Shell.Current.GoToAsync(baseUrl + nameof(HjemmeskaermSide) + "/" + targetPage, true);
+            await Shell.Current.GoToAsync(baseUrl + nameof(HomePage) + "/" + targetPage, true);
         }
     }
 }

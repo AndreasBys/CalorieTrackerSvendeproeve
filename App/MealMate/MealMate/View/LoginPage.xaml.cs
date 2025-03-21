@@ -78,7 +78,7 @@ public partial class LoginPage : ContentPage
                 if (user.admin == true)
                     await Shell.Current.GoToAsync(nameof(AdminHomePage), true);
                 else
-                    await Shell.Current.GoToAsync(nameof(HjemmeskaermSide), true);
+                    await Shell.Current.GoToAsync(nameof(HomePage), true);
             }
             else
             {

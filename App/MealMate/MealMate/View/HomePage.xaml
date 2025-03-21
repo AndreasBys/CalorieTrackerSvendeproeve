@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.HjemmeskaermSide"
-             xmlns:Navigationsbar="clr-namespace:MealMate.View"
+             x:Class="MealMate.View.HomePage"
+             xmlns:NavBar="clr-namespace:MealMate.View"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
              x:DataType="viewmodel:HomePageViewModel"
-             Title="HjemmeskaermSide">
+             Title="HomePage">
     <Grid RowDefinitions="Auto,*">
         <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0" Padding="15">
             <Grid Grid.Row="0" Padding="5">
@@ -191,6 +191,6 @@
                 </Grid>
             </ScrollView>
         </Grid>
-        <Navigationsbar:Navigationsbar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
 </ContentPage>

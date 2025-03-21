@@ -1,8 +1,8 @@
 namespace MealMate.View;
 
-public partial class ProfilSide : ContentPage
+public partial class ProfilePage : ContentPage
 {
-	public ProfilSide()
+	public ProfilePage()
 	{
 		InitializeComponent();
 	}
@@ -27,7 +27,7 @@ public partial class ProfilSide : ContentPage
 
     private async void saetMaal_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(RegistrerMaalSide), true);
+        await Shell.Current.GoToAsync(nameof(CreateGoalPage), true);
     }
 
     private async void saetProfildata_knap(object sender, EventArgs e)
