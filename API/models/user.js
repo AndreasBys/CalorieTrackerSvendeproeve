@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password is required']
     },
     birthdate: {
-        type: String,
+        type: Date,
         required: false
     },
     weight: {
