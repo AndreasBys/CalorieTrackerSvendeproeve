@@ -16,15 +16,14 @@ public partial class AdminHomePage : ContentPage
     }
 
     // Override OnAppearing to load the food list when the page appears
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        if (_foodViewModel.Foods.Count == 0)
-            _foodViewModel.GetFoods();
+        await _foodViewModel.GetFoods();
     }
 
     // Event handler for the logout button click
-    private async void Logout_knap(object sender, EventArgs e)
+    private async void Logout_button(object sender, EventArgs e)
     {
         // Check if "Remember Me" is not checked
         if (!Preferences.Get("RememberMe", false))
@@ -43,7 +42,7 @@ public partial class AdminHomePage : ContentPage
     }
 
     // Event handler for selecting a food item
-    private async void SelectFood_knap(object sender, EventArgs e)
+    private async void SelectFood_button(object sender, EventArgs e)
     {
         if (sender is ImageButton button && button.BindingContext is Food selectedFood)
         {
@@ -53,7 +52,7 @@ public partial class AdminHomePage : ContentPage
     }
 
     // Event handler for creating a new food item
-    private async void OpretNy_knap(object sender, EventArgs e)
+    private async void CreateNewFood_button(object sender, EventArgs e)
     {
         // Navigate to the OpretFoedevareSide page
         await Shell.Current.GoToAsync($"{nameof(CreateFoodPage)}");
