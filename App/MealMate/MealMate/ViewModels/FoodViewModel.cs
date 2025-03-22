@@ -54,24 +54,27 @@ public partial class FoodViewModel : BaseViewModel
 
     public async Task GetFoods()
     {
-        if (IsBusy)
-            return;
         try
         {
             IsBusy = true;
-
             var foods = await FoodService.GetAllFoods();
-
-            if (Foods.Count != 0)
+            if (foods != null)
+            {
                 Foods.Clear();
-
-            foreach (var food in foods)
-                Foods.Add(food);
+                foreach (var food in foods)
+                {
+                    Foods.Add(food);
+                }
+                Console.WriteLine($"Loaded {Foods.Count} foods.");
+            }
+            else
+            {
+                Console.WriteLine("No foods found.");
+            }
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get Foods: {ex.Message}");
-            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            Console.WriteLine($"Error loading foods: {ex.Message}");
         }
         finally
         {
