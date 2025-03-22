@@ -101,4 +101,24 @@ public class FoodService : IFoodService
         }
     }
 
+    public async Task<Food> DeleteFood(string id)
+    {
+        token = await SecureStorage.GetAsync("auth_token");
+        var request = new HttpRequestMessage(HttpMethod.Delete, $"{id}");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var deletedFood = await response.Content.ReadFromJsonAsync<Food>();
+            return deletedFood;
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Delete failed: {response.StatusCode}, {errorContent}");
+        }
+    }
+
 }

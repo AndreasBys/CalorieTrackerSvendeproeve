@@ -165,6 +165,16 @@
                         <CheckBox Grid.Column="0" x:Name="isApprovedEntry" IsVisible="True" Color="White" ScaleX="1.5" ScaleY="1.5" IsChecked="{Binding approved}"/>
                         <Label Grid.Column="1" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" Text="Godkendt?"/>
                     </Grid>
+
+                    <Grid Grid.Row="6" ColumnDefinitions="auto" RowDefinitions="auto" Padding="0,20,0,0">
+                        <Border StrokeThickness="2" Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Button Text="Slet" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="DeleteFood" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
+                        </Border>
+                    </Grid>
+                    
                 </Grid>
             </Grid>
         </Grid>
@@ -176,7 +186,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Annuller" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="Anuller" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
+                        <Button Text="Annuller" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="Cancel" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                     </Border>
                 </Grid>
                 <Grid HorizontalOptions="Center" Grid.Column="2">
@@ -184,7 +194,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Gem" TextColor="White" BackgroundColor="{StaticResource CustomBlaa}" Clicked="Gem" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
+                        <Button Text="Gem" TextColor="White" BackgroundColor="{StaticResource CustomBlaa}" Clicked="Save" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                     </Border>
                 </Grid>
             </Grid>
