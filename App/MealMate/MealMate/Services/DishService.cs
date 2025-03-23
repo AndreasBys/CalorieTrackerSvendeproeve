@@ -14,13 +14,36 @@ namespace MealMate.Services
 
         List<Dish> retterList = new();
 
+        DishRequest dish = new();
+
         public DishService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public Task<Dish> CreateRet(Dish newFood)
+        public async Task<DishRequest> CreateDish(DishRequest newDish)
         {
-            throw new NotImplementedException();
+            string token = await SecureStorage.GetAsync("auth_token");
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            request.Content = JsonContent.Create(newDish);
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                DishRequest responseObj = await response.Content.ReadFromJsonAsync<DishRequest>();
+                dish = responseObj;
+                return dish;
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"At hente retterne fejlede {response.StatusCode}, {errorContent}");
+            }
+
+
         }
 
         public async Task<List<Dish>> GetAllRetter()

@@ -6,6 +6,6 @@ namespace MealMate.Services.Interfaces
 
         Task<List<Dish>> GetAllRetter();
         Task<List<Dish>> SearchRetter(string searchTerm);
-        Task<Dish> CreateRet(Dish newFood);
+        Task<DishRequest> CreateDish(DishRequest newFood);
     }
 }
