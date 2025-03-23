@@ -109,6 +109,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\BarcodeReaderPage.xaml.cs">
+	    <DependentUpon>BarcodeReaderPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\CreateUserPage.xaml.cs">
 	    <DependentUpon>CreateUserPage.xaml</DependentUpon>
 	  </Compile>
@@ -154,7 +157,7 @@
 	  <MauiXaml Update="Resources\Styles\SizesTablet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\BarcodeLaeserSide.xaml">
+	  <MauiXaml Update="View\BarcodeReaderPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AdminHomePage.xaml">

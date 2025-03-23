@@ -3,12 +3,12 @@ using ZXing;
 namespace MealMate.View;
 
 // Page for barcode scanning functionality
-public partial class BarcodeLaeserSide : ContentPage
+public partial class BarcodeReaderPage : ContentPage
 {
     public TaskCompletionSource<string> BarcodeScanTaskCompletionSource { get; set; }
 
     // Constructor to initialize the page
-    public BarcodeLaeserSide()
+    public BarcodeReaderPage()
     {
         InitializeComponent();
 

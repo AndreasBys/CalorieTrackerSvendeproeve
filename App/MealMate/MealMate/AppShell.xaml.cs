@@ -41,7 +41,7 @@ namespace MealMate
 
             RegisterRoute(nameof(AdminHomePage), typeof(AdminHomePage));
             RegisterRoute(nameof(AdminSelectedFood), typeof(AdminSelectedFood));
-            RegisterRoute(nameof(BarcodeLaeserSide), typeof(BarcodeLaeserSide));
+            RegisterRoute(nameof(BarcodeReaderPage), typeof(BarcodeReaderPage));
         }
 
         private void RegisterRoute(string route, Type type)
