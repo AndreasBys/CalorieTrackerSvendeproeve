@@ -36,7 +36,7 @@ public partial class AddFoodPage : ContentPage
 
         await Shell.Current.GoToAsync(nameof(AddDishPage), false, new Dictionary<string, object>
         {
-            {"Objekt", ret }
+            {"SelectedDish", ret }
 
 
         });
