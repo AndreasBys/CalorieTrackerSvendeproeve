@@ -4,54 +4,29 @@ namespace MealMate.ViewModels;
 
 public partial class AddDishPageViewModel : BaseViewModel
 {
-    // Observable property for food details
+    // Observable property for the selected dish
     [ObservableProperty]
-    Food food;
+    public Dish retter;
 
-    // Collection to hold food items
-    public ObservableCollection<Food> Foods { get; } = new();
+    // Observable properties for the dish's nutritional information
+    [ObservableProperty]
+    string rettensNavn;
+    [ObservableProperty]
+    double rettensKalorier;
+    [ObservableProperty]
+    double rettensProtein;
+    [ObservableProperty]
+    double rettensKulhydrater;
+    [ObservableProperty]
+    double rettensFedt;
 
-    FoodService FoodService;
 
-
-    public AddDishPageViewModel(FoodService FoodService)
+    public AddDishPageViewModel()
     {
-        this.FoodService = FoodService;
-        GetAllFood();
+        
         
     }
 
-    private async void GetAllFood()
-    {
-        if (IsBusy)
-            return;
-        try
-        {
-            IsBusy = true;
-
-            var foods = await FoodService.GetAllFoods();
-
-            if (Foods.Count != 0)
-                Foods.Clear();
-
-            foreach (var food in foods)
-                Foods.Add(food);
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Unable to get Foods: {ex.Message}");
-            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-    }
-
-    [RelayCommand]
-    async Task SearchFood()
-    {
-
-    }
+    
 
 }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.CreateDishPage"
+             xmlns:vm="clr-namespace:MealMate.ViewModels"
              xmlns:model="clr-namespace:MealMate.Models"
              Title="CreateDishPage">
     <Grid>
@@ -47,41 +48,57 @@
 
                     <Grid Grid.Row="2" ColumnDefinitions="*,auto">
 
-                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="15" HorizontalOptions="Fill" >Indgredienser</Label>
+                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="15" HorizontalOptions="Fill" >Ingredienser</Label>
 
 
 
                     </Grid>
 
-                    <Grid Grid.Row="3" ColumnDefinitions="*,*,*,Auto,Auto" Padding="0,20,0,0" RowDefinitions="*">
+                    <Grid Grid.Row="3"  Padding="0,20,0,0" RowDefinitions="*">
+
+                        <ScrollView>
+                            <CollectionView ItemsSource="{Binding FoodInDish}" SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="model:Food">
+                                        <Grid ColumnDefinitions="*">
+                                            <Grid Grid.Row="3" ColumnDefinitions="*,*,*,Auto,Auto" Padding="0,20,0,0" RowDefinitions="*">
+                                                <Label Grid.Column="0" FontSize="28" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding name}"></Label>
+
+                                                <Grid Grid.Column="1"></Grid>
+
+                                                <Border Grid.Column="2" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
 
 
-                        <Label Grid.Column="0" FontSize="28" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center">Æble</Label>
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                                    </Border.StrokeShape>
+                                                    <Grid ColumnDefinitions="*">
 
-                        <Grid Grid.Column="1"></Grid>
+                                                        <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                                    </Grid>
 
-                        <Border Grid.Column="2" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                                                </Border>
+
+                                                <Grid Grid.Column="3">
+                                                    <Label VerticalOptions="End" Padding="10,10,30,10" FontSize="18" TextColor="{StaticResource CustomTekstHvidereGraa}">g</Label>
+                                                </Grid>
+
+                                                <Grid Grid.Column="4">
+
+                                                    <ImageButton Source="fjern_ikon.png" HeightRequest="45" WidthRequest="45" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CreateDishPageViewModel}}, Path=RemoveFromDishCommand}" CommandParameter="{Binding}"></ImageButton>
+
+                                                </Grid>
+                                            </Grid>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </ScrollView>
 
 
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15"></RoundRectangle>
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*">
-
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
-                            </Grid>
-
-                        </Border>
-
-                        <Grid Grid.Column="3">
-                            <Label VerticalOptions="End" Padding="10,10,30,10" FontSize="18" TextColor="{StaticResource CustomTekstHvidereGraa}">g</Label>
-                        </Grid>
-
-                        <Grid Grid.Column="4">
-
-                            <Image Source="fjern_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
-
-                        </Grid>
+                        
 
                     </Grid>
 
@@ -99,7 +116,7 @@
                                 <Grid Padding="10">
                                     <Image Source="soege_ikon.png" HeightRequest="35" WidthRequest="35" Grid.Column="0"></Image>
                                 </Grid>
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" Placeholder="Søg" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" Placeholder="Søg" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding SearchText}" Completed="OnSearch"></Entry>
                             </Grid>
 
                         </Border>
@@ -126,7 +143,7 @@
                                             <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"></Label>
 
                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0">60 kcal</Label>
+                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories}"></Label>
 
                                                 <Grid  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Fill">
 
@@ -135,7 +152,7 @@
                                                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                                         </Border.StrokeShape>
                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="tilfoejFoedevare_knap"/>
+                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CreateDishPageViewModel}}, Path=AddToDishCommand}" CommandParameter="{Binding}"/>
                                                         </Grid>
                                                     </Border>
 
@@ -143,14 +160,14 @@
                                                 </Grid>
                                             </Grid>
                                         </Grid>
-                                        
+
                                     </DataTemplate>
-                                    
+
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-                            
+
                         </ScrollView>
-                        
+
 
                     </Grid>
 

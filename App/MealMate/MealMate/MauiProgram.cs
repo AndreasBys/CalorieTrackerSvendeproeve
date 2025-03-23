@@ -30,9 +30,11 @@ namespace MealMate
             builder.Services.AddTransient<CreateGoalPage>();
             builder.Services.AddTransient<CreateUserDataPage>();
             builder.Services.AddTransient<CreateUserPage>();
+            
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<AddFoodPage>();
             builder.Services.AddTransient<AddDishPage>();
+            builder.Services.AddTransient<CreateDishPage>();
             builder.Services.AddTransient<CreateFoodPage>();
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
@@ -41,6 +43,7 @@ namespace MealMate
             // DI for ViewModels:
 
             builder.Services.AddSingleton<CreateFoodPageViewModel>();
+            builder.Services.AddSingleton<AddDishPageViewModel>();
             builder.Services.AddSingleton<AddFoodPageViewModel>();
             builder.Services.AddSingleton<CreateFoodPageViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();

@@ -72,7 +72,6 @@ public partial class AddFoodPageViewModel : BaseViewModel
             Food Food = new();
 
 
-            await Application.Current.MainPage.DisplayAlert("Error!", Shell.Current.CurrentState.Location.ToString(), "OK");
 
             await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
             {
@@ -82,7 +81,16 @@ public partial class AddFoodPageViewModel : BaseViewModel
         }
         else
         {
-            await Shell.Current.GoToAsync(nameof(CreateDishPage), true);
+            try
+            {
+                await Shell.Current.GoToAsync(nameof(CreateDishPage), true);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+                throw;
+            }
+            
             
         }
     }

@@ -2,18 +2,15 @@ namespace MealMate.View;
 
 public partial class CreateDishPage : ContentPage
 {
-	public CreateDishPage(CreateDishPageViewModel vm)
+    private readonly CreateDishPageViewModel _viewModel;
+    public CreateDishPage(CreateDishPageViewModel vm)
 	{
 		InitializeComponent();
-        BindingContext = vm;
+        BindingContext = _viewModel = vm;
     }
 
     
 
-    private async void tilfoejFoedevare_knap(object sender, EventArgs e)
-    {
-
-    }
 
     private async void annullerRetOprettelse_knap(object sender, EventArgs e)
     {
@@ -24,4 +21,10 @@ public partial class CreateDishPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(AddDishPage), true);
     }
+
+    private void OnSearch(object sender, EventArgs e)
+    {
+        _viewModel.SearchFood.Execute(null);
+    }
+
 }

@@ -1,46 +1,121 @@
-﻿namespace MealMate.ViewModels
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+
+namespace MealMate.ViewModels
 {
-    // This attribute allows the Retter property to be set via query parameters
-    [QueryProperty(nameof(Retter), "Objekt")]
+    
     public partial class CreateDishPageViewModel : BaseViewModel
     {
-        // Observable property for the selected dish
-        [ObservableProperty]
-        public Dish retter;
+        
 
-        // Observable properties for the dish's nutritional information
+        // Observable property for food details
         [ObservableProperty]
-        string rettensNavn;
-        [ObservableProperty]
-        double rettensKalorier;
-        [ObservableProperty]
-        double rettensProtein;
-        [ObservableProperty]
-        double rettensKulhydrater;
-        [ObservableProperty]
-        double rettensFedt;
+        Food food;
 
+        [ObservableProperty]
+        string searchText;
+
+        // Collection to hold food items
+        public ObservableCollection<Food> Foods { get; } = new();
+
+        public ObservableCollection<Food> FoodInDish { get; } = new();
+
+        FoodService FoodService;
+
+        public ICommand SearchFood { get; }
+
+        public ICommand AddToDishCommand { get; }
+
+        public ICommand RemoveFromDishCommand { get; }
 
         // Constructor
-        public CreateDishPageViewModel()
+        public CreateDishPageViewModel(FoodService FoodService)
         {
+            this.FoodService = FoodService;
+            GetAllFood();
 
+            AddToDishCommand = new Command<Food>(AddToDish);
+            SearchFood = new AsyncRelayCommand(SearchFoods);
+            RemoveFromDishCommand = new Command<Food>(RemoveFromDish);
         }
 
-        // Method to calculate the total nutritional information for the dish
-        private void Template()
-        {
-            int kalorier = 0;
 
-            // Iterate through each food item in the dish and sum up the nutritional values
-            Retter.foods.ForEach(food =>
+        private async void GetAllFood()
+        {
+            if (IsBusy)
+                return;
+            try
             {
-                RettensKalorier += food.food.calories;
-                RettensFedt += food.food.fat;
-                RettensProtein += food.food.protein;
-                RettensKulhydrater += food.food.carbonhydrates;
-            });
+                IsBusy = true;
+
+                var foods = await FoodService.GetAllFoods();
+
+                if (Foods.Count != 0)
+                    Foods.Clear();
+
+                foreach (var food in foods)
+                    Foods.Add(food);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get Foods: {ex.Message}");
+                await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
+
+        async Task SearchFoods()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                IsBusy = true;
+
+                var foods = await FoodService.SearchFoods(SearchText);
+
+                if (Foods.Count != 0)
+                    Foods.Clear();
+
+                foreach (var food in foods)
+                    Foods.Add(food);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get Foods: {ex.Message}");
+                await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private void AddToDish(Food food)
+        {
+            if (food == null || FoodInDish.Contains(food))
+            {
+                return;
+            }
+            FoodInDish.Add(food);
+
+        }
+
+        private void RemoveFromDish(Food food)
+        {
+            if (food == null)
+            {
+                return;
+            }
+            FoodInDish.Remove(food);
+        }
+
+
+
     }
 }
 
