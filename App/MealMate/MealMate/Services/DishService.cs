@@ -53,8 +53,7 @@ namespace MealMate.Services
             Dish retterObj = new Dish();
             string token = await SecureStorage.GetAsync("auth_token");
 
-            Dish retterObj = new Dish();
->>>>>>>>> Temporary merge branch 2:App/MealMate/MealMate/Services/DishService.cs
+
 
             var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);

@@ -3,10 +3,7 @@ namespace MealMate.View;
 public partial class CreateDishPage : ContentPage
 {
     private readonly CreateDishPageViewModel _viewModel;
-    public CreateDishPage(CreateDishPageViewModel vm)
-=========
-	public CreateDishPage()
->>>>>>>>> Temporary merge branch 2:App/MealMate/MealMate/View/CreateDishPage.xaml.cs
+	public CreateDishPage(CreateDishPageViewModel vm)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = vm;
