@@ -63,7 +63,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensKalorier}"></Entry>
+                                    <Entry  BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensKalorier}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -84,7 +84,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensProtein}"></Entry>
+                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensProtein}"></Entry>
                                 </Grid>
 
                             </Border>
