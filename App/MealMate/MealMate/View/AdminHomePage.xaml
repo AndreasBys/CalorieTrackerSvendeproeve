@@ -5,7 +5,7 @@
              xmlns:Navigationsbar="clr-namespace:MealMate.View"
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
-             x:DataType="viewmodel:FoodViewModel"
+             x:DataType="viewmodel:AddFoodPageViewModel"
              Title="AdminHomePage">
     <Grid
         BackgroundColor="{StaticResource CustomGraa}"

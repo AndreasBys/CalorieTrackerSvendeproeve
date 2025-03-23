@@ -1,7 +1,7 @@
 ﻿namespace MealMate.ViewModels
 {
     // ViewModel for managing the registration of user profile data
-    public partial class RegistrerProfildataViewModel : BaseViewModel
+    public partial class CreateUserPageViewModel : BaseViewModel
     {
         // Observable properties for user input
         [ObservableProperty]
@@ -26,7 +26,7 @@
         UserService userService;
 
         // Constructor to initialize the service
-        public RegistrerProfildataViewModel(UserService userService)
+        public CreateUserPageViewModel(UserService userService)
         {
             this.userService = userService;
         }
@@ -74,7 +74,7 @@
                     await Application.Current.MainPage.DisplayAlert("Success", $"Bruger opdateret! {us.birthdate + us.gender + us.weight + us.gender}", "OK");
 
                     // Navigate to the goal registration screen
-                    await Shell.Current.GoToAsync(nameof(RegistrerMaalSide), false);
+                    await Shell.Current.GoToAsync(nameof(CreateGoalPage), false);
                 }
                 catch (Exception ex)
                 {

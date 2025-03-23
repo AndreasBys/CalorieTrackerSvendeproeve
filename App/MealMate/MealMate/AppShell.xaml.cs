@@ -4,24 +4,66 @@ namespace MealMate
 {
     public partial class AppShell : Shell
     {
+        private readonly List<string> _registeredRoutes = new();
         public AppShell()
         {
             InitializeComponent();
 
+            RegisterRoutes();
+            // Log registered routes
+            LogRegisteredRoutes();
 
+            // Create a new ShellContent instance
+            var loginShellContent = new ShellContent
+            {
+                Title = "Home",
+                ContentTemplate = new DataTemplate(typeof(LoginPage)),
+                Route = "LoginPage"
+            };
 
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(CreateUserPage), typeof(CreateUserPage));
-            Routing.RegisterRoute(nameof(CreateUserDataPage), typeof(CreateUserDataPage));
-            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
-            Routing.RegisterRoute(nameof(CreateFoodPage), typeof(CreateFoodPage));
-            Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
-            Routing.RegisterRoute(nameof(CreateGoalPage), typeof(CreateGoalPage));
-            Routing.RegisterRoute(nameof(AddFoodPage), typeof(AddFoodPage));
-            Routing.RegisterRoute(nameof(CreateDishPage), typeof(CreateDishPage));
-            Routing.RegisterRoute(nameof(AdminHomePage), typeof(AdminHomePage));
-            Routing.RegisterRoute(nameof(AdminSelectedFood), typeof(AdminSelectedFood));
-            Routing.RegisterRoute(nameof(BarcodeLaeserSide), typeof(BarcodeLaeserSide));
+            // Add the ShellContent to the Shell
+            Items.Add(loginShellContent);
+
         }
+
+        private void RegisterRoutes()
+        {
+            RegisterRoute(nameof(CreateUserPage), typeof(CreateUserPage));
+            RegisterRoute(nameof(CreateUserDataPage), typeof(CreateUserDataPage));
+            RegisterRoute(nameof(HomePage), typeof(HomePage));
+            RegisterRoute(nameof(AddFoodPage), typeof(AddFoodPage));
+            RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            RegisterRoute(nameof(CreateGoalPage), typeof(CreateGoalPage));
+            RegisterRoute(nameof(CreateFoodPage), typeof(CreateFoodPage));
+
+            RegisterRoute(nameof(AddDishPage), typeof(AddDishPage));
+            RegisterRoute(nameof(CreateDishPage), typeof(CreateDishPage));
+
+            RegisterRoute(nameof(AdminHomePage), typeof(AdminHomePage));
+            RegisterRoute(nameof(AdminSelectedFood), typeof(AdminSelectedFood));
+            RegisterRoute(nameof(BarcodeLaeserSide), typeof(BarcodeLaeserSide));
+        }
+
+        private void RegisterRoute(string route, Type type)
+        {
+            if (!_registeredRoutes.Contains(route))
+            {
+                Routing.RegisterRoute(route, type);
+                _registeredRoutes.Add(route);
+            }
+            else
+            {
+                Debug.WriteLine($"Route '{route}' is already registered.");
+            }
+        }
+
+        private void LogRegisteredRoutes()
+        {
+            foreach (var route in _registeredRoutes)
+            {
+                Debug.WriteLine($"Registered Route: {route}");
+            }
+        }
+
     }
 }

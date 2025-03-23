@@ -2,11 +2,11 @@
 {
     // This attribute allows the Retter property to be set via query parameters
     [QueryProperty(nameof(Retter), "Objekt")]
-    public partial class OpretRetViewModel : BaseViewModel
+    public partial class CreateDishPageViewModel : BaseViewModel
     {
         // Observable property for the selected dish
         [ObservableProperty]
-        public Retter retter;
+        public Dish retter;
 
         // Observable properties for the dish's nutritional information
         [ObservableProperty]
@@ -20,14 +20,9 @@
         [ObservableProperty]
         double rettensFedt;
 
-        // Method called when the Retter property changes
-        partial void OnRetterChanged(Retter value)
-        {
-            Template();
-        }
 
         // Constructor
-        public OpretRetViewModel()
+        public CreateDishPageViewModel()
         {
 
         }

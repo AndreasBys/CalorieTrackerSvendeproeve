@@ -40,7 +40,7 @@
         MacroGoalService macroGoalService;
 
         // Constructor to initialize the service
-        public RegistrerMaalSideViewModel(MacroGoalService macroGoalService)
+        public CreateGoalPageViewModel(MacroGoalService macroGoalService)
         {
             this.macroGoalService = macroGoalService;
         }
@@ -88,7 +88,7 @@
                         await macroGoalService.CreateMacroGoal(macroGoal);
 
                         // Navigate to the home screen
-                        await Shell.Current.GoToAsync(nameof(HjemmeskaermSide));
+                        await Shell.Current.GoToAsync(nameof(HomePage));
                     }
                     catch (Exception ex)
                     {

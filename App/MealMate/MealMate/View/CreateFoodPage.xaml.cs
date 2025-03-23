@@ -3,8 +3,8 @@ namespace MealMate.View;
 public partial class CreateFoodPage : ContentPage
 {
     // ViewModel for managing the food item
-    private readonly AddFoodViewModel _viewModel;
-    public CreateFoodPage(AddFoodViewModel viewModel)
+    private readonly CreateFoodPageViewModel _viewModel;
+    public CreateFoodPage(CreateFoodPageViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = viewModel;
@@ -44,6 +44,7 @@ public partial class CreateFoodPage : ContentPage
         _viewModel.FoodDetails = new();
         _viewModel.MacroWeight = null;
 
+
         // Navigate back to the home page with the new macro log
         await Shell.Current.GoToAsync("../..", true, new Dictionary<string, object>
         {
@@ -58,7 +59,13 @@ public partial class CreateFoodPage : ContentPage
         _viewModel.FoodDetails = new();
         _viewModel.MacroWeight = null;
 
-        // Navigate back to the previous page
-        await Shell.Current.GoToAsync("..", true);
+
+
+
+        var kic = Shell.Current.CurrentState.Location;
+
+
+        await Shell.Current.GoToAsync("..");
+
     }
 }

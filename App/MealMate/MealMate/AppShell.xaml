@@ -7,9 +7,5 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MealMate">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
 
 </Shell>

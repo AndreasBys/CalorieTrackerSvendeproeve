@@ -25,27 +25,28 @@ namespace MealMate
 #endif
 
             builder.Services.AddTransient<HomePage>();
-            builder.Services.AddTransient<CreateFoodPage>();
+            builder.Services.AddTransient<AddFoodPage>();
             builder.Services.AddTransient<ProfilePage>();
             builder.Services.AddTransient<CreateGoalPage>();
             builder.Services.AddTransient<CreateUserDataPage>();
             builder.Services.AddTransient<CreateUserPage>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<AddFoodPage>();
-            builder.Services.AddTransient<CreateDishPage>();
+            builder.Services.AddTransient<AddDishPage>();
+            builder.Services.AddTransient<CreateFoodPage>();
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
 
             // DI for ViewModels:
 
-            builder.Services.AddSingleton<CreateGoalPageViewModel>();
-            builder.Services.AddSingleton<FoodViewModel>();
-            builder.Services.AddSingleton<AddFoodViewModel>();
+            builder.Services.AddSingleton<CreateFoodPageViewModel>();
+            builder.Services.AddSingleton<AddFoodPageViewModel>();
+            builder.Services.AddSingleton<CreateFoodPageViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
-            builder.Services.AddSingleton<OpretRetViewModel>();
+            builder.Services.AddSingleton<CreateDishPageViewModel>();
             builder.Services.AddSingleton<RegistrerViewModel>();
-            builder.Services.AddSingleton<RegistrerProfildataViewModel>();
+            builder.Services.AddSingleton<CreateUserPageViewModel>();
 
             // DI for Models:
             builder.Services.AddTransient<User>();
