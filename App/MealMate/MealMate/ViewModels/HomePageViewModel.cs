@@ -62,12 +62,7 @@ public partial class HomePageViewModel : BaseViewModel
 
             if (MacroLogs.Count != 0 && NewMacroLog != null)
             {
-                MacroLogs.Add(CalcMacros(
-                    NewMacroLog.food.calories,
-                    NewMacroLog.food.protein,
-                    NewMacroLog.food.carbonhydrates,
-                    NewMacroLog.food.fat,
-                    NewMacroLog.weight));
+                MacroLogs.Add(CalcMacros(NewMacroLog));
                 NewMacroLog = null;
                 UpdateProgress();
                 return;
@@ -87,11 +82,8 @@ public partial class HomePageViewModel : BaseViewModel
             // Calculate and add each macro log to the collection
             foreach (var macroLog in macroLogs)
             {
-                Calories += macroLog.calories = macroLog.food.calories * macroLog.weight / 100;
-                Carbonhydrates += macroLog.carbonhydrates = macroLog.food.carbonhydrates * macroLog.weight / 100;
-                Protein += macroLog.protein = macroLog.food.protein * macroLog.weight / 100;
-                Fat += macroLog.fat = macroLog.food.fat * macroLog.weight / 100;
-                MacroLogs.Add(macroLog);
+                MacroLogs.Add(CalcMacros(macroLog));
+                UpdateProgress();
             }
 
             UpdateProgress();
@@ -126,15 +118,13 @@ public partial class HomePageViewModel : BaseViewModel
             IsBusy = false;
         }
     }
-
-    private MacroLog CalcMacros(double calories, double protein, double carbonhydrates, double fats, int weight)
+    private MacroLog CalcMacros(MacroLog ml)
     {
-        MacroLog macroLog = new();
-        Calories       += macroLog.calories       = (int)(calories * weight / 100);
-        Carbonhydrates += macroLog.carbonhydrates = (int)(protein * weight / 100);
-        Protein        += macroLog.protein        = (int)(carbonhydrates * weight / 100);
-        Fat            += macroLog.fat            = (int)(fats * weight / 100);
-        return macroLog;
+        Calories       += ml.calories       = (int)(ml.food.calories * ml.weight / 100);
+        Protein        += ml.protein        = (int)(ml.food.protein * ml.weight / 100);
+        Carbonhydrates += ml.carbonhydrates = (int)(ml.food.carbonhydrates * ml.weight / 100);
+        Fat            += ml.fat            = (int)(ml.food.fat * ml.weight / 100);
+        return ml;
     }
 
     private void UpdateProgress()

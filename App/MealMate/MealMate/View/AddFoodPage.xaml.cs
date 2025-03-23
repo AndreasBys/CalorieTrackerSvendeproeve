@@ -35,7 +35,7 @@ public partial class AddFoodPage : ContentPage
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//" + nameof(CreateFoodPage), true);
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
     }
     
     private async void AddDishKnap(object sender, EventArgs e)

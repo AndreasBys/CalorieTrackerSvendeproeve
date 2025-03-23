@@ -10,7 +10,7 @@ public partial class CreateFoodPageViewModel : BaseViewModel
 {
     // Observable property for food details
     [ObservableProperty]
-    Food foodDetails;
+    Food foodDetails = new();
 
     // Observable property for macro weight
     [ObservableProperty]

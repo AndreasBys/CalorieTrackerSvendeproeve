@@ -16,7 +16,7 @@ public partial class CreateFoodPage : ContentPage
         // Validate the food name
         if (_viewModel.FoodDetails.name == null || _viewModel.FoodDetails.name == "")
         {
-            await Application.Current.MainPage.DisplayAlert("Error!", "Giv f�devaren et navn!", "OK");
+            await Application.Current.MainPage.DisplayAlert("Error!", "Giv fødevaren et navn!", "OK");
             return;
         }
 
