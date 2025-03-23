@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +17,9 @@ namespace MealMate.Models
         public string name { get; set; }
 
         public string user { get; set; }
+
+        public List<FoodResponse> foods { get; set; }
+
     }
 
 
@@ -24,7 +27,8 @@ namespace MealMate.Models
     {
         public Food dishes { get; set; }
     }
-    public class RetterListResponse
+    public class DishListResponse
+
     {
         public List<Dish> dishes { get; set; }
     }

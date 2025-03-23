@@ -10,11 +10,12 @@ public partial class AddFoodPage : ContentPage
 
     }
 
-    protected override void OnAppearing()
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        base.OnAppearing();
+        base.OnNavigatedTo(args);
 
-        if (_viewModel.IsBusy) return;
+        if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
+
 
         _viewModel.GetAllFood.Execute(null);
     }
@@ -32,6 +33,19 @@ public partial class AddFoodPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
     }
+    // Command="{Binding Source={x:Reference FoedevareSide}, Path=BindingContext.TilfoejRetKnapCommand}" CommandParameter="{Binding}"
+    private async void Testknap(object sender, EventArgs e)
+    {
+        var ret = ((VisualElement)sender).BindingContext as Dish;
+
+        await Shell.Current.GoToAsync(nameof(CreateDishPage), false, new Dictionary<string, object>
+        {
+            {"Objekt", ret }
+
+
+        });
+    }
+
 
     private void OnSearch(object sender, EventArgs e)
     {

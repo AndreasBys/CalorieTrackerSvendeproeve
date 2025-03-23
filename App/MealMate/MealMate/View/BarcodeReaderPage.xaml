@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealMate.View.BarcodeReaderPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             
+             Title="BarcodeReaderPage">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <zxing:CameraBarcodeReaderView
+                x:Name="barcodeReader" 
+                WidthRequest="300" HeightRequest="300" 
+                BarcodesDetected="cameraView_barcodedetected"
+                
+                
+                ></zxing:CameraBarcodeReaderView>
+            
+            <!--<cv:CameraView x:Name="cameraView" BarcodeDetected="cameraView_barcodedetected" WidthRequest="300" HeightRequest="300" BarCodeDetectionEnabled="True" CamerasLoaded="cameraView_CamerasLoaded"/>-->
+            
+
+                <Label 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" x:Name="BarkodeResultat" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

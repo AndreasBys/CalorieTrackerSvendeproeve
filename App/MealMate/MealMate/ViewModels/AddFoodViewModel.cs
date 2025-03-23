@@ -3,18 +3,33 @@ using System.Windows.Input;
 
 namespace MealMate.ViewModels;
 
+// This attribute allows the FoodDetails property to be set via query parameters
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
+
 public partial class AddFoodViewModel : BaseViewModel
 {
+    // Observable property for food details
     [ObservableProperty]
     Food foodDetails;
+
+    // Observable property for macro weight
     [ObservableProperty]
     string macroWeight;
-    MacroLog macroLog;
+
+    // Property to hold the newly created MacroLog
+    public MacroLog NewMacroLog;
+
+    // Command to create a new food item
     public ICommand CreateFood { get; }
+
+    // Command to create a new macro log
     public ICommand CreateMacroLog { get; }
+
+    // Services for food and macro log operations
     FoodService FoodService;
     MacroLogService MacroLogService;
+
+    // Constructor to initialize services and commands
     public AddFoodViewModel(FoodService FoodService, MacroLogService MacroLogService)
     {
         this.FoodService = FoodService;
@@ -23,14 +38,17 @@ public partial class AddFoodViewModel : BaseViewModel
         CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
     }
 
+    // Async method to create a new food item
     async Task CreateFoodAsync()
     {
         if (IsBusy)
             return;
+
         try
         {
             IsBusy = true;
 
+            // Create a new FoodRequest object with the food details
             FoodRequest newFood = new(
                 FoodDetails.name,
                 FoodDetails.barcode,
@@ -40,11 +58,13 @@ public partial class AddFoodViewModel : BaseViewModel
                 FoodDetails.fat,
                 FoodDetails.user);
 
+            // Call the FoodService to create the new food item
             var food = await FoodService.CreateFood(newFood);
 
             if (food == null)
                 throw new Exception($"Food couldn't be added");
 
+            // Update the FoodDetails property with the newly created food item
             FoodDetails = food;
         }
         catch (Exception ex)
@@ -58,21 +78,29 @@ public partial class AddFoodViewModel : BaseViewModel
         }
     }
 
+    // Async method to create a new macro log
     async Task CreateMacroLogAsync()
     {
         if (IsBusy)
+        {
             return;
+        }
+
         try
         {
             IsBusy = true;
 
+            // Create a new MacroLogRequest object with the food ID and macro weight
             MacroLogRequest newMacroLog = new(FoodDetails._id, Convert.ToInt32(MacroWeight));
+
+            // Call the MacroLogService to create the new macro log
             var macroLog = await MacroLogService.CreateMacroLog(newMacroLog);
 
             if (macroLog == null)
                 throw new Exception($"MacroLog couldn't be added");
 
-            this.macroLog = macroLog;
+            // Update the NewMacroLog property with the newly created macro log
+            NewMacroLog = macroLog;
         }
         catch (Exception ex)
         {

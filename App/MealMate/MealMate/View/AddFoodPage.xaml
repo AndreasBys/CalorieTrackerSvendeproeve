@@ -7,6 +7,8 @@
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
              x:DataType="viewmodel:FoodViewModel"
+             x:Name="FoedevareSide"
+
              Title="AddFoodPage">
     <Grid>
 
@@ -85,7 +87,8 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
-                                <ScrollView IsVisible="{Binding EnkeltVarerSynlighed}">
+                                <ScrollView IsVisible="{Binding EnkeltVarerSynlighed}" VerticalOptions="FillAndExpand">
+
                                     <CollectionView ItemsSource="{Binding Foods}"
                                         SelectionMode="None">
                                         <CollectionView.ItemTemplate>
@@ -107,7 +110,8 @@
                                                                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                                                         </Border.StrokeShape>
                                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
+                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap" />
+
                                                                         </Grid>
                                                                     </Border>
 
@@ -143,7 +147,8 @@
                                                                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                                                         </Border.StrokeShape>
                                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
+                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40"  Pressed="Testknap"/>
+
                                                                         </Grid>
                                                                     </Border>
 

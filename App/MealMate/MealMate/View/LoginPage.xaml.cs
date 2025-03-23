@@ -44,7 +44,7 @@ public partial class LoginPage : ContentPage
         {
             _emailEntry.Text = string.Empty;
             _passwordEntry.Text = string.Empty;
-            _rememberMeCheckBox.IsChecked = false;
+            //_rememberMeCheckBox.IsChecked = false;
         }
     }
 

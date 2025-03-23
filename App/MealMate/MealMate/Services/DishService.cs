@@ -10,8 +10,6 @@ namespace MealMate.Services
     public class DishService : IDishService
     {
 
-        string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2NiMjFiNzg4ZjU1ZmZlMTliMjM5YTYiLCJpYXQiOjE3NDE3OTQyODksImV4cCI6MTc0MTc5Nzg4OX0.PAykLP_dS7HtA2ek4ZijnK8YLFYyGkpzUN8z8TuGuwU";
-
         private readonly HttpClient _httpClient;
 
         List<Dish> retterList = new();
@@ -27,6 +25,9 @@ namespace MealMate.Services
 
         public async Task<List<Dish>> GetAllRetter()
         {
+            string token = await SecureStorage.GetAsync("auth_token");
+
+
             var request = new HttpRequestMessage(HttpMethod.Get, "");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -34,17 +35,24 @@ namespace MealMate.Services
 
             if (response.IsSuccessStatusCode)
             {
-                RetterListResponse responseObj = await response.Content.ReadFromJsonAsync<RetterListResponse>();
+                DishListResponse responseObj = await response.Content.ReadFromJsonAsync<DishListResponse>();
                 retterList = responseObj.dishes;
+                return retterList;
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"At hente retterne fejlede {response.StatusCode}, {errorContent}");
             }
 
-            return retterList;
         }
 
 
         public async Task<List<Dish>> SearchRetter(string searchTerm)
         {
-            Dish retterObj = new Dish();
+            string token = await SecureStorage.GetAsync("auth_token");
+
+
 
             var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -53,11 +61,18 @@ namespace MealMate.Services
 
             if (response.IsSuccessStatusCode)
             {
-                RetterListResponse responseObj = await response.Content.ReadFromJsonAsync<RetterListResponse>();
+                DishListResponse responseObj = await response.Content.ReadFromJsonAsync<DishListResponse>();
                 retterList = responseObj.dishes;
+                return retterList;
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"At hente retten fejlede {response.StatusCode}, {errorContent}");
             }
 
-            return retterList;
+           
+
         }
     }
 }

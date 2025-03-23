@@ -2,9 +2,10 @@ namespace MealMate.View;
 
 public partial class CreateDishPage : ContentPage
 {
-	public CreateDishPage()
+	public CreateDishPage(CreateDishViewModel viewModel)
 	{
 		InitializeComponent();
+        BindingContext = viewModel;
 	}
 
     private async void annullerRetOprettelse_knap(object sender, EventArgs e)

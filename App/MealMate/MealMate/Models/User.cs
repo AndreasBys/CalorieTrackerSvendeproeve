@@ -14,6 +14,8 @@ public class User
     public int height { get; set; }
     public string gender { get; set; }
     public bool admin { get; set; }
+
+
 }
 public class UserResponse
 {
