@@ -1,5 +1,3 @@
-
-
 namespace MealMate.View;
 
 public partial class AddFoodPage : ContentPage
@@ -17,6 +15,7 @@ public partial class AddFoodPage : ContentPage
         base.OnNavigatedTo(args);
 
         if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
+
 
         _viewModel.GetAllFood.Execute(null);
     }
@@ -47,6 +46,7 @@ public partial class AddFoodPage : ContentPage
         });
     }
 
+
     private void OnSearch(object sender, EventArgs e)
     {
         _viewModel.SearchFood.Execute(null);
@@ -67,6 +67,4 @@ public partial class AddFoodPage : ContentPage
             { "SelectedFood", _viewModel.Food }
         });
     }
-
-    
 }

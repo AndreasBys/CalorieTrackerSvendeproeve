@@ -32,7 +32,9 @@ public partial class FoodViewModel : BaseViewModel
 
     public ObservableCollection<Dish> Dish { get; } = new();
 
-    DishService retService;
+
+    DishService dishService;
+
 
     // Observable property for search text
     [ObservableProperty]
@@ -54,14 +56,15 @@ public partial class FoodViewModel : BaseViewModel
     FoodService FoodService;
 
     // Constructor to initialize services and commands
-    public FoodViewModel(FoodService FoodService, DishService retService)
+    public FoodViewModel(FoodService FoodService, DishService dishService)
+
     {
         this.FoodService = FoodService;
         GetAllFood = new AsyncRelayCommand(GetFoods);
         SearchFood = new AsyncRelayCommand(SearchFoods);
         GetFood = new AsyncRelayCommand<string>(GetFoodByBarcode);
 
-        this.retService = retService;
+        this.dishService = dishService;
         getAllRetter();
     }
 
@@ -79,24 +82,27 @@ public partial class FoodViewModel : BaseViewModel
     // Async method to get all food items
     public async Task GetFoods()
     {
-        if (IsBusy)
-            return;
         try
         {
             IsBusy = true;
-
             var foods = await FoodService.GetAllFoods();
-
-            if (Foods.Count != 0)
+            if (foods != null)
+            {
                 Foods.Clear();
-
-            foreach (var food in foods)
-                Foods.Add(food);
+                foreach (var food in foods)
+                {
+                    Foods.Add(food);
+                }
+                Console.WriteLine($"Loaded {Foods.Count} foods.");
+            }
+            else
+            {
+                Console.WriteLine("No foods found.");
+            }
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get Foods: {ex.Message}");
-            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            Console.WriteLine($"Error loading foods: {ex.Message}");
         }
         finally
         {
@@ -140,12 +146,12 @@ public partial class FoodViewModel : BaseViewModel
             {
                 IsBusy = true;
 
-                var retter = await retService.SearchRetter(SearchText);
+                var dishes = await dishService.SearchRetter(SearchText);
 
                 if (Dish.Count != 0)
                     Dish.Clear();
 
-                foreach (var item in retter)
+                foreach (var item in dishes)
                     Dish.Add(item);
             }
             catch (Exception ex)
@@ -226,9 +232,9 @@ public partial class FoodViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            List<Dish> retList = await retService.GetAllRetter();
+            List<Dish> dishList = await dishService.GetAllRetter();
 
-            foreach (var item in retList)
+            foreach (var item in dishList)
             {
                 Dish.Add(item);
             }

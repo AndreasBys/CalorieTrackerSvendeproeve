@@ -130,6 +130,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                     <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="{StaticResource MediumFontLabelSize}"  Grid.Row="0" VerticalOptions="End" Padding="10" Text="{Binding MarginProcent}"></Label>
 
+
                     <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1"  >
 
                     </Grid>

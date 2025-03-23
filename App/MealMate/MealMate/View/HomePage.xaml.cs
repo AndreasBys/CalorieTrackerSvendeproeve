@@ -25,6 +25,7 @@ public partial class HomePage : ContentPage
         }
         if (_viewModel.IsBusy || _viewModel.MacroLogs.Any()) return;
 
+
         _viewModel.GetMacroLogs.Execute(null);
     }
 }

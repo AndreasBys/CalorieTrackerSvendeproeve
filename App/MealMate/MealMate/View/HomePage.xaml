@@ -34,6 +34,7 @@
                     TrackFill="{StaticResource CustomMoerkeGraa}"
                     ProgressFill="{StaticResource CustomPink}"
                     BackgroundColor="{StaticResource CustomGraa}">
+
                 </progressBar:SfLinearProgressBar>
             </Grid>
             <Grid Grid.Row="2" Padding="5">

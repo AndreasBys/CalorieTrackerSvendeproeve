@@ -8,6 +8,7 @@
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
              x:DataType="viewmodel:FoodViewModel"
              x:Name="FoedevareSide"
+
              Title="AddFoodPage">
     <Grid>
 
@@ -87,6 +88,7 @@
                             <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
                                 <ScrollView IsVisible="{Binding EnkeltVarerSynlighed}" VerticalOptions="FillAndExpand">
+
                                     <CollectionView ItemsSource="{Binding Foods}"
                                         SelectionMode="None">
                                         <CollectionView.ItemTemplate>
@@ -109,6 +111,7 @@
                                                                         </Border.StrokeShape>
                                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
                                                                             <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap" />
+
                                                                         </Grid>
                                                                     </Border>
 
@@ -145,6 +148,7 @@
                                                                         </Border.StrokeShape>
                                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
                                                                             <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40"  Pressed="Testknap"/>
+
                                                                         </Grid>
                                                                     </Border>
 

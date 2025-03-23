@@ -18,13 +18,14 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
 
 
+
             <!--Formular box-->
             <Grid RowDefinitions="Auto,Auto,Auto,Auto" >
+
 
                 <Grid Grid.Row="0" Padding="40">
                     <Label TextColor="{StaticResource CustomHvid}" FontSize="32">Profil log</Label>
                 </Grid>
-
 
                 <Grid Grid.Row="1">
                     <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
@@ -32,7 +33,6 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-
 
 
                             <Grid ColumnDefinitions="*,*,*">
@@ -62,15 +62,12 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                         </Grid>
                     </Border>
 
-
-
                 </Grid>
 
                 <Grid Grid.Row="2" Padding="0,30,0,30" RowDefinitions="Auto,Auto">
                     <chart:SfCartesianChart BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
 
                         <chart:ColumnSeries YBindingPath="Dage">
-
                         </chart:ColumnSeries>
 
                         <chart:SfCartesianChart.XAxes>
@@ -211,28 +208,8 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
 
                     </Grid>
-
                 </Grid>
-
-
-
-
-
-
-
-                
-
-
-
-
-
-
-
-
-
             </Grid>
-
-
         </Grid>
 
         <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>

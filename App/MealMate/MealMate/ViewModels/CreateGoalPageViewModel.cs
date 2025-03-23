@@ -1,8 +1,9 @@
-﻿namespace MealMate.ViewModels
+namespace MealMate.ViewModels
 {
     public partial class CreateGoalPageViewModel : BaseViewModel
     {
         // Observable properties for user input and calculated values
+
         [ObservableProperty]
         private string kalorieInput;
 
@@ -19,6 +20,7 @@
         private string marginProcent;
 
         [ObservableProperty]
+
         private string proteinText = "g";
 
         [ObservableProperty]
@@ -112,6 +114,7 @@
         // Method called when the KalorieInput property changes
         partial void OnKalorieInputChanged(string kalorieValue)
         {
+
             try
             {
                 if (string.IsNullOrWhiteSpace(kalorieValue))
@@ -120,6 +123,7 @@
                 }
 
                 // Calculates percentages and updates progress bars
+
                 double kalorieValueDouble = Convert.ToDouble(kalorieValue);
 
                 double fedtIGram = Convert.ToDouble(fedtProcent) / 100;

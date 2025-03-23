@@ -99,7 +99,6 @@
 
                             <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
 
-
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
@@ -119,7 +118,6 @@
                             <Label Grid.Row="0" FontSize="28" TextColor="White">Protein:</Label>
 
                             <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
-
 
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
@@ -170,7 +168,6 @@
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-
                                     <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.fat}"></Entry>
                                 </Grid>
 
@@ -178,10 +175,10 @@
 
 
 
+
                         </Grid>
 
                     </Grid>
-
 
                     <Grid Grid.Row="5" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,60,0,0">
 

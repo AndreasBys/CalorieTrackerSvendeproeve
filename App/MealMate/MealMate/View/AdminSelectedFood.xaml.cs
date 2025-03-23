@@ -41,7 +41,7 @@ public partial class AdminSelectedFood : ContentPage
     }
 
     // Event handler for the save button click
-    private async void Gem(object sender, EventArgs e)
+    private async void Save(object sender, EventArgs e)
     {
         // Create a new Food object with the updated values from the entries
         var food = new Food
@@ -74,9 +74,23 @@ public partial class AdminSelectedFood : ContentPage
     }
 
     // Event handler for the cancel button click
-    private async void Anuller(object sender, EventArgs e)
+    private async void Cancel(object sender, EventArgs e)
     {
         // Navigate back to the AdminHomePage
         await Shell.Current.GoToAsync($"{nameof(AdminHomePage)}");
     }
+
+
+    // Event handler for the delete button click
+    private async void DeleteFood(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Confirm Delete", "Are you sure you want to delete this food item?", "Yes", "No");
+        if (confirm)
+        {
+            await _foodService.DeleteFood(_food._id);
+            // Navigate back to the AdminHomePage
+            await Shell.Current.GoToAsync($"{nameof(AdminHomePage)}");
+        }
+    }
+
 }

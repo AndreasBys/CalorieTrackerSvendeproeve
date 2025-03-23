@@ -16,12 +16,13 @@ public partial class CreateFoodPage : ContentPage
         // Validate the food name
         if (_viewModel.FoodDetails.name == null || _viewModel.FoodDetails.name == "")
         {
-            await Application.Current.MainPage.DisplayAlert("Error!", "Giv fødevaren et navn!", "OK");
+            await Application.Current.MainPage.DisplayAlert("Error!", "Giv fï¿½devaren et navn!", "OK");
             return;
         }
 
         // Create the food item if it doesn't already exist
         if (_viewModel.FoodDetails._id == null &&
+
             _viewModel.CreateFood is AsyncRelayCommand createFoodCommand)
         {
             await createFoodCommand.ExecuteAsync(null);
@@ -60,5 +61,6 @@ public partial class CreateFoodPage : ContentPage
 
         // Navigate back to the previous page
         await Shell.Current.GoToAsync("..", true);
+
     }
 }

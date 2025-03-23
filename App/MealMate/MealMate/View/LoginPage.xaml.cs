@@ -25,7 +25,7 @@ public partial class LoginPage : ContentPage
         _passwordEntry = this.FindByName<Entry>("passwordEntry");
         _rememberMeCheckBox = this.FindByName<CheckBox>("rememberMeCheckBox");
 
-        // Load saved login information if "Remember Me" was checked
+        // Load saved login information if "Remember Me" was checked - defaults to false
         if (Preferences.Get("RememberMe", false))
         {
             _emailEntry.Text = Preferences.Get("Email", string.Empty);
@@ -39,7 +39,7 @@ public partial class LoginPage : ContentPage
     {
         base.OnAppearing();
 
-        // Clear email and password entries if "Remember Me" is not checked
+        // Clear email and password entries if "Remember Me" is not checked - defaults to false
         if (!Preferences.Get("RememberMe", false))
         {
             _emailEntry.Text = string.Empty;
@@ -101,7 +101,7 @@ public partial class LoginPage : ContentPage
     }
 
     // Event handler for the CreateUser_Button tap
-    private async void CreateUser_Button(object sender, TappedEventArgs e)
+    private async void GoToCreateUserPage_Button(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(CreateUserPage), true);
     }

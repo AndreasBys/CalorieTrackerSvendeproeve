@@ -4,7 +4,7 @@ import config from '../config.js';
 import User from '../models/user.js';
 
 // register method - laver ny bruger
-export const register = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         // laver ny bruger og gemmer i databasen
         const user = await new User(req.body).save();

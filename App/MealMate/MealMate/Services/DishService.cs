@@ -10,7 +10,6 @@ namespace MealMate.Services
     public class DishService : IDishService
     {
 
-
         private readonly HttpClient _httpClient;
 
         List<Dish> retterList = new();
@@ -27,6 +26,7 @@ namespace MealMate.Services
         public async Task<List<Dish>> GetAllRetter()
         {
             string token = await SecureStorage.GetAsync("auth_token");
+
 
             var request = new HttpRequestMessage(HttpMethod.Get, "");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -45,13 +45,13 @@ namespace MealMate.Services
                 throw new Exception($"At hente retterne fejlede {response.StatusCode}, {errorContent}");
             }
 
-            
         }
 
 
         public async Task<List<Dish>> SearchRetter(string searchTerm)
         {
             string token = await SecureStorage.GetAsync("auth_token");
+
 
 
             var request = new HttpRequestMessage(HttpMethod.Get, "search?searchTerm=" + searchTerm);
@@ -71,7 +71,8 @@ namespace MealMate.Services
                 throw new Exception($"At hente retten fejlede {response.StatusCode}, {errorContent}");
             }
 
-            
+           
+
         }
     }
 }
