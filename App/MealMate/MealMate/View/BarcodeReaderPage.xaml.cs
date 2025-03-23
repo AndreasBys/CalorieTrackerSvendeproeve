@@ -3,10 +3,13 @@ using ZXing;
 namespace MealMate.View;
 
 // Page for barcode scanning functionality
-public partial class BarcodeLaeserSide : ContentPage
+public partial class BarcodeReaderPage : ContentPage
 {
-	public BarcodeReaderPage()
-	{
+    public TaskCompletionSource<string> BarcodeScanTaskCompletionSource { get; set; }
+
+    // Constructor to initialize the page
+    public BarcodeReaderPage()
+    {
 
         InitializeComponent();
 
@@ -18,16 +21,16 @@ public partial class BarcodeLaeserSide : ContentPage
     }
 
     // Event handler for barcode detection
-    private void cameraView_barcodedetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    public async void cameraView_barcodedetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
-        // Get the first detected barcode result
-        var first = e.Results[0];
+        var barcode = e.Results.FirstOrDefault()?.Value; // Get the first barcode text
 
-        // Update the UI with the detected barcode value on the main thread
-        MainThread.BeginInvokeOnMainThread(async () =>
+        if (!string.IsNullOrEmpty(barcode))
         {
-            BarkodeResultat.Text = first.Value;
-        });
+            BarcodeScanTaskCompletionSource?.SetResult(barcode);
+
+            await Shell.Current.Navigation.PopAsync(false);
+        }
     }
 }
 

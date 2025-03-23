@@ -6,7 +6,7 @@ namespace MealMate.ViewModels;
 // This attribute allows the FoodDetails property to be set via query parameters
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
 
-public partial class AddFoodViewModel : BaseViewModel
+public partial class CreateFoodPageViewModel : BaseViewModel
 {
     // Observable property for food details
     [ObservableProperty]
@@ -30,13 +30,15 @@ public partial class AddFoodViewModel : BaseViewModel
     MacroLogService MacroLogService;
 
     // Constructor to initialize services and commands
-    public AddFoodViewModel(FoodService FoodService, MacroLogService MacroLogService)
+    public CreateFoodPageViewModel(FoodService FoodService, MacroLogService MacroLogService)
     {
         this.FoodService = FoodService;
         this.MacroLogService = MacroLogService;
         CreateFood = new AsyncRelayCommand(CreateFoodAsync);
         CreateMacroLog = new AsyncRelayCommand(CreateMacroLogAsync);
     }
+
+
 
     // Async method to create a new food item
     async Task CreateFoodAsync()

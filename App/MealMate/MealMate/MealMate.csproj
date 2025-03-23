@@ -130,8 +130,8 @@
 	  <Compile Update="View\CreateFoodPage.xaml.cs">
 	    <DependentUpon>CreateFoodPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\CreateDishPage.xaml.cs">
-	    <DependentUpon>CreateDishPage.xaml</DependentUpon>
+	  <Compile Update="View\AddDishPage.xaml.cs">
+	    <DependentUpon>AddDishPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -142,8 +142,8 @@
 	  <Compile Update="View\CreateGoalPage.xaml.cs">
 	    <DependentUpon>CreateGoalPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\DishPage.xaml.cs">
-	    <DependentUpon>DishPage.xaml</DependentUpon>
+	  <Compile Update="View\CreateDishPage.xaml.cs">
+	    <DependentUpon>CreateDishPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -178,13 +178,13 @@
 	  <MauiXaml Update="View\CreateFoodPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\CreateDishPage.xaml">
+	  <MauiXaml Update="View\AddDishPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\DishPage.xaml">
+	  <MauiXaml Update="View\CreateDishPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">

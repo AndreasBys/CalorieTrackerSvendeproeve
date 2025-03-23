@@ -2,11 +2,8 @@ namespace MealMate.View;
 
 public partial class NavBar : ContentView	
 {
-    // Base URL for navigation
-    string baseUrl = "//" + nameof(LoginPage) + "/";
 
-
-    // Navbar
+    // Constructor to initialize the navigation bar
     public NavBar()
     {
         InitializeComponent();
@@ -21,7 +18,7 @@ public partial class NavBar : ContentView
         // Navigate to the home screen if not already on it
         if (!currentPage.EndsWith(targetPage))
         {
-            await Shell.Current.GoToAsync(baseUrl + targetPage, true);
+            await Shell.Current.GoToAsync(targetPage, true);
         }
     }
 
@@ -34,7 +31,7 @@ public partial class NavBar : ContentView
         // Navigate to the add food screen if not already on it
         if (!currentPage.EndsWith(targetPage))
         {
-            await Shell.Current.GoToAsync(baseUrl + nameof(HomePage) + "/" + targetPage, true);
+            await Shell.Current.GoToAsync(targetPage, true);
         }
     }
 
@@ -47,7 +44,7 @@ public partial class NavBar : ContentView
         // Navigate to the profile screen if not already on it
         if (!currentPage.EndsWith(targetPage))
         {
-            await Shell.Current.GoToAsync(baseUrl + nameof(HomePage) + "/" + targetPage, true);
+            await Shell.Current.GoToAsync(targetPage, true);
         }
     }
 }
