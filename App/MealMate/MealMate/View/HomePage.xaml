@@ -192,6 +192,6 @@
                 </Grid>
             </ScrollView>
         </Grid>
-        <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
 </ContentPage>

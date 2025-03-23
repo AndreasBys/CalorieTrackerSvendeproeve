@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace MealMate.ViewModels;
 
 // ViewModel for managing food-related data and operations
-public partial class FoodViewModel : BaseViewModel
+public partial class AddFoodPageViewModel : BaseViewModel
 {
     // Observable property to control visibility of single items
     [ObservableProperty]
@@ -55,9 +55,7 @@ public partial class FoodViewModel : BaseViewModel
     // Service for managing food items
     FoodService FoodService;
 
-    // Constructor to initialize services and commands
-    public FoodViewModel(FoodService FoodService, DishService dishService)
-
+    public AddFoodPageViewModel(FoodService FoodService, DishService dishService)
     {
         this.FoodService = FoodService;
         GetAllFood = new AsyncRelayCommand(GetFoods);
@@ -68,12 +66,42 @@ public partial class FoodViewModel : BaseViewModel
         getAllRetter();
     }
 
+    [RelayCommand]
+    async Task OpretKnap()
+    {
+        if (EnkeltVarerSynlighed)
+        {
+            Food Food = new();
+
+
+
+            await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
+            {
+            { "SelectedFood", Food }
+
+            });
+        }
+        else
+        {
+            try
+            {
+                await Shell.Current.GoToAsync(nameof(CreateDishPage), true);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+                throw;
+            }
+            
+            
+        }
+    }
+
     // Command to navigate to the Add Dish page with the selected dish
     [RelayCommand]
     async Task TilfoejRetKnap(Dish selectedRet)
     {
-
-        await Shell.Current.GoToAsync(nameof(CreateDishPage), false, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(AddDishPage), false, new Dictionary<string, object>
         {
             {"Objekt", selectedRet}
         });

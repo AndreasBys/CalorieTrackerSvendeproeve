@@ -41,6 +41,7 @@ namespace MealMate.ViewModels
         // Service for managing macro goals
         MacroGoalService macroGoalService;
 
+        // Constructor to initialize the service
         public CreateGoalPageViewModel(MacroGoalService macroGoalService)
         {
             this.macroGoalService = macroGoalService;
@@ -88,8 +89,8 @@ namespace MealMate.ViewModels
                         // Save the macro goal using the service
                         await macroGoalService.CreateMacroGoal(macroGoal);
 
+                        // Navigate to the home screen
                         await Shell.Current.GoToAsync(nameof(HomePage));
-
                     }
                     catch (Exception ex)
                     {

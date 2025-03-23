@@ -2,8 +2,8 @@ namespace MealMate.View;
 
 public partial class AddFoodPage : ContentPage
 {
-    private readonly FoodViewModel _viewModel;
-    public AddFoodPage(FoodViewModel viewModel)
+    private readonly AddFoodPageViewModel _viewModel;
+    public AddFoodPage(AddFoodPageViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = _viewModel = viewModel;
@@ -23,6 +23,10 @@ public partial class AddFoodPage : ContentPage
     private async void opretFoedevare_knap(object sender, EventArgs e)
     {
         Food Food = new();
+
+
+        await Application.Current.MainPage.DisplayAlert("Error!", Shell.Current.CurrentState.Location.ToString(), "OK");
+
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
         {
             { "SelectedFood", Food }
@@ -31,14 +35,14 @@ public partial class AddFoodPage : ContentPage
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
+        await Shell.Current.GoToAsync("//" + nameof(CreateFoodPage), true);
     }
-    // Command="{Binding Source={x:Reference FoedevareSide}, Path=BindingContext.TilfoejRetKnapCommand}" CommandParameter="{Binding}"
-    private async void Testknap(object sender, EventArgs e)
+    
+    private async void AddDishKnap(object sender, EventArgs e)
     {
         var ret = ((VisualElement)sender).BindingContext as Dish;
 
-        await Shell.Current.GoToAsync(nameof(CreateDishPage), false, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(AddDishPage), false, new Dictionary<string, object>
         {
             {"Objekt", ret }
 

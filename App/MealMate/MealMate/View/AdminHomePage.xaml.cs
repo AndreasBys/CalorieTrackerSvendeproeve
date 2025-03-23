@@ -4,10 +4,10 @@ namespace MealMate.View;
 
 public partial class AdminHomePage : ContentPage
 {
-    private readonly FoodViewModel _foodViewModel;
+    private readonly AddFoodPageViewModel _foodViewModel;
 
     // Constructor to initialize the page and set the BindingContext to the provided FoodViewModel
-    public AdminHomePage(FoodViewModel foodViewModel)
+    public AdminHomePage(AddFoodPageViewModel foodViewModel)
     {
         InitializeComponent();
         BindingContext = foodViewModel;

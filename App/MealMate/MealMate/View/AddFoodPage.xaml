@@ -6,9 +6,8 @@
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
-             x:DataType="viewmodel:FoodViewModel"
+             x:DataType="viewmodel:AddFoodPageViewModel"
              x:Name="FoedevareSide"
-
              Title="AddFoodPage">
     <Grid>
 
@@ -147,12 +146,9 @@
                                                                             <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                                                                         </Border.StrokeShape>
                                                                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40"  Pressed="Testknap"/>
-
+                                                                            <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png"  HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40"  Pressed="AddDishKnap"/>
                                                                         </Grid>
                                                                     </Border>
-
-
                                                                 </Grid>
                                                             </Grid>
                                                         </Grid>
@@ -306,7 +302,7 @@ BackgroundColor="{StaticResource CustomGraa}" >
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
                         <Grid  >
-                            <Button Text="Opret ny" TextColor="White" FontSize="24" Pressed="opretFoedevare_knap">
+                            <Button Text="Opret ny" TextColor="White" FontSize="24" Command="{Binding OpretKnapCommand}">
 
                             </Button>
                         </Grid>

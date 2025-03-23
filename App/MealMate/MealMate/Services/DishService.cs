@@ -50,6 +50,7 @@ namespace MealMate.Services
 
         public async Task<List<Dish>> SearchRetter(string searchTerm)
         {
+            Dish retterObj = new Dish();
             string token = await SecureStorage.GetAsync("auth_token");
 
 
