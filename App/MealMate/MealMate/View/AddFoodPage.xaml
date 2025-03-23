@@ -40,7 +40,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20"></RoundRectangle>
                     </Border.StrokeShape>
-                    <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="60" WidthRequest="60" Padding="5" Pressed="OnScan"></ImageButton>
+                    <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="60" WidthRequest="60" Padding="5" BackgroundColor="Transparent" Pressed="OnScan"></ImageButton>
                 </Border>
             </Grid>
 
@@ -65,6 +65,9 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Food">
                                 <Grid Padding="5" ColumnDefinitions="*">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="aendrerFoedevare_knap"/>
+                                    </Grid.GestureRecognizers>
                                     <Border Stroke="#00000000" HeightRequest="80">
                                         <Border.Shadow>
                                             <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5"/>
@@ -73,12 +76,7 @@
                                             <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"/>
                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
                                                 <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"/>
-                                                <Border Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" VerticalOptions="Fill">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                                                    </Border.StrokeShape>
-                                                    <ImageButton Grid.Row="0" Grid.Column="0" Source="plus_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Pressed="aendrerFoedevare_knap"/>
-                                                </Border>
+                                                <ImageButton Grid.Row="0" Grid.Column="1" Source="plus_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
                                             </Grid>
                                         </Grid>
                                     </Border>

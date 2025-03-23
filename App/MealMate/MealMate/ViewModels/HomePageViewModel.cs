@@ -60,7 +60,7 @@ public partial class HomePageViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            if (MacroLogs.Count != 0 && NewMacroLog != null)
+            if (NewMacroLog != null)
             {
                 MacroLogs.Add(CalcMacros(NewMacroLog));
                 NewMacroLog = null;
