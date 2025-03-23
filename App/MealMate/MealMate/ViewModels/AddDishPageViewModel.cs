@@ -25,6 +25,9 @@ public partial class AddDishPageViewModel : BaseViewModel
     public AddDishPageViewModel()
     {
         
+
+
+
     }
 
     
