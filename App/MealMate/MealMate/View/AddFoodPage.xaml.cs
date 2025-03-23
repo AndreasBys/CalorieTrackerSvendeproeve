@@ -14,7 +14,7 @@ public partial class AddFoodPage : ContentPage
     {
         base.OnNavigatedTo(args);
 
-        if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
+        if (_viewModel.Foods.Any()) return;
 
 
         _viewModel.GetAllFood.Execute(null);
