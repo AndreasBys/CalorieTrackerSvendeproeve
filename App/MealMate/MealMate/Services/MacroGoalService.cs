@@ -48,5 +48,22 @@ namespace MealMate.Services
                 throw new Exception($"At opdatere userens mål fejlede {response.StatusCode}, {errorContent}");
             }
         }
+
+        public async Task<MacroGoal> GetCurrentMacroGoal()
+        {
+            string token = await SecureStorage.GetAsync("auth_token");
+            var request = new HttpRequestMessage(HttpMethod.Get, "");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MacroGoalResponse responseObj = await response.Content.ReadFromJsonAsync<MacroGoalResponse>();
+                return responseObj.macroGoal;
+            }
+
+            return null;
+        }
     }
 }

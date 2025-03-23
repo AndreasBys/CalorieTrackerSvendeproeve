@@ -20,7 +20,7 @@ namespace MealMate.Models
 
         public double? calories { get; set; }
 
-        public double? carbohydrates { get; set; }
+        public double? carbonhydrates { get; set; }
 
         public double? proteins { get; set; }
 
@@ -30,7 +30,7 @@ namespace MealMate.Models
         public int margin { get; set; }
 
 
-        public User user { get; set; } 
+        public string user { get; set; } 
 
     }
 

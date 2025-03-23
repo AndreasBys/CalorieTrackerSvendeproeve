@@ -106,7 +106,7 @@ public partial class CreateFoodPageViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get MacroLog: {ex.Message}");
+            Debug.WriteLine($"Unable to create MacroLog: {ex.Message}");
             await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally
