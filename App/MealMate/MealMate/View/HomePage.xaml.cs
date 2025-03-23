@@ -14,6 +14,7 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
+        // Should actually be in HomePageViewModel
         if (_viewModel.NewMacroLog != null)
         {
             _viewModel.NewMacroLog.calories = _viewModel.NewMacroLog.food.calories * _viewModel.NewMacroLog.weight / 100;

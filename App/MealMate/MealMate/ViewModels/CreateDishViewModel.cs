@@ -1,19 +1,13 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MealMate.ViewModels
+﻿namespace MealMate.ViewModels
 {
     [QueryProperty(nameof(Dish), "Objekt")]
     public partial class CreateDishViewModel : BaseViewModel
     {
+        // Observable property for the selected dish
         [ObservableProperty]
         public Dish dish;
 
-
+        // Observable properties for the dish's nutritional information
         [ObservableProperty]
         string rettensNavn;
         [ObservableProperty]
@@ -28,21 +22,20 @@ namespace MealMate.ViewModels
 
         partial void OnDishChanged(Dish value)
         {
-            Template();   
+            Template();
         }
 
 
         public CreateDishViewModel()
         {
-            
+
         }
 
-
+        // Method to calculate the total nutritional information for the dish
         private void Template()
         {
-
             int kalorier = 0;
-
+            // Iterate through each food item in the dish and sum up the nutritional values
             Dish.foods.ForEach(food =>
             {
                 RettensKalorier += food.food.calories;
@@ -50,8 +43,7 @@ namespace MealMate.ViewModels
                 RettensProtein += food.food.protein;
                 RettensKulhydrater += food.food.carbonhydrates;
             });
-
-
         }
     }
 }
+

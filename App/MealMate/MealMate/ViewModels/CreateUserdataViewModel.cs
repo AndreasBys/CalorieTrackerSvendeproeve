@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MealMate.ViewModels
+﻿namespace MealMate.ViewModels
 {
+    // ViewModel for managing the registration of user profile data
     public partial class CreateUserdataViewModel : BaseViewModel
     {
+        // Observable properties for user input
         [ObservableProperty]
         DateTime foedselsdato;
+
         [ObservableProperty]
         string hoejde = "";
+
         [ObservableProperty]
         string vaegt = "";
+
         [ObservableProperty]
         string aktivitetsniveau;
+
         [ObservableProperty]
         string maal;
+
         [ObservableProperty]
         string koen;
 
+        // Service for managing user data
         UserService userService;
 
         public CreateUserdataViewModel(UserService userService)
@@ -28,8 +30,7 @@ namespace MealMate.ViewModels
             this.userService = userService;
         }
 
-
-
+        // Command to save the user profile data
         [RelayCommand]
         async Task gemProfildataKnap()
         {
@@ -37,6 +38,7 @@ namespace MealMate.ViewModels
             {
                 try
                 {
+                    // Validate the input height and weight
                     if (Convert.ToInt32(Hoejde) > 400 || Convert.ToInt32(Hoejde) < 10)
                     {
                         await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld højde mellem 10 og 400 cm!", "OK");
@@ -50,7 +52,7 @@ namespace MealMate.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! { ex.Message}", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error!", $"Indtast venligst kun tal! {ex.Message}", "OK");
                     return;
                 }
 
@@ -64,38 +66,32 @@ namespace MealMate.ViewModels
 
                 try
                 {
+                    // Update the user data using the service
                     var us = await userService.UpdateUser(user);
 
                     await Application.Current.MainPage.DisplayAlert("Success", $"Bruger opdateret! {us.birthdate + us.gender + us.weight + us.gender}", "OK");
 
+                    // Navigate to the goal registration screen
                     await Shell.Current.GoToAsync(nameof(CreateGoalPage), false);
 
                 }
-                catch (Exception ex )
+                catch (Exception ex)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error!", $"Fejl i serveren! {ex.Message}", "OK");
-                    
                 }
-
-                
-
             }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Error!", "Ingen tomme felter tak!", "OK");
             }
-
-
         }
 
+        // Method to check if any input fields are null or whitespace
         public bool NullorWhitespace()
         {
             return !string.IsNullOrWhiteSpace(Foedselsdato.ToString()) && !string.IsNullOrWhiteSpace(Hoejde) && !string.IsNullOrWhiteSpace(Vaegt) && !string.IsNullOrWhiteSpace(Koen);
         }
-
-
-
-
-
     }
 }
+
+

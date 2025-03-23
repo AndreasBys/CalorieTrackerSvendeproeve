@@ -10,7 +10,7 @@ export const getFoods = async (req, res) => {
         if (req.user.admin == false) {
             filter = {
                 $or: [
-                    { godkendt: true },
+                    { approved: true },
                     { user: req.user.id }
                 ]
             }
@@ -121,9 +121,9 @@ export const createFood = async (req, res) => {
         // makes sure food gets user id from the user making the request
         req.body.user = req.user.id
 
-        // makes godkendt false if user is not admin
+        // makes approved false if user is not admin
         if (req.user.admin == false) {
-            req.body.godkendt = false
+            req.body.approved = false
         }
 
         // saves the new food to database
