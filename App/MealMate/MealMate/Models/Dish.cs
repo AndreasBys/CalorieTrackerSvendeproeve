@@ -14,6 +14,9 @@ public class Dish
 
     public List<FoodInDish> foods { get; set; }
 
+
+
+
 }
 
 public class DishResponse
