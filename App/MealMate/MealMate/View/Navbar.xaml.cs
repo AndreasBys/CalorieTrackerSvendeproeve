@@ -1,6 +1,6 @@
 namespace MealMate.View;
 
-public partial class NavBar : ContentView	
+public partial class NavBar : ContentView
 {
 
     // Constructor to initialize the navigation bar

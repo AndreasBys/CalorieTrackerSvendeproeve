@@ -15,12 +15,17 @@ namespace MealMate.ViewModels
         [ObservableProperty]
         string searchText;
 
+        [ObservableProperty]
+        string dishname;
+
         // Collection to hold food items
         public ObservableCollection<Food> Foods { get; } = new();
 
         public ObservableCollection<Food> FoodInDish { get; } = new();
 
         FoodService FoodService;
+
+        DishService DishService;
 
         public ICommand SearchFood { get; }
 
@@ -29,7 +34,7 @@ namespace MealMate.ViewModels
         public ICommand RemoveFromDishCommand { get; }
 
         // Constructor
-        public CreateDishPageViewModel(FoodService FoodService)
+        public CreateDishPageViewModel(FoodService FoodService, DishService dishService)
         {
             this.FoodService = FoodService;
             GetAllFood();
@@ -37,8 +42,14 @@ namespace MealMate.ViewModels
             AddToDishCommand = new Command<Food>(AddToDish);
             SearchFood = new AsyncRelayCommand(SearchFoods);
             RemoveFromDishCommand = new Command<Food>(RemoveFromDish);
+            DishService = dishService;
         }
 
+        [RelayCommand]
+        async Task Opret()
+        {
+
+        }
 
         private async void GetAllFood()
         {
@@ -102,6 +113,7 @@ namespace MealMate.ViewModels
                 return;
             }
             FoodInDish.Add(food);
+            Foods.Remove(food);
 
         }
 
@@ -112,6 +124,7 @@ namespace MealMate.ViewModels
                 return;
             }
             FoodInDish.Remove(food);
+            Foods.Add(food);
         }
 
 

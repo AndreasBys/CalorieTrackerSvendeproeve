@@ -35,7 +35,7 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" >
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" ></Entry>
+                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding Dishname}" ></Entry>
                             </Grid>
 
                         </Border>
@@ -204,7 +204,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15"></RoundRectangle>
                         </Border.StrokeShape>
-                        <Button Text="Gem" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetRet_knap"></Button>
+                        <Button Text="Gem" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetRet_knap" Command="{Binding OpretCommand}" ></Button>
                     </Border>
 
 
