@@ -17,10 +17,6 @@ public partial class CreateDishPage : ContentPage
         await Shell.Current.GoToAsync(nameof(AddFoodPage), true);
     }
 
-    private async void oprettetRet_knap(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync(nameof(AddDishPage), true);
-    }
 
     private void OnSearch(object sender, EventArgs e)
     {
