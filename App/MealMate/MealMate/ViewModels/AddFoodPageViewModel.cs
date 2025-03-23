@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Syncfusion.Maui.Core.Carousel;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MealMate.ViewModels;
@@ -77,9 +78,7 @@ public partial class AddFoodPageViewModel : BaseViewModel
 
             await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
             {
-                { "SelectedFood", Food },
-                { "Lock", false },
-                { "TextColor", (Color)Application.Current.Resources["CustomHvid"]}
+                { "SelectedFood", Food }
             });
         }
         else

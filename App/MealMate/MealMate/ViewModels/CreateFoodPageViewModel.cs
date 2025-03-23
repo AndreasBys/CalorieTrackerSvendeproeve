@@ -5,23 +5,22 @@ namespace MealMate.ViewModels;
 
 // This attribute allows the FoodDetails property to be set via query parameters
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
-[QueryProperty(nameof(Locked), "Lock")]
-[QueryProperty(nameof(TextColor), "TextColor")]
 public partial class CreateFoodPageViewModel : BaseViewModel
 {
     // Observable property for food details
     [ObservableProperty]
     Food foodDetails = new();
 
+    // Lock and change color if food is filled
     [ObservableProperty]
     bool locked;
+
+    [ObservableProperty]
+    private Color textColor;
 
     // Observable property for macro weight
     [ObservableProperty]
     string macroWeight;
-
-    [ObservableProperty]
-    private Color textColor;
 
     // Property to hold the newly created MacroLog
     public MacroLog NewMacroLog;

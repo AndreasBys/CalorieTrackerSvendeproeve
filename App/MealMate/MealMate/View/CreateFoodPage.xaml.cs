@@ -10,6 +10,23 @@ public partial class CreateFoodPage : ContentPage
         BindingContext = _viewModel = viewModel;
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        // Changes entries to locked and gray textcolor if food is parsed
+        if (_viewModel.FoodDetails._id == null)
+        {
+            _viewModel.Locked = false;
+            _viewModel.TextColor = (Color)Application.Current.Resources["CustomHvid"];
+        }
+        else
+        {
+            _viewModel.Locked = true;
+            _viewModel.TextColor = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
+        }
+    }
+
     // Event handler for the create food button click
     private async void oprettetFoedevare_knap(object sender, EventArgs e)
     {
@@ -22,7 +39,6 @@ public partial class CreateFoodPage : ContentPage
 
         // Create the food item if it doesn't already exist
         if (_viewModel.FoodDetails._id == null &&
-
             _viewModel.CreateFood is AsyncRelayCommand createFoodCommand)
         {
             await createFoodCommand.ExecuteAsync(null);

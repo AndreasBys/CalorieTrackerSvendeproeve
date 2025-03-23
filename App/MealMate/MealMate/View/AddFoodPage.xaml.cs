@@ -26,9 +26,7 @@ public partial class AddFoodPage : ContentPage
 
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
         {
-            { "SelectedFood", food },
-            { "Lock", true },
-            { "TextColor", (Color)Application.Current.Resources["CustomTekstHvidereGraa"]}
+            { "SelectedFood", food }
         });
     }
     
@@ -62,9 +60,7 @@ public partial class AddFoodPage : ContentPage
 
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
         {
-            { "SelectedFood", _viewModel.Food },
-            { "Lock", true },
-            { "TextColor", (Color)Application.Current.Resources["CustomTekstHvidereGraa"]}
+            { "SelectedFood", _viewModel.Food }
         });
     }
 }
