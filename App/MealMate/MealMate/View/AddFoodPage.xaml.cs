@@ -22,20 +22,27 @@ public partial class AddFoodPage : ContentPage
 
     private async void opretFoedevare_knap(object sender, EventArgs e)
     {
-        Food Food = new();
+        Food food = new();
 
 
         await Application.Current.MainPage.DisplayAlert("Error!", Shell.Current.CurrentState.Location.ToString(), "OK");
 
-        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
         {
-            { "SelectedFood", Food }
+            { "SelectedFood", food }
         });
     }
 
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true);
+        var food = ((VisualElement)sender).BindingContext as Food;
+
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
+        {
+            {"SelectedFood", food }
+
+
+        });
     }
     
     private async void AddDishKnap(object sender, EventArgs e)

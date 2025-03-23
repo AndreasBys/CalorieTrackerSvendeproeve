@@ -24,7 +24,7 @@ public partial class AddFoodPageViewModel : BaseViewModel
 
     // Observable property for the text color of single items
     [ObservableProperty]
-    private Color tekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
+    private Color tekstEnkeltvarerValgt = (Color)Application.Current.Resources["CustomHvid"];
 
     // Observable property for the text color of my dishes
     [ObservableProperty]
