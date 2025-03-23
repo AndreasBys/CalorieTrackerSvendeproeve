@@ -5,6 +5,8 @@ public partial class NavBar : ContentView
     // Base URL for navigation
     string baseUrl = "//" + nameof(LoginPage) + "/";
 
+
+    // Navbar
     public NavBar()
     {
         InitializeComponent();
