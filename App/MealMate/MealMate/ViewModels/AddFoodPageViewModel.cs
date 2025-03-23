@@ -77,8 +77,9 @@ public partial class AddFoodPageViewModel : BaseViewModel
 
             await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
             {
-            { "SelectedFood", Food }
-
+                { "SelectedFood", Food },
+                { "Lock", false },
+                { "TextColor", (Color)Application.Current.Resources["CustomHvid"]}
             });
         }
         else

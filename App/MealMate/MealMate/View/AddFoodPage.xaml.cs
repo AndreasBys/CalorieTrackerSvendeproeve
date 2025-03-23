@@ -20,28 +20,15 @@ public partial class AddFoodPage : ContentPage
         _viewModel.GetAllFood.Execute(null);
     }
 
-    private async void opretFoedevare_knap(object sender, EventArgs e)
-    {
-        Food food = new();
-
-
-        await Application.Current.MainPage.DisplayAlert("Error!", Shell.Current.CurrentState.Location.ToString(), "OK");
-
-        await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
-        {
-            { "SelectedFood", food }
-        });
-    }
-
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
         var food = ((VisualElement)sender).BindingContext as Food;
 
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
         {
-            {"SelectedFood", food }
-
-
+            { "SelectedFood", food },
+            { "Lock", true },
+            { "TextColor", (Color)Application.Current.Resources["CustomTekstHvidereGraa"]}
         });
     }
     
@@ -75,7 +62,9 @@ public partial class AddFoodPage : ContentPage
 
         await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
         {
-            { "SelectedFood", _viewModel.Food }
+            { "SelectedFood", _viewModel.Food },
+            { "Lock", true },
+            { "TextColor", (Color)Application.Current.Resources["CustomTekstHvidereGraa"]}
         });
     }
 }
