@@ -10,7 +10,7 @@ export const saveAllMacroLogs = async () => {
         today.setUTCHours(0, 0, 0, 0);
 
         let yesterday = new Date(today);
-        tomorrow.setUTCDate(tomorrow.getUTCDate() -1 );
+        yesterday.setUTCDate(yesterday.getUTCDate() -1 );
 
         // Find alle brugere i systemet
         const users = await User.find().select("_id");

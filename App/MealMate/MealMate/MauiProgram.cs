@@ -1,6 +1,7 @@
 using MealMate.Services;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
+using ZXing.Net.Maui.Controls;
 
 namespace MealMate
 {
@@ -16,13 +17,13 @@ namespace MealMate
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseBarcodeReader();
 
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
-            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<CreateFoodPage>();
             builder.Services.AddTransient<ProfilePage>();
             builder.Services.AddTransient<CreateGoalPage>();
@@ -30,7 +31,10 @@ namespace MealMate
             builder.Services.AddTransient<CreateUserPage>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<AddFoodPage>();
+            builder.Services.AddTransient<DishPage>();
             builder.Services.AddTransient<CreateDishPage>();
+            builder.Services.AddTransient<BarcodeReaderPage>();
+
             builder.Services.AddSingleton<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
@@ -41,6 +45,9 @@ namespace MealMate
             builder.Services.AddSingleton<FoodViewModel>();
             builder.Services.AddSingleton<AddFoodViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
+            builder.Services.AddSingleton<CreateDishViewModel>();
+            builder.Services.AddSingleton<CreateUserViewModel>();
+            builder.Services.AddSingleton<CreateUserdataViewModel>();
 
             // DI for Models:
             builder.Services.AddTransient<User>();
@@ -75,6 +82,11 @@ namespace MealMate
             builder.Services.AddHttpClient<MacroLogService>(client =>
             {
                 client.BaseAddress = new Uri(baseUrl + "api/macroLog/");
+            });
+
+            builder.Services.AddHttpClient<MacroGoalService>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl + "api/macroGoal/");
             });
 
 
