@@ -19,7 +19,7 @@ public partial class AdminHomePage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await _foodViewModel.GetFoods();
+        _foodViewModel.GetFoods();
     }
 
     // Event handler for the logout button click
