@@ -5,9 +5,13 @@
              x:Class="MealMate.View.AdminSelectedFood"
              Title="AdminSelectedFood">
     <Grid>
-        <Grid RowDefinitions="Auto,*">
-            <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20,20,20,20" Grid.Row="1" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <ScrollView Grid.Row="0">
+            <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="20,20,20,20">
                 <!--Formular box-->
                 <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
                     <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *">
@@ -174,12 +178,12 @@
                             <Button Text="Slet" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="DeleteFood" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                         </Border>
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
-        </Grid>
+        </ScrollView>
 
-        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
+        <Grid Grid.Row="1" VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
             <Grid ColumnDefinitions="0,*,*" Padding="8">
                 <Grid HorizontalOptions="Center" Grid.Column="1">
                     <Border Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill">
