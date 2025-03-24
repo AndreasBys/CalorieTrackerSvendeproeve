@@ -6,31 +6,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealMate.Models
+namespace MealMate.Models;
+
+public class Dish
 {
-    public class Dish
-    {
 
-        [Key]
-        public string? _id { get; set; }  
+    [Key]
+    public string? _id { get; set; }  
 
-        public string name { get; set; }
+    public string name { get; set; }
 
-        public string user { get; set; }
+    public string user { get; set; }
 
-        public List<FoodResponse> foods { get; set; }
+    public List<Food> foods { get; set; }
 
-    }
+}
 
 
-    public class DishResponse
-    {
-        public Food dishes { get; set; }
-    }
-    public class DishListResponse
+public class DishResponse
+{
+    public Dish dishes { get; set; }
+}
+public class DishListResponse
 
-    {
-        public List<Dish> dishes { get; set; }
-    }
+{
+    public List<Dish> dishes { get; set; }
+}
 
+public class DishRequest
+{
+    public string name { get; set; }
+
+    public List<FoodForDish> foods { get; set; }
+
+}
+
+public class FoodForDish
+{
+    public string name { get; set; }
+    public string _id { get; set; }
+
+    public int weight { get; set; }
 }

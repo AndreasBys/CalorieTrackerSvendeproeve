@@ -2,6 +2,7 @@
 
 namespace MealMate.ViewModels;
 
+[QueryProperty(nameof(Dish), "SelectedDish")]
 public partial class AddDishPageViewModel : BaseViewModel
 {
     // Observable property for the selected dish
@@ -23,7 +24,6 @@ public partial class AddDishPageViewModel : BaseViewModel
 
     public AddDishPageViewModel()
     {
-        
         
     }
 

@@ -11,17 +11,7 @@
     <Grid>
 
         <Grid RowDefinitions="Auto,*">
-
-
-
-
             <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,50,80,0" Grid.Row="1" >
-
-
-
-
-
-
                 <!--Formular box-->
                 <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
 
@@ -37,7 +27,7 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*" >
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.name}"></Entry>
+                                <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.name}"></Entry>
                             </Grid>
 
                         </Border>
@@ -59,17 +49,17 @@
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*">
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomHvid}" Grid.Column="1" Text="{Binding FoodDetails.barcode}"></Entry>
+                                <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.barcode}"></Entry>
                             </Grid>
 
                         </Border>
 
                         <Grid Grid.Column="1" Padding="20,0,0,0" Grid.Row="1" >
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" Padding="5" HeightRequest="45" WidthRequest="55">
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" HeightRequest="55" WidthRequest="55">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
-                                <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="45" WidthRequest="55" Padding="5"></ImageButton>
+                                <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="45" WidthRequest="45" Padding="5"></ImageButton>
                             </Border>
                         </Grid>
 
@@ -82,11 +72,11 @@
                         <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="15" HorizontalOptions="Fill" >Næringsindhold per 100g:</Label>
 
                         <Grid Grid.Column="1" Padding="20,0,0,0" Grid.Row="1" >
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" Padding="10" HeightRequest="45" WidthRequest="55">
+                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" HeightRequest="55" WidthRequest="55">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
-                                <ImageButton Source="ocr_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="35" WidthRequest="45" ></ImageButton>
+                                <ImageButton Source="ocr_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Padding="5" HeightRequest="45" WidthRequest="45" ></ImageButton>
                             </Border>
                         </Grid>
 
@@ -104,7 +94,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.calories}"></Entry>
+                                    <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.calories}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -124,7 +114,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.protein}"></Entry>
+                                    <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.protein}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -148,7 +138,7 @@
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.carbonhydrates}"></Entry>
+                                    <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.carbonhydrates}"></Entry>
                                 </Grid>
 
                             </Border>
@@ -168,7 +158,7 @@
                                     <RoundRectangle CornerRadius="15"></RoundRectangle>
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding FoodDetails.fat}"></Entry>
+                                    <Entry IsReadOnly="{Binding Locked}" BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{Binding TextColor}" Grid.Column="1" Text="{Binding FoodDetails.fat}"></Entry>
                                 </Grid>
 
                             </Border>

@@ -3,25 +3,28 @@ using System.Windows.Input;
 
 namespace MealMate.ViewModels
 {
-    
+
     public partial class CreateDishPageViewModel : BaseViewModel
     {
-        
+
 
         // Observable property for food details
         [ObservableProperty]
         Food food;
 
         [ObservableProperty]
-        string searchText;
+        string searchText = "";
 
         [ObservableProperty]
         string dishname;
 
+        [ObservableProperty]
+        string weight;
+
         // Collection to hold food items
         public ObservableCollection<Food> Foods { get; } = new();
 
-        public ObservableCollection<Food> FoodInDish { get; } = new();
+        public ObservableCollection<FoodForDish> FoodRequestForDish { get; } = new();
 
         FoodService FoodService;
 
@@ -41,14 +44,46 @@ namespace MealMate.ViewModels
 
             AddToDishCommand = new Command<Food>(AddToDish);
             SearchFood = new AsyncRelayCommand(SearchFoods);
-            RemoveFromDishCommand = new Command<Food>(RemoveFromDish);
+            RemoveFromDishCommand = new Command<FoodForDish>(RemoveFromDish);
             DishService = dishService;
         }
 
         [RelayCommand]
         async Task Opret()
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Dishname))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Retten mangler et navn", "OK");
+                    return;
+                }
+                if (FoodRequestForDish.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Retten har ingen ingredienser", "OK");
+                    return;
+                }
 
+                DishRequest dish = new DishRequest { name = Dishname, foods = new List<FoodForDish>() };
+
+
+                foreach (var item in FoodRequestForDish)
+                {
+
+                    dish.foods.Add(item);
+                }
+
+
+                await DishService.CreateDish(dish);
+
+                await Shell.Current.GoToAsync(nameof(AddDishPage));
+
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+                return;
+            }
         }
 
         private async void GetAllFood()
@@ -59,13 +94,21 @@ namespace MealMate.ViewModels
             {
                 IsBusy = true;
 
-                var foods = await FoodService.GetAllFoods();
+                List<Food> foods = new List<Food>();
+
+                foods = await FoodService.GetAllFoods();
 
                 if (Foods.Count != 0)
                     Foods.Clear();
 
                 foreach (var food in foods)
-                    Foods.Add(food);
+                {
+                    if (!FoodRequestForDish.Any(x => x._id == food._id))
+                    {
+                        Foods.Add(food);
+                    }
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -87,10 +130,18 @@ namespace MealMate.ViewModels
             {
                 IsBusy = true;
 
-                var foods = await FoodService.SearchFoods(SearchText);
+
+                var foods = Foods.Where(x => x.name.Contains(SearchText)).ToList();
 
                 if (Foods.Count != 0)
                     Foods.Clear();
+
+                if (SearchText == "")
+                {
+                    IsBusy = false;
+                    GetAllFood();
+                    return;
+                }
 
                 foreach (var food in foods)
                     Foods.Add(food);
@@ -108,23 +159,29 @@ namespace MealMate.ViewModels
 
         private void AddToDish(Food food)
         {
-            if (food == null || FoodInDish.Contains(food))
+
+            if (food == null)
             {
                 return;
             }
-            FoodInDish.Add(food);
+
+            FoodForDish x = new FoodForDish { weight = 0, _id = food._id, name = food.name };
+
+            FoodRequestForDish.Add(x);
+
             Foods.Remove(food);
 
         }
 
-        private void RemoveFromDish(Food food)
+        private void RemoveFromDish(FoodForDish food)
         {
             if (food == null)
             {
                 return;
             }
-            FoodInDish.Remove(food);
-            Foods.Add(food);
+
+            FoodRequestForDish.Remove(food);
+            Foods.Add(new Food { _id = food._id, name = food.name });
         }
 
 

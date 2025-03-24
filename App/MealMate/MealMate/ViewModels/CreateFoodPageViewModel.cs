@@ -5,12 +5,18 @@ namespace MealMate.ViewModels;
 
 // This attribute allows the FoodDetails property to be set via query parameters
 [QueryProperty(nameof(FoodDetails), "SelectedFood")]
-
 public partial class CreateFoodPageViewModel : BaseViewModel
 {
     // Observable property for food details
     [ObservableProperty]
-    Food foodDetails;
+    Food foodDetails = new();
+
+    // Lock and change color if food is filled
+    [ObservableProperty]
+    bool locked;
+
+    [ObservableProperty]
+    private Color textColor;
 
     // Observable property for macro weight
     [ObservableProperty]
@@ -106,7 +112,7 @@ public partial class CreateFoodPageViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Unable to get MacroLog: {ex.Message}");
+            Debug.WriteLine($"Unable to create MacroLog: {ex.Message}");
             await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally

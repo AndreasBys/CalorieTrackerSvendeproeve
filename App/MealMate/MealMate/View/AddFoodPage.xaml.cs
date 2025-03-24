@@ -14,28 +14,20 @@ public partial class AddFoodPage : ContentPage
     {
         base.OnNavigatedTo(args);
 
-        if (_viewModel.IsBusy || _viewModel.Foods.Any()) return;
+        if (_viewModel.Foods.Any()) return;
 
 
         _viewModel.GetAllFood.Execute(null);
     }
 
-    private async void opretFoedevare_knap(object sender, EventArgs e)
-    {
-        Food Food = new();
-
-
-        await Application.Current.MainPage.DisplayAlert("Error!", Shell.Current.CurrentState.Location.ToString(), "OK");
-
-        await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
-        {
-            { "SelectedFood", Food }
-        });
-    }
-
     private async void aendrerFoedevare_knap(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//" + nameof(CreateFoodPage), true);
+        var food = ((VisualElement)sender).BindingContext as Food;
+
+        await Shell.Current.GoToAsync(nameof(CreateFoodPage), false, new Dictionary<string, object>
+        {
+            { "SelectedFood", food }
+        });
     }
     
     private async void AddDishKnap(object sender, EventArgs e)

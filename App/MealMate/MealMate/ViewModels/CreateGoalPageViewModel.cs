@@ -79,7 +79,7 @@ namespace MealMate.ViewModels
                     {
                         calories = Convert.ToInt32(kalorieInput),
                         proteins = Convert.ToInt32(proteinProcent),
-                        carbohydrates = Convert.ToInt32(kulhydraterProcent),
+                        carbonhydrates = Convert.ToInt32(kulhydraterProcent),
                         fats = Convert.ToInt32(fedtProcent),
                         margin = Convert.ToInt32(marginProcent)
                     };
