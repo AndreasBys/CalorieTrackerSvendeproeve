@@ -33,9 +33,7 @@ public partial class AddFoodPageViewModel : BaseViewModel
 
     public ObservableCollection<Dish> Dish { get; } = new();
 
-
     DishService dishService;
-
 
     // Observable property for search text
     [ObservableProperty]
@@ -52,9 +50,15 @@ public partial class AddFoodPageViewModel : BaseViewModel
     public ICommand GetAllFood { get; }
     public ICommand SearchFood { get; }
     public ICommand GetFood { get; }
+    public ICommand FilterApprovedCommand { get; }
+    public ICommand FilterNotApprovedCommand { get; }
 
     // Service for managing food items
     FoodService FoodService;
+
+    private bool isFilterApprovedActive;
+    private bool isFilterNotApprovedActive;
+
 
     public AddFoodPageViewModel(FoodService FoodService, DishService dishService)
     {
@@ -62,10 +66,62 @@ public partial class AddFoodPageViewModel : BaseViewModel
         GetAllFood = new AsyncRelayCommand(GetFoods);
         SearchFood = new AsyncRelayCommand(SearchFoods);
         GetFood = new AsyncRelayCommand<string>(GetFoodByBarcode);
+        FilterApprovedCommand = new Command(async () => await ToggleFilterApproved());
+        FilterNotApprovedCommand = new Command(async () => await ToggleFilterNotApproved());
 
         this.dishService = dishService;
         getAllRetter();
     }
+
+    private async Task ToggleFilterApproved()
+    {
+        if (isFilterApprovedActive)
+        {
+            isFilterApprovedActive = false;
+            await GetFoods();
+        }
+        else
+        {
+            isFilterApprovedActive = true;
+            isFilterNotApprovedActive = false;
+            await FilterApprovedFoods();
+        }
+    }
+
+    private async Task ToggleFilterNotApproved()
+    {
+        if (isFilterNotApprovedActive)
+        {
+            isFilterNotApprovedActive = false;
+            await GetFoods();
+        }
+        else
+        {
+            isFilterNotApprovedActive = true;
+            isFilterApprovedActive = false;
+            await FilterNotApprovedFoods();
+        }
+    }
+    private async Task FilterApprovedFoods()
+    {
+        var allFoods = await FoodService.GetAllFoods();
+        Foods.Clear();
+        foreach (var food in allFoods.Where(food => food.approved))
+        {
+            Foods.Add(food);
+        }
+    }
+
+    private async Task FilterNotApprovedFoods()
+    {
+        var allFoods = await FoodService.GetAllFoods();
+        Foods.Clear();
+        foreach (var food in allFoods.Where(food => !food.approved))
+        {
+            Foods.Add(food);
+        }
+    }
+
 
     [RelayCommand]
     async Task OpretKnap()
@@ -73,8 +129,6 @@ public partial class AddFoodPageViewModel : BaseViewModel
         if (EnkeltVarerSynlighed)
         {
             Food Food = new();
-
-
 
             await Shell.Current.GoToAsync(nameof(CreateFoodPage), true, new Dictionary<string, object>
             {
@@ -92,8 +146,6 @@ public partial class AddFoodPageViewModel : BaseViewModel
                 Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
                 throw;
             }
-            
-            
         }
     }
 
@@ -279,4 +331,3 @@ public partial class AddFoodPageViewModel : BaseViewModel
         }
     }
 }
-

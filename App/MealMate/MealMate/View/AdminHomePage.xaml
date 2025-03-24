@@ -13,19 +13,19 @@
         ColumnSpacing="5"
         RowDefinitions="Auto,*,Auto"
         RowSpacing="0">
-        
+
         <Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" Padding="20">
             <Border Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="0,0,10,0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
-                <Button Text="Godkendt" FontSize="18" TextColor="{StaticResource CustomHvid}" BackgroundColor="{StaticResource CustomMoerkeGraa}" ></Button>
+                <Button Text="Godkendt" FontSize="18" TextColor="{StaticResource CustomHvid}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding FilterApprovedCommand}"></Button>
             </Border>
             <Border Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="10,0,0,0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
                 </Border.StrokeShape>
-                <Button Text="Ikke Godkendt" FontSize="18" TextColor="{StaticResource CustomHvid}" BackgroundColor="{StaticResource CustomMoerkeGraa}"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                <Button Text="Ikke Godkendt" FontSize="18" TextColor="{StaticResource CustomHvid}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding FilterNotApprovedCommand}"></Button>
             </Border>
         </Grid>
 
