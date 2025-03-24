@@ -1,57 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.ProfilePage"
-             xmlns:NavBar="clr-namespace:MealMate.View"
-xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
-             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
-             
-             Title="ProfilePage">
+<ContentPage
+    x:Class="MealMate.View.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:NavBar="clr-namespace:MealMate.View"
+    xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+    xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+    Title="ProfilePage">
     <Grid BackgroundColor="{StaticResource CustomGraa}" RowDefinitions="*,Auto">
 
 
 
-        <Grid  Padding="{StaticResource OverallPadding}" Grid.Row="0" >
+        <Grid Grid.Row="0" Padding="{StaticResource OverallPadding}">
 
-
-
-
-
-
-
-            <!--Formular box-->
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto" >
+            <!--  Formular box  -->
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto">
 
 
                 <Grid Grid.Row="0" Padding="40">
-                    <Label TextColor="{StaticResource CustomHvid}" FontSize="32">Profil log</Label>
+                    <Label FontSize="32" TextColor="{StaticResource CustomHvid}">Profil log</Label>
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                    <Border
+                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                        HorizontalOptions="Fill"
+                        Stroke="{StaticResource CustomGraa}"
+                        StrokeThickness="2">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-
-
                             <Grid ColumnDefinitions="*,*,*">
 
-                                <Grid ColumnDefinitions="*,*" HorizontalOptions="Start" Grid.Column="0">
+                                <Grid
+                                    Grid.Column="0"
+                                    ColumnDefinitions="*,*"
+                                    HorizontalOptions="Start">
 
-
-                                    <Grid Padding="10" Grid.Column="1" HorizontalOptions="Start">
-                                        <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" Rotation="90"/>
+                                    <Grid
+                                        Grid.Column="1"
+                                        Padding="10"
+                                        HorizontalOptions="Start">
+                                        <Image
+                                            HeightRequest="25"
+                                            HorizontalOptions="Start"
+                                            Rotation="90"
+                                            Source="pilned_hvid_ikon.png"
+                                            WidthRequest="25" />
                                     </Grid>
                                 </Grid>
 
-                                <DatePicker HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Grid.Column="1"></DatePicker>
+                                <DatePicker
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="32"
+                                    HorizontalOptions="Start"
+                                    TextColor="{StaticResource CustomHvid}"
+                                    VerticalOptions="End" />
 
-                                <Grid ColumnDefinitions="*,*" HorizontalOptions="End" Grid.Column="2">
+                                <Grid
+                                    Grid.Column="2"
+                                    ColumnDefinitions="*,*"
+                                    HorizontalOptions="End">
 
 
-                                    <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                        <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                    <Grid
+                                        Grid.Column="1"
+                                        Padding="10"
+                                        HorizontalOptions="End">
+                                        <Image
+                                            HeightRequest="25"
+                                            HorizontalOptions="End"
+                                            Rotation="270"
+                                            Source="pilned_hvid_ikon.png"
+                                            WidthRequest="25" />
                                     </Grid>
                                 </Grid>
 
@@ -64,33 +87,62 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                 </Grid>
 
-                <Grid Grid.Row="2" Padding="0,30,0,30" RowDefinitions="Auto,Auto">
-                    <chart:SfCartesianChart BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
+                <Grid
+                    Grid.Row="2"
+                    Padding="0,30,0,30"
+                    RowDefinitions="Auto,Auto">
+                    <chart:SfCartesianChart Grid.Row="0" BackgroundColor="{StaticResource CustomMoerkeGraa}">
 
-                        <chart:ColumnSeries YBindingPath="Dage">
-                        </chart:ColumnSeries>
+                        <chart:ColumnSeries YBindingPath="Dage" />
 
                         <chart:SfCartesianChart.XAxes>
-                            <chart:CategoryAxis></chart:CategoryAxis>
+                            <chart:CategoryAxis />
                         </chart:SfCartesianChart.XAxes>
 
                         <chart:SfCartesianChart.YAxes>
-                            <chart:NumericalAxis></chart:NumericalAxis>
+                            <chart:NumericalAxis />
                         </chart:SfCartesianChart.YAxes>
 
                     </chart:SfCartesianChart>
 
-                    <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        RowDefinitions="Auto,Auto">
 
-                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Vis data:</Label>
+                        <Label
+                            Grid.Row="0"
+                            Padding="10"
+                            FontSize="22"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource CustomHvid}"
+                            VerticalOptions="End">
+                            Vis data:
+                        </Label>
 
-                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                        <Grid
+                            Grid.Row="1"
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="Fill">
+                            <Border
+                                BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomMoerkeGraa}"
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
                                 </Border.StrokeShape>
                                 <Grid>
-                                    <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Kalorier" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                                    <Picker
+                                        x:Name="aktivitetsPicker"
+                                        Title="Kalorier"
+                                        Grid.Column="0"
+                                        Background="{StaticResource CustomMoerkeGraa}"
+                                        FontSize="28"
+                                        HorizontalOptions="Fill"
+                                        TextColor="{StaticResource CustomHvid}"
+                                        TitleColor="{StaticResource CustomHvid}">
                                         <Picker.Items>
                                             <x:String>Kalorier</x:String>
                                             <x:String>Protein</x:String>
@@ -99,41 +151,78 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                         </Picker.Items>
                                     </Picker>
                                     <Grid Padding="10">
-                                        <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                                        <Image
+                                            HeightRequest="25"
+                                            HorizontalOptions="End"
+                                            Source="pilned_ikon.png"
+                                            WidthRequest="25" />
                                     </Grid>
                                 </Grid>
                             </Border>
                         </Grid>
                     </Grid>
 
-                    <!--Indstillinger box-->
-                    <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" >
+                    <!--  Indstillinger box  -->
+                    <Grid
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        RowDefinitions="Auto,Auto"
+                        VerticalOptions="End">
 
 
-                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="0,40,0,40">Indstillinger</Label>
+                        <Label
+                            Padding="0,40,0,40"
+                            FontSize="32"
+                            TextColor="{StaticResource CustomHvid}">
+                            Indstillinger
+                        </Label>
 
-                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
+                        <Grid
+                            Grid.Row="1"
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="Fill"
+                            RowDefinitions="Auto,Auto,Auto">
 
 
 
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
+                            <Border
+                                BackgroundColor="{StaticResource CustomGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomGraa}"
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
                                     <Grid ColumnDefinitions="*">
-                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Profil data</Label>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Padding="10"
+                                            FontSize="32"
+                                            HorizontalOptions="Start"
+                                            TextColor="{StaticResource CustomHvid}"
+                                            VerticalOptions="End">
+                                            Profil data
+                                        </Label>
 
                                         <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                            <Grid
+                                                Grid.Column="1"
+                                                Padding="10"
+                                                HorizontalOptions="End">
+                                                <Image
+                                                    HeightRequest="25"
+                                                    HorizontalOptions="End"
+                                                    Rotation="270"
+                                                    Source="pilned_hvid_ikon.png"
+                                                    WidthRequest="25" />
                                             </Grid>
 
                                         </Grid>
-                                        <Button Pressed="saetProfildata_knap">
-
-                                        </Button>
+                                        <Button Pressed="saetProfildata_knap" />
 
                                     </Grid>
 
@@ -141,30 +230,48 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
 
                                 </Grid>
                             </Border>
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="1">
+                            <Border
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource CustomGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomGraa}"
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
                                     <Grid ColumnDefinitions="*">
-                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Kalorie mål</Label>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Padding="10"
+                                            FontSize="32"
+                                            HorizontalOptions="Start"
+                                            TextColor="{StaticResource CustomHvid}"
+                                            VerticalOptions="End">
+                                            Kalorie mål
+                                        </Label>
 
                                         <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                            <Grid
+                                                Grid.Column="1"
+                                                Padding="10"
+                                                HorizontalOptions="End">
+                                                <Image
+                                                    HeightRequest="25"
+                                                    HorizontalOptions="End"
+                                                    Rotation="270"
+                                                    Source="pilned_hvid_ikon.png"
+                                                    WidthRequest="25" />
                                             </Grid>
 
                                         </Grid>
-                                        <Button Pressed="saetMaal_knap">
-
-
-
-                                        </Button>
+                                        <Button Pressed="saetMaal_knap" />
                                     </Grid>
 
 
@@ -172,23 +279,44 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                                 </Grid>
                             </Border>
 
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="2">
+                            <Border
+                                Grid.Row="2"
+                                BackgroundColor="{StaticResource CustomGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomGraa}"
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
                                     <Grid ColumnDefinitions="*">
-                                        <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
+                                        <Button
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Padding="10"
+                                            Clicked="Logout_knap"
+                                            FontSize="32"
+                                            HorizontalOptions="Start"
+                                            Text="Log ud"
+                                            TextColor="{StaticResource CustomRød}"
+                                            VerticalOptions="End" />
                                         <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
 
                                         <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="logud_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" />
+                                            <Grid
+                                                Grid.Column="1"
+                                                Padding="10"
+                                                HorizontalOptions="End">
+                                                <Image
+                                                    HeightRequest="25"
+                                                    HorizontalOptions="End"
+                                                    Source="logud_ikon.png"
+                                                    WidthRequest="25" />
                                             </Grid>
                                         </Grid>
 
@@ -212,6 +340,10 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
             </Grid>
         </Grid>
 
-        <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar
+            Grid.Row="1"
+            HorizontalOptions="Fill"
+            MaximumHeightRequest="105"
+            VerticalOptions="End" />
     </Grid>
 </ContentPage>
