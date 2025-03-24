@@ -25,13 +25,6 @@ public class DishResponse
     public List<FoodInDish> foods { get; set; }
 }
 
-public class DishResponse
-
-{
-    public Dish dish { get; set; }
-    public List<FoodInDish> foods { get; set; }
-}
-
 public class DishListResponse
 
 {
