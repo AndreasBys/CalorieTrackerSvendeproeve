@@ -18,21 +18,10 @@ public class Dish
 
     public string user { get; set; }
 
-    public List<Food> foods { get; set; }
-
-
-
+    public List<FoodInDish> foods { get; set; }
 
 }
 
-
-public class DishResponse
-{
-    public Dish savedDish { get; set; }
-
-    public List<Food> foods { get; set; }
-
-}
 public class DishListResponse
 
 {
@@ -43,13 +32,21 @@ public class DishRequest
 {
     public string name { get; set; }
 
-    public List<FoodForDish> foods { get; set; }
+    public List<FoodInDishRequest> foods { get; set; }
 
 }
 
-public class FoodForDish
+public class FoodInDishRequest
 {
-    public string name { get; set; }
+
+    public string food { get; set; }
+
+    public int weight { get; set; }
+}
+
+public class FoodInDish
+{
+    public Food food { get; set; }
     public string _id { get; set; }
 
     public int weight { get; set; }

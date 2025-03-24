@@ -43,7 +43,7 @@ public partial class CreateUserDataPage : ContentPage
         // Get the input values from the entries and update the User object
         _user.weight = Convert.ToInt32(_weightEntry.Text);
         _user.height = Convert.ToInt32(_heightEntry.Text);
-        _user.birthdate = _birthdateEntry.Date.ToString();
+        _user.birthdate = _birthdateEntry.Date;
         _user.gender = _genderEntry.SelectedItem as string;
 
         try
