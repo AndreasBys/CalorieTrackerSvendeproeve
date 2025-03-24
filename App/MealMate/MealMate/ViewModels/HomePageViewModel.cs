@@ -62,7 +62,9 @@ public partial class HomePageViewModel : BaseViewModel
 
             if (NewMacroLog != null)
             {
-                MacroLogs.Add(CalcMacros(NewMacroLog));
+                // With the following line
+                MacroLog newMacroLog = await CalcMacros(NewMacroLog);
+                MacroLogs.Add(newMacroLog);
                 NewMacroLog = null;
                 UpdateProgress();
                 return;
@@ -82,7 +84,8 @@ public partial class HomePageViewModel : BaseViewModel
             // Calculate and add each macro log to the collection
             foreach (var macroLog in macroLogs)
             {
-                MacroLogs.Add(CalcMacros(macroLog));
+                MacroLog newMacroLog = await CalcMacros(macroLog);
+                MacroLogs.Add(newMacroLog);
                 UpdateProgress();
             }
 
@@ -118,7 +121,7 @@ public partial class HomePageViewModel : BaseViewModel
             IsBusy = false;
         }
     }
-    private MacroLog CalcMacros(MacroLog ml)
+    private async Task<MacroLog> CalcMacros(MacroLog ml)
     {
         Calories       += ml.calories       = (int)(ml.food.calories * ml.weight / 100);
         Protein        += ml.protein        = (int)(ml.food.protein * ml.weight / 100);
@@ -129,6 +132,17 @@ public partial class HomePageViewModel : BaseViewModel
 
     private void UpdateProgress()
     {
+        if (MacroGoal == null)
+        {
+            double proteinsCalories = Protein * 4;
+            double carbsCalories    = Carbonhydrates * 4;
+            double fatsCalories     = Fat * 9;
+            CaloriesProgress        = 0;
+            ProteinProgress         = (proteinsCalories/Calories) * 100;
+            CarbonhydratesProgress  = (carbsCalories / Calories) * 100;
+            FatProgress             = (fatsCalories / Calories) * 100;
+            return;
+        }
         if (MacroGoal.calories != null)
             CaloriesProgress = (double)(Calories / MacroGoal.calories * 100);
         if (MacroGoal.proteins != null)
