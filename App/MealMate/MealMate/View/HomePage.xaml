@@ -9,8 +9,11 @@
              x:DataType="viewmodel:HomePageViewModel"
              Title="HomePage">
     <Grid RowDefinitions="Auto,*">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0" Padding="15">
-            <Grid Grid.Row="0" Padding="5">
+        <Grid RowDefinitions="Auto" Grid.Row="0" IsVisible="{Binding NoProgress}" Padding="20">
+            <Label HorizontalOptions="Center">No macro logs were found, add one!</Label>
+        </Grid>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0" Padding="15" IsVisible="{Binding Progress}">
+            <Grid Grid.Row="0" Padding="5" IsVisible="{Binding CaloriesProgress}">
                 <progressBar:SfLinearProgressBar
                     TrackCornerRadius="20" 
                     ProgressHeight="10" 
@@ -23,7 +26,7 @@
                     BackgroundColor="{StaticResource CustomGraa}">
                 </progressBar:SfLinearProgressBar>
             </Grid>
-            <Grid Grid.Row="1" Padding="5">
+            <Grid Grid.Row="1" Padding="5" IsVisible="{Binding ProteinProgress}">
                 <progressBar:SfLinearProgressBar
                     TrackCornerRadius="20" 
                     ProgressHeight="10" 
@@ -37,12 +40,12 @@
 
                 </progressBar:SfLinearProgressBar>
             </Grid>
-            <Grid Grid.Row="2" Padding="5">
+            <Grid Grid.Row="2" Padding="5" IsVisible="{Binding CarbonhydratesProgress}">
                 <progressBar:SfLinearProgressBar
                     TrackCornerRadius="20" 
                     ProgressHeight="10" 
                     ProgressCornerRadius="20" 
-                    Progress="{Binding Carbonhydrates}" 
+                    Progress="{Binding CarbonhydratesProgress}" 
                     TrackHeight="10" 
                     Grid.Column="1" 
                     TrackFill="{StaticResource CustomMoerkeGraa}"
@@ -50,7 +53,7 @@
                     BackgroundColor="{StaticResource CustomGraa}">
                 </progressBar:SfLinearProgressBar>
             </Grid>
-            <Grid Grid.Row="3" Padding="5">
+            <Grid Grid.Row="3" Padding="5" IsVisible="{Binding FatProgress}">
                 <progressBar:SfLinearProgressBar
                     TrackCornerRadius="20" 
                     ProgressHeight="10" 
