@@ -7,7 +7,7 @@ public partial class AddDishPageViewModel : BaseViewModel
 {
     // Observable property for the selected dish
     [ObservableProperty]
-    private Dish dish;
+    private DishResponse dish;
 
     // Observable properties for the dish's nutritional information
     [ObservableProperty]
@@ -23,16 +23,16 @@ public partial class AddDishPageViewModel : BaseViewModel
 
 
 
-    partial void OnDishChanged(Dish value)
+    partial void OnDishChanged(DishResponse value)
     {
-        RettensNavn = Dish.name;
+        RettensNavn = Dish.dish.name;
 
         foreach (var item in Dish.foods)
         {
-            RettensKalorier += item.calories;
-            RettensProtein += item.protein;
-            RettensKulhydrater += item.carbonhydrates;
-            RettensFedt += item.fat;
+            RettensKalorier += item.food.calories;
+            RettensProtein += item.food.protein;
+            RettensKulhydrater += item.food.carbonhydrates;
+            RettensFedt += item.food.fat;
         }
     }
 
