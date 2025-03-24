@@ -1,82 +1,170 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.AddFoodPage"
-             xmlns:NavBar="clr-namespace:MealMate.View"
-             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
-             xmlns:model="clr-namespace:MealMate.Models"
-             xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
-             x:DataType="viewmodel:AddFoodPageViewModel"
-             x:Name="FoedevareSide"
-             Title="AddFoodPage">
+<ContentPage
+    x:Class="MealMate.View.AddFoodPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:NavBar="clr-namespace:MealMate.View"
+    xmlns:model="clr-namespace:MealMate.Models"
+    xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+    xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
+    x:Name="FoedevareSide"
+    Title="AddFoodPage"
+    x:DataType="viewmodel:AddFoodPageViewModel">
     <Grid BackgroundColor="{StaticResource CustomGraa}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Content Grid -->
+        <!--  Content Grid  -->
         <Grid Grid.Row="0" Padding="80,50,80,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- Formular box -->
+            <!--  Formular box  -->
             <Grid ColumnDefinitions="*,Auto">
-                <Border Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="0,0,20,0">
+                <Border
+                    Grid.Column="0"
+                    Margin="0,0,20,0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HorizontalOptions="Fill"
+                    Stroke="{StaticResource CustomMoerkeGraa}"
+                    StrokeThickness="2">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="15"></RoundRectangle>
+                        <RoundRectangle CornerRadius="15" />
                     </Border.StrokeShape>
                     <Grid ColumnDefinitions="Auto,Auto">
                         <Grid Padding="10">
-                            <Image Source="soege_ikon.png" HeightRequest="35" WidthRequest="35" Grid.Column="0"></Image>
+                            <Image
+                                Grid.Column="0"
+                                HeightRequest="35"
+                                Source="soege_ikon.png"
+                                WidthRequest="35" />
                         </Grid>
-                        <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" Placeholder="Søg" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding SearchText}" Completed="OnSearch"/>
+                        <Entry
+                            Grid.Column="1"
+                            BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                            Completed="OnSearch"
+                            FontSize="28"
+                            Placeholder="Søg"
+                            Text="{Binding SearchText}"
+                            TextColor="White" />
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" Padding="5">
+                <Border
+                    Grid.Column="1"
+                    Padding="5"
+                    BackgroundColor="{StaticResource CustomBlaa}"
+                    HorizontalOptions="Fill"
+                    Stroke="{StaticResource CustomBlaa}"
+                    StrokeThickness="2">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20"></RoundRectangle>
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <ImageButton Source="barkode_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="60" WidthRequest="60" Padding="5" BackgroundColor="Transparent" Pressed="OnScan"></ImageButton>
+                    <ImageButton
+                        Padding="5"
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        HorizontalOptions="Fill"
+                        Pressed="OnScan"
+                        Source="barkode_ikon.png"
+                        VerticalOptions="Fill"
+                        WidthRequest="60" />
                 </Border>
             </Grid>
 
-            <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto" Padding="20">
-                <Border Grid.Column="0" StrokeThickness="2" Stroke="{Binding EnkeltVarerValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="0,0,10,0">
+            <Grid
+                Grid.Row="1"
+                Padding="20"
+                ColumnDefinitions="Auto,Auto">
+                <Border
+                    Grid.Column="0"
+                    Margin="0,0,10,0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HorizontalOptions="Fill"
+                    Stroke="{Binding EnkeltVarerValgt}"
+                    StrokeThickness="2">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20"></RoundRectangle>
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <Button Text="Enkeltvarer" FontSize="18" TextColor="{Binding TekstEnkeltvarerValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding EnkeltVarerCommand}"></Button>
+                    <Button
+                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                        Command="{Binding EnkeltVarerCommand}"
+                        FontSize="18"
+                        Text="Enkeltvarer"
+                        TextColor="{Binding TekstEnkeltvarerValgt}" />
                 </Border>
-                <Border Grid.Column="1" StrokeThickness="2" Stroke="{Binding MineRetterValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="10,0,0,0">
+                <Border
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HorizontalOptions="Fill"
+                    Stroke="{Binding MineRetterValgt}"
+                    StrokeThickness="2">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20"></RoundRectangle>
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <Button Text="Mine retter" FontSize="18" TextColor="{Binding TekstMineRetterValgt}" BackgroundColor="{StaticResource CustomMoerkeGraa}" Command="{Binding MineRetterCommand}" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    <Button
+                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                        Command="{Binding MineRetterCommand}"
+                        FontSize="18"
+                        HorizontalOptions="Fill"
+                        Text="Mine retter"
+                        TextColor="{Binding TekstMineRetterValgt}"
+                        VerticalOptions="Fill" />
                 </Border>
             </Grid>
 
-            <ScrollView Grid.Row="2" VerticalOptions="FillAndExpand" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
+            <ScrollView
+                Grid.Row="2"
+                Padding="0,0,0,50"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
                 <StackLayout>
-                    <CollectionView IsVisible="{Binding EnkeltVarerSynlighed}" ItemsSource="{Binding Foods}" SelectionMode="None">
+                    <CollectionView
+                        IsVisible="{Binding EnkeltVarerSynlighed}"
+                        ItemsSource="{Binding Foods}"
+                        SelectionMode="None">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Food">
                                 <Grid Padding="5" ColumnDefinitions="*">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="aendrerFoedevare_knap"/>
+                                        <TapGestureRecognizer Tapped="aendrerFoedevare_knap" />
                                     </Grid.GestureRecognizers>
-                                    <Border Stroke="#00000000" HeightRequest="80">
-                                        <Border.Shadow>
-                                            <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5"/>
-                                        </Border.Shadow>
-                                        <Grid ColumnDefinitions="*" Padding="10,0,0,0">
-                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"/>
+                                    <Border HeightRequest="80" Stroke="#00000000">
+                                        <Grid Padding="10,0,0,0" ColumnDefinitions="*">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Padding="10"
+                                                FontSize="32"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding name}"
+                                                TextColor="{StaticResource CustomHvid}"
+                                                VerticalOptions="End" />
                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"/>
-                                                <Image Grid.Row="0" Grid.Column="1" Source="plus_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="10,10,30,10"
+                                                    FontSize="32"
+                                                    HorizontalOptions="End"
+                                                    Text="{Binding calories, StringFormat='{0} kcal'}"
+                                                    TextColor="{StaticResource CustomHvid}"
+                                                    VerticalOptions="End" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Aspect="AspectFit"
+                                                    BackgroundColor="Transparent"
+                                                    HeightRequest="40"
+                                                    HorizontalOptions="Fill"
+                                                    Source="plus_ikon.png"
+                                                    VerticalOptions="Fill"
+                                                    WidthRequest="40" />
                                             </Grid>
                                         </Grid>
                                     </Border>
@@ -84,22 +172,54 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <CollectionView IsVisible="{Binding MineRetterSynlighed}" ItemsSource="{Binding Dish}" SelectionMode="None">
+                    <CollectionView
+                        IsVisible="{Binding MineRetterSynlighed}"
+                        ItemsSource="{Binding Dish}"
+                        SelectionMode="None">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Dish">
                                 <Grid Padding="5" ColumnDefinitions="*">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddDishKnap"/>
+                                        <TapGestureRecognizer Tapped="AddDishKnap" />
                                     </Grid.GestureRecognizers>
-                                    <Border Stroke="#00000000" HeightRequest="80">
+                                    <Border HeightRequest="80" Stroke="#00000000">
                                         <Border.Shadow>
-                                            <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5"/>
+                                            <Shadow
+                                                Brush="Black"
+                                                Opacity="0.5"
+                                                Radius="1"
+                                                Offset="0,1" />
                                         </Border.Shadow>
-                                        <Grid ColumnDefinitions="*" Padding="10,0,0,0">
-                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"/>
+                                        <Grid Padding="10,0,0,0" ColumnDefinitions="*">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Padding="10"
+                                                FontSize="32"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding name}"
+                                                TextColor="{StaticResource CustomHvid}"
+                                                VerticalOptions="End" />
                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomGrøn}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="Binding calories, StringFormat='{0} kcal'"/>
-                                                <ImageButton Grid.Row="0" Grid.Column="1" Source="plus_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="10,10,30,10"
+                                                    FontSize="32"
+                                                    HorizontalOptions="End"
+                                                    Text="Binding calories, StringFormat='{0} kcal'"
+                                                    TextColor="{StaticResource CustomGrøn}"
+                                                    VerticalOptions="End" />
+                                                <ImageButton
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Aspect="AspectFit"
+                                                    BackgroundColor="Transparent"
+                                                    HeightRequest="40"
+                                                    HorizontalOptions="Fill"
+                                                    Source="plus_ikon.png"
+                                                    VerticalOptions="Fill"
+                                                    WidthRequest="40" />
                                             </Grid>
                                         </Grid>
                                     </Border>
@@ -107,20 +227,38 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <!-- Additional content to be scrollable -->
-                    <Label TextColor="White" FontSize="24" HorizontalOptions="Center" Padding="30">Ikke hvad du ledte efter?</Label>
-                    <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Center">
+                    <!--  Additional content to be scrollable  -->
+                    <Label
+                        Padding="30"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        TextColor="White">
+                        Ikke hvad du ledte efter?
+                    </Label>
+                    <Border
+                        BackgroundColor="{StaticResource CustomBlaa}"
+                        HorizontalOptions="Center"
+                        Stroke="{StaticResource CustomGraa}"
+                        StrokeThickness="2">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
-                        <Button Text="Opret ny" TextColor="White" FontSize="24" Command="{Binding OpretKnapCommand}"/>
+                        <Button
+                            Command="{Binding OpretKnapCommand}"
+                            FontSize="24"
+                            Text="Opret ny"
+                            TextColor="White" />
                     </Border>
                 </StackLayout>
             </ScrollView>
         </Grid>
 
-        <!-- NavBar -->
-        <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <!--  NavBar  -->
+        <NavBar:NavBar
+            Grid.Row="1"
+            HorizontalOptions="Fill"
+            MaximumHeightRequest="105"
+            VerticalOptions="End" />
     </Grid>
 </ContentPage>
 

@@ -41,7 +41,8 @@ public partial class HomePageViewModel : BaseViewModel
     // Command to get today's macro logs
     public ICommand GetMacroLogs { get; }
 
-    public MacroGoal MacroGoal { get; set; }
+    [ObservableProperty]
+    private MacroGoal macroGoal;
     // Service for managing macro goal
     MacroGoalService MacroGoalService;
     public ICommand GetMacroGoal { get; }
