@@ -20,12 +20,18 @@ public class Dish
 
     public List<Food> foods { get; set; }
 
+
+
+
 }
 
 
 public class DishResponse
 {
-    public Dish dishes { get; set; }
+    public Dish savedDish { get; set; }
+
+    public List<Food> foods { get; set; }
+
 }
 public class DishListResponse
 
