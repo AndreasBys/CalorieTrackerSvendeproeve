@@ -1,25 +1,36 @@
 using MealMate.ViewModels;
+using Syncfusion.Maui.Core.Carousel;
 
 namespace MealMate.View;
 
 public partial class AdminHomePage : ContentPage
 {
-    private readonly AddFoodPageViewModel _foodViewModel;
+    private readonly AdminHomePageViewModel _viewModel;
 
     // Constructor to initialize the page and set the BindingContext to the provided FoodViewModel
-    public AdminHomePage(AddFoodPageViewModel foodViewModel)
+    public AdminHomePage(AdminHomePageViewModel ViewModel)
     {
         InitializeComponent();
-        BindingContext = foodViewModel;
-        _foodViewModel = foodViewModel;
-        OnPropertyChanged(nameof(_foodViewModel.Foods));
+        BindingContext = ViewModel;
+        _viewModel = ViewModel;
+        OnPropertyChanged(nameof(_viewModel.Foods));
     }
 
     // Override OnAppearing to load the food list when the page appears
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        _foodViewModel.GetFoods();
+        _viewModel.GetAllFoods();
+    }
+
+    private void OnSearch(object sender, TextChangedEventArgs e)
+    {
+        var viewModel = BindingContext as AddFoodPageViewModel;
+        if (viewModel != null)
+        {
+            viewModel.SearchText = e.NewTextValue;
+            viewModel.SearchFood.Execute(null);
+        }
     }
 
     // Event handler for the logout button click

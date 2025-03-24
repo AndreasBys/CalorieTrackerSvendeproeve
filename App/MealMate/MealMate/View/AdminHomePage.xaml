@@ -5,16 +5,31 @@
              xmlns:Navigationsbar="clr-namespace:MealMate.View"
              xmlns:model="clr-namespace:MealMate.Models"
              xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
-             x:DataType="viewmodel:AddFoodPageViewModel"
+             x:DataType="viewmodel:AdminHomePageViewModel"
              Title="AdminHomePage">
     <Grid
         BackgroundColor="{StaticResource CustomGraa}"
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="Auto,*,Auto"
+        RowDefinitions="Auto,Auto,*,Auto"
         RowSpacing="0">
 
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" Padding="20">
+        <!-- Formular box -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Padding="20">
+            <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="0,0,20,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <Grid Padding="10">
+                        <Image Source="soege_ikon.png" HeightRequest="35" WidthRequest="35" Grid.Column="0"></Image>
+                    </Grid>
+                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" Placeholder="Søg" FontSize="28" TextColor="White" Grid.Column="1" Text="{Binding SearchText}" TextChanged="OnSearch"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto" Padding="20">
             <Border Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Margin="0,0,10,0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"></RoundRectangle>
@@ -29,7 +44,7 @@
             </Border>
         </Grid>
 
-        <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
+        <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Foods}"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
@@ -77,7 +92,7 @@
             </CollectionView>
         </ScrollView>
 
-        <Grid Grid.Row="2" VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
+        <Grid Grid.Row="3" VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" Grid.ColumnSpan="2">
             <Grid ColumnDefinitions="0,*,*" Padding="8">
                 <Grid HorizontalOptions="Center" Grid.Column="1">
                     <Border Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill">
