@@ -3,214 +3,138 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealMate.View.ProfilePage"
              xmlns:NavBar="clr-namespace:MealMate.View"
-xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
-             
              Title="ProfilePage">
     <Grid BackgroundColor="{StaticResource CustomGraa}" RowDefinitions="*,Auto">
 
+        <ScrollView Grid.Row="0">
+            <Grid Padding="{StaticResource OverallPadding}">
+                <!--Formular box-->
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto">
 
-
-        <Grid  Padding="{StaticResource OverallPadding}" Grid.Row="0" >
-
-
-
-
-
-
-
-            <!--Formular box-->
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto" >
-
-
-                <Grid Grid.Row="0" Padding="40">
-                    <Label TextColor="{StaticResource CustomHvid}" FontSize="32">Profil log</Label>
-                </Grid>
-
-                <Grid Grid.Row="1">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                        </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-
-
-                            <Grid ColumnDefinitions="*,*,*">
-
-                                <Grid ColumnDefinitions="*,*" HorizontalOptions="Start" Grid.Column="0">
-
-
-                                    <Grid Padding="10" Grid.Column="1" HorizontalOptions="Start">
-                                        <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" Rotation="90"/>
-                                    </Grid>
-                                </Grid>
-
-                                <DatePicker HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Grid.Column="1"></DatePicker>
-
-                                <Grid ColumnDefinitions="*,*" HorizontalOptions="End" Grid.Column="2">
-
-
-                                    <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                        <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
-                                    </Grid>
-                                </Grid>
-
-                            </Grid>
-
-
-
-                        </Grid>
-                    </Border>
-
-                </Grid>
-
-                <Grid Grid.Row="2" Padding="0,30,0,30" RowDefinitions="Auto,Auto">
-                    <chart:SfCartesianChart BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
-
-                        <chart:ColumnSeries YBindingPath="Dage">
-                        </chart:ColumnSeries>
-
-                        <chart:SfCartesianChart.XAxes>
-                            <chart:CategoryAxis></chart:CategoryAxis>
-                        </chart:SfCartesianChart.XAxes>
-
-                        <chart:SfCartesianChart.YAxes>
-                            <chart:NumericalAxis></chart:NumericalAxis>
-                        </chart:SfCartesianChart.YAxes>
-
-                    </chart:SfCartesianChart>
-
-                    <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
-
-                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22"  Grid.Row="0" VerticalOptions="End" Padding="10">Vis data:</Label>
-
-                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" >
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid>
-                                    <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Kalorier" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
-                                        <Picker.Items>
-                                            <x:String>Kalorier</x:String>
-                                            <x:String>Protein</x:String>
-                                            <x:String>Fedt</x:String>
-                                            <x:String>Kulhydrater</x:String>
-                                        </Picker.Items>
-                                    </Picker>
-                                    <Grid Padding="10">
-                                        <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
-                                    </Grid>
-                                </Grid>
-                            </Border>
-                        </Grid>
+                    <Grid Grid.Row="0" Padding="40">
+                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32">Profil log</Label>
                     </Grid>
 
-                    <!--Indstillinger box-->
-                    <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" >
-
-
-                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="0,40,0,40">Indstillinger</Label>
-
-                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
-
-
-
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-
-                                    <Grid ColumnDefinitions="*">
-                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Profil data</Label>
-
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
-                                            </Grid>
-
+                    <Grid Grid.Row="1">
+                        <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="Start" Grid.Column="0">
+                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="Start">
+                                            <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" Rotation="90"/>
                                         </Grid>
-                                        <Button Pressed="saetProfildata_knap">
-
-                                        </Button>
-
                                     </Grid>
-
-
-
-                                </Grid>
-                            </Border>
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="1">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-
-
-
-                                    <Grid ColumnDefinitions="*">
-                                        <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Kalorie mål</Label>
-
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-
-
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
-                                            </Grid>
-
+                                    <DatePicker HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Grid.Column="1"></DatePicker>
+                                    <Grid ColumnDefinitions="*,*" HorizontalOptions="End" Grid.Column="2">
+                                        <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                            <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
                                         </Grid>
-                                        <Button Pressed="saetMaal_knap">
-
-
-
-                                        </Button>
                                     </Grid>
-
-
-
                                 </Grid>
-                            </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
 
-                            <Border  StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="2">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                    <Grid Grid.Row="2" Padding="0,30,0,30" RowDefinitions="Auto,Auto">
+                        <chart:SfCartesianChart BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0">
+                            <chart:ColumnSeries YBindingPath="Dage">
+                            </chart:ColumnSeries>
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis></chart:CategoryAxis>
+                            </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis></chart:NumericalAxis>
+                            </chart:SfCartesianChart.YAxes>
+                        </chart:SfCartesianChart>
 
-
-
-                                    <Grid ColumnDefinitions="*">
-                                        <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
-                                        <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
-
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-
-
-                                            <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                <Image Source="logud_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" />
-                                            </Grid>
+                        <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
+                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="22" Grid.Row="0" VerticalOptions="End" Padding="10">Vis data:</Label>
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1">
+                                <Border StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Grid>
+                                        <Picker Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Title="Kalorier" TitleColor="{StaticResource CustomHvid}" x:Name="aktivitetsPicker">
+                                            <Picker.Items>
+                                                <x:String>Kalorier</x:String>
+                                                <x:String>Protein</x:String>
+                                                <x:String>Fedt</x:String>
+                                                <x:String>Kulhydrater</x:String>
+                                            </Picker.Items>
+                                        </Picker>
+                                        <Grid Padding="10">
+                                            <Image Source="pilned_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
                                         </Grid>
-
                                     </Grid>
-
-
-
-                                </Grid>
-                            </Border>
-
-
-
-
-
+                                </Border>
+                            </Grid>
                         </Grid>
 
-
-
+                        <!--Indstillinger box-->
+                        <Grid RowDefinitions="Auto,Auto" Grid.Row="3" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End">
+                            <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="0,40,0,40">Indstillinger</Label>
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
+                                <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                        <Grid ColumnDefinitions="*">
+                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Profil data</Label>
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                                <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                    <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                                </Grid>
+                                            </Grid>
+                                            <Button Pressed="saetProfildata_knap">
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                                <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="1">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                        <Grid ColumnDefinitions="*">
+                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Kalorie mål</Label>
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                                <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                    <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Rotation="270"/>
+                                                </Grid>
+                                            </Grid>
+                                            <Button Pressed="saetMaal_knap">
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                                <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill" Grid.Row="2">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                        <Grid ColumnDefinitions="*">
+                                            <Button Clicked="Logout_knap" HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="Log ud"/>
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                                <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
+                                                    <ImageButton Source="logud_ikon.png" Clicked="Logout_knap" HeightRequest="25" HorizontalOptions="End" BackgroundColor='Transparent'/>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </ScrollView>
 
         <NavBar:NavBar Grid.Row="1" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
     </Grid>
