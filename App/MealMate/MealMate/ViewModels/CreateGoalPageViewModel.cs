@@ -45,12 +45,10 @@ namespace MealMate.ViewModels
         private double _proteinProcentInt;
         private double _kulhydraterProcentInt;
         private double _fedtProcentInt;
-        private double _marginProcentInt;
 
         private double _proteinIgram;
         private double _kulhydraterIGram;
         private double _fedtIGram;
-        private int _marginIGram;
 
         // Constructor to initialize the service
         public CreateGoalPageViewModel(MacroGoalService macroGoalService)
@@ -92,7 +90,7 @@ namespace MealMate.ViewModels
                         proteins = _proteinIgram,
                         carbonhydrates = _kulhydraterIGram,
                         fats = _fedtIGram,
-                        margin = _marginIGram
+                        margin = Convert.ToInt32(MarginProcent)
                     };
 
                     try
@@ -142,13 +140,12 @@ namespace MealMate.ViewModels
                 _proteinProcentInt = Convert.ToInt32(proteinProcent);
                 _kulhydraterProcentInt = Convert.ToInt32(kulhydraterProcent);
                 _fedtProcentInt = Convert.ToInt32(fedtProcent);
-                _marginProcentInt = Convert.ToInt32(MarginProcent);
 
 
                 _proteinIgram = Convert.ToDouble(((_kalorieInputInt * _proteinProcentInt) / 400));
                 _kulhydraterIGram = Convert.ToDouble((_kalorieInputInt * _kulhydraterProcentInt) / 400);
                 _fedtIGram = Convert.ToDouble((_kalorieInputInt * _kulhydraterProcentInt) / 900);
-                _marginIGram = (Convert.ToInt32(marginProcent) / 100) * Convert.ToInt32(_kalorieInputInt);
+                
 
 
 
