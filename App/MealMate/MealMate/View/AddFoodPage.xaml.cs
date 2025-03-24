@@ -52,9 +52,10 @@ public partial class AddFoodPage : ContentPage
 
     private async void OnScan(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(BarcodeReaderPage));
+        await Shell.Current.GoToAsync(nameof(BarcodeReaderPage)); // Non-blocking
 
-        string result = await _taskCompletionService.StartBarcodeTask();
+        string result = await _taskCompletionService.StartBarcodeTask(); 
+
 
 
         // Makes code work async
