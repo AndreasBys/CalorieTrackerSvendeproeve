@@ -60,7 +60,7 @@
                         <ScrollView>
                             <CollectionView ItemsSource="{Binding FoodRequestForDish}" SelectionMode="None">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:FoodForDish">
+                                    <DataTemplate x:DataType="model:FoodInDish">
                                         <Grid ColumnDefinitions="*">
                                             <Grid Grid.Row="3" ColumnDefinitions="*,*,*,Auto,Auto" Padding="0,20,0,0" RowDefinitions="*">
                                                 <Label Grid.Column="0" FontSize="28" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding name}"></Label>

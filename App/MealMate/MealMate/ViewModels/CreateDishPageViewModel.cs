@@ -64,20 +64,23 @@ namespace MealMate.ViewModels
                     return;
                 }
 
-                DishRequest dish = new DishRequest { name = Dishname };
+                DishRequest dish = new DishRequest { name = Dishname, foods = new List<FoodInDishRequest>() };
 
 
 
                 foreach (var item in FoodRequestForDish)
                 {
-
-                    dish.foods.Add(item);
+                    FoodInDishRequest newFoodInDish = new FoodInDishRequest { id = item._id, weight = item.weight };
+                    dish.foods.Add(newFoodInDish);
                 }
 
 
-                await DishService.CreateDish(dish);
+                DishResponse responseDish = await DishService.CreateDish(dish);
 
-                await Shell.Current.GoToAsync(nameof(AddDishPage));
+                await Shell.Current.GoToAsync(nameof(AddDishPage),false, new Dictionary<string, object>
+                {
+                    { "SelectedDish", responseDish }
+                });
 
             }
             catch (Exception ex)

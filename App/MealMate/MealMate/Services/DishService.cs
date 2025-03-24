@@ -14,13 +14,13 @@ namespace MealMate.Services
 
         List<Dish> retterList = new();
 
-        DishRequest dish = new();
+        DishResponse dish = new();
 
         public DishService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public async Task<DishRequest> CreateDish(DishRequest newDish)
+        public async Task<DishResponse> CreateDish(DishRequest newDish)
         {
             string token = await SecureStorage.GetAsync("auth_token");
 
@@ -33,7 +33,7 @@ namespace MealMate.Services
 
             if (response.IsSuccessStatusCode)
             {
-                DishRequest responseObj = await response.Content.ReadFromJsonAsync<DishRequest>();
+                DishResponse responseObj = await response.Content.ReadFromJsonAsync<DishResponse>();
                 dish = responseObj;
                 return dish;
             }
