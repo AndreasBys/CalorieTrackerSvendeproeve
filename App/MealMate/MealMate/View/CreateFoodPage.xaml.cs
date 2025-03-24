@@ -63,7 +63,7 @@ public partial class CreateFoodPage : ContentPage
 
 
         // Navigate back to the home page with the new macro log
-        await Shell.Current.GoToAsync("../..", true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
         {
             { "NewMacroLog", _viewModel.NewMacroLog }
         });
