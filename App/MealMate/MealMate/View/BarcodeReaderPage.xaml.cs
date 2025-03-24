@@ -5,13 +5,15 @@ namespace MealMate.View;
 // Page for barcode scanning functionality
 public partial class BarcodeReaderPage : ContentPage
 {
-    public TaskCompletionSource<string> BarcodeScanTaskCompletionSource { get; set; }
+    private readonly BarcodeTaskCompletionService _BarcodeScanTaskCompletionSource;
 
     // Constructor to initialize the page
-    public BarcodeReaderPage()
-    {
-
+    public BarcodeReaderPage(BarcodeTaskCompletionService taskService)
+    { 
         InitializeComponent();
+
+        _BarcodeScanTaskCompletionSource = taskService;
+
 
         // Configure the barcode reader options
         barcodeReader.Options = new ZXing.Net.Maui.BarcodeReaderOptions
@@ -27,10 +29,14 @@ public partial class BarcodeReaderPage : ContentPage
 
         if (!string.IsNullOrEmpty(barcode))
         {
-            BarcodeScanTaskCompletionSource?.SetResult(barcode);
+            _BarcodeScanTaskCompletionSource.TaskCompleted(barcode); // Set the barcode result
 
-            await Shell.Current.Navigation.PopAsync(false);
+            
         }
+
+        await Shell.Current.GoToAsync(".."); // Navigate back to the previous page
+
+
     }
 }
 
