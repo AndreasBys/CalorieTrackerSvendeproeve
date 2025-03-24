@@ -116,7 +116,7 @@ xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
                             </Border.StrokeShape>
-                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Placeholder="10"></Entry>
+                            <Entry Background="{StaticResource CustomMoerkeGraa}" TextColor="{StaticResource CustomHvid}" FontSize="28" Grid.Column="0" HorizontalOptions="Fill" Placeholder="10" Text="{Binding MarginProcent, Mode=TwoWay}"></Entry>
                         </Border>
                         <Label HorizontalOptions="Start" TextColor="{StaticResource CustomTekstHvidereGraa}" FontSize="18" Grid.Column="1" VerticalOptions="End" Padding="10">%</Label>
                     </Grid>

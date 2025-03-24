@@ -17,7 +17,7 @@ namespace MealMate.ViewModels
         private string fedtProcent = "35";
 
         [ObservableProperty]
-        private string marginProcent;
+        private string marginProcent = "10";
 
         [ObservableProperty]
 
@@ -40,6 +40,17 @@ namespace MealMate.ViewModels
 
         // Service for managing macro goals
         MacroGoalService macroGoalService;
+
+        private double _kalorieInputInt;
+        private double _proteinProcentInt;
+        private double _kulhydraterProcentInt;
+        private double _fedtProcentInt;
+        private double _marginProcentInt;
+
+        private double _proteinIgram;
+        private double _kulhydraterIGram;
+        private double _fedtIGram;
+        private int _marginIGram;
 
         // Constructor to initialize the service
         public CreateGoalPageViewModel(MacroGoalService macroGoalService)
@@ -77,11 +88,11 @@ namespace MealMate.ViewModels
                     // Create a new MacroGoal object with the input values
                     MacroGoal macroGoal = new MacroGoal
                     {
-                        calories = Convert.ToInt32(kalorieInput),
-                        proteins = Convert.ToInt32(proteinProcent),
-                        carbonhydrates = Convert.ToInt32(kulhydraterProcent),
-                        fats = Convert.ToInt32(fedtProcent),
-                        margin = Convert.ToInt32(marginProcent)
+                        calories = _kalorieInputInt,
+                        proteins = _proteinIgram,
+                        carbonhydrates = _kulhydraterIGram,
+                        fats = _fedtIGram,
+                        margin = _marginIGram
                     };
 
                     try
@@ -125,23 +136,25 @@ namespace MealMate.ViewModels
 
                 // Calculates percentages and updates progress bars
 
-                double kalorieValueDouble = Convert.ToDouble(kalorieValue);
+                _kalorieInputInt = Convert.ToInt32(kalorieValue);
 
-                double fedtIGram = Convert.ToDouble(fedtProcent) / 100;
-                double proteinIGram = Convert.ToDouble(proteinProcent) / 100;
-                double kulhydraterIGram = Convert.ToDouble(kulhydraterProcent) / 100;
+                
+                _proteinProcentInt = Convert.ToInt32(proteinProcent);
+                _kulhydraterProcentInt = Convert.ToInt32(kulhydraterProcent);
+                _fedtProcentInt = Convert.ToInt32(fedtProcent);
+                _marginProcentInt = Convert.ToInt32(MarginProcent);
 
-                proteinIGram = kalorieValueDouble * proteinIGram;
-                kulhydraterIGram = kalorieValueDouble * kulhydraterIGram;
-                fedtIGram = kalorieValueDouble * fedtIGram;
 
-                fedtIGram = Convert.ToInt32(fedtIGram);
-                proteinIGram = Convert.ToInt32(proteinIGram);
-                kulhydraterIGram = Convert.ToInt32(kulhydraterIGram);
+                _proteinIgram = Convert.ToDouble(((_kalorieInputInt * _proteinProcentInt) / 400));
+                _kulhydraterIGram = Convert.ToDouble((_kalorieInputInt * _kulhydraterProcentInt) / 400);
+                _fedtIGram = Convert.ToDouble((_kalorieInputInt * _kulhydraterProcentInt) / 900);
+                _marginIGram = (Convert.ToInt32(marginProcent) / 100) * Convert.ToInt32(_kalorieInputInt);
 
-                FedtText = fedtIGram + "g";
-                ProteinText = proteinIGram + "g";
-                KulhydraterText = kulhydraterIGram + "g";
+
+
+                ProteinText = _proteinIgram + "g";
+                KulhydraterText = _kulhydraterIGram + "g";
+                FedtText = _fedtIGram + "g";
 
                 KulhydraterProgressBar = KulhydraterProcent;
                 ProteinProgressBar = proteinProcent;

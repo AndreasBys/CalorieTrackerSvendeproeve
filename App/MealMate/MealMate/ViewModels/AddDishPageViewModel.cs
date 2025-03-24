@@ -23,6 +23,12 @@ public partial class AddDishPageViewModel : BaseViewModel
 
 
 
+    //[RelayCommand]
+    //partial void CreateDishKnap()
+    //{
+
+    //}
+
     partial void OnDishChanged(DishResponse value)
     {
         RettensNavn = Dish.dish.name;
