@@ -1,100 +1,194 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.HomePage"
-             xmlns:NavBar="clr-namespace:MealMate.View"
-             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
-             xmlns:model="clr-namespace:MealMate.Models"
-             xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
-             x:DataType="viewmodel:HomePageViewModel"
-             Title="HomePage">
+<ContentPage
+    x:Class="MealMate.View.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:NavBar="clr-namespace:MealMate.View"
+    xmlns:model="clr-namespace:MealMate.Models"
+    xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+    xmlns:viewmodel="clr-namespace:MealMate.ViewModels"
+    Title="HomePage"
+    x:DataType="viewmodel:HomePageViewModel">
     <Grid RowDefinitions="Auto,*">
-        <Grid RowDefinitions="Auto" Grid.Row="0" IsVisible="{Binding NoProgress}" Padding="20">
+        <Grid
+            Grid.Row="0"
+            Padding="20"
+            IsVisible="{Binding NoProgress}"
+            RowDefinitions="Auto">
             <Label HorizontalOptions="Center">No macro logs were found, add one!</Label>
         </Grid>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" BackgroundColor="{StaticResource CustomMoerkeGraa}" Grid.Row="0" Padding="15" IsVisible="{Binding Progress}">
-            <Grid Grid.Row="0" Padding="5" IsVisible="{Binding CaloriesProgress}">
+        <Grid
+            Grid.Row="0"
+            Padding="15"
+            BackgroundColor="{StaticResource CustomMoerkeGraa}"
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="15"
+            IsVisible="{Binding Progress}"
+            RowDefinitions="Auto,Auto,Auto,Auto">
+            <Grid
+                Grid.Row="0"
+                Padding="5"
+                IsVisible="{Binding CaloriesProgress}">
                 <progressBar:SfLinearProgressBar
-                    TrackCornerRadius="20" 
-                    ProgressHeight="10" 
-                    ProgressCornerRadius="20" 
-                    Progress="{Binding CaloriesProgress}" 
-                    TrackHeight="10" 
-                    Grid.Column="1" 
-                    TrackFill="{StaticResource CustomMoerkeGraa}"
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HorizontalOptions="Center"
+                    Progress="{Binding CaloriesProgress}"
+                    ProgressCornerRadius="20"
                     ProgressFill="{StaticResource CustomBlaa}"
-                    BackgroundColor="{StaticResource CustomGraa}">
-                </progressBar:SfLinearProgressBar>
-            </Grid>
-            <Grid Grid.Row="1" Padding="5" IsVisible="{Binding ProteinProgress}">
-                <progressBar:SfLinearProgressBar
-                    TrackCornerRadius="20" 
-                    ProgressHeight="10" 
-                    ProgressCornerRadius="20" 
-                    Progress="{Binding ProteinProgress}" 
-                    TrackHeight="10" 
-                    Grid.Column="1" 
+                    ProgressHeight="15"
+                    TrackCornerRadius="20"
                     TrackFill="{StaticResource CustomMoerkeGraa}"
+                    TrackHeight="10" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Padding="5"
+                IsVisible="{Binding ProteinProgress}">
+                <progressBar:SfLinearProgressBar
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HorizontalOptions="Center"
+                    Progress="{Binding ProteinProgress}"
+                    ProgressCornerRadius="20"
                     ProgressFill="{StaticResource CustomPink}"
-                    BackgroundColor="{StaticResource CustomGraa}">
-
-                </progressBar:SfLinearProgressBar>
-            </Grid>
-            <Grid Grid.Row="2" Padding="5" IsVisible="{Binding CarbonhydratesProgress}">
-                <progressBar:SfLinearProgressBar
-                    TrackCornerRadius="20" 
-                    ProgressHeight="10" 
-                    ProgressCornerRadius="20" 
-                    Progress="{Binding CarbonhydratesProgress}" 
-                    TrackHeight="10" 
-                    Grid.Column="1" 
+                    ProgressHeight="15"
+                    TrackCornerRadius="20"
                     TrackFill="{StaticResource CustomMoerkeGraa}"
+                    TrackHeight="10" />
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Padding="5"
+                IsVisible="{Binding CarbonhydratesProgress}">
+                <progressBar:SfLinearProgressBar
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    Progress="{Binding CarbonhydratesProgress}"
+                    ProgressCornerRadius="20"
                     ProgressFill="{StaticResource CustomGrøn}"
-                    BackgroundColor="{StaticResource CustomGraa}">
-                </progressBar:SfLinearProgressBar>
-            </Grid>
-            <Grid Grid.Row="3" Padding="5" IsVisible="{Binding FatProgress}">
-                <progressBar:SfLinearProgressBar
-                    TrackCornerRadius="20" 
-                    ProgressHeight="10" 
-                    ProgressCornerRadius="20" 
-                    Progress="{Binding FatProgress}" 
-                    TrackHeight="10" 
-                    Grid.Column="1" 
+                    ProgressHeight="15"
+                    TrackCornerRadius="20"
                     TrackFill="{StaticResource CustomMoerkeGraa}"
+                    TrackHeight="10" />
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Padding="5"
+                IsVisible="{Binding FatProgress}">
+                <progressBar:SfLinearProgressBar
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    Progress="{Binding FatProgress}"
+                    ProgressCornerRadius="20"
                     ProgressFill="{StaticResource CustomGul}"
-                    BackgroundColor="{StaticResource CustomGraa}">
-                </progressBar:SfLinearProgressBar>
+                    ProgressHeight="15"
+                    TrackCornerRadius="20"
+                    TrackFill="{StaticResource CustomMoerkeGraa}"
+                    TrackHeight="10" />
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="1"
+                ColumnDefinitions="Auto,Auto"
+                HorizontalOptions="End">
+                <Label Grid.Column="0" Text="{Binding Calories}" />
+                <Label Grid.Column="1" Text="{Binding MacroGoal.calories, StringFormat=' / {0} kcal'}" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1"
+                ColumnDefinitions="Auto,Auto"
+                HorizontalOptions="End">
+                <Label Grid.Column="0" Text="{Binding Protein}" />
+                <Label Grid.Column="1" Text="{Binding MacroGoal.proteins, StringFormat=' / {0} g'}" />
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1"
+                ColumnDefinitions="Auto,Auto"
+                HorizontalOptions="End">
+                <Label Grid.Column="0" Text="{Binding Carbonhydrates}" />
+                <Label Grid.Column="1" Text="{Binding MacroGoal.carbonhydrates, StringFormat=' / {0} g'}" />
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.Column="1"
+                ColumnDefinitions="Auto,Auto"
+                HorizontalOptions="End">
+                <Label Grid.Column="0" Text="{Binding Fat}" />
+                <Label Grid.Column="1" Text="{Binding MacroGoal.fats, StringFormat=' / {0} g'}" />
             </Grid>
         </Grid>
 
-        <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,0,80,20" Grid.Row="1">
+        <Grid
+            Grid.Row="1"
+            Padding="80,0,80,20"
+            BackgroundColor="{StaticResource CustomGraa}">
             <ScrollView VerticalScrollBarVisibility="Never">
-                <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*">
-                    <!--Dropdown box-->
-                    <Grid RowDefinitions="Auto,Auto" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill">
-                        <Grid ColumnDefinitions="*, Auto" HorizontalOptions="Fill" Grid.Row="1" RowDefinitions="Auto,Auto">
-                            <Border StrokeThickness="2" Stroke="{StaticResource CustomGraa}" BackgroundColor="{StaticResource CustomGraa}" HorizontalOptions="Fill">
+                <Grid ColumnDefinitions="*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
+                    <!--  Dropdown box  -->
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        RowDefinitions="Auto,Auto">
+                        <Grid
+                            Grid.Row="1"
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="Fill"
+                            RowDefinitions="Auto,Auto">
+                            <Border
+                                BackgroundColor="{StaticResource CustomGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomGraa}"
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                                    <Button BackgroundColor="{StaticResource CustomGraa}" x:Name="UdviderKnap">
-                                    </Button>
+                                    <Button x:Name="UdviderKnap" BackgroundColor="{StaticResource CustomGraa}" />
                                     <CollectionView ItemsSource="{Binding MacroLogs}" SelectionMode="None">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate x:DataType="model:MacroLog">
                                                 <Grid Padding="5" ColumnDefinitions="*">
-                                                    <Border Stroke="#00000000" HeightRequest="80">
+                                                    <Border HeightRequest="80" Stroke="#00000000">
                                                         <Border.Shadow>
-                                                            <Shadow Brush="Black" Offset="0,1" Radius="1" Opacity="0.5" />
+                                                            <Shadow
+                                                                Brush="Black"
+                                                                Opacity="0.5"
+                                                                Radius="1"
+                                                                Offset="0,1" />
                                                         </Border.Shadow>
                                                         <Grid ColumnDefinitions="*">
-                                                            <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding food.name}"></Label>
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Padding="10"
+                                                                FontSize="32"
+                                                                HorizontalOptions="Start"
+                                                                Text="{Binding food.name}"
+                                                                TextColor="{StaticResource CustomHvid}"
+                                                                VerticalOptions="End" />
                                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"></Label>
-                                                                <Grid Padding="10" Grid.Column="1" HorizontalOptions="End">
-                                                                    <Image Source="pilned_hvid_ikon.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End"/>
+                                                                <Label
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="0"
+                                                                    Padding="10,10,30,10"
+                                                                    FontSize="32"
+                                                                    HorizontalOptions="End"
+                                                                    Text="{Binding calories, StringFormat='{0} kcal'}"
+                                                                    TextColor="{StaticResource CustomHvid}"
+                                                                    VerticalOptions="End" />
+                                                                <Grid
+                                                                    Grid.Column="1"
+                                                                    Padding="10"
+                                                                    HorizontalOptions="End">
+                                                                    <Image
+                                                                        HeightRequest="25"
+                                                                        HorizontalOptions="End"
+                                                                        Source="pilned_hvid_ikon.png"
+                                                                        WidthRequest="25" />
                                                                 </Grid>
                                                             </Grid>
                                                         </Grid>
@@ -105,23 +199,27 @@
                                     </CollectionView>
                                 </Grid>
                             </Border>
-                            <Grid Grid.Row="1" x:Name="UdvidetContent" IsVisible="False">
+                            <!--<Grid Grid.Row="1" x:Name="UdvidetContent" IsVisible="False">
                                 <Grid>
-                                    <!--Progress bar box-->
+                            -->
+                            <!--  Progress bar box  -->
+                            <!--
                                     <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*,*" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="4" Padding="0,10,0,0" BackgroundColor="{StaticResource CustomGraa}">
-                                        <!--Row 1-->
+                            -->
+                            <!--  Row 1  -->
+                            <!--
                                         <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="0">
                                             <Grid Grid.Column="0">
                                                 <Image Source="boef_ikon.png" HeightRequest="45" WidthRequest="45"></Image>
                                             </Grid>
                                             <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
-                                                <progressBar:SfLinearProgressBar  
-                                                    TrackCornerRadius="20" 
-                                                    ProgressHeight="50" 
-                                                    ProgressCornerRadius="20" 
-                                                    Progress="20" 
-                                                    TrackHeight="50" 
-                                                    Grid.Column="1" 
+                                                <progressBar:SfLinearProgressBar
+                                                    TrackCornerRadius="20"
+                                                    ProgressHeight="50"
+                                                    ProgressCornerRadius="20"
+                                                    Progress="20"
+                                                    TrackHeight="50"
+                                                    Grid.Column="1"
                                                     TrackFill="{StaticResource CustomMoerkeGraa}"
                                                     ProgressFill="{StaticResource CustomPink}"
                                                     BackgroundColor="{StaticResource CustomGraa}">
@@ -133,20 +231,22 @@
                                                 </Grid>
                                             </Grid>
                                         </Grid>
-                                        <!--Row 1-->
-                                        <!--Row 2-->
+                            -->
+                            <!--  Row 1  -->
+                            <!--  Row 2  -->
+                            <!--
                                         <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="1">
                                             <Grid Grid.Column="0">
                                                 <Image Source="sukker_icon.png" HeightRequest="45" WidthRequest="45"></Image>
                                             </Grid>
                                             <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
-                                                <progressBar:SfLinearProgressBar  
-                                                    TrackCornerRadius="20" 
-                                                    ProgressHeight="50" 
-                                                    ProgressCornerRadius="20" 
-                                                    Progress="20" 
-                                                    TrackHeight="50" 
-                                                    Grid.Column="1" 
+                                                <progressBar:SfLinearProgressBar
+                                                    TrackCornerRadius="20"
+                                                    ProgressHeight="50"
+                                                    ProgressCornerRadius="20"
+                                                    Progress="20"
+                                                    TrackHeight="50"
+                                                    Grid.Column="1"
                                                     TrackFill="{StaticResource CustomMoerkeGraa}"
                                                     ProgressFill="{StaticResource CustomGrøn}"
                                                     BackgroundColor="{StaticResource CustomGraa}">
@@ -158,20 +258,22 @@
                                                 </Grid>
                                             </Grid>
                                         </Grid>
-                                        <!--Row 2-->
-                                        <!--Row 3-->
+                            -->
+                            <!--  Row 2  -->
+                            <!--  Row 3  -->
+                            <!--
                                         <Grid RowDefinitions="*" ColumnDefinitions="Auto,*,Auto,Auto" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="2">
                                             <Grid Grid.Column="0">
                                                 <Image Source="bacon_icon.png" HeightRequest="45" WidthRequest="45"></Image>
                                             </Grid>
                                             <Grid Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="{StaticResource CustomGraa}">
-                                                <progressBar:SfLinearProgressBar  
-                                                    TrackCornerRadius="20" 
-                                                    ProgressHeight="50" 
-                                                    ProgressCornerRadius="20" 
-                                                    Progress="20" 
-                                                    TrackHeight="50" 
-                                                    Grid.Column="1" 
+                                                <progressBar:SfLinearProgressBar
+                                                    TrackCornerRadius="20"
+                                                    ProgressHeight="50"
+                                                    ProgressCornerRadius="20"
+                                                    Progress="20"
+                                                    TrackHeight="50"
+                                                    Grid.Column="1"
                                                     TrackFill="{StaticResource CustomMoerkeGraa}"
                                                     ProgressFill="{StaticResource CustomGul}"
                                                     BackgroundColor="{StaticResource CustomGraa}">
@@ -186,15 +288,21 @@
                                         <Grid Grid.Row="2" Grid.Column="1" Padding="10">
                                             <ImageButton Source="rediger_ikon.png" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" VerticalOptions="End"/>
                                         </Grid>
-                                        <!--Row 3-->
+                            -->
+                            <!--  Row 3  -->
+                            <!--
                                     </Grid>
                                 </Grid>
-                            </Grid>
+                            </Grid>-->
                         </Grid>
                     </Grid>
                 </Grid>
             </ScrollView>
         </Grid>
-        <NavBar:NavBar Grid.Row="7" MaximumHeightRequest="105" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <NavBar:NavBar
+            Grid.Row="7"
+            HorizontalOptions="Fill"
+            MaximumHeightRequest="105"
+            VerticalOptions="End" />
     </Grid>
 </ContentPage>
