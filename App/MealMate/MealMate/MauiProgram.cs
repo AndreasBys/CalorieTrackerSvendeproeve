@@ -47,7 +47,7 @@ namespace MealMate
             builder.Services.AddSingleton<CreateFoodPageViewModel>();
             builder.Services.AddSingleton<AddDishPageViewModel>();
             builder.Services.AddSingleton<AddFoodPageViewModel>();
-            builder.Services.AddSingleton<CreateFoodPageViewModel>();
+            builder.Services.AddSingleton<CreateGoalPageViewModel>();
             builder.Services.AddSingleton<HomePageViewModel>();
             builder.Services.AddSingleton<CreateDishPageViewModel>();
 
