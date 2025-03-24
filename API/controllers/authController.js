@@ -6,6 +6,8 @@ import User from '../models/user.js';
 // register method - laver ny bruger
 export const createUser = async (req, res) => {
     try {
+        req.body.admin = false;
+        
         // laver ny bruger og gemmer i databasen
         const user = await new User(req.body).save();
 
