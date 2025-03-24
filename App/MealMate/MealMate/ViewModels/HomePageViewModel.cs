@@ -137,10 +137,11 @@ public partial class HomePageViewModel : BaseViewModel
             double proteinsCalories = Protein * 4;
             double carbsCalories    = Carbonhydrates * 4;
             double fatsCalories     = Fat * 9;
+            double totalCalories    = proteinsCalories + carbsCalories + fatsCalories;
             CaloriesProgress        = 0;
-            ProteinProgress         = (proteinsCalories/Calories) * 100;
-            CarbonhydratesProgress  = (carbsCalories / Calories) * 100;
-            FatProgress             = (fatsCalories / Calories) * 100;
+            ProteinProgress         = (proteinsCalories / totalCalories) * 100;
+            CarbonhydratesProgress  = (carbsCalories    / totalCalories) * 100;
+            FatProgress             = (fatsCalories     / totalCalories) * 100;
             return;
         }
         if (MacroGoal.calories != null)

@@ -26,8 +26,7 @@ public class FoodRequest
     public double carbonhydrates { get; set; }
     public double protein { get; set; }
     public double fat { get; set; }
-    public string user { get; set; }
-    public FoodRequest(string name,string barcode, int calories, double carbonhydrates, double protein, double fat, string user) 
+    public FoodRequest(string name,string barcode, int calories, double carbonhydrates, double protein, double fat) 
     {
         this.name = name;
         this.barcode = barcode;
@@ -35,7 +34,6 @@ public class FoodRequest
         this.carbonhydrates = carbonhydrates;
         this.protein = protein;
         this.fat = fat;
-        this.user = user;
     }
 }
 public class FoodResponse
