@@ -24,6 +24,10 @@ public partial class HomePageViewModel : BaseViewModel
     private double proteinProgress;
     [ObservableProperty]
     private double fatProgress;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(NoProgress))]
+    private bool progress;
+    public bool NoProgress => !Progress;
 
     // Property to hold the newly created MacroLog
     public MacroLog NewMacroLog { get; set; }
@@ -86,7 +90,6 @@ public partial class HomePageViewModel : BaseViewModel
             {
                 MacroLog newMacroLog = await CalcMacros(macroLog);
                 MacroLogs.Add(newMacroLog);
-                UpdateProgress();
             }
 
             UpdateProgress();
@@ -132,6 +135,12 @@ public partial class HomePageViewModel : BaseViewModel
 
     private void UpdateProgress()
     {
+        if (Protein <= 0 && Carbonhydrates <= 0 && Fat <= 0)
+        {
+            Progress = false;
+            return;
+        }
+        Progress = true;
         if (MacroGoal == null)
         {
             double proteinsCalories = Protein * 4;
