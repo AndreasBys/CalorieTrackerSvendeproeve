@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Syncfusion.Maui.Core.Carousel;
+using System.Collections.ObjectModel;
 
 namespace MealMate.ViewModels;
 
@@ -53,7 +54,10 @@ public partial class AddDishPageViewModel : BaseViewModel
             }
 
 
-            await Shell.Current.GoToAsync(nameof(HomePage));
+            await Shell.Current.GoToAsync(nameof(HomePage), false, new Dictionary<string, object>
+            {
+            { "NewMacroLog", log }
+            });
 
         }
         catch (Exception ex)
