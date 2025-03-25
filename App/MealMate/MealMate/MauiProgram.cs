@@ -59,8 +59,6 @@ namespace MealMate
 
 #if ANDROID
             string baseUrl = "http://192.168.1.75:5000/";
-            string baseUrl = "http://10.0.2.2:5000/";
-            //string baseUrl = "http://192.168.8.52:5000/";
 #else
             string baseUrl = "http://localhost:5000/"; // or use the machine's IP address
 #endif
