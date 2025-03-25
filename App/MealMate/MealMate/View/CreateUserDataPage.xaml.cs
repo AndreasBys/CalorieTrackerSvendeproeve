@@ -1,34 +1,23 @@
 using System.Threading.Tasks;
+using MealMate.Services;
 using Microsoft.Maui.Controls;
 
 namespace MealMate.View;
 
-[QueryProperty(nameof(User), "user")]
 public partial class CreateUserDataPage : ContentPage
 {
     private User _user;
-    private readonly LoginService _loginService;
+    private readonly UserService _userService;
     private DatePicker _birthdateEntry;
     private Entry _heightEntry;
     private Entry _weightEntry;
     private Picker _genderEntry;
 
-    // Property to get and set the User object passed from the previous page
-    public User User
-    {
-        get => _user;
-        set
-        {
-            _user = value;
-            OnPropertyChanged();
-        }
-    }
-
     // Constructor to initialize the page and find UI elements by their names
-    public CreateUserDataPage(LoginService loginService)
+    public CreateUserDataPage(UserService userService)
     {
         InitializeComponent();
-        _loginService = loginService;
+        _userService = userService;
 
         // Find UI elements by their names
         _weightEntry = this.FindByName<Entry>("weightRegistrerEntry");
@@ -38,22 +27,34 @@ public partial class CreateUserDataPage : ContentPage
     }
 
     // Event handler for the CreateUser_Button click
-    private async void CreateUser_Button(object sender, EventArgs e)
+    private async void UpdateUser_Button(object sender, EventArgs e)
     {
+        // Get the user id from the SecureStorage
+        var _userId = await SecureStorage.GetAsync("user_id");
+
+        var user = await _userService.GetUserById(_userId);
         // Get the input values from the entries and update the User object
-        _user.weight = Convert.ToInt32(_weightEntry.Text);
-        _user.height = Convert.ToInt32(_heightEntry.Text);
-        _user.birthdate = _birthdateEntry.Date;
-        _user.gender = _genderEntry.SelectedItem as string;
+        var _user = new User
+        {
+            _id = user._id,
+            username = user.username,
+            email = user.email,
+            password = user.password,
+            weight = Convert.ToInt32(_weightEntry.Text),
+            height = Convert.ToInt32(_heightEntry.Text),
+            birthdate = _birthdateEntry.Date,
+            gender = _genderEntry.SelectedItem as string
+        };
+
+        
 
         try
         {
             // Register the user with the provided profile data
-            var registeredUser = await _loginService.CreateUser(_user);
+            var updatedUser = await _userService.UpdateUser(_user, _userId);
             await DisplayAlert("Success", "Success", "OK");
 
-            // Log in the user after successful registration
-            var loggedInUser = await _loginService.Login(_user.email, _user.password);
+            // Navigates user to the CreateGoalPage after successful update
             await Shell.Current.GoToAsync(nameof(CreateGoalPage), true);
         }
         catch (Exception ex)
@@ -61,5 +62,7 @@ public partial class CreateUserDataPage : ContentPage
             // Display an alert if an error occurs during registration or login
             await DisplayAlert("Error", $"error: {ex.Message}", "OK");
         }
+
+
     }
 }

@@ -116,7 +116,7 @@
                 </Border>
             </StackLayout>
             <Grid Grid.Row="6" Grid.ColumnSpan="2">
-                <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="CreateUser_Button"/>
+                <Button Text="Gem" BackgroundColor="{StaticResource CustomBlaa}" FontSize="28" Pressed="UpdateUser_Button"/>
             </Grid>
         </Grid>
 

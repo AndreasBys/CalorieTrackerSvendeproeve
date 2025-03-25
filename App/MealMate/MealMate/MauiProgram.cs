@@ -24,21 +24,18 @@ namespace MealMate
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<HomePage>();
             builder.Services.AddTransient<AddFoodPage>();
-            builder.Services.AddTransient<CreateUserDataPage>();
             builder.Services.AddTransient<CreateUserPage>();
-            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddTransient<CreateUserDataPage>();
+            builder.Services.AddTransient<CreateGoalPage>();
             builder.Services.AddTransient<AddDishPage>();
             builder.Services.AddTransient<CreateFoodPage>();
             builder.Services.AddTransient<BarcodeReaderPage>();
-
-
             builder.Services.AddTransient<ProfilePage>();
-            builder.Services.AddTransient<CreateGoalPage>();
-            
             builder.Services.AddTransient<CreateDishPage>();
-            builder.Services.AddSingleton<AdminHomePage>();
+            builder.Services.AddTransient<AdminHomePage>();
             builder.Services.AddTransient<AdminSelectedFood>();
 
 
@@ -58,6 +55,7 @@ namespace MealMate
             // Services
 #if ANDROID
             string baseUrl = "http://10.0.2.2:5000/";
+            //string baseUrl = "http://192.168.8.52:5000/";
 #else
             string baseUrl = "http://localhost:5000/"; // or use the machine's IP address
 #endif

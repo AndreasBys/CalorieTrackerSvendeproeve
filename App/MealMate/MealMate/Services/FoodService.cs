@@ -93,7 +93,6 @@ public class FoodService : IFoodService
         request.Content = JsonContent.Create(food);
 
         var response = await _httpClient.SendAsync(request);
-
         if (response.IsSuccessStatusCode)
         {
             var updatedFood = await response.Content.ReadFromJsonAsync<Food>();

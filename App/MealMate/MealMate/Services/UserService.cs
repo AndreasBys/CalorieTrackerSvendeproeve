@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using MealMate.Services.Interfaces;
+using Microsoft.Maui.ApplicationModel.Communication;
 using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace MealMate.Services;
 
@@ -14,71 +8,57 @@ public class UserService : IUserService
 {
     private readonly HttpClient _httpClient;
     private string _authToken;
+    User user;
+
 
     public UserService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _authToken = SecureStorage.GetAsync("auth_token").Result;
+        //_authToken = SecureStorage.GetAsync("auth_token").Result;
     }
 
-
-    public async Task<User> GetUserByIdAsync(string id)
+    public async Task<User> GetUserById(string id)
     {
-        var response = await _httpClient.GetAsync($"/{id}");
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<User>();
+        _authToken = await SecureStorage.GetAsync("auth_token");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{id}");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authToken);
+
+        var response = await _httpClient.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Response Content: {responseContent}");
+
+            UserResponse userResponse = await response.Content.ReadFromJsonAsync<UserResponse>();
+            user = userResponse.user;
+            return user;
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
+        }
     }
 
-    public Task<User> UpdateUser(User user)
+    public async Task<User> UpdateUser(User user, string id)
     {
-        throw new NotImplementedException();
+
+        _authToken = await SecureStorage.GetAsync("auth_token");
+        var request = new HttpRequestMessage(HttpMethod.Patch,($"{id}"));
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authToken);
+        request.Content = JsonContent.Create(user);
+
+        var response = await _httpClient.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            var updatedUser = await response.Content.ReadFromJsonAsync<User>();
+            return updatedUser;
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
+        }
     }
-
-    //Task<User> IUserService.UpdateUser(User user)
-    //{
-    //    var request = new HttpRequestMessage(HttpMethod.Patch, id);
-    //    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-    //    var jsonoptions = new JsonSerializerOptions
-    //    {
-    //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-    //    };
-    //public async Task<User> UpdateUserAsync(User user, string id)
-    //{
-    //    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-    //        };
-
-    //request.Content = JsonContent.Create(user, options: jsonoptions);
-
-    //        var response = await _httpClient.SendAsync(request);
 }
 
-
-
-            
-
-
-//        var response = await _httpClient.PutAsJsonAsync($"/{id}", user);
-//if (response.IsSuccessStatusCode)
-//{
-//    UserResponse responseObj = await response.Content.ReadFromJsonAsync<UserResponse>();
-
-//    return responseObj.user;
-//    var updatedUser = await response.Content.ReadFromJsonAsync<User>();
-//    return updatedUser;
-//}
-//else
-//{
-//    var errorContent = await response.Content.ReadAsStringAsync();
-//    throw new Exception($"At opdatere useren fejlede {response.StatusCode}, {errorContent}");
-//    throw new Exception($"Update failed: {response.StatusCode}, {errorContent}");
-//}
-//    }
-
-//    public async Task DeleteUserAsync(string id)
-//{
-//    var response = await _httpClient.DeleteAsync($"/{id}");
-//    response.EnsureSuccessStatusCode();
-//}
-//}
-//}

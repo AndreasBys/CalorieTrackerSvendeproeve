@@ -1,18 +1,8 @@
-﻿using MealMate.Models;
+﻿namespace MealMate.Services.Interfaces;
 
-namespace MealMate.Services.Interfaces
+public interface IUserService
 {
-    interface IUserService
-    {
-        Task<User> UpdateUser(User user);
+    Task<User> GetUserById(string id);
+    Task<User> UpdateUser(User user, string id);
 
-        public interface IUserService
-        {
-            Task<User> GetUserByIdAsync(string id);
-            Task<User> UpdateUserAsync(User user, string id);
-            Task DeleteUserAsync(string id);
-
-        }
-
-    }
 }
