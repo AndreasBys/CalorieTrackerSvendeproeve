@@ -14,6 +14,14 @@ public class Dish
 
     public List<FoodInDish> foods { get; set; }
 
+    public int calories
+    {
+        get
+        {
+            return foods?.Sum(f => f.food.calories) ?? 0;
+        }
+    }
+
 }
 
 public class FoodInDish
@@ -23,6 +31,7 @@ public class FoodInDish
     public string _id { get; set; }
 
     public int weight { get; set; }
+
 }
 
 public class DishResponse

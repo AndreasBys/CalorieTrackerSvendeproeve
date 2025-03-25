@@ -9,49 +9,49 @@
     Title="ProfilePage">
     <Grid BackgroundColor="{StaticResource CustomGraa}" RowDefinitions="*,Auto">
 
+        <ScrollView>
+
+            <Grid Grid.Row="0" Padding="{StaticResource OverallPadding}">
+
+                <!--  Formular box  -->
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto">
 
 
-        <Grid Grid.Row="0" Padding="{StaticResource OverallPadding}">
+                    <Grid Grid.Row="0" Padding="40">
+                        <Label FontSize="32" TextColor="{StaticResource CustomHvid}">Profil log</Label>
+                    </Grid>
 
-            <!--  Formular box  -->
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto">
-
-
-                <Grid Grid.Row="0" Padding="40">
-                    <Label FontSize="32" TextColor="{StaticResource CustomHvid}">Profil log</Label>
-                </Grid>
-
-                <Grid Grid.Row="1">
-                    <Border
+                    <Grid Grid.Row="1">
+                        <Border
                         BackgroundColor="{StaticResource CustomMoerkeGraa}"
                         HorizontalOptions="Fill"
                         Stroke="{StaticResource CustomGraa}"
                         StrokeThickness="2">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10,10,10,10" />
-                        </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
-                            <Grid ColumnDefinitions="*,*,*">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                <Grid ColumnDefinitions="*,*,*">
 
-                                <Grid
+                                    <Grid
                                     Grid.Column="0"
                                     ColumnDefinitions="*,*"
                                     HorizontalOptions="Start">
 
-                                    <Grid
+                                        <Grid
                                         Grid.Column="1"
                                         Padding="10"
                                         HorizontalOptions="Start">
-                                        <Image
+                                            <Image
                                             HeightRequest="25"
                                             HorizontalOptions="Start"
                                             Rotation="90"
                                             Source="pilned_hvid_ikon.png"
                                             WidthRequest="25" />
+                                        </Grid>
                                     </Grid>
-                                </Grid>
 
-                                <DatePicker
+                                    <DatePicker
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     FontSize="32"
@@ -59,82 +59,82 @@
                                     TextColor="{StaticResource CustomHvid}"
                                     VerticalOptions="End" />
 
-                                <Grid
+                                    <Grid
                                     Grid.Column="2"
                                     ColumnDefinitions="*,*"
                                     HorizontalOptions="End">
 
 
-                                    <Grid
+                                        <Grid
                                         Grid.Column="1"
                                         Padding="10"
                                         HorizontalOptions="End">
-                                        <Image
+                                            <Image
                                             HeightRequest="25"
                                             HorizontalOptions="End"
                                             Rotation="270"
                                             Source="pilned_hvid_ikon.png"
                                             WidthRequest="25" />
+                                        </Grid>
                                     </Grid>
+
                                 </Grid>
 
+
+
                             </Grid>
+                        </Border>
 
+                    </Grid>
 
-
-                        </Grid>
-                    </Border>
-
-                </Grid>
-
-                <Grid
+                    <Grid
                     Grid.Row="2"
                     Padding="0,30,0,30"
                     RowDefinitions="Auto,Auto">
-                    <chart:SfCartesianChart Grid.Row="0" BackgroundColor="{StaticResource CustomMoerkeGraa}">
+                        <chart:SfCartesianChart Grid.Row="0" BackgroundColor="{StaticResource CustomMoerkeGraa}">
 
-                        <chart:ColumnSeries YBindingPath="Dage" />
+                            <chart:ColumnSeries YBindingPath="Dage" />
 
-                        <chart:SfCartesianChart.XAxes>
-                            <chart:CategoryAxis />
-                        </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis />
+                            </chart:SfCartesianChart.XAxes>
 
-                        <chart:SfCartesianChart.YAxes>
-                            <chart:NumericalAxis />
-                        </chart:SfCartesianChart.YAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis />
+                            </chart:SfCartesianChart.YAxes>
 
-                    </chart:SfCartesianChart>
+                        </chart:SfCartesianChart>
 
-                    <Grid
+                        <Grid
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         RowDefinitions="Auto,Auto">
 
-                        <Label
+                            <Label
                             Grid.Row="0"
                             Padding="10"
                             FontSize="22"
                             HorizontalOptions="Start"
                             TextColor="{StaticResource CustomHvid}"
                             VerticalOptions="End">
-                            Vis data:
-                        </Label>
+                                Vis data:
+                            </Label>
 
-                        <Grid
+                            <Grid
                             Grid.Row="1"
                             ColumnDefinitions="*, Auto"
                             HorizontalOptions="Fill">
-                            <Border
+                                <Border
                                 BackgroundColor="{StaticResource CustomMoerkeGraa}"
                                 HorizontalOptions="Fill"
                                 Stroke="{StaticResource CustomMoerkeGraa}"
                                 StrokeThickness="2">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10" />
-                                </Border.StrokeShape>
-                                <Grid>
-                                    <Picker
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10" />
+                                    </Border.StrokeShape>
+                                    <Grid>
+                                        <Picker
                                         x:Name="aktivitetsPicker"
                                         Title="Kalorier"
                                         Grid.Column="0"
@@ -143,27 +143,27 @@
                                         HorizontalOptions="Fill"
                                         TextColor="{StaticResource CustomHvid}"
                                         TitleColor="{StaticResource CustomHvid}">
-                                        <Picker.Items>
-                                            <x:String>Kalorier</x:String>
-                                            <x:String>Protein</x:String>
-                                            <x:String>Fedt</x:String>
-                                            <x:String>Kulhydrater</x:String>
-                                        </Picker.Items>
-                                    </Picker>
-                                    <Grid Padding="10">
-                                        <Image
+                                            <Picker.Items>
+                                                <x:String>Kalorier</x:String>
+                                                <x:String>Protein</x:String>
+                                                <x:String>Fedt</x:String>
+                                                <x:String>Kulhydrater</x:String>
+                                            </Picker.Items>
+                                        </Picker>
+                                        <Grid Padding="10">
+                                            <Image
                                             HeightRequest="25"
                                             HorizontalOptions="End"
                                             Source="pilned_ikon.png"
                                             WidthRequest="25" />
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Border>
+                                </Border>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <!--  Indstillinger box  -->
-                    <Grid
+                        <!--  Indstillinger box  -->
+                        <Grid
                         Grid.Row="3"
                         Grid.Column="0"
                         HorizontalOptions="Fill"
@@ -171,14 +171,14 @@
                         VerticalOptions="End">
 
 
-                        <Label
+                            <Label
                             Padding="0,40,0,40"
                             FontSize="32"
                             TextColor="{StaticResource CustomHvid}">
-                            Indstillinger
-                        </Label>
+                                Indstillinger
+                            </Label>
 
-                        <Grid
+                            <Grid
                             Grid.Row="1"
                             ColumnDefinitions="*, Auto"
                             HorizontalOptions="Fill"
@@ -186,18 +186,18 @@
 
 
 
-                            <Border
+                                <Border
                                 BackgroundColor="{StaticResource CustomGraa}"
                                 HorizontalOptions="Fill"
                                 Stroke="{StaticResource CustomGraa}"
                                 StrokeThickness="2">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10" />
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10" />
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
-                                    <Grid ColumnDefinitions="*">
-                                        <Label
+                                        <Grid ColumnDefinitions="*">
+                                            <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Padding="10"
@@ -205,46 +205,46 @@
                                             HorizontalOptions="Start"
                                             TextColor="{StaticResource CustomHvid}"
                                             VerticalOptions="End">
-                                            Profil data
-                                        </Label>
+                                                Profil data
+                                            </Label>
 
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                            <Grid
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                                <Grid
                                                 Grid.Column="1"
                                                 Padding="10"
                                                 HorizontalOptions="End">
-                                                <Image
+                                                    <Image
                                                     HeightRequest="25"
                                                     HorizontalOptions="End"
                                                     Rotation="270"
                                                     Source="pilned_hvid_ikon.png"
                                                     WidthRequest="25" />
+                                                </Grid>
+
                                             </Grid>
+                                            <Button Pressed="saetProfildata_knap" />
 
                                         </Grid>
-                                        <Button Pressed="saetProfildata_knap" />
+
+
 
                                     </Grid>
-
-
-
-                                </Grid>
-                            </Border>
-                            <Border
+                                </Border>
+                                <Border
                                 Grid.Row="1"
                                 BackgroundColor="{StaticResource CustomGraa}"
                                 HorizontalOptions="Fill"
                                 Stroke="{StaticResource CustomGraa}"
                                 StrokeThickness="2">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10" />
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10" />
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
-                                    <Grid ColumnDefinitions="*">
-                                        <Label
+                                        <Grid ColumnDefinitions="*">
+                                            <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Padding="10"
@@ -252,48 +252,48 @@
                                             HorizontalOptions="Start"
                                             TextColor="{StaticResource CustomHvid}"
                                             VerticalOptions="End">
-                                            Kalorie mål
-                                        </Label>
+                                                Kalorie mål
+                                            </Label>
 
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
-                                            <Grid
+                                                <Grid
                                                 Grid.Column="1"
                                                 Padding="10"
                                                 HorizontalOptions="End">
-                                                <Image
+                                                    <Image
                                                     HeightRequest="25"
                                                     HorizontalOptions="End"
                                                     Rotation="270"
                                                     Source="pilned_hvid_ikon.png"
                                                     WidthRequest="25" />
+                                                </Grid>
+
                                             </Grid>
-
+                                            <Button Pressed="saetMaal_knap" />
                                         </Grid>
-                                        <Button Pressed="saetMaal_knap" />
+
+
+
                                     </Grid>
+                                </Border>
 
-
-
-                                </Grid>
-                            </Border>
-
-                            <Border
+                                <Border
                                 Grid.Row="2"
                                 BackgroundColor="{StaticResource CustomGraa}"
                                 HorizontalOptions="Fill"
                                 Stroke="{StaticResource CustomGraa}"
                                 StrokeThickness="2">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10,10,10,10" />
-                                </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10" />
+                                    </Border.StrokeShape>
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 
 
 
-                                    <Grid ColumnDefinitions="*">
-                                        <Button
+                                        <Grid ColumnDefinitions="*">
+                                            <Button
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Padding="10"
@@ -303,43 +303,43 @@
                                             Text="Log ud"
                                             TextColor="{StaticResource CustomRød}"
                                             VerticalOptions="End" />
-                                        <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
+                                            <!--<Label HorizontalOptions="Start" TextColor="{StaticResource CustomRød}" FontSize="32"  Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1">Log ud</Label>-->
 
-                                        <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
+                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
 
 
-                                            <Grid
+                                                <Grid
                                                 Grid.Column="1"
                                                 Padding="10"
                                                 HorizontalOptions="End">
-                                                <Image
+                                                    <Image
                                                     HeightRequest="25"
                                                     HorizontalOptions="End"
                                                     Source="logud_ikon.png"
                                                     WidthRequest="25" />
+                                                </Grid>
                                             </Grid>
+
                                         </Grid>
 
+
+
                                     </Grid>
+                                </Border>
 
 
 
-                                </Grid>
-                            </Border>
 
 
+                            </Grid>
 
 
 
                         </Grid>
-
-
-
                     </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-
+        </ScrollView>
         <NavBar:NavBar
             Grid.Row="1"
             HorizontalOptions="Fill"

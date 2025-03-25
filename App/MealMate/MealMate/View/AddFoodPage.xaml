@@ -98,7 +98,7 @@
                                         <Grid ColumnDefinitions="*" Padding="10,0,0,0">
                                             <Label HorizontalOptions="Start" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10" Grid.Column="1" Text="{Binding name}"/>
                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">
-                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomGrøn}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="Binding calories, StringFormat='{0} kcal'"/>
+                                                <Label HorizontalOptions="End" TextColor="{StaticResource CustomHvid}" FontSize="32" Grid.Row="0" VerticalOptions="End" Padding="10,10,30,10" Grid.Column="0" Text="{Binding calories, StringFormat='{0} kcal'}"/>
                                                 <ImageButton Grid.Row="0" Grid.Column="1" Source="plus_ikon.png" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
                                             </Grid>
                                         </Grid>
