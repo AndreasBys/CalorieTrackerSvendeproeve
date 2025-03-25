@@ -3,10 +3,10 @@ namespace MealMate.View;
 public partial class AddFoodPage : ContentPage
 {
     private readonly AddFoodPageViewModel _viewModel;
-    private readonly BarcodeTaskCompletionService _taskCompletionService;
+    private BarcodeTaskCompletionService _taskCompletionService;
     public AddFoodPage(AddFoodPageViewModel viewModel, BarcodeTaskCompletionService barcodeTaskService)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = _viewModel = viewModel;
         _taskCompletionService = barcodeTaskService;
 
@@ -28,7 +28,7 @@ public partial class AddFoodPage : ContentPage
             { "SelectedFood", food }
         });
     }
-    
+
     private async void AddDishKnap(object sender, EventArgs e)
     {
         var ret = ((VisualElement)sender).BindingContext as Dish;
@@ -55,17 +55,21 @@ public partial class AddFoodPage : ContentPage
 
     private async void OnScan(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(BarcodeReaderPage)); // Non-blocking
 
-        string result = await _taskCompletionService.StartBarcodeTask(); 
+        await Navigation.PushModalAsync(new BarcodeReaderPage(_taskCompletionService));
+
+        string result = await _taskCompletionService.StartBarcodeTask();        
 
 
-
-        // Makes code work async
         if (_viewModel.GetFood is AsyncRelayCommand<string> getFoodCommand)
         {
             await getFoodCommand.ExecuteAsync(result);
         }
+
+        await Navigation.PopModalAsync();
+
+        // Makes code work async
+
 
         if (_viewModel.Food == null) return;
 

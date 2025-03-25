@@ -65,23 +65,30 @@ namespace MealMate.ViewModels
                 try
                 {
                     // Validate the input percentages
-                    if (Convert.ToInt32(fedtProcent) > 100 || Convert.ToInt32(FedtProcent) < 0)
+                    if (_fedtProcentInt > 100 || _fedtProcentInt < 0)
                     {
                         await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld fedt procent mellem 0-100!", "OK");
                         return;
                     }
 
-                    if (Convert.ToInt32(proteinProcent) > 100 || Convert.ToInt32(ProteinProcent) < 0)
+                    if (_proteinProcentInt > 100 || _proteinProcentInt < 0)
                     {
                         await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld protein procent mellem 0-100!", "OK");
                         return;
                     }
 
-                    if (Convert.ToInt32(kulhydraterProcent) > 100 || Convert.ToInt32(KulhydraterProcent) < 0)
+                    if (_kulhydraterProcentInt > 100 || _kulhydraterProcentInt  < 0)
                     {
                         await Application.Current.MainPage.DisplayAlert("Error!", "Udfyld kulhydrater procent mellem 0-100!", "OK");
                         return;
                     }
+                    if (_fedtProcentInt + _proteinProcentInt + _kulhydraterProcentInt > 100)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error!", "Overskrid venligst ikke 100%", "OK");
+                        return;
+                    }
+
+
 
                     // Create a new MacroGoal object with the input values
                     MacroGoal macroGoal = new MacroGoal

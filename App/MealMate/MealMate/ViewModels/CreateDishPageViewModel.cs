@@ -79,7 +79,7 @@ namespace MealMate.ViewModels
 
                 DishResponse responseDish = await DishService.CreateDish(dish);
 
-                await Shell.Current.GoToAsync(nameof(AddDishPage),false, new Dictionary<string, object>
+                await Shell.Current.GoToAsync(nameof(AddDishPage), false, new Dictionary<string, object>
                 {
                     { "SelectedDish", responseDish }
                 });
@@ -113,7 +113,7 @@ namespace MealMate.ViewModels
                     {
                         Foods.Add(food);
                     }
-                    
+
                 }
             }
             catch (Exception ex)

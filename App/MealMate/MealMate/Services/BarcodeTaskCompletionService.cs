@@ -18,7 +18,10 @@ public class BarcodeTaskCompletionService
 
     public void TaskCompleted(string barcode)
     {
-        _taskCompletionSource.SetResult(barcode);
+        if (!_taskCompletionSource.Task.IsCompleted)
+        {
+            _taskCompletionSource.SetResult(barcode);   
+        }
     }
 
 }
