@@ -33,9 +33,15 @@ public partial class AddFoodPage : ContentPage
     {
         var ret = ((VisualElement)sender).BindingContext as Dish;
 
+        DishResponse selectedDish = new DishResponse();
+
+        selectedDish.dish = ret;
+        selectedDish.foods = ret.foods;
+
+
         await Shell.Current.GoToAsync(nameof(AddDishPage), false, new Dictionary<string, object>
         {
-            {"SelectedDish", ret }
+            {"SelectedDish", selectedDish }
 
 
         });

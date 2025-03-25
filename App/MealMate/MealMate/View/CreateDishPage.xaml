@@ -10,19 +10,11 @@
 
         <Grid RowDefinitions="Auto,*">
 
-
-
-
             <Grid
                 Grid.Row="1"
                 Padding="{StaticResource OverallPadding}"
                 BackgroundColor="{StaticResource CustomGraa}">
-
-
-
-
-
-
+                
                 <!--  Formular box  -->
                 <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
 

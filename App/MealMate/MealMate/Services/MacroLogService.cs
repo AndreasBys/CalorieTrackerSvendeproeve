@@ -39,24 +39,6 @@ public class MacroLogService : IMacroLogService
         return macroLog;
     }
 
-    public async Task<MacroLog> CreateMacroLog(MacroLogDishRequest newMacroLog)
-    {
-        string token = await SecureStorage.GetAsync("auth_token");
-        var request = new HttpRequestMessage(HttpMethod.Post, "");
-        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        request.Content = JsonContent.Create(newMacroLog);
-
-        var response = await _httpClient.SendAsync(request);
-
-        if (response.IsSuccessStatusCode)
-        {
-            MacroLogResponse responseObj = await response.Content.ReadFromJsonAsync<MacroLogResponse>();
-            macroLog = responseObj.macroLog;
-        }
-
-        return macroLog;
-    }
-
     public async Task<List<MacroLog>> GetTodaysMacroLogs()
     {
         string token = await SecureStorage.GetAsync("auth_token");
