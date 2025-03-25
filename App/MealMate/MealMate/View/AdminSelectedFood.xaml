@@ -114,8 +114,6 @@
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
-                                        Margin="10,4,0,0"
-                                        TextColor="{StaticResource CustomHvid}" 
                                         HeightRequest="40"
                                         Text="{Binding protein}"/>
                                 </Grid>
@@ -136,8 +134,6 @@
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
-                                        Margin="10,4,0,0"
-                                        TextColor="{StaticResource CustomHvid}" 
                                         HeightRequest="40"
                                         Text="{Binding carbonhydrates}"/>
                                 </Grid>
@@ -156,8 +152,6 @@
                                         Grid.Column="1" 
                                         BackgroundColor="{StaticResource CustomMoerkeGraa}" 
                                         FontSize="18"
-                                        Margin="10,4,0,0"
-                                        TextColor="{StaticResource CustomHvid}" 
                                         HeightRequest="40"
                                         Text="{Binding fat}"/>
                                 </Grid>
@@ -178,7 +172,7 @@
                             <Button Text="Slet" TextColor="White" BackgroundColor="{StaticResource CustomRød}" Clicked="DeleteFood" FontSize="24" Padding="10,5,10,5" WidthRequest="120"/>
                         </Border>
                     </Grid>
-
+                    
                 </Grid>
             </Grid>
         </ScrollView>

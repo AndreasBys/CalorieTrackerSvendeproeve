@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Syncfusion.Maui.Core.Carousel;
+using System.Collections.ObjectModel;
 
 namespace MealMate.ViewModels;
 
@@ -20,8 +21,57 @@ public partial class AddDishPageViewModel : BaseViewModel
     double rettensKulhydrater;
     [ObservableProperty]
     double rettensFedt;
+    [ObservableProperty]
+    string dishWeight;
+
+    MacroLogService _macroService;
+
+    public AddDishPageViewModel(MacroLogService macroService)
+    {
+        _macroService = macroService;
+    }
 
 
+
+    [RelayCommand]
+    async Task CreateDishKnap()
+    {
+        if (IsBusy)
+        {
+            return;
+        }
+        try
+        {
+            IsBusy = true;
+
+            MacroLogDishRequest macroLog = new MacroLogDishRequest(Dish.dish._id, Convert.ToInt32(DishWeight));
+
+            var log = await _macroService.CreateMacroLog(macroLog);
+
+            if (log == null)
+            {
+                throw new Exception($"MacroLog couldn't be added");
+            }
+
+
+            await Shell.Current.GoToAsync(nameof(HomePage), false, new Dictionary<string, object>
+            {
+            { "NewMacroLog", log }
+            });
+
+        }
+        catch (Exception ex)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            return;
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+
+
+    }
 
     partial void OnDishChanged(DishResponse value)
     {

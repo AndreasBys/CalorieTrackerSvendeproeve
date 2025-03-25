@@ -31,6 +31,8 @@ public partial class AddFoodPageViewModel : BaseViewModel
     [ObservableProperty]
     private Color tekstMineRetterValgt = (Color)Application.Current.Resources["CustomTekstHvidereGraa"];
 
+
+
     public ObservableCollection<Dish> Dish { get; } = new();
 
     DishService dishService;

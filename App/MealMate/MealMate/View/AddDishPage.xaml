@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MealMate.View.AddDishPage"
-             Title="AddDishPage">
+<ContentPage
+    x:Class="MealMate.View.AddDishPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AddDishPage">
     <Grid>
 
         <Grid RowDefinitions="Auto,*">
 
+            <Grid
+                Grid.Row="1"
+                Padding="80,50,80,0"
+                BackgroundColor="{StaticResource CustomGraa}">
 
-
-
-            <Grid BackgroundColor="{StaticResource CustomGraa}" Padding="80,50,80,0" Grid.Row="1" >
-
-
-
-
-
-
-                <!--Formular box-->
+                <!--  Formular box  -->
                 <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto">
 
-                    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *">
+                    <Grid
+                        Grid.Row="0"
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="Auto, *">
 
-                        <Label Grid.Row="0" FontSize="28" TextColor="White">Rettens navn:</Label>
+                        <Label
+                            Grid.Row="0"
+                            FontSize="28"
+                            TextColor="White">
+                            Rettens navn:
+                        </Label>
 
-                        <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                            HorizontalOptions="Fill"
+                            Stroke="{StaticResource CustomMoerkeGraa}"
+                            StrokeThickness="2">
 
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                <RoundRectangle CornerRadius="15" />
                             </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*"  >
+                            <Grid ColumnDefinitions="*">
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensNavn}" ></Entry>
+                                <Entry
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                    FontSize="28"
+                                    IsReadOnly="True"
+                                    Text="{Binding RettensNavn}"
+                                    TextColor="{StaticResource CustomTekstHvidereGraa}" />
                             </Grid>
 
                         </Border>
@@ -45,44 +61,96 @@
 
                     <Grid Grid.Row="2" ColumnDefinitions="*,auto">
 
-                        <Label TextColor="{StaticResource CustomHvid}" FontSize="32" Padding="15" HorizontalOptions="Fill" >Næringsindhold per 100g:</Label>
+                        <Label
+                            Padding="15"
+                            FontSize="32"
+                            HorizontalOptions="Fill"
+                            TextColor="{StaticResource CustomHvid}">
+                            Næringsindhold per 100g:
+                        </Label>
 
 
                     </Grid>
 
-                    <Grid Grid.Row="3" ColumnDefinitions="*, *" Padding="0,20,0,0">
-                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
+                    <Grid
+                        Grid.Row="3"
+                        Padding="0,20,0,0"
+                        ColumnDefinitions="*, *">
+                        <Grid
+                            Grid.Row="0"
+                            Padding="0,0,15,0"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto, *">
 
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Kalorier:</Label>
+                            <Label
+                                Grid.Row="0"
+                                FontSize="28"
+                                TextColor="White">
+                                Kalorier:
+                            </Label>
 
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomMoerkeGraa}"
+                                StrokeThickness="2">
 
 
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="15" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry  BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensKalorier}"></Entry>
+                                    <Entry
+                                        Grid.Column="1"
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                        FontSize="28"
+                                        IsReadOnly="True"
+                                        Text="{Binding RettensKalorier}"
+                                        TextColor="{StaticResource CustomTekstHvidereGraa}" />
                                 </Grid>
 
                             </Border>
 
                         </Grid>
 
-                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
+                        <Grid
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Padding="15,0,0,0"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto, *">
 
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Protein:</Label>
+                            <Label
+                                Grid.Row="0"
+                                FontSize="28"
+                                TextColor="White">
+                                Protein:
+                            </Label>
 
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomMoerkeGraa}"
+                                StrokeThickness="2">
 
 
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="15" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensProtein}"></Entry>
+                                    <Entry
+                                        Grid.Column="1"
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                        FontSize="28"
+                                        IsReadOnly="True"
+                                        Text="{Binding RettensProtein}"
+                                        TextColor="{StaticResource CustomTekstHvidereGraa}" />
                                 </Grid>
 
                             </Border>
@@ -93,20 +161,44 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="4" ColumnDefinitions="*, *" Padding="0,20,0,0">
-                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,0,15,0">
+                    <Grid
+                        Grid.Row="4"
+                        Padding="0,20,0,0"
+                        ColumnDefinitions="*, *">
+                        <Grid
+                            Grid.Row="0"
+                            Padding="0,0,15,0"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto, *">
 
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Kulhydrater:</Label>
+                            <Label
+                                Grid.Row="0"
+                                FontSize="28"
+                                TextColor="White">
+                                Kulhydrater:
+                            </Label>
 
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomMoerkeGraa}"
+                                StrokeThickness="2">
 
 
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="15" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
 
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensKulhydrater}"></Entry>
+                                    <Entry
+                                        Grid.Column="1"
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                        FontSize="28"
+                                        IsReadOnly="True"
+                                        Text="{Binding RettensKulhydrater}"
+                                        TextColor="{StaticResource CustomTekstHvidereGraa}" />
                                 </Grid>
 
                             </Border>
@@ -115,84 +207,132 @@
 
                         </Grid>
 
-                        <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="15,0,0,0">
+                        <Grid
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Padding="15,0,0,0"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto, *">
 
-                            <Label Grid.Row="0" FontSize="28" TextColor="White">Fedt:</Label>
+                            <Label
+                                Grid.Row="0"
+                                FontSize="28"
+                                TextColor="White">
+                                Fedt:
+                            </Label>
 
-                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                HorizontalOptions="Fill"
+                                Stroke="{StaticResource CustomMoerkeGraa}"
+                                StrokeThickness="2">
 
 
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                    <RoundRectangle CornerRadius="15" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*">
-
-                                    <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="{StaticResource CustomTekstHvidereGraa}" Grid.Column="1" IsReadOnly="True" Text="{Binding RettensFedt}"></Entry>
+                                    <Entry
+                                        Grid.Column="1"
+                                        BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                        FontSize="28"
+                                        IsReadOnly="True"
+                                        Text="{Binding RettensFedt}"
+                                        TextColor="{StaticResource CustomTekstHvidereGraa}" />
                                 </Grid>
-
                             </Border>
-
-
-
                         </Grid>
-
                     </Grid>
+                    <Grid
+                        Grid.Row="5"
+                        Padding="0,60,0,0"
+                        ColumnDefinitions="*,Auto"
+                        RowDefinitions="Auto, *">
 
+                        <Label
+                            Grid.Row="0"
+                            FontSize="28"
+                            TextColor="White">
+                            Gram spist:
+                        </Label>
 
-                    <Grid Grid.Row="5" ColumnDefinitions="*,Auto" RowDefinitions="Auto, *" Padding="0,60,0,0">
-
-                        <Label Grid.Row="0" FontSize="28" TextColor="White">Gram spist:</Label>
-
-                        <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CustomMoerkeGraa}" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill" >
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                            HorizontalOptions="Fill"
+                            Stroke="{StaticResource CustomMoerkeGraa}"
+                            StrokeThickness="2">
 
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                <RoundRectangle CornerRadius="15" />
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*">
 
-                                <Entry BackgroundColor="{StaticResource CustomMoerkeGraa}" FontSize="28" TextColor="White" Grid.Column="1"></Entry>
+                                <Entry
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                                    FontSize="28"
+                                    Text="{Binding DishWeight}"
+                                    TextColor="White" />
                             </Grid>
-
                         </Border>
-
-
-
                     </Grid>
-
-
-
-
-
-
                 </Grid>
-
-
-
             </Grid>
-
-
 
         </Grid>
 
-        <Grid VerticalOptions="End" BackgroundColor="{StaticResource CustomMoerkeGraa}" HorizontalOptions="Fill">
-            <Grid ColumnDefinitions="*,*,*,*" Padding="20">
-                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="1">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomRød}" BackgroundColor="{StaticResource CustomRød}" HorizontalOptions="Fill" >
+        <Grid
+            BackgroundColor="{StaticResource CustomMoerkeGraa}"
+            HorizontalOptions="Fill"
+            VerticalOptions="End">
+            <Grid Padding="20" ColumnDefinitions="*,*,*,*">
+                <Grid
+                    Grid.Column="1"
+                    ColumnDefinitions="Auto"
+                    HorizontalOptions="Center">
+                    <Border
+                        BackgroundColor="{StaticResource CustomRød}"
+                        HorizontalOptions="Fill"
+                        Stroke="{StaticResource CustomRød}"
+                        StrokeThickness="2">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
-                        <Button Text="Annuller" Grid.Column="0" FontSize="24" Padding="30,5,30,5" Pressed="annullerRetOprettelse_knap"></Button>
+                        <Button
+                            Grid.Column="0"
+                            Padding="30,5,30,5"
+                            FontSize="24"
+                            Pressed="annullerRetOprettelse_knap"
+                            Text="Annuller" />
                     </Border>
 
 
                 </Grid>
-                <Grid ColumnDefinitions="Auto" HorizontalOptions="Center" Grid.Column="2">
-                    <Border  StrokeThickness="2" Stroke="{StaticResource CustomBlaa}" BackgroundColor="{StaticResource CustomBlaa}" HorizontalOptions="Fill" >
+                <Grid
+                    Grid.Column="2"
+                    ColumnDefinitions="Auto"
+                    HorizontalOptions="Center">
+                    <Border
+                        BackgroundColor="{StaticResource CustomBlaa}"
+                        HorizontalOptions="Fill"
+                        Stroke="{StaticResource CustomBlaa}"
+                        StrokeThickness="2">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
-                        <Button Text="Opret" Grid.Column="0" FontSize="24" Padding="30,5,30,5" WidthRequest="160" Pressed="oprettetRet_knap" ></Button>
+                        <Button
+                            Grid.Column="0"
+                            Padding="30,5,30,5"
+                            Command="{Binding CreateDishKnapCommand}"
+                            FontSize="24"
+                            Pressed="oprettetRet_knap"
+                            Text="Opret"
+                            WidthRequest="160" />
                     </Border>
 
 

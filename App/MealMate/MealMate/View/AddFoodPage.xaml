@@ -207,7 +207,7 @@
                                                     Padding="10,10,30,10"
                                                     FontSize="32"
                                                     HorizontalOptions="End"
-                                                    Text="Binding calories, StringFormat='{0} kcal'"
+                                                    Text="{Binding calories, StringFormat='{0} kcal'}"
                                                     TextColor="{StaticResource CustomGrøn}"
                                                     VerticalOptions="End" />
                                                 <ImageButton

@@ -6,8 +6,7 @@ public class MacroLog
 {
     [Key]
     public string _id { get; set; }
-
-    [Required]
+    public Dish dish { get; set; }
     public Food food { get; set; }
     [Required]
     public int weight { get; set; }
@@ -30,6 +29,20 @@ public class MacroLogRequest
         this.weight = weight;
     }
 }
+
+public class MacroLogDishRequest
+{
+    [Required]
+    public string dish { get; set; }
+    [Required]
+    public int weight { get; set; }
+    public MacroLogDishRequest(string dish, int weight)
+    {
+        this.dish = dish;
+        this.weight = weight;
+    }
+}
+
 
 public class MacroLogResponse
 {

@@ -16,7 +16,30 @@ public class MacroLogService : IMacroLogService
         _httpClient = httpClient;
     }
 
-    public async Task<MacroLog> CreateMacroLog(MacroLogRequest newMacroLog)
+    public async Task<MacroLog> CreateMacroLog(dynamic newMacroLog)
+    {
+        if (!(newMacroLog is MacroLogRequest log1) && !(newMacroLog is MacroLogDishRequest log2))
+        {
+            throw new Exception("Invalid type");
+        }
+
+        string token = await SecureStorage.GetAsync("auth_token");
+        var request = new HttpRequestMessage(HttpMethod.Post, "");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        request.Content = JsonContent.Create(newMacroLog);
+
+        var response = await _httpClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            MacroLogResponse responseObj = await response.Content.ReadFromJsonAsync<MacroLogResponse>();
+            macroLog = responseObj.macroLog;
+        }
+
+        return macroLog;
+    }
+
+    public async Task<MacroLog> CreateMacroLog(MacroLogDishRequest newMacroLog)
     {
         string token = await SecureStorage.GetAsync("auth_token");
         var request = new HttpRequestMessage(HttpMethod.Post, "");
