@@ -88,36 +88,37 @@
                     TrackHeight="10" />
             </Grid>
             <Grid
+                Padding="0,0,0,5"
                 Grid.Row="0"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label Grid.Column="0" Text="{Binding Calories}" />
-                <Label Grid.Column="1" Text="{Binding MacroGoal.calories, StringFormat=' / {0} kcal'}" />
+                <Label TextColor="White" Grid.Column="0" Text="{Binding Calories}" />
+                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.calories, StringFormat=' / {0} kcal'}" />
             </Grid>
             <Grid
                 Grid.Row="1"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label Grid.Column="0" Text="{Binding Protein}" />
-                <Label Grid.Column="1" Text="{Binding MacroGoal.proteins, StringFormat=' / {0} g'}" />
+                <Label TextColor="White" Grid.Column="0" Text="{Binding Protein}" />
+                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.proteins, StringFormat=' / {0} g'}" />
             </Grid>
             <Grid
                 Grid.Row="2"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label Grid.Column="0" Text="{Binding Carbonhydrates}" />
-                <Label Grid.Column="1" Text="{Binding MacroGoal.carbonhydrates, StringFormat=' / {0} g'}" />
+                <Label TextColor="White" Grid.Column="0" Text="{Binding Carbonhydrates}" />
+                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.carbonhydrates, StringFormat=' / {0} g'}" />
             </Grid>
             <Grid
                 Grid.Row="3"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label Grid.Column="0" Text="{Binding Fat}" />
-                <Label Grid.Column="1" Text="{Binding MacroGoal.fats, StringFormat=' / {0} g'}" />
+                <Label TextColor="White" Grid.Column="0" Text="{Binding Fat}" />
+                <Label  TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.fats, StringFormat=' / {0} g'}" />
             </Grid>
         </Grid>
 
