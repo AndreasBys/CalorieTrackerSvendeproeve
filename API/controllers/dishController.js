@@ -76,7 +76,7 @@ export const createDish = async (req, res) => {
         // Sender respons med både retten og de tilhørende FoodInDish-entries
         res.status(201).json({ 
             msg: 'dish saved', 
-            savedDish, 
+            dish: savedDish, 
             foods: foodInDishEntries 
         });
 

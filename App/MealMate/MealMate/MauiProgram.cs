@@ -48,12 +48,17 @@ namespace MealMate
             builder.Services.AddSingleton<HomePageViewModel>();
             builder.Services.AddSingleton<AdminHomePageViewModel>();
             builder.Services.AddSingleton<CreateDishPageViewModel>();
+            builder.Services.AddSingleton<CreateGoalPageViewModel>();
 
             // DI for Models:
             builder.Services.AddTransient<User>();
 
             // Services
+
+            builder.Services.AddSingleton<BarcodeTaskCompletionService>();
+
 #if ANDROID
+            string baseUrl = "http://192.168.1.75:5000/";
             string baseUrl = "http://10.0.2.2:5000/";
             //string baseUrl = "http://192.168.8.52:5000/";
 #else

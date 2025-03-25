@@ -24,6 +24,10 @@ public partial class HomePageViewModel : BaseViewModel
     private double proteinProgress;
     [ObservableProperty]
     private double fatProgress;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(NoProgress))]
+    private bool progress;
+    public bool NoProgress => !Progress;
 
     // Property to hold the newly created MacroLog
     public MacroLog NewMacroLog { get; set; }
@@ -37,7 +41,8 @@ public partial class HomePageViewModel : BaseViewModel
     // Command to get today's macro logs
     public ICommand GetMacroLogs { get; }
 
-    public MacroGoal MacroGoal { get; set; }
+    [ObservableProperty]
+    private MacroGoal macroGoal;
     // Service for managing macro goal
     MacroGoalService MacroGoalService;
     public ICommand GetMacroGoal { get; }
@@ -86,7 +91,6 @@ public partial class HomePageViewModel : BaseViewModel
             {
                 MacroLog newMacroLog = await CalcMacros(macroLog);
                 MacroLogs.Add(newMacroLog);
-                UpdateProgress();
             }
 
             UpdateProgress();
@@ -132,15 +136,22 @@ public partial class HomePageViewModel : BaseViewModel
 
     private void UpdateProgress()
     {
+        if (Protein <= 0 && Carbonhydrates <= 0 && Fat <= 0)
+        {
+            Progress = false;
+            return;
+        }
+        Progress = true;
         if (MacroGoal == null)
         {
             double proteinsCalories = Protein * 4;
             double carbsCalories    = Carbonhydrates * 4;
             double fatsCalories     = Fat * 9;
+            double totalCalories    = proteinsCalories + carbsCalories + fatsCalories;
             CaloriesProgress        = 0;
-            ProteinProgress         = (proteinsCalories/Calories) * 100;
-            CarbonhydratesProgress  = (carbsCalories / Calories) * 100;
-            FatProgress             = (fatsCalories / Calories) * 100;
+            ProteinProgress         = (proteinsCalories / totalCalories) * 100;
+            CarbonhydratesProgress  = (carbsCalories    / totalCalories) * 100;
+            FatProgress             = (fatsCalories     / totalCalories) * 100;
             return;
         }
         if (MacroGoal.calories != null)

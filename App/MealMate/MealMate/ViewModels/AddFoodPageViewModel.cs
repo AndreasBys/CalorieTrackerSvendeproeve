@@ -205,10 +205,13 @@ public partial class AddFoodPageViewModel : BaseViewModel
 
             var food = await FoodService.GetFoodByBarcode(scanText);
 
-            if (food == null)
-                throw new Exception($"Barcode: {scanText} is invalid");
-
-            Food = food;
+            if (food != null)
+            {
+                Food = food;
+                return;
+            }
+            Food = new();
+            Food.barcode = scanText;
         }
         catch (Exception ex)
         {

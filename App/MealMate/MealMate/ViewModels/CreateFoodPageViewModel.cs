@@ -63,8 +63,7 @@ public partial class CreateFoodPageViewModel : BaseViewModel
                 FoodDetails.calories,
                 FoodDetails.carbonhydrates,
                 FoodDetails.protein,
-                FoodDetails.fat,
-                FoodDetails.user);
+                FoodDetails.fat);
 
             // Call the FoodService to create the new food item
             var food = await FoodService.CreateFood(newFood);

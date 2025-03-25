@@ -24,7 +24,7 @@ namespace MealMate.ViewModels
         // Collection to hold food items
         public ObservableCollection<Food> Foods { get; } = new();
 
-        public ObservableCollection<FoodForDish> FoodRequestForDish { get; } = new();
+        public ObservableCollection<FoodInDish> FoodRequestForDish { get; } = new();
 
         FoodService FoodService;
 
@@ -44,7 +44,7 @@ namespace MealMate.ViewModels
 
             AddToDishCommand = new Command<Food>(AddToDish);
             SearchFood = new AsyncRelayCommand(SearchFoods);
-            RemoveFromDishCommand = new Command<FoodForDish>(RemoveFromDish);
+            RemoveFromDishCommand = new Command<FoodInDish>(RemoveFromDish);
             DishService = dishService;
         }
 
@@ -64,19 +64,23 @@ namespace MealMate.ViewModels
                     return;
                 }
 
-                DishRequest dish = new DishRequest { name = Dishname, foods = new List<FoodForDish>() };
+                DishRequest dish = new DishRequest { name = Dishname, foods = new List<FoodInDishRequest>() };
+
 
 
                 foreach (var item in FoodRequestForDish)
                 {
-
-                    dish.foods.Add(item);
+                    FoodInDishRequest newFoodInDish = new FoodInDishRequest { id = item._id, weight = item.weight };
+                    dish.foods.Add(newFoodInDish);
                 }
 
 
-                await DishService.CreateDish(dish);
+                DishResponse responseDish = await DishService.CreateDish(dish);
 
-                await Shell.Current.GoToAsync(nameof(AddDishPage));
+                await Shell.Current.GoToAsync(nameof(AddDishPage),false, new Dictionary<string, object>
+                {
+                    { "SelectedDish", responseDish }
+                });
 
             }
             catch (Exception ex)
@@ -165,7 +169,7 @@ namespace MealMate.ViewModels
                 return;
             }
 
-            FoodForDish x = new FoodForDish { weight = 0, _id = food._id, name = food.name };
+            FoodInDish x = new FoodInDish { weight = 0, _id = food._id, name = food.name };
 
             FoodRequestForDish.Add(x);
 
@@ -173,7 +177,7 @@ namespace MealMate.ViewModels
 
         }
 
-        private void RemoveFromDish(FoodForDish food)
+        private void RemoveFromDish(FoodInDish food)
         {
             if (food == null)
             {
