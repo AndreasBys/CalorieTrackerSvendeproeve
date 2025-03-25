@@ -127,6 +127,19 @@ public partial class HomePageViewModel : BaseViewModel
     }
     private async Task<MacroLog> CalcMacros(MacroLog ml)
     {
+        if (ml.dish != null)
+        {
+            foreach (var item in ml.dish.foods)
+            {
+                Protein += ml.protein = item.food.protein;
+                Carbonhydrates += ml.carbonhydrates = item.food.carbonhydrates;
+                Fat += ml.fat = item.food.fat;
+            }
+
+            Calories += ml.calories = ml.dish.calories;
+
+            return ml;
+        }
         Calories       += ml.calories       = (int)(ml.food.calories * ml.weight / 100);
         Protein        += ml.protein        = (int)(ml.food.protein * ml.weight / 100);
         Carbonhydrates += ml.carbonhydrates = (int)(ml.food.carbonhydrates * ml.weight / 100);

@@ -88,37 +88,61 @@
                     TrackHeight="10" />
             </Grid>
             <Grid
-                Padding="0,0,0,5"
                 Grid.Row="0"
                 Grid.Column="1"
+                Padding="0,0,0,5"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label TextColor="White" Grid.Column="0" Text="{Binding Calories}" />
-                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.calories, StringFormat=' / {0} kcal'}" />
+                <Label
+                    Grid.Column="0"
+                    Text="{Binding Calories}"
+                    TextColor="White" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding MacroGoal.calories, StringFormat=' / {0} kcal'}"
+                    TextColor="White" />
             </Grid>
             <Grid
                 Grid.Row="1"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label TextColor="White" Grid.Column="0" Text="{Binding Protein}" />
-                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.proteins, StringFormat=' / {0} g'}" />
+                <Label
+                    Grid.Column="0"
+                    Text="{Binding Protein}"
+                    TextColor="White" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding MacroGoal.proteins, StringFormat=' / {0} g'}"
+                    TextColor="White" />
             </Grid>
             <Grid
                 Grid.Row="2"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label TextColor="White" Grid.Column="0" Text="{Binding Carbonhydrates}" />
-                <Label TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.carbonhydrates, StringFormat=' / {0} g'}" />
+                <Label
+                    Grid.Column="0"
+                    Text="{Binding Carbonhydrates}"
+                    TextColor="White" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding MacroGoal.carbonhydrates, StringFormat=' / {0} g'}"
+                    TextColor="White" />
             </Grid>
             <Grid
                 Grid.Row="3"
                 Grid.Column="1"
                 ColumnDefinitions="Auto,Auto"
                 HorizontalOptions="End">
-                <Label TextColor="White" Grid.Column="0" Text="{Binding Fat}" />
-                <Label  TextColor="White" Grid.Column="1" Text="{Binding MacroGoal.fats, StringFormat=' / {0} g'}" />
+                <Label
+                    Grid.Column="0"
+                    Text="{Binding Fat}"
+                    TextColor="White" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding MacroGoal.fats, StringFormat=' / {0} g'}"
+                    TextColor="White" />
             </Grid>
         </Grid>
 
@@ -169,6 +193,15 @@
                                                                 FontSize="32"
                                                                 HorizontalOptions="Start"
                                                                 Text="{Binding food.name}"
+                                                                TextColor="{StaticResource CustomHvid}"
+                                                                VerticalOptions="End" />
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Padding="10"
+                                                                FontSize="32"
+                                                                HorizontalOptions="Start"
+                                                                Text="{Binding dish.name}"
                                                                 TextColor="{StaticResource CustomHvid}"
                                                                 VerticalOptions="End" />
                                                             <Grid ColumnDefinitions="*,*" HorizontalOptions="End">

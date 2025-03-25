@@ -330,7 +330,6 @@
                             Padding="30,5,30,5"
                             Command="{Binding CreateDishKnapCommand}"
                             FontSize="24"
-                            Pressed="oprettetRet_knap"
                             Text="Opret"
                             WidthRequest="160" />
                     </Border>

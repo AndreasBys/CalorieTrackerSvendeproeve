@@ -30,6 +30,7 @@
                     Grid.Column="0"
                     Margin="0,0,20,0"
                     BackgroundColor="{StaticResource CustomMoerkeGraa}"
+                    HeightRequest="75"
                     HorizontalOptions="Fill"
                     Stroke="{StaticResource CustomMoerkeGraa}"
                     StrokeThickness="2">
@@ -59,6 +60,7 @@
                     Padding="5"
                     BackgroundColor="{StaticResource CustomBlaa}"
                     HorizontalOptions="Fill"
+                    IsVisible="{Binding EnkeltVarerSynlighed}"
                     Stroke="{StaticResource CustomBlaa}"
                     StrokeThickness="2">
                     <Border.StrokeShape>
@@ -121,7 +123,7 @@
             <ScrollView
                 Grid.Row="2"
                 Padding="0,0,0,50"
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="Fill"
                 VerticalScrollBarVisibility="Never">
                 <StackLayout>
                     <CollectionView
@@ -208,7 +210,7 @@
                                                     FontSize="32"
                                                     HorizontalOptions="End"
                                                     Text="{Binding calories, StringFormat='{0} kcal'}"
-                                                    TextColor="{StaticResource CustomGrøn}"
+                                                    TextColor="{StaticResource CustomHvid}"
                                                     VerticalOptions="End" />
                                                 <ImageButton
                                                     Grid.Row="0"

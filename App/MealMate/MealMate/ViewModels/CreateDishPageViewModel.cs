@@ -24,6 +24,8 @@ namespace MealMate.ViewModels
         // Collection to hold food items
         public ObservableCollection<Food> Foods { get; } = new();
 
+        public ObservableCollection<Food> foodsInDish { get; } = new();
+
         public ObservableCollection<FoodInDish> FoodRequestForDish { get; } = new();
 
         FoodService FoodService;
@@ -185,7 +187,7 @@ namespace MealMate.ViewModels
             }
 
             FoodRequestForDish.Remove(food);
-            Foods.Add(new Food { _id = food._id, name = food.name });
+            Foods.Add(new Food { _id = food._id, name = food.name, calories = food.food.calories });
         }
 
 
